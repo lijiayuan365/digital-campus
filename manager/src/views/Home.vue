@@ -2,7 +2,7 @@
 <template>
   <el-container style="height: 100%">
     <el-header class="header">
-      Header
+      <home-header></home-header>
     </el-header>
     <el-container>
       <el-aside class="aside" width="200px">
@@ -15,14 +15,16 @@
   </el-container>
 </template>
 <script>/* eslint-disable indent,semi */
-import HomeSide from './../components/home-side.vue'
+import HomeHeader from '../components/HomeHeader.vue'
+import HomeSide from '../components/HomeSide.vue'
 
 export default {
   data() {
     return {};
   },
   components: {
-    HomeSide
+    HomeSide,
+    HomeHeader
   },
 
   computed: {},
@@ -39,7 +41,7 @@ export default {
 
 <style scoped>
   .el-container {
-    min-height: 600px;
+    /*min-height: 600px;*/
     min-width: 900px;
   }
 

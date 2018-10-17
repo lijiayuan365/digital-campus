@@ -10,8 +10,8 @@
     name: 'App'
   }
 </script>
-
 <style>
+  @import "assets/home/iconfont.css";
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
