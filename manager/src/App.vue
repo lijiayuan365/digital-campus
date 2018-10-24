@@ -12,6 +12,7 @@
 </script>
 <style>
   @import "assets/home/iconfont.css";
+  @import "assets/icon/iconfont.css";
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

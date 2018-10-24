@@ -6,6 +6,7 @@ import Home from '../views/Home.vue'
 import User from './../views/user/index.vue'
 import UserSetting from './../views/user/UserSetting.vue'
 import FormFlow from './../views/form/index.vue'
+import FormDesign from '../views/form/FormDesign.vue'
 import FormFlowSetting from './../views/form/FormSetting.vue'
 import MoveApprove from '../views/approve/index.vue'
 import MoveApproveSetting from '../views/approve/ApproveSetting.vue'
@@ -17,12 +18,26 @@ import MeetingSummary from '../views/meeting/MeetingSummary.vue'
 import FixedFlow from '../views/fixed-flow/index.vue'
 import FixedFlowSetting from '../views/fixed-flow/FixedFlowSetting.vue'
 
+import FlowTest from '../views/FlowTest.vue'
+import Test2 from '../views/Test2.vue'
+import AntG6 from '../views/G6test.vue'
+
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path:'/g6',
+      name:'AntG6',
+      component:AntG6
+    },
+    {
+      path:'/test2',
+      name:'Test2',
+      component:Test2
+    },
     {
       path: '/login',
       name: 'Login',
@@ -53,6 +68,11 @@ export default new Router({
           path: 'form-flow',
           name: 'FormFlow',
           component: FormFlow,
+        },
+        {
+          path: 'form-flow/design',
+          name: 'FormDesign',
+          component: FormDesign,
         },
         {
           path: 'form-flow/setting',

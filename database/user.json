@@ -1,0 +1,26 @@
+{
+  "userId":"用户id",
+  "userName":"李佳远",
+  "pwd":"123456",
+  "openid":"微信id",
+  "avatar":"",
+  "deptId":"dept1",
+  "organizeId":"org1",
+  "post":"学生",
+  "tel":"11223344",
+  "email":"123@123.com",
+  "remark":"测试用户",
+"user":{
+  "userId":"用户id",
+  "userName":"李佳远",
+  "pwd":"123456",
+  "openid":"微信id",
+  "avatar":"",
+  "deptId":"dept1",
+  "organizeId":"org1",
+  "post":"学生",
+  "tel":"11223344",
+  "email":"123@123.com",
+  "remark":"测试用户"
+}
+}
