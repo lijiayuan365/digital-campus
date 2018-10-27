@@ -5,6 +5,6 @@ const router = express.Router();
 router.get('/', function (req, res, next) {
   res.send('hello manager')
 });
-router.use('/getUser', require('./user'));
+router.use('/user', require('./user'));
 
 module.exports = router;

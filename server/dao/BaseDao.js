@@ -67,7 +67,7 @@ class BaseDao {
           console.log('findAll error--> ', error);
           reject(error);
         } else {
-          console.log('findAll results--> ', results);
+          // console.log('findAll results--> ', results);
           resolve(results);
         }
       });

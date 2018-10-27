@@ -13,10 +13,9 @@
 //   })
 //
 // };
-let BaseDao = require('./base-dao');
+let BaseDao = require('./BaseDao');
 let User = require('../models/user');
 
-console.log('kk')
 
 class UserDao extends BaseDao {
   constructor() {
