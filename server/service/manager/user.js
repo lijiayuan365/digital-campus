@@ -8,27 +8,65 @@ let postDao = new PostDao();
 let orgDao = new OrgDao();
 
 const createId = require('../../util/create-id');
+
 /**
  *
  */
 function getUserList(searchType, searchId) {
   return new Promise(function (resolve, reject) {
     let sql = {};
-    sql[searchType] = searchId;
+    if(searchType && searchId){
+      sql[searchType] = searchId;
+    }
     userDao.findAll(sql).then(function (result) {
       resolve(result);
-    }).catch(function (error) {
-      console.log(error)
-    });
+    })
+      .catch(function (error) {
+        console.log(error)
+      });
   });
   // return user;
+}
+
+function getUser(userId) {
+  return new Promise((resolve, reject) => {
+    userDao.findOne({userId: userId})
+      .then((res) => {
+        let user = res;
+        resolve(user)
+        // deptDao.findOne({deptId: user.deptId})
+        //   .then((res) => {
+        //     user.dept = res;
+        //     resolve(user);
+        //   });
+      });
+  });
 };
-function getUser(userId){
-  return new Promise((resolve,reject)=>{
-    userDao.findOne({userId:userId})
-    .then((res)=>{
-      resolve(res);
-    });
+
+function deleteUser(userId) {
+  return new Promise((resolve, reject) => {
+    userDao.remove({userId: userId})
+      .then((res) => {
+        resolve(res)
+      });
+  });
+};
+
+function batchDeleteUser(users) {
+  return new Promise((resolve, reject) => {
+    userDao.remove({userId: {$in: users}})
+      .then((res) => {
+        resolve(res);
+      })
+  });
+};
+
+function updateUser(user) {
+  return new Promise((resolve, reject) => {
+    userDao.update({userId: user.userId}, user)
+      .then((res) => {
+        resolve(res);
+      });
   });
 }
 
@@ -37,44 +75,57 @@ function getUser(userId){
  */
 function getDept(deptId) {
   return new Promise(function (resolve, reject) {
-    deptDao.findOne({ deptId: deptId })
+    deptDao.findOne({deptId: deptId})
       .then((result) => {
+        // console.log(result)
         let deptId = result.deptId;
-        deptDao.findAll({ parentDept: deptId })
+        deptDao.findAll({parentDept: deptId})
           .then((res) => {
-            // console.log(res);
-            result.subDept = res;
-            console.log(result);
-            resolve(result);
+            let data = result;
+            res.forEach((item) => {
+              item._doc.isLeaf = item.subDept.length === 0 ? true : false;
+            });
+            // debugger
+            data._doc['childDept'] = res;
+            resolve(data);
           });
       });
   }).catch((error) => {
     console.log(error);
   });
-};
-// 新增部门信息 
+}
+
+// 新增部门信息
 function addDept(deptInfo) {
-  return new Promise((resolve,reject)=>{
+  // let parentDept = {};
+  // deptDao.findOne({deptId:deptInfo.parentDept}).then((res)=>{
+  //
+  // });
+  return new Promise((resolve, reject) => {
     deptInfo.deptId = createId();
+    debugger
     deptDao.save(deptInfo)
-    .then((res)=>{
-      resolve(res);
-    })
+      .then((res) => {
+
+        resolve(res);
+      })
   })
 }
+
 // 移除部门信息
 function deleteDept(deptId) {
   return new Promise((resolve, reject) => {
-    deptDao.remove({ deptId: deptId })
+    deptDao.remove({deptId: deptId})
       .then((res) => {
         resolve(res);
       });
   });
 }
+
 // 编辑部门信息
 function updateDept(deptInfo) {
   return new Promise((resolve, reject) => {
-    deptDao.save(deptInfo)
+    deptDao.update({deptId: deptInfo.deptId}, deptInfo)
       .then((res) => {
         resolve(res);
       });
@@ -90,15 +141,17 @@ function getOrgList() {
       });
   });
 }
+
 // 获取组织数据
 function getOrg(orgId) {
   return new Promise((resolve, reject) => {
-    orgDao.findOne({orgId:orgId})
+    orgDao.findOne({orgId: orgId})
       .then((res) => {
         resolve(res);
       });
   });
 }
+
 // 新增组织
 function addOrg(orgInfo) {
   return new Promise((resolve, reject) => {
@@ -109,15 +162,17 @@ function addOrg(orgInfo) {
       });
   });
 }
+
 // 移除组织信息
 function deleteOrg(orgId) {
   return new Promise((resolve, reject) => {
-    orgDao.remove({ orgId: orgId })
+    orgDao.remove({orgId: orgId})
       .then((res) => {
         resolve(res);
       });
   })
 }
+
 // 更新组织信息
 function updateOrg(deptInfo) {
   return new Promise((resolve, reject) => {
@@ -128,10 +183,15 @@ function updateOrg(deptInfo) {
   });
 
 }
+
 // 获取职位列表
 function getPostList(deptId) {
   return new Promise(function (resolve, reject) {
-    postDao.findAll({ 'deptId': deptId })
+    let cons = {}
+    if (deptId) {
+      cons = {'deptId': deptId}
+    }
+    postDao.findAll(cons)
       .then((res) => {
         resolve(res)
       })
@@ -141,6 +201,9 @@ function getPostList(deptId) {
 module.exports = {
   getUserList,
   getUser,
+  deleteUser,
+  batchDeleteUser,
+  updateUser,
   getDept,
   addDept,
   deleteDept,

@@ -1,7 +1,8 @@
 const router = require('../../util/router-util');
-const { getUserList, getUser } = require('../../service/manager/user');
+const { getUserList, getUser, deleteUser, batchDeleteUser, updateUser } = require('../../service/manager/user');
 const { getDept, addDept, deleteDept, updateDept } = require('../../service/manager/user');
 const { getOrgList, getOrg, addOrg, deleteOrg, updateOrg } = require('../../service/manager/user');
+const { getPostList} = require('../../service/manager/user');
 const api = require('../../config/common.json').managerApi + '/user';
 
 router.get(`${api}/getUserList`, function (req, res, next) {
@@ -30,11 +31,42 @@ router.get(`${api}/getUser`, (req, res, next) => {
     });
 });
 
+router.post(`${api}/deleteUser`, (req, res)=>{
+  let userId = req.body.userId;
+  deleteUser(userId).then((data)=>{
+    res.json({
+      code: 0,
+      msg: 'hello',
+      data: data,
+    })
+  });
+});
+router.post(`${api}/batchDeleteUser`, (req, res)=>{
+  let users = req.body.userIds;
+  batchDeleteUser(users).then((data)=>{
+    res.json({
+      code: 0,
+      msg: '',
+      data: data
+    })
+  })
+});
+router.post(`${api}/updateUser`,(req,res)=>{
+  let user = req.body.user;
+  updateUser(user).then((data)=>{
+    res.json({
+      code: 0,
+      msg: '',
+      data: data
+    })
+  })
+});
 router.get(`${api}/getDept`, function (req, res) {
   let deptId = req.query.deptId;
   getDept(deptId)
     .then((result) => {
       let dept = result;
+      // console.log(dept);
       res.json({
         code: 0,
         msg: 'hello',
@@ -43,7 +75,7 @@ router.get(`${api}/getDept`, function (req, res) {
     });
 });
 router.post(`${api}/addDept`, (req, res) => {
-  let dept = req.body;
+  let dept = req.body.dept;
   addDept(dept)
     .then((data) => {
       res.json({
@@ -65,8 +97,8 @@ router.post(`${api}/deleteDept`, (req, res) => {
     })
 });
 router.post(`${api}/updateDept`, (req, res) => {
-  let deptId = req.body.deptId;
-  updateDept(deptId)
+  let dept = req.body.dept;
+  updateDept(dept)
     .then((data) => {
       res.json({
         code: 0,
@@ -99,7 +131,7 @@ router.get(`${api}/getOrg`, (req, res) => {
 });
 router.post(`${api}/addOrg`, (req, res) => {
   let org = req.body;
-  addDept(org)
+  addOrg(org)
     .then((data) => {
       res.json({
         code: 0,
@@ -110,7 +142,7 @@ router.post(`${api}/addOrg`, (req, res) => {
 });
 router.post(`${api}/deleteOrg`, (req, res) => {
   let orgId = req.body.orgId;
-  deleteDept(orgId)
+  deleteOrg(orgId)
     .then((data) => {
       res.json({
         code: 0,
@@ -121,7 +153,7 @@ router.post(`${api}/deleteOrg`, (req, res) => {
 });
 router.post(`${api}/updateOrg`, (req, res) => {
   let orgId = req.body.orgId;
-  updateDept(orgId)
+  updateOrg(orgId)
     .then((data) => {
       res.json({
         code: 0,
