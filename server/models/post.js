@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
-const {mongoClient} = require('../util/mongo')
+const { mongoClient } = require('../util/mongo')
+let Schema = mongoose.Schema;
 
 const post = new mongoose.Schema({
+  _id: Schema.Types.ObjectId,
   postId: String,
   postName: String,
   deptId: String

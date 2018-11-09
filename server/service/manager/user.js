@@ -10,192 +10,210 @@ let orgDao = new OrgDao();
 const createId = require('../../util/create-id');
 
 /**
- *
+ * 
+ * @param {*} searchType 搜索类型
+ * @param {*} searchId 搜索id
+ * @returns promise
  */
-function getUserList(searchType, searchId) {
-  return new Promise(function (resolve, reject) {
-    let sql = {};
-    if(searchType && searchId){
-      sql[searchType] = searchId;
-    }
-    userDao.findAll(sql).then(function (result) {
-      resolve(result);
-    })
-      .catch(function (error) {
-        console.log(error)
-      });
-  });
-  // return user;
+async function getUserList(searchType, searchId) {
+  let sql = {};
+  if (searchType && searchId) {
+    sql[searchType] = searchId;
+  }
+  try {
+    let userList = await userDao.findAll(sql);
+    return userList;
+  } catch (error) {
+    console.log(`getUserList error--> ${error}`);
+    return error;
+  }
 }
 
-function getUser(userId) {
-  return new Promise((resolve, reject) => {
-    userDao.findOne({userId: userId})
-      .then((res) => {
-        let user = res;
-        resolve(user)
-        // deptDao.findOne({deptId: user.deptId})
-        //   .then((res) => {
-        //     user.dept = res;
-        //     resolve(user);
-        //   });
-      });
-  });
-};
+async function getUser(userId) {
+  try {
+    let user = await userDao.findOne({ userId: userId });
+    return user;
+  } catch (error) {
+    console.log(`getUser error--> ${error}`);
+    return error;
+  }
+}
 
-function deleteUser(userId) {
-  return new Promise((resolve, reject) => {
-    userDao.remove({userId: userId})
-      .then((res) => {
-        resolve(res)
-      });
-  });
-};
+async function deleteUser(userId) {
+  try {
+    let result = await userDao.remove({ userId: userId });
+    return result;
+  } catch (error) {
+    console.log(`deleteUser error--> ${error}`);
+    return error;
+  }
+}
 
-function batchDeleteUser(users) {
-  return new Promise((resolve, reject) => {
-    userDao.remove({userId: {$in: users}})
-      .then((res) => {
-        resolve(res);
-      })
-  });
-};
+async function batchDeleteUser(users) {
+  try {
+    let result = await userDao.remove({ userId: { $in: users } });
+    return result;
+  } catch (error) {
+    console.log(`batchDeleteUser error--> ${error}`);
+    return error;
+  }
+}
 
-function updateUser(user) {
-  return new Promise((resolve, reject) => {
-    userDao.update({userId: user.userId}, user)
-      .then((res) => {
-        resolve(res);
-      });
-  });
+async function updateUser(user) {
+  try {
+    let result = await userDao.update({ userId: user.userId }, user);
+    return result;
+  } catch (error) {
+    console.log(`updateUser error--> ${error}`);
+    return error;
+  }
 }
 
 /**
- *
+ * 查询部门信息
  */
+/* promise 方式
 function getDept(deptId) {
-  return new Promise(function (resolve, reject) {
-    deptDao.findOne({deptId: deptId})
+  return new Promise((resolve, reject) => {
+    let deptData = {}
+    deptDao.findOne({ deptId: deptId })
       .then((result) => {
-        // console.log(result)
-        let deptId = result.deptId;
-        deptDao.findAll({parentDept: deptId})
-          .then((res) => {
-            let data = result;
-            res.forEach((item) => {
-              item._doc.isLeaf = item.subDept.length === 0 ? true : false;
-            });
-            // debugger
-            data._doc['childDept'] = res;
-            resolve(data);
-          });
+        deptData = result;
+        let fn = deptDao.findAll({ parentDept: result.deptId });
+        return fn;
+      })
+      .then((res) => {
+        debugger
+        let data = res;
+        res.forEach((item) => {
+          item._doc.isLeaf = item.subDept.length === 0 ? true : false;
+        });
+        // debugger
+        deptData._doc['childDept'] = res;
+        resolve(deptData);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  }).catch((error) => {
-    console.log(error);
-  });
+  })
+}
+*/
+async function getDept(deptId) {
+  try {
+    let deptData = await deptDao.findOne({ deptId: deptId });
+    let childDept = await deptDao.findAll({ parentDept: deptData.deptId });
+    childDept.forEach((dept) => {
+      dept._doc.isLeaf = dept.subDept.length === 0 ? true : false;
+    });
+    deptData._doc.childDept = childDept;
+    return deptData;
+  } catch (error) {
+    console.log(`getDept error--> ${error}`);
+    return error;
+  }
 }
 
 // 新增部门信息
-function addDept(deptInfo) {
-  // let parentDept = {};
-  // deptDao.findOne({deptId:deptInfo.parentDept}).then((res)=>{
-  //
-  // });
-  return new Promise((resolve, reject) => {
-    deptInfo.deptId = createId();
-    debugger
-    deptDao.save(deptInfo)
-      .then((res) => {
-
-        resolve(res);
-      })
-  })
+async function addDept(deptInfo) {
+  try {
+    let result = await deptDao.save(deptInfo);
+    return result;
+  } catch (error) {
+    console.log(`addDept error--> ${error}`);
+    return error;
+  }
 }
 
 // 移除部门信息
-function deleteDept(deptId) {
-  return new Promise((resolve, reject) => {
-    deptDao.remove({deptId: deptId})
-      .then((res) => {
-        resolve(res);
-      });
-  });
+async function deleteDept(deptId) {
+  try {
+    let result = await deptDao.remove({ deptId: deptId });
+    return result;
+  } catch (error) {
+    console.log(`deleteDept error--> ${error}`);
+    return error;
+  }
 }
 
 // 编辑部门信息
-function updateDept(deptInfo) {
-  return new Promise((resolve, reject) => {
-    deptDao.update({deptId: deptInfo.deptId}, deptInfo)
-      .then((res) => {
-        resolve(res);
-      });
-  });
+async function updateDept(deptInfo) {
+  try {
+    let result = await deptDao.update({ deptId: deptInfo.deptId }, deptInfo)
+    return result;
+  } catch (error) {
+    console.log(`updateDept error--> ${error}`);
+    return error;
+  }
 }
 
 // 获取组织列表
-function getOrgList() {
-  return new Promise((resolve, reject) => {
-    orgDao.findAll()
-      .then((data) => {
-        resolve(data);
-      });
-  });
+async function getOrgList() {
+  try {
+    let orgList = await orgDao.findAll();
+    return orgList;
+  } catch (error) {
+    console.log(`getOrgList error--> ${error}`);
+    return error;
+  }
 }
 
 // 获取组织数据
-function getOrg(orgId) {
-  return new Promise((resolve, reject) => {
-    orgDao.findOne({orgId: orgId})
-      .then((res) => {
-        resolve(res);
-      });
-  });
+async function getOrg(orgId) {
+  try {
+    let org = await orgDao.findOne({ orgId: orgId });
+    return org;
+  } catch (error) {
+    console.log(`getOrg error--> ${error}`);
+    return error;
+  }
 }
 
 // 新增组织
-function addOrg(orgInfo) {
-  return new Promise((resolve, reject) => {
-    orgInfo.orgId = createId();
-    orgDao.save(orgInfo)
-      .then((res) => {
-        resolve(res);
-      });
-  });
+async function addOrg(orgInfo) {
+  try {
+    let result = await orgDao.save(orgInfo);
+    return result;
+  } catch (error) {
+    console.log(`addOrg error--> ${error}`);
+    return error;
+  }
 }
 
 // 移除组织信息
-function deleteOrg(orgId) {
-  return new Promise((resolve, reject) => {
-    orgDao.remove({orgId: orgId})
-      .then((res) => {
-        resolve(res);
-      });
-  })
+async function deleteOrg(orgId) {
+  try {
+    let result = await orgDao.remove({ orgId: orgId });
+    return result;
+  } catch (error) {
+    console.log(`deleteOrg error--> ${error}`);
+    return error;
+  }
 }
 
 // 更新组织信息
-function updateOrg(deptInfo) {
-  return new Promise((resolve, reject) => {
-    orgDao.save(deptInfo)
-      .then((res) => {
-        resolve(res);
-      });
-  });
-
+async function updateOrg(org) {
+  try {
+    let result = await orgDao.save(org);
+    return result;
+  } catch (error) {
+    console.log(`deleteOrg error--> ${error}`);
+    return error;
+  }
 }
 
 // 获取职位列表
-function getPostList(deptId) {
-  return new Promise(function (resolve, reject) {
-    let cons = {}
-    if (deptId) {
-      cons = {'deptId': deptId}
-    }
-    postDao.findAll(cons)
-      .then((res) => {
-        resolve(res)
-      })
-  })
+async function getPostList(deptId) {
+  let cons = {}
+  if (deptId) {
+    cons = { 'deptId': deptId }
+  }
+  try {
+    let postList = await postDao.findAll(cons);
+    return postList;
+  } catch (error) {
+    console.log(`deleteOrg error--> ${error}`);
+    return error;
+  }
 }
 
 module.exports = {

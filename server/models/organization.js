@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const {mongoClient} = require('../util/mongo');
+let Schema = mongoose.Schema;
 
 const organization = new mongoose.Schema({
+  _id:Schema.Types.ObjectId,
   orgId:String,
   orgName:String,
   orgHead:Array

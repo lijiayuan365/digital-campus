@@ -15,19 +15,16 @@ class BaseDao {
    * @param obj 构造实体的对象
    * @returns {Promise}
    */
-  create(obj) {
-    return new Promise((resolve, reject) => {
-      let entity = new this.Model(obj);
-      this.Model.create(entity, (error, result) => {
-        if (error) {
-          console.log('create error--> ', error);
-          reject(error);
-        } else {
-          console.log('create result--> ', result);
-          resolve(result)
-        }
-      });
-    });
+  async create(obj) {
+    let entity = new this.Model(obj);
+    try {
+      let dao = await this.Model.create(entity);
+      console.log('create result--> ', dao);
+      return dao;
+    } catch (error) {
+      console.log('create error--> ', error);
+      return error;
+    }
   }
 
 
@@ -37,19 +34,15 @@ class BaseDao {
    * @param obj 构造实体的对象
    * @returns {Promise}
    */
-  save(obj) {
-    return new Promise((resolve, reject) => {
-      let entity = new this.Model(obj);
-      entity.save((error, result) => {
-        if (error) {
-          console.log('save error--> ', error);
-          reject(error);
-        } else {
-          console.log('save result--> ', result);
-          resolve(result)
-        }
-      });
-    });
+  async save(obj) {
+    let entity = new this.Model(obj);
+    try {
+      let result = await entity.save();
+      return result;
+    } catch (error) {
+      console.log('save error--> ', error);
+      return error;
+    }
   }
 
 
@@ -60,18 +53,14 @@ class BaseDao {
    * @param constraints
    * @returns {Promise}
    */
-  findAll(condition, constraints) {
-    return new Promise((resolve, reject) => {
-      this.Model.find(condition, constraints ? constraints : null, (error, results) => {
-        if (error) {
-          console.log('findAll error--> ', error);
-          reject(error);
-        } else {
-          // console.log('findAll results--> ', results);
-          resolve(results);
-        }
-      });
-    });
+  async findAll(condition, constraints) {
+    try {
+      let data = await this.Model.find(condition, constraints ? constraints : null);
+      return data;
+    } catch (error) {
+      console.log('findAll error--> ', error);
+      return error;
+    }
   }
 
 
@@ -82,18 +71,14 @@ class BaseDao {
    * @param constraints
    * @returns {Promise}
    */
-  findOne(condition, constraints) {
-    return new Promise((resolve, reject) => {
-      this.Model.findOne(condition, constraints ? constraints : null, (error, results) => {
-        if (error) {
-          console.log('findOne error--> ', error);
-          reject(error);
-        } else {
-          console.log('findOne results--> ', results);
-          resolve(results);
-        }
-      });
-    });
+  async findOne(condition, constraints) {
+    try {
+      let data = await this.Model.findOne(condition, constraints ? constraints : null);
+      return data;
+    } catch (error) {
+      console.log(`findOne error--> ${error}`);
+      return error;
+    }
   }
 
 
@@ -105,19 +90,16 @@ class BaseDao {
    * @param orderType
    * @returns {Promise}
    */
-  findOneByOrder(condition, orderColumn, orderType) {
-    return new Promise((resolve, reject) => {
-      this.Model.findOne(condition)
-        .sort({[orderColumn]: orderType})
-        .exec(function (err, record) {
-          console.log(record);
-          if (err) {
-            reject(err);
-          } else {
-            resolve(record);
-          }
-        });
-    });
+  async findOneByOrder(condition, orderColumn, orderType) {
+    try {
+      let data = await this.Model.findOne(condition)
+        .sort({ [orderColumn]: orderType })
+        .exec();
+      return data;
+    } catch (error) {
+      console.log(`findOneByOrder--> ${error}`);
+      return error;
+    }
   }
 
 
@@ -128,28 +110,14 @@ class BaseDao {
    * @param updater 更新操作
    * @returns {Promise}
    */
-  update(condition, updater) {
-    return new Promise((resolve, reject) => {
-      this.Model.update(condition, updater, (error, results) => {
-        if (error) {
-          console.log('update error--> ', error);
-          reject(error);
-        } else {
-          console.log('update results--> ', results);
-          resolve(results);
-        }
-      });
-    });
-
-    // this.model.findOneAndUpdate(condition, update, {new: true, upsert: true}, (err, record) => {
-    //     if (err) {
-    //         log.warn(`Failed updating database, condition: ${JSON.stringify(condition)}, update: ${JSON.stringify(update)}, error: ${err}`);
-    //         reject(err);
-    //     } else {
-    //         log.info(`Database updated for ${JSON.stringify(condition)} with ${JSON.stringify(update)}`);
-    //         resolve(record);
-    //     }
-    // });
+  async update(condition, updater) {
+    try {
+      let result = await this.Model.update(condition, updater);
+      return result;
+    } catch (error) {
+      console.log(`update error--> ${error}`);
+      return error;
+    }
   }
 
 
@@ -159,18 +127,14 @@ class BaseDao {
    * @param condition 查找条件
    * @returns {Promise}
    */
-  remove(condition) {
-    return new Promise((resolve, reject) => {
-      this.Model.remove(condition, (error, result) => {
-        if (error) {
-          console.log('remove error--> ', error);
-          reject(error);
-        } else {
-          console.log('remove result--> ', result);
-          resolve(result);
-        }
-      });
-    });
+  async remove(condition) {
+    try {
+      let result = await this.Model.remove(condition);
+      return result;
+    } catch (error) {
+      console.log(`remove error--> ${error}`);
+      return error;
+    }
   }
 }
 
