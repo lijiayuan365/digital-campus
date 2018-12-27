@@ -1,0 +1,86 @@
+/*字段项目*/
+.field-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  padding-bottom: .5rem;
+  width: 38rem;
+}
+/*字段项目 hover状态*/
+.field-wrapper:hover{
+  border: dashed 1px #409EFF;
+}
+/*字段项目 点击状态状态*/
+.field-active{
+  background: #F2F6FC;
+  /*border:solid 1px;*/
+}
+/*字段模块的内容区域*/
+.field-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  width: 36rem;
+  z-index: 1;
+}
+/*字段名称*/
+.field-name {
+  padding-bottom: .75rem;
+  font-size: 1.1rem;
+}
+/*字段名称 旁的编辑按钮*/
+.el-icon-circle-plus{
+  color: #67C23A;
+}
+.el-icon-remove{
+  color: #F56C6C;
+}
+.field-item-list-wrapper {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  flex-direction: column;
+  justify-content: flex-start;
+}
+/*字段模块的设置区域*/
+.field-setting {
+
+}
+/*字段模块的设置项的标题*/
+.setting-title {
+  padding: .4rem 0;
+  font-weight: 600;
+}
+/*字段模块的设置项的内容*/
+.setting-content {
+  margin-bottom: .5rem;
+}
+/*字段模块的设置校验的内容*/
+.verification{
+  display: flex;
+  align-items: center;
+  padding-bottom: .4rem;
+}
+/*字段模块的设置校验的项的名字*/
+.verification-name{
+  padding-right: .3rem;
+}
+/*字段模块的设置校验的项的输入框*/
+.verification-input{
+  width: 80px;
+  padding: 0 .4rem;
+}
+
+.icon {
+  font-size: 1rem;
+  padding-left: .5rem;
+  /*color: #67C23A;*/
+  cursor: pointer;
+}
+
+.icon:first-of-type {
+  /*color: #F56C6C;*/
+}
+
+.icon:hover {
+  color: #409EFF;
+}

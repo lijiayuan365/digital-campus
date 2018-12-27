@@ -1,7 +1,11 @@
 <!--  -->
 <template>
   <div>
-    人事管理列表
+    <ul class="user-list">
+      <li class="user-item">
+
+      </li>
+    </ul>
   </div>
 </template>
 <script>/* eslint-disable indent,semi */

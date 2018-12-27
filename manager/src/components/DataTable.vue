@@ -1,16 +1,19 @@
-<!--  -->
+<!-- 数据表格组件
+ 传入
+ -->
 <template>
   <el-table
     class="data-table"
     :data="dataList"
+    @selection-change="selectionChange"
     border>
     <el-table-column
       type="selection"
-      width="55">
+      width="70">
     </el-table-column>
-    <el-table-column prop="date" label="日期"></el-table-column>
-    <el-table-column prop="name" label="姓名"></el-table-column>
-    <el-table-column prop="address" label="地址"></el-table-column>
+    <el-table-column v-for="(item,index) in columnData" :key="index" :prop="item.data" :label="item.label"></el-table-column>
+    <!--<el-table-column prop="name" label="姓名"></el-table-column>-->
+    <!--<el-table-column prop="address" label="地址"></el-table-column>-->
     <el-table-column  prop="" fixed="right" label="操作" width="50">
       <template slot-scope="scope">
         <el-dropdown placement="">
@@ -19,8 +22,6 @@
         </span>
           <el-dropdown-menu slot="dropdown">
             <slot :index="scope.$index" :rowData="scope.row"></slot>
-            <!--<el-dropdown-item @click.native="test(scope.$index, scope.row)">编辑</el-dropdown-item>-->
-            <!--<el-dropdown-item>删除</el-dropdown-item>-->
           </el-dropdown-menu>
         </el-dropdown>
       </template>
@@ -33,27 +34,39 @@ export default {
     dataList: {
       type: Array
     },
-    handleConfig: {
-      type: Array
+    columnData:{
+      type:Array
+    },
+    selections:{
+      type:Array,
+      default:()=>{
+        return []
+      }
     }
   },
   data() {
-    return {};
+    return {
+    };
   },
   components: {},
 
-  computed: {},
+  computed: {
+    selected(){
+      return this.selections
+    }
+  },
 
   created() {
   },
 
   mounted() {
+
   },
 
   methods: {
-    test(index, row) {
-      console.log(index);
-      console.log(row);
+    selectionChange(val){
+//      this.selections = val;
+      this.$emit('update:selections', val)
     }
   }
 }

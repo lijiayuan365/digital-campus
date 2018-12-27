@@ -12,11 +12,13 @@
         <router-view></router-view>
       </el-main>
     </el-container>
+
   </el-container>
 </template>
 <script>/* eslint-disable indent,semi */
 import HomeHeader from '../components/HomeHeader.vue'
 import HomeSide from '../components/HomeSide.vue'
+
 
 export default {
   data() {
@@ -24,7 +26,8 @@ export default {
   },
   components: {
     HomeSide,
-    HomeHeader
+    HomeHeader,
+
   },
 
   computed: {},
@@ -63,7 +66,8 @@ export default {
     background-color: white;
     color: #333;
     text-align: center;
-    line-height: 160px;
+    padding: 2rem 4rem;
+    /*line-height: 160px;*/
   }
 
   /**/

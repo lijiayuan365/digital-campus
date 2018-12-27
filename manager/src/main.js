@@ -5,13 +5,22 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import axios from 'axios'
+import dataBae from './dataBase'
+import store from './store/index'
+import './assets/js/common'
 
-Vue.config.productionTip = false
+window.dataBase = dataBae;
+Vue.prototype.$http = axios;
+// Vue.prototype.$http.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+
+Vue.config.productionTip = false;
 Vue.use(ElementUI);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
