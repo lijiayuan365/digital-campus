@@ -40,7 +40,11 @@ function getMongoUrl() {
 /**
  * 创建 Mongo 连接，内部维护了一个连接池，全局共享
  */
-let mongoClient = mongoose.createConnection(getMongoUrl(), getMongoOptions());
+
+let mongoClient = mongoose.createConnection(getMongoUrl(),{ useNewUrlParser: true },(err,res)=>{
+  if(err){
+      console.log(err)
+  }},getMongoOptions());
 
 /**
  * Mongo 连接成功回调

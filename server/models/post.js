@@ -3,10 +3,9 @@ const { mongoClient } = require('../util/mongo')
 let Schema = mongoose.Schema;
 
 const post = new mongoose.Schema({
-  _id: Schema.Types.ObjectId,
-  postId: String,
   postName: String,
-  deptId: String
+  postType:String,
+  desc:String
 });
 
 /*model 的参数1 导出的模块名，

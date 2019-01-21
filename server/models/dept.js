@@ -5,14 +5,12 @@ let Schema = mongoose.Schema;
 
 // 创建 user Schema
 const dept = new mongoose.Schema({
-  _id: Schema.Types.ObjectId,
-  deptId: String,
+  deptNo: String,
   deptName: String,
-  deptHead: String,
-  deptLevel: String,
-  subDept: Array,
-  parentDept: String
-});
+  deptHead: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  parentDept: { type: Schema.Types.ObjectId, ref: 'Dept' },
+  desc: String
+},{versionKey: false});
 
 /*model 的参数1 导出的模块名，
 参数2 创建的 Schema，

@@ -1,4 +1,6 @@
 {
   "managerApi":"/manager",
-  "clientApi":"/client"
+  "clientApi":"/client",
+  "appid":"wxbbf943be81c33e22",
+  "appsecret":"b6ef7abfe37fd79fb5ec3889500de40b"
 }

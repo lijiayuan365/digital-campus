@@ -8,6 +8,16 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
+// const server = require('http').createServer(app)
+// const io = require('socket.io').listen(server)
+// io.sockets.on('connection', function (socket) {
+//   socket.emit('name', {username: `litingting ${new Date()}`});
+//   socket.emit('demo',{data:'ll'});
+//   socket.on('my other event', function (data) {
+//       console.log(data +  new Date());
+//   });
+// });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

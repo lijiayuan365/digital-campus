@@ -5,6 +5,7 @@ class PostDao extends BaseDao {
   constructor() {
     super(Post);
   }
+  
 }
 
 module.exports = PostDao;

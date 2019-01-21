@@ -50,7 +50,7 @@ class BaseDao {
    * 查询所有符合条件 docs
    *
    * @param condition 查找条件
-   * @param constraints
+   * @param constraints 查找配置
    * @returns {Promise}
    */
   async findAll(condition, constraints) {
@@ -67,8 +67,8 @@ class BaseDao {
   /**
    * 查找符合条件的第一条 doc
    *
-   * @param condition
-   * @param constraints
+   * @param condition 查询条件
+   * @param constraints 查找配置
    * @returns {Promise}
    */
   async findOne(condition, constraints) {

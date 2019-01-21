@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "supervisor -i node_modules --inspect ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -13,6 +14,10 @@
     "jade": "~1.11.0",
     "mongoose": "^5.3.5",
     "morgan": "~1.9.0",
+    "q": "^1.5.1",
+    "request": "^2.88.0",
+    "request-promise-any": "^1.0.5",
+    "socket.io": "^2.2.0",
     "supervisor": "^0.12.0"
   },
   "devDependencies": {

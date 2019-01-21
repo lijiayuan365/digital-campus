@@ -5,19 +5,18 @@ let Schema = mongoose.Schema;
 
 // 创建 user Schema
 const user = new mongoose.Schema({
-  _id: Schema.Types.ObjectId,
-  userId: String,
   userName: String,
   pwd: String,
+  sessionKey:String,
   openid: String,
   avatar: String,
-  deptId: String,
-  organizeId: String,
-  post: String,
+  dept: {type:Schema.Types.ObjectId, ref:'Dept'},
+  org: {type:Schema.Types.ObjectId, ref:'Org'},
+  post: {type:Schema.Types.ObjectId, ref:'Post'},
   tel: Number,
   email: String,
   remark: String,
-});
+},{versionKey: false});
 
 /*model 的参数1 导出的模块名，
 参数2 创建的 Schema，

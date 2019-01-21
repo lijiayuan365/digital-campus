@@ -16,6 +16,7 @@ const router = require('../util/router-util');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+  // res.sendfile("./views/index.html"); 
 });
 
 /**

@@ -6,5 +6,6 @@ router.get('/', function (req, res, next) {
   res.send('hello manager')
 });
 router.use('/user', require('./user'));
+router.use('/form', require('./form'));
 
 module.exports = router;
