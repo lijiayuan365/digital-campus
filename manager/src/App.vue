@@ -11,6 +11,7 @@
   }
 </script>
 <style>
+  @import "assets/css/common.css";
   @import "assets/home/iconfont.css";
   @import "assets/icon/iconfont.css";
   #app {

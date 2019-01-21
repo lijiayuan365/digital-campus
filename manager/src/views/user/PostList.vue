@@ -21,12 +21,12 @@
           <el-input v-model="post.postName"></el-input>
         </el-form-item>
         <el-form-item label="职位类型">
-          <el-select v-model="post.type" placeholder="请选择">
+          <el-select v-model="post.postType" placeholder="请选择" filterable allow-create>
             <el-option
               v-for="postType in postTypeList"
-              :key="postType.typeName"
-              :label="postType.typeName"
-              :value="postType.typeName">
+              :key="postType"
+              :label="postType"
+              :value="postType">
             </el-option>
           </el-select>
         </el-form-item>
@@ -54,7 +54,7 @@ export default {
       columnData: [
         {data: "postName", label: "职位"},
         {data: "postId", label: "职位Id"},
-        {data: "type", label: "类型"},
+        {data: "postType", label: "类型"},
         {data: "desc", label: "描述"},
       ],
       isShow: false,
@@ -152,5 +152,11 @@ export default {
 
   .post-form .el-select {
     width: 100%;
+  }
+  .add-type{
+    /*margin-left: .5rem;*/
+    font-size: .5rem;
+    font-weight: 700;
+    color:#409EFF;
   }
 </style>

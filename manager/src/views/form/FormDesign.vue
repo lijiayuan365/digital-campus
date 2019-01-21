@@ -14,7 +14,12 @@
           </div>
           <div class="form-setting-item">
             <div class="setting-name">表单分组：</div>
-            <el-select v-model="selectedGroup" placeholder="请选择" class="setting-content">
+            <el-select
+              filterable
+              allow-create
+              v-model="selectedGroup"
+              placeholder="请选择"
+              class="setting-content">
               <el-option
                 v-for="item in formGroups"
                 :key="item"
@@ -22,7 +27,7 @@
                 :value="item"
               ></el-option>
             </el-select>
-            <i class="el-icon-plus add-group"></i>
+            <!--<i class="el-icon-plus add-group"></i>-->
           </div>
           <div class="form-setting-item">
             <div class="setting-name">表单类型：</div>
@@ -206,11 +211,20 @@ export default {
 
   computed: {},
 
-  created() {},
+  created() {
+    let formId = this.$route.query.formId;
+    this.initData(formId);
+  },
 
   mounted() {},
 
   methods: {
+    initData(formId){
+      this.$http.get('/api/form/getForm',{params:{formId}}).then((res)=>{
+        let data = res.data.data;
+        debugger
+      })
+    },
     copyField(index) {
       let newFieldData = JSON.parse(JSON.stringify(this.fieldDataList[index]));
       this.fieldList.splice(index, 0, this.fieldList[index]);
@@ -236,7 +250,6 @@ export default {
       formData.formSetting = this.formSetting;
       formData.formFlow= this.formFlow;
       // formData.fixedFlows = this.fixedFlows;
-      debugger
       this.$http.post('/api/form/addForm',{formData}).then((res)=>{
         console.log(res);
       })

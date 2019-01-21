@@ -34,7 +34,7 @@
                 </div>
                 <el-checkbox></el-checkbox>
               </li>
-              <li v-for="(user,index) in userList" class="user-item">
+              <li v-for="(user,index) in userList" :key="index" class="user-item">
                 <img :src="user.avatar" width="24" height="24" class="user-avatar">
                 <p class="user-name">{{user.userName}}</p>
                 <el-checkbox v-model="user.checked" @change="addUser(user)"></el-checkbox>
@@ -85,7 +85,7 @@
                   </div>
                   <el-checkbox></el-checkbox>
                 </li>
-                <li v-for="(user,index) in userList" class="user-item">
+                <li v-for="(user,index) in userList" :key="index" class="user-item">
                   <img :src="user.avatar" width="24" height="24" class="user-avatar">
                   <p class="user-name">{{user.userName}}</p>
                   <el-checkbox v-model="user.checked" @change="addUser(user)"></el-checkbox>
@@ -122,7 +122,7 @@
           <div class="org-filter">
             <div class="org-list">
               <ul>
-                <li class="org-item" v-for="(org, index) in orgList" @click="getUserList('org',org.orgId)">
+                <li class="org-item" v-for="(org, index) in orgList" :key="index" @click="getUserList('org',org.orgId)">
                   {{org.orgName}}
                 </li>
               </ul>
@@ -139,7 +139,7 @@
                     </div>
                     <el-checkbox></el-checkbox>
                   </li>
-                  <li v-for="(user,index) in userList" class="user-item">
+                  <li v-for="(user,index) in userList" :key="index" class="user-item">
                     <img :src="user.avatar" width="24" height="24" class="user-avatar">
                     <p class="user-name">{{user.userName}}</p>
                     <el-checkbox v-model="user.checked" @change="addUser(user)"></el-checkbox>

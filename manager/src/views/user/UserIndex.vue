@@ -2,14 +2,19 @@
 <template>
   <div class="manager-user">
     <div class="dept-tree">
-      <el-tabs v-model="activeName" @tab-click="checkTab()" :stretch=true class="dept-tab">
+      <el-tabs v-model="activeName" @tab-click="checkTab()" :stretch="true" class="dept-tab">
         <el-tab-pane label="部门" name="dept">
           <div class="search-box">
-            <el-input placeholder="输入关键字进行过滤" v-model="filterText">
-            </el-input>
+            <el-input placeholder="输入关键字进行过滤" v-model="filterText"></el-input>
           </div>
-          <el-tree class="filter-tree" :data="deptTree" :props="defaultProps"
-            @node-click="getDeptUserList"  :filter-node-method="filterNode" ref="deptTree">
+          <el-tree
+            class="filter-tree"
+            :data="deptTree"
+            :props="defaultProps"
+            @node-click="getDeptUserList"
+            :filter-node-method="filterNode"
+            ref="deptTree"
+          >
             <span class="custom-tree-node" slot-scope="{ node, data }">
               <span>{{node.label}}</span>
               <el-dropdown>
@@ -18,40 +23,40 @@
                   <el-dropdown-item @click.native="toDeptDetail(node.data.deptId,'add')">新增子部门</el-dropdown-item>
                   <el-dropdown-item @click.native="toDeptDetail(node.data.deptId,'edit')">编辑</el-dropdown-item>
                   <!--<el-dropdown-item @click.native="toDeptDetail(node.data.deptId,'detail')">查看</el-dropdown-item>-->
-                  <el-dropdown-item @click.native="deleteDept(node.data.deptId)" v-if="node.level !== 1">
-                    删除
-                  </el-dropdown-item>
+                  <el-dropdown-item
+                    @click.native="deleteDept(node.data.deptId)"
+                    v-if="node.level !== 1"
+                  >删除</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </span>
           </el-tree>
         </el-tab-pane>
         <el-tab-pane label="组织" name="org">
-          <div class="btn-wrapper"  style="text-align:left">
+          <div class="btn-wrapper" style="text-align:left">
             <el-button @click="toOrgDetail('add')" type="success" round size="mini">新增组织</el-button>
           </div>
           <ul class="org-list">
             <li class="org-item" v-for="(org,index) in orgList" :key="index">
               <!-- <el-button icon="el-icon-edit" type="info" plain size="mini"> -->
-                <!-- <template> -->
-                  {{org.orgName}}
-                  <el-dropdown>
-                      <span class="el-dropdown-link">
-                        <i class="el-icon-menu" style="z-index:10"></i>
-                      </span>
-                      <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>新增</el-dropdown-item>
-                        <el-dropdown-item>编辑</el-dropdown-item>
-                        <el-dropdown-item>删除</el-dropdown-item>
-                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
-                      </el-dropdown-menu>
-                    </el-dropdown>
-                <!-- </template> -->
+              <!-- <template> -->
+              {{org.orgName}}
+              <el-dropdown>
+                <span class="el-dropdown-link">
+                  <i class="el-icon-menu" style="z-index:10"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item>新增</el-dropdown-item>
+                  <el-dropdown-item>编辑</el-dropdown-item>
+                  <el-dropdown-item>删除</el-dropdown-item>
+                  <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                  <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+              <!-- </template> -->
               <!-- </el-button> -->
             </li>
           </ul>
-
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -106,6 +111,21 @@ export default {
 
   created() {
     this.initData();
+    // var ws = new WebSocket("wss://echo.websocket.org");
+//    var ws = new WebSocket('ws://127.0.0.1:8000');
+//    ws.onopen = function(evt) {
+//      console.log("Connection open ...");
+//      ws.send("Hello WebSockets!");
+//    };
+//
+//    ws.onmessage = function(evt) {
+//      console.log("Received Message: " + evt.data);
+//      ws.close();
+//    };
+//
+//    ws.onclose = function(evt) {
+//      console.log("Connection closed.");
+//    };
   },
 
   mounted() {},
@@ -137,22 +157,22 @@ export default {
     /**
      *
      */
-    getDeptTree(){
-      this.$http.get('/api/user/getDeptTree').then(res => {
+    getDeptTree() {
+      this.$http.get("/api/user/getDeptTree").then(res => {
         res = res.data;
         this.deptTree = res.data;
       });
     },
-//    getDept(deptId) {
-//      let _this = this;
-//      this.$http
-//        .get("/api/user/getDept", { params: { deptId: deptId } })
-//        .then(result => {
-//          let res = result.data;
-//          let deptList = res.data;
-//          _this.deptTree.push(deptList);
-//        });
-//    },
+    //    getDept(deptId) {
+    //      let _this = this;
+    //      this.$http
+    //        .get("/api/user/getDept", { params: { deptId: deptId } })
+    //        .then(result => {
+    //          let res = result.data;
+    //          let deptList = res.data;
+    //          _this.deptTree.push(deptList);
+    //        });
+    //    },
     getOrgList() {
       this.$http.get("/api/user/getOrgList").then(res => {
         this.orgList = res.data.data;

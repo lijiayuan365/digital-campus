@@ -6,6 +6,8 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
+import socketio from 'socket.io-client'
+import vueSocket from 'vue-socket.io'
 import dataBae from './dataBase'
 import store from './store/index'
 import './assets/js/common'
@@ -16,7 +18,7 @@ Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
-/* eslint-disable no-new */
+// Vue.use(vueSocket,socketio('ws://127.0.0.1:8000'));/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

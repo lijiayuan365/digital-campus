@@ -13,8 +13,10 @@
     "@antv/g6": "^1.2.8",
     "axios": "^0.18.0",
     "element-ui": "^2.4.8",
+    "socket.io-client": "^2.2.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-socket.io": "^3.0.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
