@@ -1,0 +1,107 @@
+<template>
+  <view>
+    <SearchBox class="search-box"></SearchBox>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator
+        wx:for="{{userList}}"
+        wx:key="{{index}}"
+        url="user-card?userId={{item._id}}"
+        class="weui-cell weui-cell_access"
+        hover-class="weui-cell_active"
+      >
+        <view class="weui-cell__hd">
+          <image src="{{item.avatar}}" class="avatar">
+        </view>
+        <view class="weui-cell__bd">{{item.userName}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator
+        wx:for="{{childDept}}"
+        wx:key="{{index}}"
+        url="dept-tree?deptId={{item._id}}&deptName={{item.deptName}}"
+        class="weui-cell weui-cell_access"
+        hover-class="weui-cell_active"
+      >
+        <view class="weui-cell__hd">
+          <image src="../images/icon_tabbar.png" class="avatar">
+        </view>
+        <view class="weui-cell__bd">{{item.deptName}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from "wepy";
+import SearchBox from "../components/SearchBox";
+
+export default class DeptTree extends wepy.page {
+  config = {
+    navigationBarTitleText: "部门"
+  };
+  components = {
+    SearchBox
+  };
+  data = {
+    inputShowed: false,
+    inputVal: "",
+    userList: [],
+    childDept: [],
+  };
+  computed = {};
+  methods = {
+    searchUser() {
+      debugger;
+    },
+    showInput() {
+      this.inputShowed = true;
+    },
+    hideInput() {
+      this.inputVal = "";
+      this.inputShowed = false;
+    },
+    clearInput() {
+      this.inputVal = "";
+    },
+    inputTyping(e) {
+      this.inputVal = e.detail.value;
+    }
+  };
+  events = {};
+
+  onLoad(data) {
+    wx.setNavigationBarTitle({
+      title: data.deptName
+    });
+    try {
+      const addressBook = wx.getStorageSync('addressBook');
+      if (addressBook) {
+        // Do something with return value
+        let dept = addressBook.find(function(value, index, arr) {
+          return value._id == data.deptId;
+
+        });
+        this.userList = dept.userList;
+        this.childDept = dept.childDept;
+      }
+    } catch (e) {
+      // Do something when catch error
+    }
+    //			debugger
+  }
+
+  // Other properties
+}
+// some code
+</script>
+<style lang="less" scoped>
+.search-box {
+}
+
+.avatar {
+  margin-right: 10rpx;
+  vertical-align: middle;
+  width: 64rpx;
+  height: 64rpx;
+}
+</style>

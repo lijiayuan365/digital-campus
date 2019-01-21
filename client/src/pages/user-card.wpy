@@ -1,0 +1,84 @@
+<template>
+  <view>
+    <view class="weui-cells weui-cells_after-title msg-block">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <image src="{{avatar}}" class="avatar">
+        </view>
+        <view class="weui-cell__bd">{{userName}}</view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title msg-block">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">手机</view>
+        <view class="weui-cell__bd tel">{{tel}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">部门</view>
+        <view class="weui-cell__bd dept">{{dept.deptName}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">组织</view>
+        <view class="weui-cell__bd org">{{org.orgName}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from "wepy";
+//Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
+export default class User extends wepy.page {
+  config = {
+    navigationBarTitleText: "个人信息"
+  };
+  components = {};
+  data = {
+    avatar: '',
+    userName:'',
+    tel: '',
+    dept: '',
+    org: ''
+  };
+  computed = {};
+  methods = {};
+  events = {};
+
+  onLoad(data) {
+    try {
+      const userList = wx.getStorageSync("userList");
+      if (userList) {
+        let user = userList.find(function(value, index, arr) {
+          return value._id == data.userId;
+        });
+        this.avatar = user.avatar;
+        this.userName = user.userName;
+        this.tel = user.tel;
+        this.dept = user.dept;
+        this.org = user.org;
+        // Do something with return value
+      }
+    } catch (e) {
+      // Do something when catch error
+    }
+  }
+
+  // Other properties
+}
+// some code
+</script>
+<style lang="less" scoped>
+.msg-block {
+  margin-top: 40rpx;
+}
+.avatar {
+  margin-right: 10rpx;
+  vertical-align: middle;
+  width: 128rpx;
+  height: 128rpx;
+}
+.tel,
+.dept,
+.org {
+  padding-left: 40rpx;
+}
+</style>

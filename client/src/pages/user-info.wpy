@@ -1,0 +1,58 @@
+<template>
+  <view>
+    <view class="weui-cells weui-cells_after-title msg-block">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">头像</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <image src="{{avatar}}" class="avatar">
+        </view>
+      </view>
+      <view class="weui-cell">
+        <!--<view class="weui-cell__hd">头像</view>-->
+        <view class="weui-cell__bd">手机</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{tel}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">部门</view>
+        <view class="weui-cell__ft">{{dept}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">组织</view>
+        <view class="weui-cell__ft">{{org}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from "wepy";
+//Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
+export default class UserInfo extends wepy.page {
+  config = {};
+  components = {};
+  data = {
+    avatar:'',
+    tel:'',
+    dept:'',
+    org:'',
+  };
+  computed = {};
+  methods = {};
+  events = {};
+
+  onLoad() {}
+
+  // Other properties
+}
+// some code
+</script>
+<style lang="less" scoped>
+.msg-block {
+  margin-top: 40rpx;
+}
+.avatar {
+  margin-right: 10rpx;
+  vertical-align: middle;
+  width: 128rpx;
+  height: 128rpx;
+}
+</style>

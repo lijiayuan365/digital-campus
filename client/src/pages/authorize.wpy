@@ -1,0 +1,50 @@
+<template>
+  <view class="login-btn">
+    <button type="primary">一键授权</button>
+  </view>
+</template>
+<script>
+	import wepy from 'wepy'
+	//Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
+	export default class Authorize extends wepy.page {
+		config = {};
+		components = {};
+		data = {};
+		computed = {};
+		methods = {};
+		events = {};
+
+		onLoad() {
+			let button = wx.createUserInfoButton({
+				type: 'text',
+				text: '获取用户信息',
+				style: {
+					left: 10,
+					top: 76,
+					width: 200,
+					height: 40,
+					lineHeight: 40,
+					backgroundColor: '#ff0000',
+					color: '#ffffff',
+					textAlign: 'center',
+					fontSize: 16,
+					borderRadius: 4
+				}
+			});
+			button.onTap((res) => {
+				console.log(res)
+		})
+		};
+
+		// Other properties
+	}
+	// some code
+</script>
+<style lang="less">
+.login-btn{
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(0,-50%);
+}
+</style>

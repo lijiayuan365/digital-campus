@@ -1,0 +1,64 @@
+<template>
+  <view>启动页</view>
+</template>
+<script>
+import wepy from "wepy";
+import { connect } from "wepy-redux";
+import { UPPDATEADDRESSBOOK } from "../store/types/user.js";
+
+@connect(
+  {},
+  {
+    UPPDATEADDRESSBOOK
+  }
+)
+export default class Start extends wepy.page {
+  config = {};
+  components = {};
+  data = {
+    name: "ww"
+  };
+  computed = {
+    API() {
+      return this.$parent.globalData.API;
+    }
+  };
+  methods = {};
+  events = {};
+
+  onLoad() {
+    // debugger
+    this.getAddressBook();
+  }
+  getAddressBook() {
+    let _this = this;
+    console.log(this.name);
+    wx.request({
+      url: `${this.API}/user/getAddressBook`,
+      data: {},
+      success(res) {
+        console.log(res.data);
+        // debugger;
+        // _this.methods.UPPDATEADDRESSBOOK(res.data.data.addressBook);
+        // wx.setStorage({
+        //   key: "addressBook",
+        //   data: res.data.data.addressBook
+        // });
+        try {
+          wx.setStorageSync('addressBook', res.data.data.addressBook);
+        } catch (e) {}
+        try {
+          wx.setStorageSync('userList', res.data.data.userList);
+        } catch (e) {}
+        wx.switchTab({
+          url: "home"
+        });
+      }
+    });
+  }
+  // Other properties
+}
+// some code
+</script>
+<style lang="less">
+</style>

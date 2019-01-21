@@ -1,0 +1,28 @@
+{
+  "deptNo":"001",
+  "deptName":"仲恺农业工程学院",
+  "deptHead":["程萍","宋垚臻"],
+  "deptLevel":"0",
+  "subDept":["002","003","004"]
+}
+{
+  "deptNo":"002",
+  "deptName":"信息科学与技术学院",
+  "deptHead":["程萍","宋垚臻"],
+  "deptLevel":"2",
+  "subDept":[]
+}
+{
+  "deptNo":"003",
+  "deptName":"管理学院",
+  "deptHead":["程萍","宋垚臻"],
+  "deptLevel":"1",
+  "subDept":[]
+}
+{
+  "deptNo":"004",
+  "deptName":"人文学院",
+  "deptHead":["程萍","宋垚臻"],
+  "deptLevel":"1",
+  "subDept":[]
+}
