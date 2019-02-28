@@ -1,0 +1,157 @@
+<template>
+  <view>
+    <view class="page__hd">
+      <view class="page__title">表单标题</view>
+      <view class="page__desc">xxxx</view>
+    </view>
+    <formBase type="detail" :fieldList.sync="fieldList" :fieldValues.sync="fieldValues"></formBase>
+    <flow></flow>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" @tap="confirm">审批</button>
+      <button class="weui-btn" type="warn" @tap="saveDraft">退审</button>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import FormBase from '../../components/form/FormBase';
+  import Flow from '../../components/flow/FlowIndex';
+
+  export default class Detail extends wepy.page {
+    config = {
+      navigationBarTitleText: '表单详情',
+    };
+
+    data = {
+      fieldList: [
+        {
+          'fieldName': 'RadioField',
+          'fieldTitle': '单项选择',
+          'radioList': [
+            {value: '选项1', checked: false},
+            {value: '选项2', checked: false},
+            {value: '选项3', checked: false},
+            {value: '选项4', checked: false},
+          ],
+          'isMust': false,
+          'readOnly': false
+        },
+        {
+          'fieldTitle': '多项选择',
+          'fieldName': 'CheckboxField',
+          'checkboxList': [
+            {value: '选项1', checked: true},
+            {value: '选项2', checked: false},
+            {value: '选项3', checked: true},
+            {value: '选项4', checked: false},
+          ],
+          'isMust': false,
+          'readOnly': false,
+          value: ['选项1', '选项2'],
+        },
+        {
+          'fieldName': 'RadioField',
+          'fieldTitle': '单项选择',
+          'radioList': [
+            {value: '选项1', checked: false},
+            {value: '选项2', checked: false},
+            {value: '选项3', checked: false},
+            {value: '选项4', checked: false},
+          ],
+          'isMust': false,
+          'readOnly': false
+        },
+        {
+          'fieldName': 'TextField',
+          'fieldTitle': '单行文本',
+          'defaultValue': '',
+          'fieldTip': '请输入',
+          'isMust': false,
+          'readOnly': false,
+          'min': '',
+          'max': ''
+        },
+        {
+          'fieldName': 'TextAreaField',
+          'fieldTitle': '多行文本',
+          'defaultValue': '',
+          'fieldTip': '请输入',
+          'isMust': false,
+          'readOnly': false,
+          'min': '',
+          'max': ''
+        },
+        {
+          'fieldName': 'TimeField',
+          'fieldTitle': '时间选择器',
+          'defaultValue': '',
+          'fieldTip': '选择时间',
+          'isMust': false
+        },
+        {
+          'fieldTitle': '日期选择器',
+          'fieldName': 'DateField',
+          'defaultValue': '',
+          'fieldTip': '选择日期',
+          'isMust': false
+        },
+        {
+          'fieldName': 'TelField',
+          'fieldTitle': '电话',
+          'defaultValue': '',
+          'fieldTip': '请输入',
+          'isMust': false,
+          'readOnly': false,
+          'min': '',
+          'max': ''
+        },
+        {
+          'fieldName': 'ImgField',
+          'fieldTitle': '图片',
+          'fieldTip': '上传图片',
+          'isMust': false
+        },
+        {
+          'fieldName': 'FileField',
+          'fieldTitle': '附件',
+          'fieldTip': '上传附件',
+          'isMust': false
+        }
+      ],
+      fieldValues: [
+        '选项3', ['选项1', '选项2'], '选项3', 12, 21, '00:00', '2019-02-17', '113131313', ['http://img.cdn.lijiayuan.top/tmp/wxbbf943be81c33e22.o6zAJs-Z0nCFSUZOR9iXROpswm8o.0LfUNOTlTWwyd35c4974ec39b17678405263ab93de9b.png']
+      ],
+      flow: {}
+    };
+
+    components = {
+      formBase: FormBase,
+      flow: Flow,
+    };
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+  .page__hd {
+    padding: ~"40rpx";
+  }
+  .weui-btn-area{
+    padding-bottom: 40px;
+  }
+
+</style>

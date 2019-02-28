@@ -1,0 +1,100 @@
+<!--  -->
+<template>
+  <view class="form-home">
+    <!--<view>表单流程</view>-->
+    <view class="container">
+      <view hidden="{{activeIndex != '0'}}">
+        <view class="top-menu">
+          <topMenu :menus="topMenu"></topMenu>
+        </view>
+        <formList :type="type2" :list="todoList"></formList>
+      </view>
+      <view hidden="{{activeIndex != '1'}}">
+        <searchBox></searchBox>
+        <todoList :type="type2" :list="todoList"></todoList>
+      </view>
+      <view hidden="{{activeIndex != '2'}}">
+        <searchBox></searchBox>
+        <relevantList :type="type2" :list="todoList"></relevantList>
+      </view>
+    </view>
+    <tabBar :tabBars="tabBars" :activeIndex.sync="activeIndex" class="tab-bar"></tabBar>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import SearchBox from '../../components/SearchBox';
+  import TopMenu from '../../components/TopMenu';
+  import TabBar from '../../components/TabBar';
+  import FormList from '../../components/DataList';
+
+  export default class FormHome extends wepy.page {
+    config = {
+      navigationBarTitleText: '表单流程'
+    };
+
+    data = {
+      type1: 1,
+      type2: 2,
+      topMenu: [
+        {title: '新建表单', path: 'form-choice'},
+        {title: '草稿', path: 'draft'},
+      ],
+      tabBars: [
+        {title: '我的表单', iconPath: '../../images/pic_160.png', badge: '2'},
+        {title: '待我审批', iconPath: '../../images/pic_160.png', badge: '4'},
+        {title: '与我相关', iconPath: '../../images/pic_160.png', badge: '2'},
+      ],
+      todoList: [1, 2, 3, 4, 5, 6, 7],
+      activeIndex: 0,
+    };
+
+    components = {
+      searchBox: SearchBox,
+      tabBar: TabBar,
+      topMenu: TopMenu,
+      formList: FormList,
+      todoList: FormList,
+      relevantList: FormList,
+    };
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+//      this.activeIndex = 0;
+      // wx.showTabBar();
+    }
+
+    onShow() {
+    }
+  }
+</script>
+
+<style lang='less'>
+  .form-home {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*height: 100%;*/
+  }
+
+  .container {
+    padding-bottom: ~"90rpx";
+    /*flex: 1 0 auto;*/
+  }
+
+  .top-menu {
+    margin-bottom: ~"240rpx";
+  }
+
+  .tab-bar {
+    /*margin-top: auto;*/
+    /*flex: 0 0 auto;*/
+  }
+</style>

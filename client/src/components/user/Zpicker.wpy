@@ -1,0 +1,82 @@
+<!-- 下拉框 -->
+<template>
+  <view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">{{title}}</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker @change="selectChange" value="{{valueIndex}}" range="{{list}}" range-key="{{key}}">
+        <view wx:if="{{key}}" class="weui-select weui-select_in-select-after">{{selectItem[key]}}</view>
+        <view wx:else class="weui-select weui-select_in-select-after">{{selectItem}}</view>
+      </picker>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class Zpicker extends wepy.component {
+    props = {
+      list: {
+        type: Array
+      },
+      setting: {
+        type: Object,
+        default: () => {
+          return {};
+        }
+      },
+      value: {
+        type: String,
+        twoWay: true
+      },
+      title: {
+        type: String
+      },
+      key: {
+        type: String
+      }
+    };
+
+    data = {
+      valueIndex: ''
+    };
+
+    components = {};
+
+    methods = {
+      selectChange(e) {
+        this.valueIndex = e.detail.value;
+        this.$emit('dataChange', this.list[this.valueIndex]);
+        this.value = this.list[this.valueIndex];
+      }
+    };
+
+    events = {
+      emitValue() {
+      }
+    };
+
+    watch = {};
+
+    computed = {
+      selectItem() {
+        if (this.valueIndex) {
+          return this.list[this.valueIndex];
+        }
+        return {};
+      }
+    };
+
+    onLoad() {
+    }
+
+    onShow() {
+    }
+  }
+</script>
+
+<style lang='less'>
+
+</style>

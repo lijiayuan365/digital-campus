@@ -1,0 +1,210 @@
+<template>
+  <view class="add-form">
+    <view class="page__hd">
+      <view class="page__title">{{formTitle}}</view>
+      <view class="page__desc">{{desc}}</view>
+    </view>
+    <view>
+      <formBase :fieldList.sync="fieldList" :fieldValues.sync="fieldValues"></formBase>
+    </view>
+    <view>
+      <flow :ccPerson.sync="ccPerson">
+      </flow>
+    </view>
+    <view class="weui-btn-area">
+      <button wx:if="{{pendingNode.length === 0}}" class="weui-btn" type="primary" @tap="confirmForm">提交</button>
+      <button wx:else class="weui-btn" type="primary" @tap="pickedPerson">提交3</button>
+      <button class="weui-btn" type="default" @tap="saveDraft">存为草稿</button>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import FormBase from '../../components/form/FormBase';
+  import Flow from '../../components/flow/FlowIndex';
+  import PendingNode from '../../components/flow/PendingNode';
+
+  export default class Add extends wepy.page {
+    config = {
+      navigationBarTitleText: '填写表单',
+    };
+
+    data = {
+      formId: '',
+      fieldList: [],
+      fieldValues: [],
+      desc: '',
+      formTitle: '',
+      ccPerson: [],
+      currentNode: {},
+      pendingNode: [], // 待当前节点决定的节点
+      formFlow: {},
+      fixedFlows: [],
+      flowData: {}, // 存到表单数据里面的流程信息
+    };
+
+    components = {
+      formBase: FormBase,
+      flow: Flow,
+      pendingNode: PendingNode,
+    };
+
+    methods = {
+      pickedPerson() {
+        this.$invoke('flow', 'pendingNodePerson');
+      },
+    };
+
+    events = {
+      // 获取需要当前节点确定处理人的节点
+      getPendingNode(nodes){
+        this.pendingNode = nodes;
+
+      },
+      // 选定后面节点处理人后提交表单
+      confirmPending() {
+        this.confirmForm();
+      }
+    };
+
+    watch = {};
+
+    computed = {
+      API() {
+        return this.$parent.globalData.API;
+      }
+    };
+
+    onLoad(e) {
+      let formId = e.formId;
+      this.initData(formId);
+//      this.desc = '';
+    };
+
+    onShow() {
+    };
+
+    initData(formId) {
+      let _this = this;
+      wx.request({
+        url: `${_this.API}/form/getFormConfig`,
+        data: {formId},
+        success(res) {
+//          try {
+          console.log(res.data);
+          let data = res.data.data;
+          _this.desc = data.desc;
+          _this.formTitle = data.formTitle;
+          _this.fieldList = data.fieldList;
+          _this.ccPerson = data.ccPerson;
+          _this.formId = data._id;
+
+          if (data.formFlow.flowType === 0) {
+//              自由流程
+            _this.formFlow = data.formFlow;
+          } else if (data.formFlow.flowType === 1) {
+            // 固定
+            data.formFlow.fixedFlow.forEach((flow) => {
+              flow.name = flow.flowName;
+              flow.value = flow._id;
+              flow.checked = false;
+            });
+            _this.fixedFlows = data.formFlow.fixedFlow;
+          } else if (data.formFlow.flowType === 2) {
+            // 分支
+            let branchFlow = data.formFlow.branchFlow;
+//            _this.formFlow = branchFlow;
+            _this.pendingNode = branchFlow.pendingNode;
+            _this.currentNode = branchFlow.currentNode;
+          }
+          _this.formFlow = data.formFlow;
+          _this.$apply();
+          _this.$invoke('flow', 'getProp', {
+            flow: _this.formFlow,
+            ccPerson: _this.ccPerson,
+            currentNode: _this.currentNode,
+            pendingNode: _this.pendingNode
+          });
+//          } catch (e) {
+//          }
+        }
+      });
+    };
+
+    saveFormData() {
+      let flowData = this.$invoke('flow', 'exportFlow');
+      let formData = {};
+      formData.formTitle = this.formTitle;
+      formData.form = this.formId;
+      formData.formValues = this.fieldValues;
+      formData.formFlow = flowData.flow;
+      formData.flowType = flowData.flowType;
+      formData.currentNode = flowData.currentNode;
+      formData.pendingNode = flowData.pendingNode;
+      formData.creator = '5c43db2c27a94952c0a58652';
+      formData.status = 0;
+      debugger
+      return formData;
+    };
+
+    saveDraft(e) {
+      console.log(e);
+    };
+
+    confirmForm() {
+      wx.showLoading({
+        title: '提交中',
+      });
+      let formData = this.saveFormData();
+      let _this = this;
+      wx.request({
+        url: `${_this.API}/form/addFormData`,
+        method: 'POST',
+        data: {formData},
+        success(res) {
+          try {
+            console.log(res);
+            wx.hideLoading();
+            wx.showToast({
+              title: '提交成功e',
+              icon: 'success',
+              duration: 2000,
+              complete() {
+                wx.navigateTo({
+                  url: 'home',
+                });
+              }
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        },
+        fail() {
+          wx.hideLoading();
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success',
+            duration: 4000,
+            complete() {
+              wx.navigateTo({
+                url: 'home',
+              });
+            }
+          });
+        },
+      });
+    };
+  }
+</script>
+
+<style lang='less'>
+  .add-form {
+    .page__hd {
+      padding: ~"40rpx";
+    }
+    .weui-btn-area {
+      padding-bottom: 40px;
+    }
+  }
+</style>

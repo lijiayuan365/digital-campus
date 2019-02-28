@@ -1,0 +1,311 @@
+<template>
+  <view>
+    <repeat for="{{fieldList}}" key="fieldIndex" index="fieldIndex" item="fieldItem">
+      <!--单选框-->
+      <view wx:if="{{fieldItem.fieldName == 'RadioField'}}">
+        <view class="weui-cells__title">单选列表项</view>
+        <view class="weui-cells weui-cells_after-title">
+          <!--可编辑-->
+          <radio-group wx:if="{{type != 'detail'}}" @change="radioChange" data-index="{{fieldIndex}}">
+            <repeat for="{{fieldItem.radioList}}" index="index" key="index">
+              <label class="weui-cell weui-check__label">
+                <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+                <view class="weui-cell__bd">{{item.value}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                  <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                </view>
+              </label>
+            </repeat>
+          </radio-group>
+          <!--不可编辑-->
+          <radio-group wx:if="{{type == 'detail'}}">
+            <repeat for="{{fieldItem.radioList}}" index="index" key="index">
+              <label class="weui-cell weui-check__label">
+                <radio class="weui-check" disabled/>
+                <view class="weui-cell__bd">{{item.value}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.value == fieldValues[fieldIndex]}}">
+                  <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                </view>
+              </label>
+            </repeat>
+          </radio-group>
+        </view>
+      </view>
+      <!--多选框-->
+      <view wx:elif="{{fieldItem.fieldName == 'CheckboxField'}}">
+        <view class="weui-cells__title">复选列表项</view>
+        <view class="weui-cells weui-cells_after-title">
+          <!--可编辑-->
+          <checkbox-group wx:if="{{type != 'detail'}}" @change="checkboxChange" data-index="{{fieldIndex}}">
+            <label class="weui-cell weui-check__label" wx:for="{{fieldItem.checkboxList}}" wx:key="value">
+              <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+              <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+              </view>
+              <view class="weui-cell__bd">{{item.value}}</view>
+            </label>
+          </checkbox-group>
+          <!--不可编辑-->
+          <checkbox-group wx:if="{{type == 'detail'}}">
+            <label class="weui-cell weui-check__label" wx:for="{{fieldItem.checkboxList}}" wx:key="value">
+              <checkbox class="weui-check"/>
+              <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                <icon class="weui-icon-checkbox_success" type="success" size="23"
+                      wx:if="{{item.checked}}"></icon>
+              </view>
+              <view class="weui-cell__bd">{{item.value}}</view>
+            </label>
+          </checkbox-group>
+
+        </view>
+      </view>
+      <!--单行文本-->
+      <view wx:elif="{{fieldItem.fieldName == 'TextField'}}">
+        <view class="weui-cells__title">文本框</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+              <input @input="textChange"
+                     disabled="{{type == 'detail'}}"
+                     value="{{fieldValues[fieldIndex]}}" data-index="{{fieldIndex}}"
+                     class="weui-input" placeholder="请输入文本"/>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--多行文本-->
+      <view wx:elif="{{fieldItem.fieldName == 'TextAreaField'}}">
+        <view class="weui-cells__title">文本域</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <textarea value="{{fieldValues[fieldIndex]}}"
+                        disabled="{{type == 'detail'}}"
+                        @input="textChange" data-index="{{fieldIndex}}"
+                        class="weui-textarea"
+                        placeholder="请输入文本"
+                        style="height: 3.3em"/>
+              <view class="weui-textarea-counter">0/200</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--手机号码-->
+      <view wx:elif="{{fieldItem.fieldName == 'TelField'}}">
+        <view class="weui-cells__title">手机号码</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+              <input @input="textChange" disabled="{{type == 'detail'}}"
+                     type="number" value="{{fieldValues[fieldIndex]}}" data-index="{{fieldIndex}}"
+                     class="weui-input"
+                     placeholder="请输入手机号码"/>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--日期选择-->
+      <view wx:elif="{{fieldItem.fieldName == 'DateField'}}">
+        <view class="weui-cells__title">日期</view>
+        <view class="weui-cells weui-cells_after-title">
+          <!--可编辑-->
+          <view class="weui-cell weui-cell_select" wx:if="{{type != 'detail'}}">
+            <view class="weui-cell__bd">
+              <picker mode="date" @change="bindDateChange" value="{{fieldValues[fieldIndex]}}"
+                      data-index="{{fieldIndex}}">
+                <view class="weui-select">{{fieldValues[fieldIndex] || '请选择日期'}}</view>
+              </picker>
+            </view>
+          </view>
+          <!--不可编辑-->
+          <view class="weui-cell" wx:if="{{type == 'detail'}}">
+            <view class="weui-cell__bd">{{fieldValues[fieldIndex]}}</view>
+          </view>
+        </view>
+      </view>
+      <!--时间选择-->
+      <view wx:elif="{{fieldItem.fieldName == 'TimeField'}}">
+        <view class="weui-cells__title">时间</view>
+        <view class="weui-cells weui-cells_after-title">
+          <!--可编辑-->
+          <view class="weui-cell weui-cell_select" wx:if="{{type != 'detail'}}">
+            <view class="weui-cell__bd">
+              <picker mode="time" @change="bindTimeChange" value="{{fieldValues[fieldIndex]}}"
+                      data-index="{{fieldIndex}}">
+                <view class="weui-select">{{fieldValues[fieldIndex] || '请选择时间'}}</view>
+              </picker>
+            </view>
+          </view>
+          <!--不可编辑-->
+          <view class="weui-cell" wx:if="{{type == 'detail'}}">
+            <view class="weui-cell__bd">{{fieldValues[fieldIndex]}}</view>
+          </view>
+        </view>
+      </view>
+      <!--图片上传-->
+      <view wx:elif="{{fieldItem.fieldName == 'ImgField'}}">
+        <!--<view class="weui-cells__title">图片上传</view>-->
+        <view>
+          <view class="weui-cells">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <view class="weui-uploader">
+                  <view class="weui-uploader__hd">
+                    <view class="weui-uploader__title">图片上传</view>
+                    <view class="weui-uploader__info">{{files.length}}/2</view>
+                  </view>
+                  <view class="weui-uploader__bd">
+                    <view class="weui-uploader__files" id="uploaderFiles">
+                      <block wx:for="{{fieldValues[fieldIndex]}}" wx:key="*this">
+                        <view class="weui-uploader__file" @tap="previewImage" id="{{item}}">
+                          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill"/>
+                        </view>
+                      </block>
+                    </view>
+                    <view class="weui-uploader__input-box" wx:if="{{type != 'detail'}}">
+                      <view class="weui-uploader__input"  data-index="{{fieldIndex}}" @tap="chooseImage"></view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--<zFile wx:elif="{{item.fieldName == 'FileField'}}" :fieldData.sync="item"></zFile>-->
+    </repeat>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  const qiniuUploader = require('../../assets/js/qiniuUploader');
+  export default class FormBase extends wepy.component {
+    props = {
+      fieldList: {
+        type: Object,
+      },
+      fieldValues: {
+        type: Array,
+        twoWay: true,
+      },
+      type: String,
+    };
+
+    data = {
+      imgList: [],
+      files: [],
+      demo: [1, 2, 3],
+    };
+
+    components = {};
+
+    methods = {
+      radioChange(e) {
+        console.log('radio发生change事件，携带value值为：', e.detail.value);
+        let fieldIndex = e.currentTarget.dataset.index;
+        this.fieldValues[fieldIndex] = e.detail.value;
+        this.fieldList[fieldIndex].radioList.forEach(v => {
+          v.checked = v.value === e.detail.value;
+        });
+      },
+      checkboxChange(e) {
+        console.log('checkbox发生change事件，携带value值为：', e.detail.value);
+        let fieldIndex = e.currentTarget.dataset.index;
+        this.fieldValues[fieldIndex] = e.detail.value;
+        let checkboxItems = this.fieldList[fieldIndex].checkboxList, values = e.detail.value;
+        for (let i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
+          checkboxItems[i].checked = false;
+          for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
+            if (checkboxItems[i].value === values[j]) {
+              checkboxItems[i].checked = true;
+              break;
+            }
+          }
+        }
+      },
+      textChange(e) {
+        this.inputChange(e);
+      },
+      bindDateChange(e) {
+        this.inputChange(e);
+      },
+      bindTimeChange(e) {
+        this.inputChange(e);
+      },
+      async chooseImage(e) {
+        let fieldIndex = e.currentTarget.dataset.index;
+        this.fieldValues[fieldIndex] = this.fieldValues[fieldIndex] || [];
+        let that = this;
+        this.methods.initQiniu();
+        let res = await wepy.chooseImage({
+          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+          sourceType: ['album', 'camera'] // 可以指定来源是相册还是相机，默认二者都有
+        });
+        let filePath = res.tempFilePaths[0];
+        // 交给七牛上传
+        qiniuUploader.upload(filePath, (res) => {
+          let imgUrl = res.imageURL;
+          that.fieldValues[fieldIndex].push(imgUrl);
+          that.demo.push('11');
+          that.$apply();
+          console.log(res);
+        }, (error) => {
+          console.error('error: ' + JSON.stringify(error));
+        }, null,
+          (progress) => {
+            console.log('上传进度', progress.progress);
+            console.log('已经上传的数据长度', progress.totalBytesSent);
+            console.log('预期需要上传的数据总长度', progress.totalBytesExpectedToSend);
+          }, cancelTask => that.setData({cancelTask})
+        );
+        this.imgList = this.fieldValues[fieldIndex];
+      },
+      previewImage(e) {
+//        debugger
+//        wepy.previewImage({
+//          current: e.currentTarget.id, // 当前显示图片的http链接
+//          urls: this.data.imgList, // 需要预览的图片http链接列表
+//        });
+      },
+      initQiniu() {
+        var options = {
+          region: 'ECN', // 华东区
+          uptokenURL: 'http://localhost:3000/client/common/getUpToken',
+          // uptoken: 'xxx',
+          // domain: 'http://myblog.bkt.clouddn.com',
+          domain: 'http://img.cdn.lijiayuan.top',
+          shouldUseQiniuFileName: false
+        };
+        qiniuUploader.init(options);
+      },
+    };
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+
+    inputChange(e) {
+      let val = e.detail.value;
+      let fieldIdx = e.currentTarget.dataset.index;
+      this.fieldValues[fieldIdx] = val;
+    }
+  }
+</script>
+
+<style lang='less'>
+  .field-item {
+
+  }
+</style>

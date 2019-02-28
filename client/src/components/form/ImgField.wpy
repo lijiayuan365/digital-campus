@@ -1,0 +1,73 @@
+<template>
+  <view>图片</view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class Example extends wepy.page {
+    config = {
+      navigationBarTitleText: '',
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    didPressChooseImage() {
+
+      var that = this;
+
+      wx.chooseImage({
+
+        count: 1,
+
+        success: function (res) {
+
+          var filePath = res.tempFilePaths[0];
+
+          qiniuUploader.upload(filePath, (res) => {
+
+            that.setData({
+
+              'imageURL': res.imageURL,
+
+            });
+
+          }, (error) => {
+
+            console.log('error: ' + error);
+
+          }, {
+
+            uploadURL: 'https://up.qbox.me',
+
+            domain: 'bzkdlkaf.bkt.clouddn.com',
+
+            uptokenURL: 'UpTokenURL.com/uptoken',
+
+          });
+
+        },
+        events = {};
+
+      watch = {};
+
+      computed = {};
+
+      onLoad();
+      {
+      }
+
+
+      onShow();
+      {
+      }
+
+    }
+</script>
+
+<style lang='less'>
+</style>

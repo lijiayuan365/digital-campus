@@ -1,0 +1,118 @@
+<template>
+  <view class="branch-flow">
+    <view class="page__bd">
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <!--处理人-->
+            <view class="weui-uploader" wx:if="{{currentNode.nodePersonType !== '1'}}">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">处理人</view>
+                <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{currentNode.nodePersons}}" wx:key="*this">
+                    <view class="weui-uploader__file" id="{{item}}">
+                      <image class="weui-uploader__img" src="{{item.avatar}}" mode="aspectFill"/>
+                      <view class="user-name">{{item.userName}}</view>
+                    </view>
+                  </block>
+                </view>
+                <!--选人按钮-->
+                <view class="weui-uploader__input-box" wx:if="{{showAddUser}}">
+                  <view class="weui-uploader__input" @tap="chooseUser"></view>
+                </view>
+              </view>
+            </view>
+            <!--相关人-->
+            <view class="weui-uploader cc-man" wx:if="{{ccPerson.length !== 0}}">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">相关人</view>
+                <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{ccPerson}}" wx:key="*this">
+                    <view class="weui-uploader__file" id="{{item._id}}">
+                      <image class="weui-uploader__img" src="{{item.avatar}}" mode="aspectFill"/>
+                      <view class="user-name">{{item.userName}}</view>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <selectUser :selectedUser.sync="nodePersons" :isShow.sync="showDialog"></selectUser>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import SelectUser from '../../components/base/SelectUser';
+
+  export default class BranchFlow extends wepy.component {
+    props = {
+      ccPerson: Array,
+    };
+
+    data = {
+      flow: {},
+      currentNode: {},
+      nodePersons: [],
+      showDialog: false,
+    };
+
+    components = {
+      selectUser: SelectUser,
+    };
+
+    methods = {
+      chooseUser() {
+        this.showDialog = true;
+      },
+      getProp(prop) {
+        let branchFlow = {
+          data: prop.flow.data,
+          childNode: prop.flow.childNode,
+        }
+        this.flow = branchFlow;
+        this.currentNode = prop.currentNode;
+      },
+      exportFlow() {
+        let flowData = {
+          flow: this.flow,
+          currentNode: this.currentNode,
+        };
+        return flowData;
+      },
+    };
+
+    events = {};
+
+    watch = {
+      nodePersons(persons) {
+        this.currentNode.nodePersons = persons;
+      },
+    };
+
+    computed = {
+      showAddUser() {
+        return this.currentNode.nodePersonType === '2';
+      }
+    };
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+  @import "flow";
+</style>

@@ -1,0 +1,130 @@
+<template>
+  <view class="flow">
+    <view wx:if="{{flow.flowType === 0}}">
+      <freeFlow :ccPerson.sync="ccPerson">
+      </freeFlow>
+    </view>
+    <!--<fixedFlow wx:elif="{{flow.flowType === 1}}"-->
+    <!--:flow.sync="flow"-->
+    <!--:ccPerson.sync="ccPerson"-->
+    <!--:currentNode.sync="currentNode">-->
+    <!--</fixedFlow>-->
+    <fixedFlow wx:elif="{{flow.flowType === 1}}" :ccPerson.sync="ccPerson"></fixedFlow>
+    <branchFlow wx:else :ccPerson.sync="ccPerson"></branchFlow>
+    <pendingNode :pendingNode.sync="pendingNode" :isShow.sync="showPendingNode"></pendingNode>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import FreeFlow from '../../components/flow/FreeFlow';
+  import FixedFlow from '../../components/flow/FixedFlow';
+  import BranchFlow from '../../components/flow/BranchFlow';
+  import PendingNode from '../../components/flow/PendingNode';
+
+  export default class FlowIndex extends wepy.component {
+    props = {
+//      flow: {
+//        type: Object,
+//      },
+//      ccPerson: Object,
+//      pendingNode: {
+//        type: Object,
+//        twoWay: true,
+//      },
+//      currentNode: {
+//        type: Object,
+////        twoWay: true,
+//      },
+    };
+
+    data = {
+      flow: {},
+      ccPerson: {},
+      currentNode: {},
+      nodePersons: [],
+      pendingNode: [],
+      showPendingNode: false,
+    };
+
+    components = {
+      freeFlow: FreeFlow,
+      fixedFlow: FixedFlow,
+      branchFlow: BranchFlow,
+      pendingNode: PendingNode,
+    };
+
+    methods = {
+      // 导出流程数据
+      exportFlow() {
+        let flowData = {};
+        if (this.flow.flowType === 0) {
+          // 自由流程
+          flowData.flow = this.flow;
+          flowData.currentNode = this.currentNode;
+        } else if (this.flow.flowType === 1) {
+          // 固定流程
+          flowData = this.$invoke('fixedFlow', 'exportFlow');
+          flowData.pendingNode = this.pendingNode;
+        } else {
+          // 分支流程
+          flowData = this.$invoke('branchFlow', 'exportFlow');
+          flowData.pendingNode = this.pendingNode;
+        }
+        flowData.flowType = this.flow.flowType;
+        return flowData;
+//        this.$emit('getFlowData', flowData);
+      },
+      // 获取组件异步传递的数据
+      getProp(prop) {
+        this.flow = prop.flow;
+        this.pendingNode = prop.pendingNode;
+        this.currentNode = prop.currentNode;
+        this.nodePersons = prop.nodePersons;
+
+        if (prop.flow.flowType === 1) {
+          // 固定流程
+          this.$invoke('fixedFlow', 'getProp', {
+            flow: prop.flow,
+            currentNode: prop.currentNode,
+          });
+        } else if(prop.flow.flowType === 2){
+          // 分支流程
+          this.$invoke('branchFlow', 'getProp', {
+            flow: prop.flow.branchFlow,
+            currentNode: prop.currentNode,
+          });
+        }
+      },
+      // 选择需要当前节点确定的处理人
+      pendingNodePerson() {
+        this.showPendingNode = true;
+      },
+
+    };
+
+    events = {
+      // 接收自由流程处理人
+      freeFlowPerson(persons) {
+        this.currentNode.nodePersons = persons;
+      },
+      // 获取需要当前节点确定处理人的节点
+      getPendingNode(nodes) {
+        this.pendingNode = nodes;
+      },
+    };
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>

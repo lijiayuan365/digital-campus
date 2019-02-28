@@ -1,0 +1,36 @@
+<template>
+  <view>
+    <view>bi</view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class GroupForm extends wepy.page {
+    config = {
+      navigationBarTitleText: '分组名',
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>

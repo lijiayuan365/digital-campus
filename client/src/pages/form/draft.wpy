@@ -1,0 +1,46 @@
+<template>
+  <view>
+    <view>
+      <searchBox></searchBox>
+      <formList :forms="drafts"></formList>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import SearchBox from '../../components/SearchBox';
+  import FormList from '../../components/DataList';
+
+  export default class Draft extends wepy.page {
+    config = {
+      navigationBarTitleText: '草稿',
+    };
+
+    data = {
+      drafts: [1, 2, 3, 4, 5, 6]
+    };
+
+    components = {
+      searchBox: SearchBox,
+      formList: FormList
+    };
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>

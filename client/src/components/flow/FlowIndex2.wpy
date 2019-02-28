@@ -1,0 +1,191 @@
+<template>
+  <view class="flow">
+    <view class="fixed-flow" wx:if="{{flowType === 1}}">
+      <fixedFlow title="固定流程" :radioItems.sync="fixedFlows" :value.sync="fixedFlowId"></fixedFlow>
+    </view>
+    <view class="page__bd">
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <!--处理人-->
+            <view class="weui-uploader" wx:if="{{showAddUser || nodePersons.length !== 0}}">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">处理人</view>
+                <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{nodePersons}}" wx:key="*this">
+                    <view class="weui-uploader__file" id="{{item}}">
+                      <image class="weui-uploader__img" src="{{item.avatar}}" mode="aspectFill"/>
+                      <view class="user-name">{{item.userName}}</view>
+                    </view>
+                  </block>
+                </view>
+                <!--选人按钮-->
+                <view class="weui-uploader__input-box" wx:if="{{showAddUser}}">
+                  <view class="weui-uploader__input" @tap="chooseUser"></view>
+                </view>
+              </view>
+            </view>
+            <!--相关人-->
+            <view class="weui-uploader cc-man" wx:if="{{ccUser.length !== 0}}">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">相关人</view>
+                <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{ccPerson}}" wx:key="*this">
+                    <view class="weui-uploader__file" id="{{item._id}}">
+                      <image class="weui-uploader__img" src="{{item.avatar}}" mode="aspectFill"/>
+                      <view class="user-name">{{item.userName}}</view>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <selectUser :selectedUser.sync="nodePersons" :isShow.sync="showDialog"></selectUser>
+    <pendingNode :pendingNode.sync="pendingNode" :isShow.sync="showPendingNode"></pendingNode>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import SelectedUser from '../../components/base/SelectUser';
+  import PendingNode from '../../components/flow/PendingNode';
+  import ZRadio from '../../components/base/ZRadio';
+
+  export default class FlowIndex extends wepy.component {
+    props = {
+      flow: {
+        type: Object,
+      },
+      ccPerson: Object,
+      pendingNode: {
+        type: Object,
+        twoWay: true,
+      }
+    };
+
+    data = {
+      users: [],
+      nodePersons: [],
+      showDialog: false,
+      showPendingNode: false,
+      currentNode: {},
+      flowType: 0,
+      isFree: true,
+      fixedFlows: [],
+      branchFlow: {},
+      fixedFlowId: '',
+      flowData: {},
+    };
+
+    components = {
+      selectUser: SelectedUser,
+      pendingNode: PendingNode,
+      fixedFlow: ZRadio,
+    };
+
+    methods = {
+      chooseUser() {
+        this.showDialog = true;
+      },
+      pendingNode() {
+        this.showPendingNode = true;
+      },
+      exportFlow() {
+        this.currentNode.nodePersons = this.nodePersons;
+        let flowData = {
+          currentNode: this.currentNode,
+        };
+        if (this.fixedFlow) {
+          this.fixedFlow.flowType = 1;
+          this.fixedFlow.isFree = false;
+          flowData.formFlow = this.fixedFlow;
+        }
+        this.$emit('exportFlow', flowData);
+      },
+    };
+
+    events = {};
+
+    watch = {
+      flow(val) {
+        this.flowType = val.flowType;
+        this.isFree = val.isFree;
+        this.fixedFlows = val.fixedFlow;
+        this.branchFlow = val.branchFlow;
+        val.flowType !== 2 && this.$apply();
+      },
+      fixedFlow(val) {
+        if (val) {
+          this.currentNode = val.currentNode;
+          this.pendingNode = val.pendingNode;
+          this.nodePersons = this.currentNode.nodePersons || [];
+        }
+//        this.$apply();
+//        debugger;
+      },
+      branchFlow(val) {
+        debugger;
+        if (val) {
+          this.currentNode = val.currentNode;
+          this.pendingNode = val.pendingNode;
+          this.nodePersons = this.currentNode.nodePersons || [];
+        }
+        this.$apply();
+//        debugger;
+      }
+    };
+
+    computed = {
+      fixedFlow() {
+        return this.fixedFlows.find((value, index, arr) => {
+          return value._id === this.fixedFlowId;
+        });
+      },
+      showAddUser() {
+        if (this.isFree || this.currentNode.nodePersonType === 2) {
+          return true;
+        }
+        return false;
+      }
+    };
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+  .flow {
+    .weui-uploader__file {
+      display: flex;
+      flex-direction: column;
+      /*flex-wrap: wrap;*/
+      align-items: center;
+      height: ~"120rpx";
+      width: ~"120rpx";
+    }
+    .cc-man {
+      padding-top: 10px;
+    }
+    .weui-uploader__input-box, .weui-uploader__img {
+      height: ~"100rpx";
+      width: ~"100rpx";
+    }
+    .user-name {
+      text-align: center;
+      font-size: .7rem;
+    }
+  }
+</style>

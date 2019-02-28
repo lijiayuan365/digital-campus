@@ -27,45 +27,45 @@
   </view>
 </template>
 <script>
-	import wepy from 'wepy'
-	//Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
-	export default class SearchBox extends wepy.component {
-		config = {};
-		components = {};
-		props = {
+  import wepy from 'wepy';
+  // Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
+  export default class SearchBox extends wepy.component {
+    config = {};
+    components = {};
+    props = {
 
-			inputVal: ""
-		};
-		data = {
-			inputShowed: false,
-		};
-		computed = {};
-		methods = {
-			searchUser() {
-				debugger;
-			},
-			showInput() {
-				this.inputShowed = true;
-			},
-			hideInput() {
-				this.inputVal = "";
-				this.inputShowed = false;
-			},
-			clearInput() {
-				this.inputVal = "";
-			},
-			inputTyping(e) {
-				this.inputVal = e.detail.value;
-			}
-		};
-		events = {};
+      inputVal: ''
+    };
+    data = {
+      inputShowed: false,
+    };
+    computed = {};
+    methods = {
+      searchUser() {
+        debugger;
+      },
+      showInput() {
+        this.inputShowed = true;
+      },
+      hideInput() {
+        this.inputVal = '';
+        this.inputShowed = false;
+      },
+      clearInput() {
+        this.inputVal = '';
+      },
+      inputTyping(e) {
+        this.inputVal = e.detail.value;
+      }
+    };
+    events = {};
 
-		onLoad() {
-		};
+    onLoad() {
+    };
 
-		// Other properties
-	}
-	// some code
+    // Other properties
+  }
+  // some code
 </script>
 <style lang="less">
 

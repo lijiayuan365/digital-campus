@@ -3,7 +3,7 @@
     <view class="menu-wrapper">
       <view class="weui-grids">
         <block wx:for="{{menus}}" wx:key="index">
-          <navigator url class="weui-grid" hover-class="weui-grid_active">
+          <navigator url="{{item.path}}" class="weui-grid" hover-class="weui-grid_active">
             <image class="weui-grid__icon" src="../images/icon_tabbar.png"/>
             <view class="weui-grid__label">{{item.name}}</view>
           </navigator>
@@ -13,120 +13,111 @@
   </view>
 </template>
 <script>
-	import wepy from "wepy";
-	import {connect} from 'wepy-redux'
-//	import {UPDATE} from "../store/types/login.js";
-	import {UPDATEID, LOGIN} from '../store/types/user'
-	@connect({
-		isLogin(state) {
-			return state.user.isLogin;
+  import wepy from 'wepy';
+  import {connect} from 'wepy-redux';
+  import {UPDATEID, LOGIN} from '../store/types/user';
+
+  @connect({
+    isLogin(state) {
+      return state.user.isLogin;
     },
-    state(state){
+    state(state) {
       return state;
     }
-//		updateLogin: UPDATE
-	},{UPDATEID, LOGIN})
+  }, {UPDATEID, LOGIN})
 
-	//Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
-	export default class Home extends wepy.page {
-		config = {};
-		components = {};
-		data = {
-			menus: [
-				{name: '表单流程', icon: '', path: ''},
-				{name: '移动审批', icon: '', path: ''},
-				{name: '请假出差', icon: '', path: ''},
-				{name: '会议助手', icon: '', path: ''},
-				{name: '考勤助手', icon: '', path: ''},
-				{name: '培训学习', icon: '', path: ''},
-			]
-		};
-		computed = {};
-		methods = {
-			test() {
-				wx.showModal({
-					title: '提示',
-					content: '<button>等</button>',
-//					success (res) {
-//						if (res.confirm) {
-//							console.log('用户点击确定')
-//						} else if (res.cancel) {
-//							console.log('用户点击取消')
-//						}
-//					}
-				})
-			},
-			login() {
+  // Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
+  export default class Home extends wepy.page {
+    config = {};
+    components = {};
+    data = {
+      menus: [
+        {name: '表单流程', icon: '', path: 'form/home'},
+        {name: '移动审批', icon: '', path: 'approve/home'},
+        {name: '请假出差', icon: '', path: 'ask-leave/home'},
+        {name: '会议助手', icon: '', path: 'meeting/home'},
+        {name: '考勤助手', icon: '', path: ''},
+        {name: '培训学习', icon: '', path: ''},
+      ]
+    };
+    computed = {};
+    methods = {
+      test() {
+        wx.showModal({
+          title: '提示',
+          content: '<button>等</button>',
+        });
+      },
+      login() {
         wx.login({
-				success (res) {
-					if (res.code) {
-						//发起网络请求
-            debugger
-						wx.request({
-							url: `${this.$parent.globalData.API}/user/wechatLogin`,
-              method:'POST',
-							data: {
-								code: res.code
-							},
-              success(res){
-                let data = res.data.data;
-                wx.setStorage({
-                  key:"openid",
-                  data:data.userId
-                })
-              }
-						})
-					} else {
-						console.log('登录失败！' + res.errMsg)
-					}
-				}
-			})
-			}
-		};
-		events = {};
+          success(res) {
+            if (res.code) {
+              // 发起网络请求
+              debugger;
+              wx.request({
+                url: `${this.$parent.globalData.API}/user/wechatLogin`,
+                method: 'POST',
+                data: {
+                  code: res.code
+                },
+                success(res) {
+                  let data = res.data.data;
+                  wx.setStorage({
+                    key: 'openid',
+                    data: data.userId
+                  });
+                }
+              });
+            } else {
+              console.log('登录失败！' + res.errMsg);
+            }
+          }
+        });
+      }
+    };
+    events = {};
 
-		onLoad() {
-			let _this = this;
-//			this.methods.test();
+    onLoad() {
+      let _this = this;
+//      this.methods.test();
       console.log(this.state);
-			wx.checkSession({
-				success() {
-					console.log('success');
-					_this.methods.LOGIN();
-					wx.getUserInfo({
-						success: function(res) {
-							var userInfo = res.userInfo
-							var nickName = userInfo.nickName
-							var avatarUrl = userInfo.avatarUrl
-							var gender = userInfo.gender //性别 0：未知、1：男、2：女
-							var province = userInfo.province
-							var city = userInfo.city
-							var country = userInfo.country
-//              debugger
-						}
-					})
+      wx.checkSession({
+        success() {
+          console.log('success');
+          _this.methods.LOGIN();
+          wx.getUserInfo({
+            success: function (res) {
+              let userInfo = res.userInfo;
+//              var nickName = userInfo.nickName;
+//              var avatarUrl = userInfo.avatarUrl;
+//              var gender = userInfo.gender; // 性别 0：未知、1：男、2：女
+//              var province = userInfo.province;
+//              var city = userInfo.city;
+//              var country = userInfo.country;
+            }
+          });
 //          debugger
-					//session_key 未过期，并且在本生命周期一直有效
-				},
-				fail() {
+          //session_key 未过期，并且在本生命周期一直有效
+        },
+        fail() {
           _this.methods.login();
-					// console.log('fail');
-					// wx.switchTab({
-					// 	url: '/pages/mine'
-					// })
-					// session_key 已经失效，需要重新执行登录流程
+          // console.log('fail');
+          // wx.switchTab({
+          // 	url: '/pages/mine'
+          // })
+          // session_key 已经失效，需要重新执行登录流程
 //              wx.login() //重新登录
-				}
-			})
-		}
+        }
+      });
+    }
 
-		// Other properties
-	}
-	// some code
+    // Other properties
+  }
+  // some code
 </script>
 <style lang="less">
   .menu-wrapper {
-    margin-top: 40 rpx;
+    margin-top: ~"40rpx";
     background: white;
   }
 

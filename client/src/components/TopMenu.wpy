@@ -1,0 +1,76 @@
+<!--  -->
+<template>
+  <view class="menu-wrapper">
+    <view class="menu-item" wx:for="{{menus}}" wx:key="{{index}}" data-path="{{item.path}}" bindtap="toMenu">
+      <view class="menu-icon"></view>
+      <view class="menu-title">{{item.title}}</view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class TopMenu extends wepy.component {
+    props = {
+      menus: {
+        type: Array,
+      }
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {
+      toMenu(e) {
+        let path = e.currentTarget.dataset.path;
+//        debugger
+        wx.navigateTo({
+          url: `${path}`
+        });
+      }
+    };
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+  .menu-wrapper {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: ~"240rpx";
+    background: #19B724;
+    color: #FFFFFF;
+  }
+
+  .menu-item {
+    text-align: center;
+  }
+
+  .menu-icon {
+    width: ~"120rpx";
+    height: ~"120rpx";
+    border-radius: 100% 100%;
+    background: white;
+  }
+
+  .menu-title {
+
+  }
+</style>

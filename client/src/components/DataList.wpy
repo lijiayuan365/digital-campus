@@ -1,0 +1,85 @@
+<!-- 数据列表 -->
+<template>
+  <view>
+    <!-- type 1 小图文列表-->
+    <view wx:if="{{type === 1}}">
+      <view class="weui-cells weui-cells_after-title">
+        <navigator wx:for="{{list}}" wx:key="{{index}}" url="{{item.path}}" class="weui-cell weui-cell_access"
+                   hover-class="weui-cell_active">
+          <view class="weui-cell__hd img-area">
+            <image src="{{item.img}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"/>
+          </view>
+          <view class="weui-cell__bd cell-title">{{item.title}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+
+    <!-- type 2 图文组合列表-->
+    <view wx:if="{{type === 2}}">
+      <view class="weui-panel weui-panel_access">
+        <!--<view class="weui-panel__hd">图文组合列表</view>-->
+        <view class="weui-panel__bd">
+          <navigator wx:for="{{list}}" wx:key="{{index}}" url="detail" class="weui-media-box weui-media-box_appmsg"
+                     hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image class="weui-media-box__thumb" src="../../images/pic_160.png"/>
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">标题一</view>
+              <view class="weui-media-box__desc">审批中：提单人处理</view>
+              <view class="weui-media-box__info">
+                <view class="weui-media-box__info__meta">审批单</view>
+                <view class="weui-media-box__info__meta">09-12</view>
+                <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">李佳远</view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class DataList extends wepy.component {
+    props = {
+      type: {
+        type: Number,
+      },
+      list: {
+        type: Array,
+      }
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+  .cell-title {
+    text-align: left;
+  }
+
+  .img-area {
+    display: flex;
+  }
+</style>

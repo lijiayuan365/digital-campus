@@ -1,0 +1,64 @@
+<!-- 输入框 -->
+<template>
+  <!-- <view> -->
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">{{title}}</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input bindinput="changeInput" type="{{type}}" value="{{value}}" class="weui-input" placeholder="请输入">
+    </view>
+  </view>
+  <!-- </view> -->
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class Zinput extends wepy.component {
+    props = {
+      setting: {
+        type: Object,
+        default: () => {
+          return {};
+        }
+      },
+      type: {
+        type: String,
+      },
+      value: {
+        type: String,
+        twoWay: true
+      },
+      title: {
+        type: String
+      },
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {
+      changeInput(e) {
+        this.value = e.detail.value;
+      }
+    };
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    }
+
+    onShow() {
+    }
+  }
+</script>
+
+<style lang='less'>
+
+</style>

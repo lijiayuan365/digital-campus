@@ -1,0 +1,65 @@
+<template>
+  <view>
+    <view class="weui-cells__title">{{title}}</view>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group @change="radioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+          <view class="weui-cell__bd">{{item.name}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+            <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class ZRadio extends wepy.component {
+    props = {
+      title: String,
+      radioItems: {
+        type: Array,
+        twoWay: true,
+      },
+      value: {
+        type: String,
+        twoWay: true,
+      }
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {
+      radioChange(e) {
+        console.log('radio发生change事件，携带value值为：', e.detail.value);
+        this.radioItems.forEach(v => {
+          v.checked = v.value === e.detail.value;
+        });
+        this.value = e.detail.value;
+        this.$emit('getRadioChange', e.detail.value);
+      },
+    };
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>

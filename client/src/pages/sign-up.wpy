@@ -1,26 +1,81 @@
 <template>
   <view>
+    <!-- 注册 -->
+    <view class="page-title">注册</view>
+    <view class="weui-cells weui-cells_after-title">
+      <nameInput title="姓名" :value.sync="userName"></nameInput>
+      <telInput title="电话" :value.sync="tel"></telInput>
+      <emailInput title="邮箱" :value.sync="email"></emailInput>
+      <pwdInput title="密码" type="password" :value.sync="pwd"></pwdInput>
+      <deptPicker title="部门" :list="deptList" :value.sync="dept" key="deptName"></deptPicker>
+      <orgPicker title="组织" :list="orgList" :value.sync="org" key="orgName"></orgPicker>
+      <postPicker title="职位" :list="postList" :value.sync="post" key="orgName"></postPicker>
+
+      <descInput title="备注" :value.sync="remark"></descInput>
+    </view>
 
   </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" @tap="showTopTips">确定</button>
+  </view>
+
 </template>
 <script>
-  import wepy from 'wepy'
-  //Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
+  import wepy from 'wepy';
+  import Zpicker from '../components/user/Zpicker';
+  import Zinput from '../components/user/Zinput';
+  // Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
   export default class SignUp extends wepy.page {
     config = {};
-    components = {};
-    data = {};
+    components = {
+      nameInput: Zinput,
+      telInput: Zinput,
+      emailInput: Zinput,
+      pwdInput: Zinput,
+      descInput: Zinput,
+      deptPicker: Zpicker,
+      orgPicker: Zpicker,
+      postPicker: Zpicker
+    };
+    data = {
+      user: {},
+      dept: {},
+      org: {},
+      userName: '',
+      tel: '',
+      email: '',
+      remark: '',
+      pwd: '',
+      deptList: [
+        {deptId: '12', deptName: 'ljy'},
+        {deptId: '123', deptName: '22'},
+        {deptId: '124', deptName: 'tt'}
+      ],
+      orgList: [
+        {orgId: '12', orgName: '组织1'},
+        {orgId: '123', orgName: '组织2'}
+      ],
+      postList: [
+        {postId: '122', postName: '校长'},
+        {postId: '123', postName: '班长'}
+      ]
+    };
     computed = {};
     methods = {};
+
     events = {};
 
     onLoad() {
-    };
+    }
 
     // Other properties
   }
   // some code
 </script>
 <style lang="less">
-
+  .page-title {
+    text-align: center;
+    font-size: ~"60rpx";
+    margin: ~"40rpx" 0;
+  }
 </style>

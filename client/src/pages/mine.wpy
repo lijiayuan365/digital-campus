@@ -1,26 +1,14 @@
 <template>
   <view>
-    <!--<view class="weui-cells weui-cells_after-title">-->
-    <!--<view class="weui-cell">-->
-    <!--<view class="weui-cell__hd">-->
-    <!--<image src="../images/icon_tabbar.png"-->
-    <!--class="avatar"-->
-    <!--style=""></image>-->
-    <!--</view>-->
-    <!--<view class="weui-cell__bd user-name">标题文字</view>-->
-    <!--&lt;!&ndash;<view class="weui-cell__ft">说明文字</view>&ndash;&gt;-->
-    <!--</view>-->
-    <!--</view>-->
     <view class="weui-cells weui-cells_after-title">
       <navigator url="user-info" class="weui-cell">
         <view class="weui-cell__hd">
           <image src="../images/icon_tabbar.png" class="avatar"/>
         </view>
-        <view class="weui-cell__bd">李佳远</view>
+        <view class="weui-cell__bd">{{userName}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
     </view>
-
     <view class="login-wrapper">
       <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="login">绑定已有账户</button>
       <button class="weui-btn" type="default" open-type="getUserInfo" bindgetuserinfo="signUp">注册新账户</button>
@@ -37,7 +25,6 @@ import wepy from "wepy";
 import { connect } from "wepy-redux";
 import { UPDATE } from "../store/types/login.js";
 
-
 @connect({
   loginCode(state) {
     return state.login.code;
@@ -50,17 +37,23 @@ import { UPDATE } from "../store/types/login.js";
 //  Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
 export default class Mine extends wepy.page {
   config = {
-		navigationBarTitleText:'我的'
+    navigationBarTitleText: "我的"
   };
   components = {};
-  data = {};
+  data = {
+    userName: "李佳远"
+  };
   computed = {};
   methods = {
     login(e) {
-      console.log(e);
+      wx.navigateTo({
+        url: "sign-in"
+      });
     },
     signUp(e) {
-      console.log("sign");
+      wx.navigateTo({
+        url: "sign-up"
+      });
     },
     getUserInfo(e) {
       console.log(e);
@@ -70,33 +63,11 @@ export default class Mine extends wepy.page {
   events = {};
 
   onLoad() {
-    // wx.setTabBarItem({
-    //   index: 0,
-    //   text: "text",
-    //   // iconPath: "/path/to/iconPath",
-    //   // selectedIconPath: "/path/to/selectedIconPath"
-    // });
-    // wx.hideTabBar();
     wx.openSetting({
       success(res) {
         console.log(res.authSetting);
-        // res.authSetting = {
-        //   "scope.userInfo": true,
-        //   "scope.userLocation": true
-        // }
       }
     });
-    // wx.getSetting({
-    //   success(res) {
-    //     debugger;
-    //     console.log(res.authSetting);
-    //     // res.authSetting = {
-    //     //   "scope.userInfo": true,
-    //     //   "scope.userLocation": true
-    //     // }
-    //   }
-    // });
-    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
     wx.getSetting({
       success(res) {
         if (!res.authSetting["scope.userInfo"]) {
@@ -129,11 +100,10 @@ export default class Mine extends wepy.page {
 // some code
 </script>
 <style lang="less" scoped>
-
-.avatar{
+.avatar {
   margin-right: 10rpx;
   vertical-align: middle;
-  width:128rpx;
+  width: 128rpx;
   height: 128rpx;
 }
 .login-wrapper {

@@ -1,29 +1,49 @@
 <template>
   <view>
-
+    <!-- 登录 -->
+    <view class="page-title">登录</view>
+    <view class="weui-cells weui-cells_after-title">
+      <telInput title="手机" :value.sync="tel"></telInput>
+      <pwdInput title="密码" type="password" :value.sync="pwd"></pwdInput>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" @tap="signIn">确定</button>
+    </view>
   </view>
 </template>
 <script>
-  import wepy from 'wepy'
-  //Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
+  import wepy from 'wepy';
+  import Zinput from '../components/user/Zinput';
+  // Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
   export default class SignIn extends wepy.page {
     config = {};
-    components = {};
+    components = {
+      telInput: Zinput,
+      pwdInput: Zinput,
+    };
     data = {
-        isLogin:false
+      tel: '',
+      pwd: ''
     };
     computed = {};
-    methods = {};
+    methods = {
+      signIn() {
+
+      }
+    };
     events = {};
 
     onLoad() {
-
-    };
+    }
 
     // Other properties
   }
   // some code
 </script>
 <style lang="less">
-
+  .page-title {
+    text-align: center;
+    font-size: ~"60rpx";
+    margin: ~"40rpx" 0;
+  }
 </style>

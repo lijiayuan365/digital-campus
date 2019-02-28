@@ -1,0 +1,68 @@
+<template>
+  <view>
+    <view class="container">
+      <view wx:if="{{activeBar === 0}}">
+        <topMenu :menus="topMenu"></topMenu>
+      </view>
+      <view wx:if="{{activeBar === 1}}">
+        会议纪要
+      </view>
+      <view wx:if="{{activeBar === 2}}">
+        我的会议
+      </view>
+    </view>
+
+    <tabBar :tabBars="tabBars" :activeIndex.sync="activeBar"></tabBar>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import TabBar from '../../components/TabBar';
+  import TopMenu from '../../components/TopMenu';
+  import SearchBox from '../../components/SearchBox';
+  import DataList from '../../components/DataList';
+
+  export default class Meeting extends wepy.page {
+    config = {
+      navigationBarTitleText: '',
+    };
+
+    data = {
+      topMenu: [
+        {title: '新建会议', path: 'add'},
+        {title: '草稿', path: 'draft'},
+      ],
+      tabBars: [
+        {title: '待进行会议', iconPath: '../../images/pic_160.png', badge: '2'},
+        {title: '会议纪要', iconPath: '../../images/pic_160.png', badge: '2'},
+        {title: '我的会议', iconPath: '../../images/pic_160.png', badge: '2'},
+      ],
+      activeBar: 1,
+    };
+
+    components = {
+      tabBar: TabBar,
+      topMenu: TopMenu,
+      searchBox: SearchBox,
+      meetingList: DataList,
+    };
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>
