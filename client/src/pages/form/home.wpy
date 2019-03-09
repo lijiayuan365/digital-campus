@@ -7,15 +7,15 @@
         <view class="top-menu">
           <topMenu :menus="topMenu"></topMenu>
         </view>
-        <formList :type="type2" :list="todoList"></formList>
+        <formList :type="type2" :list.sync="todoList"></formList>
       </view>
       <view hidden="{{activeIndex != '1'}}">
         <searchBox></searchBox>
-        <todoList :type="type2" :list="todoList"></todoList>
+        <todoList :type="type2" :list.sync="todoList"></todoList>
       </view>
       <view hidden="{{activeIndex != '2'}}">
         <searchBox></searchBox>
-        <relevantList :type="type2" :list="todoList"></relevantList>
+        <relevantList :type="type2" :list.sync="todoList"></relevantList>
       </view>
     </view>
     <tabBar :tabBars="tabBars" :activeIndex.sync="activeIndex" class="tab-bar"></tabBar>
@@ -46,7 +46,7 @@
         {title: '待我审批', iconPath: '../../images/pic_160.png', badge: '4'},
         {title: '与我相关', iconPath: '../../images/pic_160.png', badge: '2'},
       ],
-      todoList: [1, 2, 3, 4, 5, 6, 7],
+      todoList: [],
       activeIndex: 0,
     };
 
@@ -61,18 +61,61 @@
 
     methods = {};
 
-    events = {};
+    events = {
+      checkTab(tabIndex) {
+
+//        // 我的表单
+//        let mineCon = {creator: '5c7b3f74754c9769ed26c4da'};
+//        // 待我处理
+//        let dealCon = {type: 'dealPerson', dealPerson: '5c43db2c27a94952c0a58652'};
+//        // 与我相关
+//        let CcCon = {type: 'ccPerson', ccPerson: '5c43db2c27a94952c0a58652'};
+//        let condition = tabIndex === 0 ? mineCon : tabIndex === 1 ? dealCon : CcCon;
+//        debugger
+        this.getFormDataList(tabIndex);
+      }
+    };
 
     watch = {};
 
-    computed = {};
+    computed = {
+      API() {
+        return this.$parent.globalData.API;
+      }
+    };
 
     onLoad() {
 //      this.activeIndex = 0;
       // wx.showTabBar();
+//      let condition = {creator: '5c7b3f74754c9769ed26c4da'};
+//      this.getFormDataList(condition);
     }
 
     onShow() {
+//      let condition = {creator: '5c7b3f74754c9769ed26c4da'};
+      this.getFormDataList(this.activeIndex);
+    }
+
+    async getFormDataList(tabIndex) {
+//      let tabIndex = this.activeIndex;
+      // 我的表单
+      let mineCon = {creator: '5c7b3f74754c9769ed26c4da'};
+      // 待我处理
+      let dealCon = {type: 'dealPerson', dealPerson: '5c43db2c27a94952c0a58652'};
+      // 与我相关
+      let CcCon = {type: 'ccPerson', ccPerson: '5c43db2c27a94952c0a58652'};
+      let condition = tabIndex === 0 ? mineCon : tabIndex === 1 ? dealCon : CcCon;
+      try {
+        let res = await wepy.request({
+          url: `${this.$parent.globalData.API}/form/getFormDataList`,
+          data: {condition}
+        });
+        let data = res.data.data;
+        this.todoList = data;
+        this.$apply();
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 </script>

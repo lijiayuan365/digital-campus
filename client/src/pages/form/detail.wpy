@@ -1,14 +1,21 @@
 <template>
   <view>
     <view class="page__hd">
-      <view class="page__title">表单标题</view>
-      <view class="page__desc">xxxx</view>
+      <view class="page__title">{{formTitle}}</view>
+      <view class="page__desc">{{desc}}</view>
     </view>
     <formBase type="detail" :fieldList.sync="fieldList" :fieldValues.sync="fieldValues"></formBase>
-    <flow></flow>
-    <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" @tap="confirm">审批</button>
-      <button class="weui-btn" type="warn" @tap="saveDraft">退审</button>
+    <flow :ccPerson.sync="ccPerson" wx:if="{{status !== 2}}"></flow>
+    <!--<view class="weui-btn-area">-->
+    <!--<button class="weui-btn" type="primary" @tap="confirm">审批</button>-->
+    <!--<button class="weui-btn" type="warn" @tap="saveDraft">退审</button>-->
+    <!--</view>-->
+    <view class="page__bd">
+      <view class="weui-btn-area">
+        <button type="primary" wx:if="{{status === 2}}">已审批完成</button>
+        <button type="warn" wx:elif="{{status === 4}}">已退审</button>
+        <button type="primary" @tap="approveMenu" wx:else>审批</button>
+      </view>
     </view>
   </view>
 </template>
@@ -24,105 +31,19 @@
     };
 
     data = {
-      fieldList: [
-        {
-          'fieldName': 'RadioField',
-          'fieldTitle': '单项选择',
-          'radioList': [
-            {value: '选项1', checked: false},
-            {value: '选项2', checked: false},
-            {value: '选项3', checked: false},
-            {value: '选项4', checked: false},
-          ],
-          'isMust': false,
-          'readOnly': false
-        },
-        {
-          'fieldTitle': '多项选择',
-          'fieldName': 'CheckboxField',
-          'checkboxList': [
-            {value: '选项1', checked: true},
-            {value: '选项2', checked: false},
-            {value: '选项3', checked: true},
-            {value: '选项4', checked: false},
-          ],
-          'isMust': false,
-          'readOnly': false,
-          value: ['选项1', '选项2'],
-        },
-        {
-          'fieldName': 'RadioField',
-          'fieldTitle': '单项选择',
-          'radioList': [
-            {value: '选项1', checked: false},
-            {value: '选项2', checked: false},
-            {value: '选项3', checked: false},
-            {value: '选项4', checked: false},
-          ],
-          'isMust': false,
-          'readOnly': false
-        },
-        {
-          'fieldName': 'TextField',
-          'fieldTitle': '单行文本',
-          'defaultValue': '',
-          'fieldTip': '请输入',
-          'isMust': false,
-          'readOnly': false,
-          'min': '',
-          'max': ''
-        },
-        {
-          'fieldName': 'TextAreaField',
-          'fieldTitle': '多行文本',
-          'defaultValue': '',
-          'fieldTip': '请输入',
-          'isMust': false,
-          'readOnly': false,
-          'min': '',
-          'max': ''
-        },
-        {
-          'fieldName': 'TimeField',
-          'fieldTitle': '时间选择器',
-          'defaultValue': '',
-          'fieldTip': '选择时间',
-          'isMust': false
-        },
-        {
-          'fieldTitle': '日期选择器',
-          'fieldName': 'DateField',
-          'defaultValue': '',
-          'fieldTip': '选择日期',
-          'isMust': false
-        },
-        {
-          'fieldName': 'TelField',
-          'fieldTitle': '电话',
-          'defaultValue': '',
-          'fieldTip': '请输入',
-          'isMust': false,
-          'readOnly': false,
-          'min': '',
-          'max': ''
-        },
-        {
-          'fieldName': 'ImgField',
-          'fieldTitle': '图片',
-          'fieldTip': '上传图片',
-          'isMust': false
-        },
-        {
-          'fieldName': 'FileField',
-          'fieldTitle': '附件',
-          'fieldTip': '上传附件',
-          'isMust': false
-        }
-      ],
-      fieldValues: [
-        '选项3', ['选项1', '选项2'], '选项3', 12, 21, '00:00', '2019-02-17', '113131313', ['http://img.cdn.lijiayuan.top/tmp/wxbbf943be81c33e22.o6zAJs-Z0nCFSUZOR9iXROpswm8o.0LfUNOTlTWwyd35c4974ec39b17678405263ab93de9b.png']
-      ],
-      flow: {}
+      formDataId: '',
+      formTitle: '',
+      desc: '',
+      fieldList: [],
+      fieldValues: [],
+      ccPerson: [],
+      currentNode: {},
+      pendingNode: [],
+      freeFlow: [],
+      flowType: 0,
+      approvalRecords: [],
+      status: 0, // 审批状态
+//      operaItem: [],
     };
 
     components = {
@@ -130,19 +51,211 @@
       flow: Flow,
     };
 
-    methods = {};
+    methods = {
+      async approveMenu() {
+        let res = await wepy.showActionSheet({
+          itemList: this.operaItem
+        });
+        if (!res.cancel) {
+          console.log(res.tapIndex);
+          let index = res.tapIndex;
+          // 自由流程
+//          if (this.flowType === 0) {
+          if (index === 0) {
+            this.approve();
+          } else if (index === 1) {
+            this.retrial();
+          } else if (index === 2) {
+            this.endFlow();
+          }
+//          }
+          //
+        }
+      }
+    };
 
-    events = {};
+    events = {
+      // 选定后面节点处理人后提交表单
+      confirmPending() {
+        this.approveForm();
+      }
+    };
 
     watch = {};
 
-    computed = {};
-
-    onLoad() {
+    computed = {
+      operaItem() {
+        if (this.flowType === 0) {
+          return ['审批', '退审', '审批并结束'];
+        } else {
+          return ['审批', '退审'];
+        }
+      }
     };
 
-    onShow() {
+    onLoad(e) {
+      wx.showLoading({
+        title: '加载中',
+      });
+      this.formDataId = e.formDataId;
+      this.initData(e.formDataId);
     };
+
+    onShow(e) {
+    };
+
+    async initData(dataId) {
+      try {
+        let res = await wepy.request({
+          url: `${this.$parent.globalData.API}/form/getFormDetail`,
+          data: {formId: dataId},
+        });
+        let formData = res.data.data;
+        this.fieldList = formData.form.fieldList;
+        this.fieldValues = formData.formValues;
+        this.formTitle = formData.formTitle;
+        this.desc = formData.form.desc;
+        this.flowType = formData.formFlow.flowType;
+        this.status = formData.status;
+        this.freeFlow = formData.freeFlow;
+        this.ccPerson = formData.form.ccPerson;
+        this.currentNode = formData.currentNode;
+        this.pendingNode = formData.pendingNode;
+        this.approvalRecords = formData.approvalRecords;
+//        let formFlow = this.flowType === 0 ? formData.formFlow : this.flowType === 1 ? formData.formFlow.fixedFlow : formData.formFlow.branchFlow;
+        // 未审批完的表单走流程
+        this.status !== 2 && this.$invoke('flow', 'getProp', {
+          currentNode: this.currentNode,
+          pendingNode: this.pendingNode,
+          pageType: 'detail',
+          flow: formData.formFlow,
+        });
+        this.$apply();
+      } catch (e) {
+        console.log(e);
+      }
+      wx.hideLoading();
+    }
+
+    // 点击审批
+    approve() {
+      console.log('shenpi');
+      // 当前处理人审批通过
+      this.currentNode.nodePersons[0].approve = 1;
+      this.approvalRecords.push(this.currentNode.nodePersons[0]);
+      // 分流程情况
+      if (this.flowType === 0) {
+        // 自由流程
+        this.$invoke('flow', 'pendingNodePerson');
+      } else {
+        // 固定流程 与 分支流程
+        // 需要选择下一节点的情况
+        if (this.pendingNode.length !== 0) {
+          this.$invoke('flow', 'pendingNodePerson');
+        } else {
+          this.approveForm();
+        }
+      }
+    }
+
+    // 审批请求
+    async approveForm() {
+      try {
+        let flowData = this.$invoke('flow', 'exportFlow');
+        let formData = this.getFormData();
+        formData.currentNode = flowData.currentNode;
+        formData.flowType = flowData.flowType;
+        // 自由流程
+        if (this.flowType === 0) {
+          formData.nextNode = flowData.pendingNode[0];
+          formData.freeFlow = this.freeFlow;
+        }else {
+          // 固定流程 和 分支流程
+          formData.formFlow = flowData.flow;
+          formData.pendingNode = flowData.pendingNode;
+          debugger
+        }
+        let res = await wepy.request({
+          url: `${this.$parent.globalData.API}/form/approveForm`,
+          method: 'POST',
+          data: {formData}
+        });
+        wx.navigateBack({
+          delta: 1
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    // 退审
+    async retrial() {
+      wx.showLoading({
+        title: '加载中',
+      });
+      let formData = this.getFormData();
+      let flowData = this.$invoke('flow', 'exportFlow');
+      // 分流程情况
+      if (this.flowType === 0) {
+        // 自由流程
+        formData.flowType = 0;
+        formData.freeFlow = this.freeFlow;
+      } else if (this.flowType === 1) {
+        // 固定流程
+        formData.flowType = 1;
+        formData.formFlow = flowData.flow;
+        formData.currentNode = flowData.currentNode;
+      } else {
+        // 分支流程
+        formData.flowType = 2;
+        formData.formFlow = flowData.flow;
+        formData.currentNode = flowData.currentNode;
+      }
+      let res = await wepy.request({
+        url: `${this.$parent.globalData.API}/form/retrialForm`,
+        method: 'POST',
+        data: {formData}
+      });
+      wx.hideLoading();
+      wx.showToast({
+        title: '提交成功',
+        icon: 'success',
+        duration: 4000,
+        complete() {
+          wx.navigateBack({
+            delta: 1
+          });
+        }
+      });
+      console.log('退审');
+
+    }
+
+    // 自由流程结束流程
+    async endFlow() {
+      // 当前处理人审批通过
+      this.currentNode.nodePersons[0].approve = 1;
+      this.approvalRecords.push(this.currentNode.nodePersons[0]);
+      let formData = this.getFormData();
+      let flowData = this.$invoke('flow', 'exportFlow');
+      formData.currentNode = flowData.currentNode;
+      formData.freeFlow = this.freeFlow;
+      formData.approvalRecords = this.approvalRecords;
+      let res = await wepy.request({
+        url: `${this.$parent.globalData.API}/form/endFlow`,
+        method: 'POST',
+        data: {formData}
+      });
+      console.log('end');
+    }
+
+    getFormData() {
+      let formData = {
+        formDataId: this.formDataId,
+        approvalRecords: this.approvalRecords,
+      };
+      return formData;
+    }
   }
 </script>
 
@@ -150,7 +263,8 @@
   .page__hd {
     padding: ~"40rpx";
   }
-  .weui-btn-area{
+
+  .weui-btn-area {
     padding-bottom: 40px;
   }
 

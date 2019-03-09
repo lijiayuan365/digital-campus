@@ -1,22 +1,21 @@
 <template>
   <view>
     <!-- 注册 -->
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{tipsFlag}}">注册失败</view>
     <view class="page-title">注册</view>
     <view class="weui-cells weui-cells_after-title">
       <nameInput title="姓名" :value.sync="userName"></nameInput>
       <telInput title="电话" :value.sync="tel"></telInput>
       <emailInput title="邮箱" :value.sync="email"></emailInput>
       <pwdInput title="密码" type="password" :value.sync="pwd"></pwdInput>
-      <deptPicker title="部门" :list="deptList" :value.sync="dept" key="deptName"></deptPicker>
-      <orgPicker title="组织" :list="orgList" :value.sync="org" key="orgName"></orgPicker>
-      <postPicker title="职位" :list="postList" :value.sync="post" key="orgName"></postPicker>
-
+      <deptPicker title="部门" :list.sync="deptList" :value.sync="dept" key="deptName"></deptPicker>
+      <orgPicker title="组织" :list.sync="orgList" :value.sync="org" key="orgName"></orgPicker>
+      <postPicker title="职位" :list.sync="postList" :value.sync="post" key="postName"></postPicker>
       <descInput title="备注" :value.sync="remark"></descInput>
     </view>
-
   </view>
   <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" @tap="showTopTips">确定</button>
+    <button class="weui-btn" open-type="getUserInfo" type="primary" bindgetuserinfo="getUserInfo">确定</button>
   </view>
 
 </template>
@@ -41,31 +40,103 @@
       user: {},
       dept: {},
       org: {},
+      post: {},
       userName: '',
       tel: '',
       email: '',
       remark: '',
       pwd: '',
-      deptList: [
-        {deptId: '12', deptName: 'ljy'},
-        {deptId: '123', deptName: '22'},
-        {deptId: '124', deptName: 'tt'}
-      ],
-      orgList: [
-        {orgId: '12', orgName: '组织1'},
-        {orgId: '123', orgName: '组织2'}
-      ],
-      postList: [
-        {postId: '122', postName: '校长'},
-        {postId: '123', postName: '班长'}
-      ]
+      avatar: '',
+      deptList: [],
+      orgList: [],
+      postList: [],
+      tipsFlag: false,
     };
-    computed = {};
-    methods = {};
+    computed = {
+      API() {
+        return this.$parent.globalData.API;
+      },
+      deptId() {
+        return this.dept._id;
+      },
+      orgId() {
+        return this.org._id;
+      },
+      postId() {
+        return this.post._id;
+      }
+    };
+    methods = {
+      getUserInfo(e) {
+        let userInfo = e.detail.userInfo;
+        this.avatar = userInfo.avatarUrl;
+        this.signUp();
+      },
+    };
 
     events = {};
 
     onLoad() {
+      this.getCfg();
+    }
+
+    async getCfg() {
+      let res = await wepy.request(`${this.API}/user/getSignUpCfg`);
+      let cfg = res.data.data;
+      this.deptList = cfg.deptList;
+      this.orgList = cfg.orgList;
+      this.postList = cfg.postList;
+      this.$apply();
+    }
+
+    async signUp() {
+      let user = {};
+      try {
+        user.openid = wx.getStorageSync('openid');
+        user.session_key = wx.getStorageSync('session_key');
+        user.userName = this.userName;
+        user.pwd = this.pwd;
+        user.avatar = this.avatar;
+        user.dept = this.deptId;
+        user.org = this.orgId;
+        user.post = this.postId;
+        user.tel = this.tel;
+        user.email = this.email;
+        user.remark = this.remark;
+        let res = await wepy.request({
+          url: `${this.API}/user/signUp`,
+          method: 'POST',
+          data: {user: user},
+        });
+        if (res.data.code === 0) {
+          this.getAddressBook();
+        } else {
+          this.tipsFlag = true;
+          this.$apply();
+          setTimeout(() => {
+            this.tipsFlag = false;
+            this.$apply();
+          }, 3000);
+        }
+        debugger;
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    async getAddressBook() {
+      try {
+        let res = await wepy.request(`${this.API}/user/getAddressBook`);
+        wx.setStorageSync('addressBook', res.data.data.addressBook);
+        wx.setStorageSync('userList', res.data.data.userList);
+        let sessionId = res.data.data.sessionId;
+        this.$parent.globalData.header.Cookie = `JSESSIONID=${sessionId}`;
+        wx.switchTab({
+          url: 'home'
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
 
     // Other properties

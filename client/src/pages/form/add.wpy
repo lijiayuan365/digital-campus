@@ -8,8 +8,7 @@
       <formBase :fieldList.sync="fieldList" :fieldValues.sync="fieldValues"></formBase>
     </view>
     <view>
-      <flow :ccPerson.sync="ccPerson">
-      </flow>
+      <flow :ccPerson.sync="ccPerson"></flow>
     </view>
     <view class="weui-btn-area">
       <button wx:if="{{pendingNode.length === 0}}" class="weui-btn" type="primary" @tap="confirmForm">提交</button>
@@ -142,9 +141,9 @@
       formData.flowType = flowData.flowType;
       formData.currentNode = flowData.currentNode;
       formData.pendingNode = flowData.pendingNode;
-      formData.creator = '5c43db2c27a94952c0a58652';
+      formData.approvalRecords = [];
+      formData.creator = '5c7b3f74754c9769ed26c4da';
       formData.status = 0;
-      debugger
       return formData;
     };
 
@@ -171,9 +170,12 @@
               icon: 'success',
               duration: 2000,
               complete() {
-                wx.navigateTo({
-                  url: 'home',
+                wx.navigateBack({
+                  delta: 2
                 });
+//                wx.navigateTo({
+//                  url: 'home',
+//                });
               }
             });
           } catch (error) {
@@ -187,9 +189,12 @@
             icon: 'success',
             duration: 4000,
             complete() {
-              wx.navigateTo({
-                url: 'home',
+              wx.navigateBack({
+                delta: 2
               });
+//              wx.navigateTo({
+//                url: 'home',
+//              });
             }
           });
         },

@@ -1,13 +1,14 @@
 <template>
   <view>
     <!-- 登录 -->
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{tipsFlag}}">账户或密码不对</view>
     <view class="page-title">登录</view>
     <view class="weui-cells weui-cells_after-title">
       <telInput title="手机" :value.sync="tel"></telInput>
       <pwdInput title="密码" type="password" :value.sync="pwd"></pwdInput>
     </view>
     <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" @tap="signIn">确定</button>
+      <button class="weui-btn" open-type="getUserInfo" type="primary" bindgetuserinfo="getUserInfo">确定</button>
     </view>
   </view>
 </template>
@@ -23,17 +24,73 @@
     };
     data = {
       tel: '',
-      pwd: ''
+      pwd: '',
+      avatar: '',
+      tipsFlag: false,
     };
-    computed = {};
-    methods = {
-      signIn() {
-
+    computed = {
+      API() {
+        return this.$parent.globalData.API;
       }
+    };
+    methods = {
+      getUserInfo(e) {
+        let userInfo = e.detail.userInfo;
+        this.avatar = userInfo.avatarUrl;
+        this.signIn();
+      },
+
     };
     events = {};
 
     onLoad() {
+    }
+
+    async signIn() {
+      let user = {};
+      user.tel = this.tel;
+      user.pwd = this.pwd;
+      user.avatar = this.avatar;
+      try {
+        user.openid = wx.getStorageSync('openid');
+        user.session_key = wx.getStorageSync('session_key');
+      } catch (e) {
+
+      }
+      let res = await wepy.request({
+        url: `${this.API}/user/login`,
+        method: 'POST',
+        data: {
+          user: user,
+        }
+      });
+      let data = res.data.data;
+      if (!data) {
+        this.tipsFlag = true;
+        this.$apply();
+        setTimeout(() => {
+          this.tipsFlag = false;
+          this.$apply();
+        }, 3000);
+      } else {
+        this.getAddressBook();
+      }
+    }
+
+    async getAddressBook() {
+      let _this = this;
+      try {
+        let res = await wepy.request(`${_this.API}/user/getAddressBook`);
+        wx.setStorageSync('addressBook', res.data.data.addressBook);
+        wx.setStorageSync('userList', res.data.data.userList);
+        let sessionId = res.data.data.sessionId;
+        this.$parent.globalData.header.Cookie = `JSESSIONID=${sessionId}`;
+        wx.switchTab({
+          url: 'home'
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
 
     // Other properties

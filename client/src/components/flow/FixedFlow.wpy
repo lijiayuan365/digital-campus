@@ -1,15 +1,17 @@
 <template>
   <view class="fixed-flow">
-    <flowGroup title="固定流程" :radioItems.sync="fixedFlows" :value.sync="fixedFlowId"></flowGroup>
-    <view class="page__bd" wx:if="{{fixedFlow}}">
+    <flowGroup wx:if="{{fixedFlows.length !== 0}}" title="固定流程" :radioItems.sync="fixedFlows"
+               :value.sync="fixedFlowId"></flowGroup>
+    <view class="page__bd" wx:if="{{fixedFlow || pageType == 'detail'}}">
       <view class="weui-cells">
         <view class="weui-cell">
           <view class="weui-cell__bd">
             <!--处理人-->
             <view class="weui-uploader"
-                  wx:if="{{currentNode.nodePersonType !== '1'}}">
+                  wx:if="{{currentNode.nodePersonType !== '1' || pageType == 'detail'}}">
               <view class="weui-uploader__hd">
-                <view class="weui-uploader__title">处理人</view>
+                <view class="weui-uploader__title" wx:if="{{pageType !== 'detail'}}">处理人</view>
+                <view class="weui-uploader__title" wx:else>当前节点：{{currentNode.nodeName}}</view>
                 <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
               </view>
               <view class="weui-uploader__bd">
@@ -60,11 +62,6 @@
   export default class FixedFlow extends wepy.component {
     props = {
       ccPerson: Array,
-//      flow: Object,
-//      currentNode: {
-//        type: Object,
-////        twoWay: true,
-//      },
     };
 
     data = {
@@ -75,7 +72,10 @@
       fixedFlowId: '',
       currentNode: {},
       pendingNode: [],
-      flow: {},
+      pageType: '', // 页面类型 新建 详情
+      flowType: 1, // 流程类型
+      flow: {}, // 流程信息
+      detailFlow: {}, // 详情页面时候的流程
     };
 
     components = {
@@ -87,14 +87,24 @@
       chooseUser() {
         this.showDialog = true;
       },
+      // 从父组件中获取数据
       getProp(prop) {
         this.flow = prop.flow;
-        this.fixedFlows = prop.flow.fixedFlow;
+        this.flowType = prop.flowType;
+        this.pageType = prop.pageType;
+        if (prop.pageType !== 'detail') {
+          this.fixedFlows = prop.flow.fixedFlow;
+        } else {
+          // 详情页面流程
+          this.nodePersons = prop.currentNode.nodePersons;
+          this.detailFlow = prop.flow.fixedFlow;
+        }
         this.currentNode = prop.currentNode;
       },
       exportFlow() {
+        let fixedFlow = this.pageType === 'detail' ? this.detailFlow : this.fixedFlow;
         let flowData = {
-          flow: this.fixedFlow,
+          flow: fixedFlow,
           currentNode: this.currentNode,
         };
         return flowData;
@@ -108,7 +118,7 @@
         this.currentNode.nodePersons = persons;
       },
       pendingNode(nodes) {
-        this.$emit('getPendingNode',nodes)
+        this.$emit('getPendingNode', nodes);
       }
     };
 
@@ -125,10 +135,15 @@
       },
       showAddUser() {
         return this.currentNode.nodePersonType === '2';
+      },
+      showFixedFlowGroup() {
+        return this.pageType !== 'detail' && this.flowType === 1;
       }
     };
 
-    onLoad() {
+    onLoad(e) {
+//      debugger
+//      let r = this.$wxpage.route;
     };
 
     onShow() {

@@ -21,7 +21,7 @@
                   </block>
                 </view>
                 <!--选人按钮-->
-                <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input-box" wx:if="{{showAddUser}}">
                   <view class="weui-uploader__input" @tap="chooseUser"></view>
                 </view>
               </view>
@@ -63,6 +63,7 @@
     data = {
       nodePersons: [],
       showDialog: false,
+      pageType: 'add',
     };
 
     components = {
@@ -72,6 +73,12 @@
     methods = {
       chooseUser() {
         this.showDialog = true;
+      },
+      getProp(prop) {
+        this.pageType = prop.pageType;
+        if (this.pageType === 'detail') {
+          this.nodePersons = prop.currentNode.nodePersons;
+        }
       },
     };
 
@@ -83,7 +90,11 @@
       }
     };
 
-    computed = {};
+    computed = {
+      showAddUser() {
+        return this.pageType !== 'detail';
+      }
+    };
 
     onLoad() {
     };

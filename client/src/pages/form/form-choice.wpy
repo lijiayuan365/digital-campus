@@ -46,14 +46,14 @@
     };
 
     methods = {
-      tabClick (e) {
+      tabClick(e) {
         this.sliderOffset = e.currentTarget.offsetLeft;
         this.activeIndex = e.currentTarget.id;
       },
     };
 
     events = {
-      tabClick (tabIndex) {
+      tabClick(tabIndex) {
         tabIndex === '0' && this.initForms();
         tabIndex === '1' && this.initFormGroup();
       }
@@ -64,6 +64,9 @@
     computed = {
       API() {
         return this.$parent.globalData.API;
+      },
+      requestHeader() {
+        return this.$parent.globalData.header;
       }
     };
 
@@ -74,34 +77,27 @@
 
     onShow() {
     };
-    initForms() {
-      let _this = this;
-      wx.request({
-        url: `${_this.API}/form/getFormList`,
-        data: {},
-        success(res) {
-          try {
-            console.log(res.data);
-            _this.forms = res.data.data;
-          } catch (e) {
-          }
-        }
-      });
+
+    async initForms() {
+      try {
+        let res = await wepy.request({
+          url: `${this.API}/form/getFormList`,
+        });
+        this.forms = res.data.data;
+        this.$apply();
+      } catch (e) {
+        console.log(e);
+      }
     };
-    initFormGroup() {
-      let _this = this;
-      wx.request({
-        url: `${_this.API}/form/getFormGroup`,
-        data: {},
-        success(res) {
-          try {
-            console.log(res.data);
-            _this.groups = res.data.data;
-          } catch (e) {
-            debugger;
-          }
-        }
-      });
+
+    async initFormGroup() {
+      try {
+        let res = await wepy.request(`${this.API}/form/getFormGroup`);
+        this.groups = res.data.data;
+        this.$apply();
+      } catch (e) {
+        console.log(e);
+      }
     };
   }
 </script>

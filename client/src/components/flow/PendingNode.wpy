@@ -74,7 +74,12 @@
     watch = {
       nodePersons(val) {
         this.pendingNode[this.pickedIndex].nodePersons = val;
-      }
+      },
+//      showDialog(val) {
+//        if (val) {
+//          this.nodePersons = [];
+//        }
+//      }
     };
 
     computed = {};
@@ -103,5 +108,6 @@
     background-color: #f8f8f8;
     z-index: 2;
   }
+
   @import "flow";
 </style>

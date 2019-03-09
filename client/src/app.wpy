@@ -10,8 +10,7 @@
   export default class extends wepy.app {
     config = {
       pages: [
-//        'pages/form/form-home',
-//        'pages/start',
+        'pages/start',
         'pages/home',
         'pages/address-book',
         'pages/user-card',
@@ -98,7 +97,8 @@
       }
     };
     globalData = {
-      API: 'http://localhost:3000/client'
+      API: 'http://localhost:3000/client',
+      header:{Cookie: ''},
 //      API: 'http://zrwr9d.natappfree.cc/client'
     };
 

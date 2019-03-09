@@ -1,16 +1,18 @@
 <template>
   <view class="flow">
+    <!--自由流程-->
     <view wx:if="{{flow.flowType === 0}}">
-      <freeFlow :ccPerson.sync="ccPerson">
-      </freeFlow>
+      <freeFlow :ccPerson.sync="ccPerson"></freeFlow>
     </view>
-    <!--<fixedFlow wx:elif="{{flow.flowType === 1}}"-->
-    <!--:flow.sync="flow"-->
-    <!--:ccPerson.sync="ccPerson"-->
-    <!--:currentNode.sync="currentNode">-->
-    <!--</fixedFlow>-->
-    <fixedFlow wx:elif="{{flow.flowType === 1}}" :ccPerson.sync="ccPerson"></fixedFlow>
-    <branchFlow wx:else :ccPerson.sync="ccPerson"></branchFlow>
+    <!--固定流程-->
+    <view wx:elif="{{flow.flowType === 1}}">
+      <fixedFlow :ccPerson.sync="ccPerson"></fixedFlow>
+    </view>
+    <!--分支流程-->
+    <view wx:else>
+      <branchFlow :ccPerson.sync="ccPerson"></branchFlow>
+    </view>
+    <!--当前节点需要选择的节点处理人-->
     <pendingNode :pendingNode.sync="pendingNode" :isShow.sync="showPendingNode"></pendingNode>
   </view>
 </template>
@@ -24,27 +26,16 @@
 
   export default class FlowIndex extends wepy.component {
     props = {
-//      flow: {
-//        type: Object,
-//      },
-//      ccPerson: Object,
-//      pendingNode: {
-//        type: Object,
-//        twoWay: true,
-//      },
-//      currentNode: {
-//        type: Object,
-////        twoWay: true,
-//      },
+      ccPerson: Array,
     };
 
     data = {
       flow: {},
-      ccPerson: {},
       currentNode: {},
       nodePersons: [],
       pendingNode: [],
       showPendingNode: false,
+      pageType: '',
     };
 
     components = {
@@ -55,43 +46,63 @@
     };
 
     methods = {
-      // 导出流程数据
+      // 导出流程数据到父组件
       exportFlow() {
         let flowData = {};
         if (this.flow.flowType === 0) {
           // 自由流程
           flowData.flow = this.flow;
           flowData.currentNode = this.currentNode;
+          if (this.pendingNode.length) {
+            flowData.pendingNode = this.pendingNode;
+          }
         } else if (this.flow.flowType === 1) {
           // 固定流程
           flowData = this.$invoke('fixedFlow', 'exportFlow');
           flowData.pendingNode = this.pendingNode;
+          if (this.pendingNode.length) {
+            flowData.pendingNode = this.pendingNode;
+          }
         } else {
           // 分支流程
           flowData = this.$invoke('branchFlow', 'exportFlow');
           flowData.pendingNode = this.pendingNode;
+          if (this.pendingNode.length) {
+            flowData.pendingNode = this.pendingNode;
+          }
         }
         flowData.flowType = this.flow.flowType;
         return flowData;
-//        this.$emit('getFlowData', flowData);
       },
-      // 获取组件异步传递的数据
+      // 获取父组件异步传递的数据
       getProp(prop) {
-        this.flow = prop.flow;
-        this.pendingNode = prop.pendingNode;
-        this.currentNode = prop.currentNode;
-        this.nodePersons = prop.nodePersons;
-
-        if (prop.flow.flowType === 1) {
+        this.flow = prop.flow || this.flow;
+        this.pendingNode = prop.pendingNode || this.pendingNode;
+        this.currentNode = prop.currentNode || this.currentNode;
+        this.nodePersons = prop.nodePersons || this.nodePersons;
+        this.pageType = prop.pageType || this.pageType;
+        if (prop.flow.flowType === 0) {
+          // 自由流程
+          this.$invoke('freeFlow', 'getProp', {
+            flow: prop.flow,
+            flowType: 0,
+            pageType: prop.pageType,
+            currentNode: prop.currentNode,
+          });
+        } else if (prop.flow.flowType === 1) {
           // 固定流程
           this.$invoke('fixedFlow', 'getProp', {
             flow: prop.flow,
+            flowType: 1,
+            pageType: prop.pageType,
             currentNode: prop.currentNode,
           });
-        } else if(prop.flow.flowType === 2){
+        } else if (prop.flow.flowType === 2) {
           // 分支流程
           this.$invoke('branchFlow', 'getProp', {
             flow: prop.flow.branchFlow,
+            flowType: 2,
+            pageType: prop.pageType,
             currentNode: prop.currentNode,
           });
         }

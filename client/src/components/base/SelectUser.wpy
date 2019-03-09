@@ -84,6 +84,7 @@
             user.checked = false;
           }
         });
+        this.$apply();
       }
     };
 

@@ -5,7 +5,7 @@
         <view class="weui-cell">
           <view class="weui-cell__bd">
             <!--处理人-->
-            <view class="weui-uploader" wx:if="{{currentNode.nodePersonType !== '1'}}">
+            <view class="weui-uploader" wx:if="{{showDealingUser}}">
               <view class="weui-uploader__hd">
                 <view class="weui-uploader__title">处理人</view>
                 <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
@@ -63,6 +63,7 @@
       flow: {},
       currentNode: {},
       nodePersons: [],
+      pageType: '',
       showDialog: false,
     };
 
@@ -75,18 +76,21 @@
         this.showDialog = true;
       },
       getProp(prop) {
+        debugger;
         let branchFlow = {
           data: prop.flow.data,
           childNode: prop.flow.childNode,
-        }
+        };
         this.flow = branchFlow;
         this.currentNode = prop.currentNode;
+        this.pageType = prop.pageType;
       },
       exportFlow() {
         let flowData = {
           flow: this.flow,
           currentNode: this.currentNode,
         };
+        debugger
         return flowData;
       },
     };
@@ -102,7 +106,10 @@
     computed = {
       showAddUser() {
         return this.currentNode.nodePersonType === '2';
-      }
+      },
+      showDealingUser() {
+        return this.currentNode.nodePersonType !== '1' || this.pageType === 'detail';
+      },
     };
 
     onLoad() {

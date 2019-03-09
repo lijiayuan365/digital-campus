@@ -34,6 +34,7 @@
     methods = {
       changeIndex(e) {
         this.activeIndex = e.currentTarget.dataset.index;
+        this.$emit('checkTab',this.activeIndex);
       }
     };
 

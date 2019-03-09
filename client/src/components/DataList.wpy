@@ -20,18 +20,18 @@
       <view class="weui-panel weui-panel_access">
         <!--<view class="weui-panel__hd">图文组合列表</view>-->
         <view class="weui-panel__bd">
-          <navigator wx:for="{{list}}" wx:key="{{index}}" url="detail" class="weui-media-box weui-media-box_appmsg"
+          <navigator wx:for="{{list}}" wx:key="{{index}}" url="{{item.path}}" class="weui-media-box weui-media-box_appmsg"
                      hover-class="weui-cell_active">
             <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
               <image class="weui-media-box__thumb" src="../../images/pic_160.png"/>
             </view>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <view class="weui-media-box__title">标题一</view>
-              <view class="weui-media-box__desc">审批中：提单人处理</view>
+              <view class="weui-media-box__title">{{item.title}}</view>
+              <view class="weui-media-box__desc">{{item.desc}}</view>
               <view class="weui-media-box__info">
-                <view class="weui-media-box__info__meta">审批单</view>
-                <view class="weui-media-box__info__meta">09-12</view>
-                <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">李佳远</view>
+                <view class="weui-media-box__info__meta">{{item.dataType}}</view>
+                <view class="weui-media-box__info__meta">{{item.date}}</view>
+                <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.creator.userName}}</view>
               </view>
             </view>
           </navigator>

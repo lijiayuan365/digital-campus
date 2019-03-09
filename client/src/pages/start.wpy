@@ -1,5 +1,15 @@
 <template>
-  <view>启动页</view>
+  <view class="start-page">
+    <view wx:if="{{showPage}}">
+      <view class="org-avatar">
+        <image src="http://img.cdn.lijiayuan.top/zzy/zk-avatar.jpg"></image>
+      </view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" @tap="login">系统账户登录</button>
+        <button class="weui-btn" type="primary" @tap="signUp">注册</button>
+      </view>
+    </view>
+  </view>
 </template>
 <script>
   import wepy from 'wepy';
@@ -16,56 +26,89 @@
     config = {};
     components = {};
     data = {
-      name: 'ww'
+      showPage: false,
     };
     computed = {
       API() {
         return this.$parent.globalData.API;
       }
     };
-    methods = {};
+    methods = {
+      login() {
+        wx.navigateTo({
+          url: 'sign-in'
+        });
+      },
+      signUp() {
+        wx.navigateTo({
+          url: 'sign-up'
+        });
+      }
+    };
     events = {};
 
     onLoad() {
       // debugger
+      wx.showLoading({
+        title: '加载中',
+      });
       this.initData();
     }
 
     initData() {
-      let _this = this;
-      wx.checkSession({
-        success() {
-          _this.getAddressBook();
-          // session_key 未过期，并且在本生命周期一直有效
-        },
-        fail() {
-          // session_key 已经失效，需要重新执行登录流程
-          wx.login(); // 重新登录
-        }
-      });
+//      let _this = this;
+//      wx.checkSession({
+//        success() {
+//          _this.getAddressBook();
+//          // session_key未过期，并且在本生命周期一直有效
+//        },
+//        fail() {
+//          // session_key 已经失效，需要重新执行登录流程
+//          wx.login(); // 重新登录
+//          _this.isSysUser();
+//        }
+//      });
+      this.isSysUser();
     }
 
-    getAddressBook() {
+    async getAddressBook() {
       let _this = this;
-      console.log(this.name);
-      wx.request({
-        url: `${_this.API}/user/getAddressBook`,
-        data: {},
-        success(res) {
-          console.log(res.data);
-          try {
-            wx.setStorageSync('addressBook', res.data.data.addressBook);
-          } catch (e) {
-          }
-          try {
-            wx.setStorageSync('userList', res.data.data.userList);
-          } catch (e) {
-          }
-          wx.switchTab({
-            url: 'home'
-          });
+      try {
+        let res = await wepy.request(`${_this.API}/user/getAddressBook`);
+        wx.setStorageSync('addressBook', res.data.data.addressBook);
+        wx.setStorageSync('userList', res.data.data.userList);
+        let sessionId = res.data.data.sessionId;
+        this.$parent.globalData.header.Cookie = `JSESSIONID=${sessionId}`;
+        wx.switchTab({
+          url: 'home'
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    // 判断是否系统用户
+    async isSysUser() {
+      try {
+        let res = await wepy.login();
+        let code = res.code;
+        res = await wepy.request({
+          url: `${this.API}/user/isSysUser`,
+          data: {code}
+        });
+        wx.hideLoading();
+        if (res.data.data.isUser) {
+          // 系统用户
+          this.getAddressBook();
+        } else {
+          this.showPage = true;
+          this.$apply();
         }
-      });
+        wx.setStorageSync('openid', res.data.data.openid);
+        wx.setStorageSync('session_key', res.data.data.session_key);
+      } catch (e) {
+        console.log(e);
+      }
     }
 
     // Other properties
@@ -73,4 +116,17 @@
   // some code
 </script>
 <style lang="less">
+  .start-page {
+    .org-avatar {
+      text-align: center;
+      image {
+        width: 240px;
+        height: 240px;
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 50% 50%;
+
+      }
+    }
+  }
 </style>
