@@ -2,7 +2,7 @@
 <template>
   <div>
     <bread-crumb></bread-crumb>
-    <div class="operate-wrapper">
+    <div class="table-btn-wrapper">
       <el-button type="success" size="small" round @click="showDialog('add')">新增职位</el-button>
       <el-button type="danger" size="small" round @click="batchDeletePost">删除</el-button>
     </div>
@@ -100,38 +100,42 @@ export default {
       this.isShow = true;
     },
     addPost() {
-      this.$http.post('/api/user/addPost', this.post)
-        .then((res) => {
-          this.$notify({
-            title: '提示',
-            message: '新增职位信息成功',
-            type: 'success',
-            duration: 2000
-          })
-        })
+      this.$http.post('/api/user/addPost', this.post).then((res) => {
+        this.$message({
+          message: '添加职位成功',
+          duration: 1500,
+          type: 'success',
+        });
+        this.isShow = false;
+        this.initData();
+      })
     },
     updatePost() {
       let post = this.post;
-      this.$http.post('/api/user/updatePost', post)
-        .then((res) => {
-          this.$notify({
-            title: '提示',
-            message: '更新职位信息成功',
-            type: 'success',
-            duration: 2000
-          })
+      this.$http.post('/api/user/updatePost', post).then((res) => {
+        this.$message({
+          message: '更新职位信息成功',
+          duration: 1500,
+          type: 'success',
         });
+        this.isShow = false;
+        this.initData();
+      });
     },
     removePost(postId) {
-      this.$http.post('/api/user/deletePost', {postId: postId})
-        .then((res) => {
-          this.$notify({
-            title: '提示',
-            message: '删除职位信息成功',
+      this.$confirm('确认删除该职位信息?', '提示').then(() => {
+        this.$http.post('/api/user/deletePost', {postId: postId}).then((res) => {
+          this.$message({
+            message: '更新职位信息成功',
+            duration: 1500,
             type: 'success',
-            duration: 2000
-          })
+          });
+          this.initData();
         })
+      }).catch(() => {
+
+      });
+
     },
     batchDeletePost() {
 
@@ -153,10 +157,11 @@ export default {
   .post-form .el-select {
     width: 100%;
   }
-  .add-type{
+
+  .add-type {
     /*margin-left: .5rem;*/
     font-size: .5rem;
     font-weight: 700;
-    color:#409EFF;
+    color: #409EFF;
   }
 </style>

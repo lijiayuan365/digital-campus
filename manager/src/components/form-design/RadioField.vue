@@ -19,7 +19,7 @@
         <el-radio-group class="field-item-list-wrapper">
           <el-radio
             v-for="(item,index) in fieldData.radioList" :key="index"
-            :label="item"></el-radio>
+            :label="item.value"></el-radio>
         </el-radio-group>
       </a>
       <div class="field-setting">
@@ -32,7 +32,7 @@
           <div v-for="(item, index) in fieldData.radioList" :key="index" style="display: flex;align-items: center">
             <el-radio false></el-radio>
             <el-input
-              v-model="fieldData.radioList[index]"
+              v-model="fieldData.radioList[index].value"
               size="small"
               style="padding: .2rem 0;margin-left: 6px;">
             </el-input>
@@ -74,7 +74,12 @@ export default {
         return {
           fieldName:'RadioField',
           fieldTitle: '单项选择',
-          radioList: ['选项1', '选项2', '选项3', '选项4'],
+          radioList: [
+            {value: '选项1', checked: false},
+            {value: '选项2', checked: false},
+            {value: '选项3', checked: false},
+            {value: '选项4', checked: false},
+          ],
           isMust: false,
           readOnly: false,
         }

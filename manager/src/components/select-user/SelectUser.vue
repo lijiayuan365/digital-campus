@@ -10,7 +10,7 @@
       <div class="user-box">
         <el-tag
           class="selected-user"
-          v-for="user in selectedUserTmp"
+          v-for="user in selectedUser"
           :key="user.userId"
           closable
           @close="removeUser(user)">
@@ -41,37 +41,10 @@
               </li>
             </ul>
           </div>
-          <!--<el-table-->
-          <!--:data="tableData"-->
-          <!--@toggleRowSelection="selectionChange"-->
-          <!--:max-height="300"-->
-          <!--style="width: 100%">-->
-          <!--<el-table-column-->
-          <!--type="selection"-->
-          <!--label="全选"-->
-          <!--width="55">-->
-          <!--</el-table-column>-->
-          <!--<el-table-column min-width="20%" label="姓名">-->
-          <!--&lt;!&ndash;<template slot="header" slot-scope="slot">&ndash;&gt;-->
-          <!--&lt;!&ndash;{{ slot }}&ndash;&gt;-->
-          <!--&lt;!&ndash;</template>&ndash;&gt;-->
-          <!--<template slot-scope="scope">-->
-          <!--<div class="user-item">-->
-          <!--<img :src="scope.row.avatar" width="24" height="24"/>-->
-          <!--<p class="user-name">{{scope.row.userName}}</p>-->
-          <!--</div>-->
-          <!--</template>-->
-          <!--</el-table-column>-->
-          <!--</el-table>-->
         </el-tab-pane>
         <el-tab-pane label="部门" name="dept">
           <div class="dept-filter">
             <div class="dept-list">
-              <!--<ul>-->
-              <!--<li class="dept-item" v-for="(dept, index) in deptList">-->
-              <!--{{dept.deptName}}-->
-              <!--</li>-->
-              <!--</ul>-->
               <el-tree :data="deptList" :props="deptTreeProps" @node-click="deptNodeClick"></el-tree>
             </div>
             <div class="user-list" :class="{ 'no-data':userList.length === 0}">
@@ -92,28 +65,6 @@
                 </li>
               </ul>
               <div>
-                <!--<el-table-->
-                <!--:data="tableData"-->
-                <!--@selection-change="selectionChange"-->
-                <!--:max-height="300"-->
-                <!--style="width: 600px">-->
-                <!--<el-table-column-->
-                <!--type="selection"-->
-                <!--label="全选"-->
-                <!--width="55">-->
-                <!--</el-table-column>-->
-                <!--<el-table-column min-width="20%" label="姓名">-->
-                <!--&lt;!&ndash;<template slot="header" slot-scope="slot">&ndash;&gt;-->
-                <!--&lt;!&ndash;{{ slot }}&ndash;&gt;-->
-                <!--&lt;!&ndash;</template>&ndash;&gt;-->
-                <!--<template slot-scope="scope">-->
-                <!--<div class="user-item">-->
-                <!--<img :src="scope.row.avatar" width="24" height="24"/>-->
-                <!--<p class="user-name">{{scope.row.userName}}</p>-->
-                <!--</div>-->
-                <!--</template>-->
-                <!--</el-table-column>-->
-                <!--</el-table>-->
               </div>
             </div>
           </div>
@@ -167,14 +118,13 @@
 
   export default {
     props: {
-      selectedUser: {
+      selectedUserProp: {
         type: Array,
         default: () => []
       }
     },
     data() {
       return {
-        //      showUserDialog:this.$store.state.SelectUser.isShow
         activeName: "all",
         deptList: [],
         deptTreeProps: {
@@ -184,38 +134,23 @@
         orgList: [],
         userList: [],
         search: "",
-//        selectedUserTmp:this.selectedUser
+        selectedUserIds:[],
       };
     },
     components: {},
 
     computed: {
-      selectedUserIds(){
-        let selectedUserIds = this.selectedUserTmp.map(user => {return user._id});
-        return selectedUserIds;
-      },
-      userIds(){
-        let userIds = this.userList.map(user => {return user._id});
+      userIds() {
+        let userIds = this.userList.map(user => {
+          return user._id
+        });
         return userIds;
       },
-      selectedUserTmp:{
-        get: function () {
-          if(this.selectedUser){
-//            return [...this.selectedUser];
-            return [];
-          }
-//          debugger
-//          let newList = this.selectedUser.map(user => user);
-//          return newList;
-//          let newList =[...this.selectedUser];
-//          return newList;
-//          return JSON.parse(JSON.stringify(this.selectedUser));
-        },
-        set:function (user) {
-//          let checked = user.checked;
-//          this.checked = checked;
-          this.selectedUser = user
-        }
+      selectedUser() {
+        let users = this.userList.filter((user) => {
+          return this.selectedUserIds.includes(user._id);
+        });
+        return users;
       },
       // vuex 操作
       ...mapState({
@@ -227,7 +162,7 @@
     },
 
     mounted() {
-      this.selectedUserTmp = this.selectedUser;
+//      this.selectedUser = this.selectedUserProp;
     },
 
     methods: {
@@ -278,8 +213,8 @@
           res = res.data;
           _this.userList = res.data;
           // 处理已选的用户
-          _this.userList.forEach(user =>{
-            if(_this.selectedUserIds.includes(user.userId)){
+          _this.userList.forEach(user => {
+            if (_this.selectedUserIds.includes(user.userId)) {
               user.checked = true;
             }
           });
@@ -291,9 +226,13 @@
        */
       addUser(user) {
         if (user.checked) {
-          this.selectedUserTmp.push(user);
+          this.selectedUserIds.push(user._id);
         } else {
-          this.selectedUserTmp.splice(this.selectedUserIds.indexOf(user._id), 1);
+          //
+
+          let index = this.selectedUserIds.indexOf(user._id);
+          this.selectedUserIds.splice(index, 1);
+//          this.selectedUser.splice(this.selectedUserIds.indexOf(user._id), 1);
         }
       },
       /**
@@ -301,15 +240,15 @@
        * @param user
        */
       removeUser(user) {
-        this.selectedUserTmp.splice(this.selectedUserTmp.indexOf(user), 1);
+        this.selectedUserIds.splice(this.selectedUserIds.indexOf(user._id), 1);
         this.userList[this.userIds.indexOf(user.userId)].checked = false;
       },
       /**
        * 提交选定用户
        */
       commitUser() {
-        this.SET_USER_LIST(this.selectedUserTmp);
-        this.$emit("update:selectedUser", this.selectedUserTmp);
+        this.SET_USER_LIST(this.selectedUser);
+        this.$emit("update:selectedUserProp", this.selectedUser);
         this.closeDialog();
       },
       /**
@@ -320,11 +259,20 @@
         SET_USER_DIALOG_SHOW: "SET_USER_DIALOG_SHOW"
       })
     },
-//    watch:{
-//      selectedUser(val){
-//        this.selectedUserTmp = val;
+    watch:{
+      selectedUserProp(){
+        this.selectedUserIds = this.selectedUserProp.map(user => {
+            return user._id
+          });
+      },
+//      selectedUserProp:{
+//        handler(oldValue,newValue){
+//          debugger
+//        },
+//        deep:true,
+//        //        this.selectedUser = val;
 //      }
-//    }
+    }
   };
 </script>
 
@@ -390,7 +338,8 @@
     padding-top: 1rem;
     border-top: 1px solid #c0c4cc;
   }
-  .no-data{
+
+  .no-data {
     background: url("../../assets/no-data.png") no-repeat center;
   }
 </style>

@@ -1,3 +1,8 @@
 .el-select {
   width: 100%;
 }
+/*表格顶部的操作按钮*/
+.table-btn-wrapper{
+  margin-bottom: 1rem;
+  display: flex;
+}

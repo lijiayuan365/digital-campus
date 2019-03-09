@@ -30,7 +30,7 @@ export default {
   .bread-crumb-wrapper {
     display: flex;
     align-items: center;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
   }
 
   .bread-crumb {

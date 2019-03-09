@@ -11,10 +11,14 @@
       type="selection"
       width="70">
     </el-table-column>
-    <el-table-column v-for="(item,index) in columnData" :key="index" :prop="item.data" :label="item.label"></el-table-column>
+    <el-table-column
+      v-for="(item,index) in columnData" :key="index"
+      :prop="item.data" :label="item.label" :formatter="item.formatter">
+
+    </el-table-column>
     <!--<el-table-column prop="name" label="姓名"></el-table-column>-->
     <!--<el-table-column prop="address" label="地址"></el-table-column>-->
-    <el-table-column  prop="" fixed="right" label="操作" width="50">
+    <el-table-column prop="" fixed="right" label="操作" width="50">
       <template slot-scope="scope">
         <el-dropdown placement="">
         <span class="more-handle">
@@ -34,24 +38,23 @@ export default {
     dataList: {
       type: Array
     },
-    columnData:{
-      type:Array
+    columnData: {
+      type: Array
     },
-    selections:{
-      type:Array,
-      default:()=>{
+    selections: {
+      type: Array,
+      default: () => {
         return []
       }
     }
   },
   data() {
-    return {
-    };
+    return {};
   },
   components: {},
 
   computed: {
-    selected(){
+    selected() {
       return this.selections
     }
   },
@@ -64,7 +67,7 @@ export default {
   },
 
   methods: {
-    selectionChange(val){
+    selectionChange(val) {
 //      this.selections = val;
       this.$emit('update:selections', val)
     }

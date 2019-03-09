@@ -19,7 +19,7 @@
         <el-checkbox-group size="medium" class="field-item-list-wrapper">
           <el-checkbox
             v-for="(item ,index) in fieldData.checkboxList" :key="index"
-            :label="item"
+            :label="item.value"
           ></el-checkbox>
         </el-checkbox-group>
       </a>
@@ -33,7 +33,7 @@
           <div v-for="(item, index) in fieldData.checkboxList" :key="index" style="display: flex;align-items: center">
             <el-checkbox></el-checkbox>
             <el-input
-              v-model="fieldData.checkboxList[index]"
+              v-model="fieldData.checkboxList[index].value"
               size="small"
               style="padding: .2rem 0;margin-left: 6px;">
             </el-input>
@@ -94,7 +94,12 @@ export default {
         return {
           fieldTitle: '多项选择',
           fieldName:'CheckboxField',
-          checkboxList: ['选项1', '选项2', '选项3', '选项4'],
+          checkboxList: [
+            {value: '选项1', checked: false},
+            {value: '选项2', checked: false},
+            {value: '选项3', checked: false},
+            {value: '选项4', checked: false},
+          ],
           isMust: false,
           readOnly: false,
         }

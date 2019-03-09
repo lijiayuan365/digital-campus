@@ -1,46 +1,57 @@
 <template>
   <div>
-    <button>按钮</button>
+    <div>
+
+    </div>
+    <button @click="addUser">按钮</button>
   </div>
-  <!-- <el-table
-    :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-    style="width: 100%">
-    <el-table-column
-      label="Date"
-      prop="date">
-    </el-table-column>
-    <el-table-column
-      label="Name"
-      prop="name">
-    </el-table-column>
-    <el-table-column
-      align="right">
-      <template slot="header" slot-scope="scope">
-        <el-input
-          v-model="search"
-          size="mini"
-          placeholder="输入关键字搜索"/>
-      </template>
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-        <el-button
-          size="mini"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
-      </template>
-    </el-table-column>
-  </el-table>-->
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      selectedProp:[
+        {id:'2',name:'11'},
+      ],
+      userList:[
+        {id:'1',name:'1'},
+        {id:'2',name:'11'},
+        {id:'3',name:'13'},
+      ],
+      ids:['3']
+    };
   },
-  methods: {},
-  computed:{},
-  watch:{}
+  methods: {
+    addUser(){
+      debugger
+      this.selectedIds.push('2');
+    }
+  },
+  computed:{
+    selectedIds(){
+      let ids = this.selectedProp.map(user => user.id);
+      return ids;
+    },
+//    userIds(){
+//      let ids = this.userList.map(user => user.id);
+//      return ids;
+//    },
+    selectedUser(){
+      let user = this.userList.filter((user)=>{
+        return this.ids.includes(user.id);
+      });
+      return user
+//      return [...this.ids]
+    }
+  },
+  watch:{
+    selectedIds:{
+      handler(oldValue,newValue){
+        debugger
+      },
+      deep:true,
+    }
+  }
 };
 </script>

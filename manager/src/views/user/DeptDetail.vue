@@ -1,13 +1,12 @@
 <!--  -->
 <template>
   <div>
-    <div class="bread-crumb-wrapper">
-      <el-button size="small">返回</el-button>
-      <el-breadcrumb separator-class="el-icon-arrow-right" class="bread-crumb">
+    <bread-crumb>
+      <template>
         <el-breadcrumb-item :to="{ path: '/user' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item>部门信息</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
+      </template>
+    </bread-crumb>
     <!--<div v-if="pageType === 'detail'">-->
     <!--详情-->
     <!--</div>-->
@@ -33,7 +32,9 @@
             </el-tag>
           </div>
         </el-form-item>
-
+        <el-form-item label="部门说明">
+          <el-input type="textarea" v-model="deptInfo.desc"></el-input>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" v-if="pageType === 'edit'" @click="updateDept">保存</el-button>
           <el-button type="primary" v-if="pageType === 'add'" @click="addDept">添加</el-button>
@@ -42,10 +43,11 @@
         </el-form-item>
       </el-form>
     </div>
-    <user-select :selectedUser.sync="deptHead"></user-select>
+    <user-select :selectedUserProp.sync="deptHead"></user-select>
   </div>
 </template>
 <script>/* eslint-disable indent,semi */
+import BreadCrumb from '../../components/BreadCrumb.vue'
 import UserSelect from '../../components/select-user/SelectUser.vue'
 import {mapMutations} from 'vuex'
 
@@ -60,6 +62,7 @@ export default {
     };
   },
   components: {
+    BreadCrumb,
     UserSelect
   },
 
@@ -107,23 +110,27 @@ export default {
     addDept() {
       this.deptInfo.deptHead = this.deptHeadUser;
       this.$http.post('/api/user/addDept', {dept: this.deptInfo}).then((res) => {
-        this.$notify({
-          title: '提示',
-          message: '新增部门信息成功',
+        this.$message({
+          message: '添加部门信息成功',
+          duration: 1500,
           type: 'success',
-          duration: 2000
-        })
+        });
+        this.$router.push({
+          path: '/user'
+        });
       });
     },
     updateDept() {
       this.deptInfo.deptHead = this.deptHeadUser;
       this.$http.post('/api/user/updateDept', {dept: this.deptInfo}).then((res) => {
-        this.$notify({
-          title: '提示',
+        this.$message({
           message: '更新部门信息成功',
+          duration: 1500,
           type: 'success',
-          duration: 2000
-        })
+        });
+        this.$router.push({
+          path: '/user'
+        });
       });
     },
     removeUser(user) {
@@ -137,16 +144,6 @@ export default {
 </script>
 
 <style scoped>
-  .bread-crumb-wrapper {
-    display: flex;
-    align-items: center;
-    padding-bottom: .5rem;
-  }
-
-  .bread-crumb {
-    margin-left: 1rem;
-  }
-
   .page-title {
     text-align: left;
     font-size: 18px;

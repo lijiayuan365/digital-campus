@@ -24,7 +24,7 @@
                   <el-dropdown-item @click.native="toDeptDetail(node.data.deptId,'edit')">编辑</el-dropdown-item>
                   <!--<el-dropdown-item @click.native="toDeptDetail(node.data.deptId,'detail')">查看</el-dropdown-item>-->
                   <el-dropdown-item
-                    @click.native="deleteDept(node.data.deptId)"
+                    @click.native="deleteOperate('dept',node.data.deptId)"
                     v-if="node.level !== 1"
                   >删除</el-dropdown-item>
                 </el-dropdown-menu>
@@ -46,11 +46,8 @@
                   <i class="el-icon-menu" style="z-index:10"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>新增</el-dropdown-item>
-                  <el-dropdown-item>编辑</el-dropdown-item>
-                  <el-dropdown-item>删除</el-dropdown-item>
-                  <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-                  <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                  <el-dropdown-item @click.native="toOrgDetail('edit',org.orgId)">编辑</el-dropdown-item>
+                  <el-dropdown-item @click.native="deleteOperate('org',org.orgId)">删除</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
               <!-- </template> -->
@@ -77,41 +74,41 @@
   </div>
 </template>
 <script>
-/* eslint-disable indent,semi */
-import DataTable from "../../components/DataTable.vue";
+  /* eslint-disable indent,semi */
+  import DataTable from "../../components/DataTable.vue";
 
-export default {
-  components: {
-    DataTable
-  },
+  export default {
+    components: {
+      DataTable
+    },
 
-  data() {
-    return {
-      activeName: "dept",
-      filterText: "",
-      deptTree: [],
-      orgList: [],
-      defaultProps: {
-        children: "childDept",
-        label: "deptName",
-        isLeaf: "isLeaf"
-      },
-      userList: [],
-      columnData: [
-        { data: "userName", label: "姓名" },
-        { data: "_id", label: "用户Id" },
-        { data: "post.postName", label: "职位" },
-        { data: "tel", label: "电话" },
-        { data: "email", label: "邮箱" }
-      ],
-      selectedUsers: []
-    };
-  },
-  computed: {},
+    data() {
+      return {
+        activeName: "dept",
+        filterText: "",
+        deptTree: [],
+        orgList: [],
+        defaultProps: {
+          children: "childDept",
+          label: "deptName",
+          isLeaf: "isLeaf"
+        },
+        userList: [],
+        columnData: [
+          {data: "userName", label: "姓名"},
+          {data: "_id", label: "用户Id"},
+          {data: "post.postName", label: "职位"},
+          {data: "tel", label: "电话"},
+          {data: "email", label: "邮箱"}
+        ],
+        selectedUsers: []
+      };
+    },
+    computed: {},
 
-  created() {
-    this.initData();
-    // var ws = new WebSocket("wss://echo.websocket.org");
+    created() {
+      this.initData();
+      // var ws = new WebSocket("wss://echo.websocket.org");
 //    var ws = new WebSocket('ws://127.0.0.1:8000');
 //    ws.onopen = function(evt) {
 //      console.log("Connection open ...");
@@ -126,192 +123,189 @@ export default {
 //    ws.onclose = function(evt) {
 //      console.log("Connection closed.");
 //    };
-  },
+    },
 
-  mounted() {},
+    mounted() {
+    },
 
-  methods: {
-    initData() {
-      if (this.$route.query.activeName === "org") {
-        this.activeName = "org";
-        this.getOrgList();
-      } else {
-        this.getDeptTree();
-        this.getUserList();
-      }
-    },
-    // 过滤部门
-    filterNode(value, data) {
-      if (!value) return true;
-      return data.deptName.indexOf(value) !== -1;
-    },
-    // 切换tab
-    checkTab() {
-      if (this.activeName === "dept") {
-        this.getDeptTree();
-        this.getUserList();
-      } else {
-        this.getOrgList();
-      }
-    },
-    /**
-     *
-     */
-    getDeptTree() {
-      this.$http.get("/api/user/getDeptTree").then(res => {
-        res = res.data;
-        this.deptTree = res.data;
-      });
-    },
-    //    getDept(deptId) {
-    //      let _this = this;
-    //      this.$http
-    //        .get("/api/user/getDept", { params: { deptId: deptId } })
-    //        .then(result => {
-    //          let res = result.data;
-    //          let deptList = res.data;
-    //          _this.deptTree.push(deptList);
-    //        });
-    //    },
-    getOrgList() {
-      this.$http.get("/api/user/getOrgList").then(res => {
-        this.orgList = res.data.data;
-      });
-    },
-    getUserList(searchType, searchId) {
-      this.$http
-        .get("/api/user/getUserList", {
-          params: { type: searchType, id: searchId }
-        })
-        .then(result => {
+    methods: {
+      initData() {
+        if (this.$route.query.activeName === "org") {
+          this.activeName = "org";
+          this.getOrgList();
+        } else {
+          this.getDeptTree();
+          this.getUserList();
+        }
+      },
+      // 过滤部门
+      filterNode(value, data) {
+        if (!value) return true;
+        return data.deptName.indexOf(value) !== -1;
+      },
+      // 切换tab
+      checkTab() {
+        if (this.activeName === "dept") {
+          this.getDeptTree();
+          this.getUserList();
+        } else {
+          this.getOrgList();
+        }
+      },
+      /**
+       *
+       */
+      getDeptTree() {
+        this.$http.get("/api/user/getDeptTree").then(res => {
+          res = res.data;
+          this.deptTree = res.data;
+        });
+      },
+      getOrgList() {
+        this.$http.get("/api/user/getOrgList").then(res => {
+          this.orgList = res.data.data;
+        });
+      },
+      getUserList(searchType, searchId) {
+        this.$http.get("/api/user/getUserList", {
+          params: {type: searchType, id: searchId}
+        }).then(result => {
           let res = result.data;
           this.userList = res.data;
         });
-    },
-    /**
-     *
-     * @param data
-     */
-    getDeptUserList(data) {
-      let deptId = data.deptId;
-      this.$http
-        .get("/api/user/getUserList", { params: { type: "dept", id: deptId } })
-        .then(result => {
+      },
+      getDeptUserList(data) {
+        let deptId = data.deptId;
+        this.$http.get("/api/user/getUserList", {params: {type: "dept", id: deptId}}).then(result => {
           let res = result.data;
           this.userList = res.data;
         });
-    },
-    addUser() {
-      this.$router.push({
-        path: "/user/detail",
-        query: {
-          type: "add"
-        }
-      });
-    },
-    toUserDetail(userId, type) {
-      this.$router.push({
-        path: "/user/detail",
-        query: {
-          userId: userId,
-          type: type
-        }
-      });
-    },
-    // 刪除用戶
-    deleteUser(index, rowData) {
-      let userId = rowData.userId;
-      this.$confirm("删除该用户", "删除用户")
-        .then(() => {
-          this.$http
-            .post("/api/user/deleteUser", { userId: userId })
-            .then(res => {
-              this.$notify({
-                title: "提示",
-                message: "删除成功",
-                type: "success",
-                duration: 200
-              });
+      },
+      addUser() {
+        this.$router.push({
+          path: "/user/detail",
+          query: {
+            type: "add"
+          }
+        });
+      },
+      toUserDetail(userId, type) {
+        this.$router.push({
+          path: "/user/detail",
+          query: {
+            userId: userId,
+            type: type
+          }
+        });
+      },
+      toDeptDetail(deptId, type) {
+        this.$router.push({
+          path: "/user/dept-detail",
+          query: {
+            deptId: deptId,
+            type: type
+          }
+        });
+      },
+      toOrgDetail(type, orgId) {
+        this.$router.push({
+          path: "/user/org-detail",
+          query: {
+            orgId: orgId,
+            type: type
+          }
+        });
+      },
+      // 刪除用戶
+      deleteUser(index, rowData) {
+        let userId = rowData.userId;
+        this.$confirm("删除该用户", "删除用户").then(() => {
+          this.$http.post("/api/user/deleteUser", {userId: userId}).then(res => {
+            this.$message({
+              message: '删除成功',
+              duration: 1500,
+              type: 'success',
             });
-        })
-        .catch(() => {});
-    },
-    // 批量刪除
-    batchDeleteUser() {
-      let userIds = [];
-      this.selectedUsers.forEach(item => {
-        userIds.push(item.userId);
-      });
-      this.$http
-        .post("/api/user/batchDeleteUser", { userIds: userIds })
-        .then(res => {
-          this.$notify({
-            title: "提示",
-            message: "删除成功",
-            type: "success",
-            duration: 200
+          });
+        }).catch(() => {
+        });
+      },
+      // 批量刪除
+      batchDeleteUser() {
+        let userIds = [];
+        this.selectedUsers.forEach(item => {
+          userIds.push(item.userId);
+        });
+        this.$http.post("/api/user/batchDeleteUser", {userIds: userIds}).then(res => {
+          this.$message({
+            message: '删除成功',
+            duration: 1500,
+            type: 'success',
           });
         });
-      console.log(this.selectedUsers);
-    },
+        console.log(this.selectedUsers);
+      },
+      deleteOperate(type, id) {
+        let deleteTip = type === 'dept' ? '删除该部门及其所有的子部门' : '删除该组织';
+        let url = type === 'dept' ? '/api/user/removeDept' : '/api/user/removeOrg';
+        let param = type === 'dept' ? {deptId: id} : {orgId: id};
+        this.$confirm(deleteTip, '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$http.post(url, param).then((res) => {
+            this.$message({
+              message: '删除成功',
+              duration: 1500,
+              type: 'success',
+            });
+            type === 'dept' && this.initData();
+            type === 'org' && this.getOrgList();
+          });
+        }).catch(() => {
 
-    toDeptDetail(deptId, type) {
-      this.$router.push({
-        path: "/user/dept-detail",
-        query: {
-          deptId: deptId,
-          type: type
-        }
-      });
+        });
+      },
     },
-    toOrgDetail(type, orgId) {
-      this.$router.push({
-        path: "/user/org-detail",
-        query: {
-          orgId: orgId,
-          type: type
-        }
-      });
+    watch: {
+      filterText(val) {
+        this.$refs.deptTree.filter(val);
+      }
     }
-  },
-  watch: {
-    filterText(val) {
-      this.$refs.deptTree.filter(val);
-    }
-  }
-};
+  };
 </script>
 
 <style scoped>
-.manager-user {
-  display: flex;
-  height: 100%;
-  min-height: 600px;
-}
+  .manager-user {
+    display: flex;
+    height: 100%;
+    min-height: 600px;
+  }
 
-.dept-tree {
-  flex: 0 0 180px;
-  padding: 0 16px;
-  background: #f2f6fc;
-  /*border: solid 1px;*/
-}
+  .dept-tree {
+    flex: 0 0 180px;
+    padding: 0 16px;
+    background: #f2f6fc;
+    /*border: solid 1px;*/
+  }
 
-.org-item {
-  padding: 5px 0;
-  text-align: left;
-}
+  .org-item {
+    padding: 5px 0;
+    text-align: left;
+  }
 
-.search-box {
-  margin-bottom: 1rem;
-}
+  .search-box {
+    margin-bottom: 1rem;
+  }
 
-.operate-wrapper {
-  margin-bottom: 1.5rem;
-  display: flex;
-}
+  .operate-wrapper {
+    margin-bottom: 1.5rem;
+    display: flex;
+  }
 
-.user-table {
-  margin-left: 1.5rem;
-  flex: 1 0 31rem;
-}
+  .user-table {
+    margin-left: 1.5rem;
+    flex: 1 0 31rem;
+  }
 </style>

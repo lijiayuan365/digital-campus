@@ -1,20 +1,33 @@
 <!--  -->
 <template>
   <div>
-    <div class="setting-wrapper">
-      <div class="setting-item">
-        <div class="setting-content">职位设置</div>
-        <router-link to="post">设置</router-link>
-      </div>
+    <!--<div class="setting-wrapper">-->
+      <!--<div class="setting-item">-->
+        <!--<div class="setting-content">职位设置</div>-->
+        <!--<router-link to="post">设置</router-link>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div  v-for="(setting,index) in settings">
+      <setting-item :setting="setting" @update="updateSetting"></setting-item>
     </div>
   </div>
 </template>
 <script>/* eslint-disable indent,semi */
+import SettingItem from '../../components/SettingItem.vue';
+
 export default {
   data() {
-    return {};
+    return {
+      that:this,
+      settings: [
+        {title: '职位设置', desc: '设置职位信息', path:'post'},
+
+      ]
+    };
   },
-  components: {},
+  components: {
+    SettingItem,
+  },
 
   computed: {},
 
@@ -24,20 +37,17 @@ export default {
   mounted() {
   },
 
-  methods: {}
+  methods: {
+    updateSetting(title){
+      debugger
+    },
+    demo() {
+      debugger
+    }
+  }
 }
 </script>
 
 <style scoped>
-  .setting-item{
-    display: flex;
-    margin: 0 3rem;
-    padding: 0 1rem;
-    height: 2.5rem;
-    border-bottom: solid 1px rgba(0,0,0,0.2);
-    align-items: center;
-  }
-  .setting-content{
-    margin-right: auto;
-  }
+
 </style>
