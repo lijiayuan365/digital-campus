@@ -62,7 +62,23 @@ class BaseDao {
       return error;
     }
   }
-
+  /**
+   * 
+   * @param {*} field 去重字段
+   * @param {*} condition 
+   * @param {*} constraints 
+   */
+  async findAllDistinct(field,condition, constraints){
+    try {
+      debugger
+      let data = await this.Model.find(condition, constraints ? constraints : null).distinct(field).exec();
+      // data = data.distinct(field);
+      return data;
+    } catch (error) {
+      console.log('findAllDistinct error--> ', error);
+      return error;
+    }
+  }
 
   /**
    * 查找符合条件的第一条 doc
@@ -112,7 +128,7 @@ class BaseDao {
    */
   async update(condition, updater) {
     try {
-      let result = await this.Model.update(condition, updater);
+      let result = await this.Model.updateOne(condition, updater);
       return result;
     } catch (error) {
       console.log(`update error--> ${error}`);
@@ -129,7 +145,7 @@ class BaseDao {
    */
   async remove(condition) {
     try {
-      let result = await this.Model.remove(condition);
+      let result = await this.Model.deleteOne(condition);
       return result;
     } catch (error) {
       console.log(`remove error--> ${error}`);

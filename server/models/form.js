@@ -1,17 +1,23 @@
 const mongoose = require('mongoose');
 const {mongoClient} = require('../util/mongo');
-// let Schema = mongooose.Schema;
+let Schema = mongoose.Schema;
 
 const form = new mongoose.Schema({
   creator:String,
   formName:String,
   formGroup:String,
-  formType:String,
+  formType:Number,
   formTitle:String,
-  formDesc:String,
   fieldList:Array,
   formSetting:Object,
-  formFlow:Object,
+  flowType: Number,
+  isFree:Boolean,
+  fixedFlow:[{ type: Schema.Types.ObjectId, ref: 'fixedFlow' }],
+  branchFlow:Object,
+  flowGraph:Object,
+  ccPerson: Array,
+  desc:String,
+  status:Number,
 });
 
 /*model 的参数1 导出的模块名，

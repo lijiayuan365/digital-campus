@@ -1,5 +1,6 @@
 const router = require('../../util/router-util');
 const FormService = require('../../service/manager/FormService')
+const API = '/manager/form';
 
 const OK_CODE = 0;
 let formService = new FormService();
@@ -7,7 +8,7 @@ let formService = new FormService();
 router.get('/demo', function (req, res, next) {
   res.send('hello manager')
 });
-router.get('/getFormList', (req, res) => {
+router.get(`${API}/getFormList`, (req, res) => {
   formService.getFormList().then((data) => {
     res.json({
       code: OK_CODE,
@@ -18,18 +19,16 @@ router.get('/getFormList', (req, res) => {
 });
 router.get('/getForm', (req, res) => {
   let formId = req.query.formId;
-  debugger
   formService.getForm(formId).then((data) => {
     res.json({
       code: OK_CODE,
       msg: '',
-      data:data,
+      data: data,
     });
   });
 });
 router.post('/addForm', (req, res) => {
   let formData = req.body.formData;
-  debugger
   formService.addForm(formData).then((result) => {
     res.json({
       code: OK_CODE,
@@ -48,13 +47,23 @@ router.post('/removeForm', (req, res) => {
     });
   });
 });
-router.post('updateForm', (req, res) => {
+router.post('/updateForm', (req, res) => {
   let formData = req.body.formData
   formService.updateForm(formData).then((result) => {
     res.json({
       code: OK_CODE,
       msg: '',
       data: result,
+    });
+  });
+});
+router.get(`${API}/getFixedFlows`, (req, res) => {
+  let condition = { status: 1 };
+  formService.getFixedFlows(condition).then((data) => {
+    res.json({
+      code: OK_CODE,
+      msg: '',
+      data: data,
     });
   });
 });

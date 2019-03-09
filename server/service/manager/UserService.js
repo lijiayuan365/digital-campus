@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const UserDao = require('../../dao/UserDao');
 const DeptDao = require('../../dao/DeptDao');
 const PostDao = require('../../dao/PostDao');
-const PostTypeDao = require('../../dao/PostTypeDao');
+// const PostTypeDao = require('../../dao/PostTypeDao');
 const OrgDao = require('../../dao/OrgDao');
 
 let userDao = new UserDao();
 let deptDao = new DeptDao();
 let postDao = new PostDao();
-let postTypeDao = new PostTypeDao();
+// let postTypeDao = new PostTypeDao();
 let orgDao = new OrgDao();
 
 class UserService {
@@ -287,7 +287,7 @@ class UserService {
   // 更新组织信息
   async  updateOrg(org) {
     try {
-      let result = await orgDao.save(org);
+      let result = await orgDao.update({ _id: org.orgId }, org);
       return result;
     } catch (error) {
       console.log(`deleteOrg error--> ${error}`);
@@ -344,7 +344,7 @@ class UserService {
    */
   async  updatePost(post) {
     try {
-      let result = await postDao.save(post);
+      let result = await postDao.update({ _id: post.postId }, post);
       return result;
     } catch (error) {
       console.log(`deleteOrg error--> ${error}`);
@@ -355,8 +355,16 @@ class UserService {
     try {
       // let postTypeList = await postTypeDao.findAll();
       let postTypeList = await postDao.findAll({}, { postType: 1, _id: 0 });
-      postTypeList = postTypeList.map((item)=> item.postType);
-      return postTypeList;
+      let tmp = {};
+      let typeList = [];
+      postTypeList.forEach((item) => {
+				if (!tmp[item]) {
+					tmp[item] = 1;
+					typeList.push(item.postType);
+				}
+			});
+      // postTypeList = postTypeList.map((item) => item.postType);
+      return typeList;
     } catch (error) {
       console.log(`getPostTypeList error--> ${error}`);
       return error;

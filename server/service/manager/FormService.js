@@ -1,6 +1,8 @@
 const FormDao = require('../../dao/FormDao');
+const FixedFlowDao = require('../../dao/FixedFlowDao');
 
 let formDao = new FormDao();
+let fixedFlowDao = new FixedFlowDao();
 
 class FormService {
   /**
@@ -9,22 +11,6 @@ class FormService {
   async getFormList() {
     try {
       let formList = await formDao.findAll();
-      formList.forEach((form) => {
-        debugger
-        // formType 0 普通， 1 审批， 2 任务
-        switch (form.formType) {
-          case '0':
-            form._doc.type = '普通单';
-            break;
-          case '1':
-            form._doc.type = '审批单';
-            break;
-          case '2':
-            form._doc.type = '任务单';
-            break;
-        }
-      });
-      debugger
       return formList;
     } catch (error) {
       console.log(`getFormList Error --> ${error}`)
@@ -53,7 +39,6 @@ class FormService {
    */
   async addForm(formData) {
     try {
-      debugger
       let result = await formDao.save(formData);
       return result;
     } catch (error) {
@@ -76,9 +61,35 @@ class FormService {
   }
   async updateForm(form) {
     try {
-      let result = await formDao.update({ _id: form._id }, form);
+      let result = await formDao.update({ _id: form.formId }, form);
     } catch (error) {
       console.log(`updateForm Error --> ${error}`)
+      return error;
+    }
+  }
+  async getFixedFlows(condition) {
+    try {
+      // let condition = con;
+      let flows = await fixedFlowDao.findAll(condition, '_id flowGroup flowName');
+      debugger
+      let fixedGroup = [{ groupName: flows[0].flowGroup, flow: [] }];
+      flows.forEach((item) => {
+        for (let i = 0; i < fixedGroup.length; i++) {
+          let flowTmp = { _id: item._id, flowName: item.flowName };
+          if (fixedGroup[i].groupName == item.flowGroup) {
+            fixedGroup[i].flow.push(flowTmp)
+            break;
+          } else {
+            let groupTmp = { groupName: item.flowGroup, flow: [flowTmp] };
+            fixedGroup.push(groupTmp);
+            break;
+          }
+        }
+      });
+      return fixedGroup;
+
+    } catch (error) {
+      console.log(`getFixedFlows Error --> ${error}`)
       return error;
     }
   }

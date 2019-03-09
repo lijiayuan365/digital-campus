@@ -7,7 +7,7 @@ let Schema = mongoose.Schema;
 const user = new mongoose.Schema({
   userName: String,
   pwd: String,
-  sessionKey:String,
+  session_key:String,
   openid: String,
   avatar: String,
   dept: {type:Schema.Types.ObjectId, ref:'Dept'},

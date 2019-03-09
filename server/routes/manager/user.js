@@ -130,7 +130,7 @@ router.post(`/addDept`, (req, res) => {
       })
     });
 });
-router.post(`/deleteDept`, (req, res) => {
+router.post(`/removeDept`, (req, res) => {
   let deptId = req.body.deptId;
   userService.deleteDept(deptId)
     .then((data) => {
@@ -175,7 +175,7 @@ router.get(`/getOrg`, (req, res) => {
     });
 });
 router.post(`/addOrg`, (req, res) => {
-  let org = req.body;
+  let org = req.body.org;
   userService.addOrg(org)
     .then((data) => {
       res.json({
@@ -185,7 +185,7 @@ router.post(`/addOrg`, (req, res) => {
       })
     });
 });
-router.post(`/deleteOrg`, (req, res) => {
+router.post(`/removeOrg`, (req, res) => {
   let orgId = req.body.orgId;
   userService.deleteOrg(orgId)
     .then((data) => {
@@ -197,8 +197,8 @@ router.post(`/deleteOrg`, (req, res) => {
     })
 });
 router.post(`/updateOrg`, (req, res) => {
-  let orgId = req.body;
-  userService.updateOrg(orgId)
+  let org = req.body.org;
+  userService.updateOrg(org)
     .then((data) => {
       res.json({
         code: 0,
