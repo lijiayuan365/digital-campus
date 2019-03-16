@@ -69,6 +69,7 @@
 //        }
 //      });
       this.isSysUser();
+      wx.setStorageSync('userId','5c7b3f74754c9769ed26c4da');
     }
 
     async getAddressBook() {

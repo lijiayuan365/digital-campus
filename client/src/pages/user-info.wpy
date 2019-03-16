@@ -4,7 +4,7 @@
       <view class="weui-cell">
         <view class="weui-cell__bd">头像</view>
         <view class="weui-cell__ft weui-cell__ft_in-access">
-          <image src="{{avatar}}" class="avatar">
+          <image src="{{avatar}}" class="avatar"/>
         </view>
       </view>
       <view class="weui-cell">
@@ -14,45 +14,70 @@
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">部门</view>
-        <view class="weui-cell__ft">{{dept}}</view>
+        <view class="weui-cell__ft">{{dept.deptName}}</view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">组织</view>
-        <view class="weui-cell__ft">{{org}}</view>
+        <view class="weui-cell__ft">{{org.orgName}}</view>
       </view>
     </view>
   </view>
 </template>
 <script>
-import wepy from "wepy";
-//Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
-export default class UserInfo extends wepy.page {
-  config = {};
-  components = {};
-  data = {
-    avatar:'',
-    tel:'',
-    dept:'',
-    org:'',
-  };
-  computed = {};
-  methods = {};
-  events = {};
+  import wepy from 'wepy';
+  //Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
+  export default class UserInfo extends wepy.page {
+    config = {};
+    components = {};
+    data = {
+      userId:'',
+      avatar: '',
+      tel: '',
+      dept: '',
+      org: '',
+    };
+    computed = {};
+    methods = {};
+    events = {};
 
-  onLoad() {}
+    onLoad(data) {
+      this.userId = data.userId;
+    }
 
-  // Other properties
-}
-// some code
+    onShow() {
+      try {
+        let _this = this;
+        const userList = wx.getStorageSync('userList');
+        if (userList) {
+          let user = userList.find(function (value, index, arr) {
+            return value._id === _this.userId;
+          });
+          this.avatar = user.avatar;
+          this.userName = user.userName;
+          this.tel = user.tel;
+          this.dept = user.dept;
+          this.org = user.org;
+          // Do something with return value
+        }
+      } catch (e) {
+        console.log(e)
+        // Do something when catch error
+      }
+    }
+
+    // Other properties
+  }
+  // some code
 </script>
 <style lang="less" scoped>
-.msg-block {
-  margin-top: 40rpx;
-}
-.avatar {
-  margin-right: 10rpx;
-  vertical-align: middle;
-  width: 128rpx;
-  height: 128rpx;
-}
+  .msg-block {
+    margin-top: ~"40rpx";
+  }
+
+  .avatar {
+    margin-right: ~"10rpx";
+    vertical-align: middle;
+    width: ~"128rpx";
+    height: ~"128rpx";
+  }
 </style>

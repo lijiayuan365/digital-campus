@@ -23,7 +23,7 @@
             <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
             <input
               type="text"
-              
+
               class="weui-search-bar__input"
               placeholder="搜索"
               value="{{inputVal}}"
@@ -79,7 +79,6 @@ export default class Searchbar extends wepy.page {
 
   methods = {
     searchUser(){
-      debugger
     },
     showInput() {
       this.inputShowed = true;

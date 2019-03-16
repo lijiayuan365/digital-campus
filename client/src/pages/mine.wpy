@@ -1,120 +1,68 @@
 <template>
   <view>
     <view class="weui-cells weui-cells_after-title">
-      <navigator url="user-info" class="weui-cell">
+      <navigator url="user-info?userId={{userId}}" class="weui-cell">
         <view class="weui-cell__hd">
-          <image src="../images/icon_tabbar.png" class="avatar"/>
+          <image src="{{avatar}}" class="avatar"/>
         </view>
         <view class="weui-cell__bd">{{userName}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
     </view>
-    <view class="login-wrapper">
-      <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="login">绑定已有账户</button>
-      <button class="weui-btn" type="default" open-type="getUserInfo" bindgetuserinfo="signUp">注册新账户</button>
-    </view>
-    <view></view>
-    <!-- <view class="login-btn">
-      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像昵称</button>
-      <button open-type="getUserInfo" lang="zh_CN">按55+钮</button>
-    </view>-->
   </view>
 </template>
 <script>
-import wepy from "wepy";
-import { connect } from "wepy-redux";
-import { UPDATE } from "../store/types/login.js";
+  import wepy from 'wepy';
+  import {connect} from 'wepy-redux';
+  import {UPDATE} from '../store/types/login.js';
 
-@connect({
-  loginCode(state) {
-    return state.login.code;
-  },
-  effectiveTime(state) {
-    return state.login.effectiveTime;
-  },
-  updateConfig: UPDATE
-})
+  @connect({
+    loginCode(state) {
+      return state.login.code;
+    },
+    effectiveTime(state) {
+      return state.login.effectiveTime;
+    },
+    updateConfig: UPDATE
+  })
 //  Demo取文件名 然后后面是说明页面入口继承自wepy.page(暂时理解为所在文件夹)
-export default class Mine extends wepy.page {
-  config = {
-    navigationBarTitleText: "我的"
-  };
-  components = {};
-  data = {
-    userName: "李佳远"
-  };
-  computed = {};
-  methods = {
-    login(e) {
-      wx.navigateTo({
-        url: "sign-in"
+  export default class Mine extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的'
+    };
+    components = {};
+    data = {
+      userName: '',
+      userId:'',
+      avatar:'',
+    };
+    computed = {};
+    methods = {};
+    events = {};
+
+    onLoad() {}
+
+    onShow(){
+      let openid = wx.getStorageSync('openid');
+      let userList = wx.getStorageSync('userList');
+      let user = userList.find(function (value, index, arr) {
+        return value.openid == openid;
       });
-    },
-    signUp(e) {
-      wx.navigateTo({
-        url: "sign-up"
-      });
-    },
-    getUserInfo(e) {
-      console.log(e);
-      // alert('登录成功');
+      this.userName = user.userName;
+      this.userId = user._id;
+      this.avatar = user.avatar;
     }
-  };
-  events = {};
 
-  onLoad() {
-    wx.openSetting({
-      success(res) {
-        console.log(res.authSetting);
-      }
-    });
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting["scope.userInfo"]) {
-          wx.authorize({
-            scope: "scope.userInfo",
-            success() {
-              // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-              // wx.startRecord();
-            }
-          });
-        }
-      }
-    });
-    // wx.getUserInfo({
-    //   success: function(res) {
-    //     var userInfo = res.userInfo;
-    //     var nickName = userInfo.nickName;
-    //     var avatarUrl = userInfo.avatarUrl;
-    //     var gender = userInfo.gender; //性别 0：未知、1：男、2：女
-    //     var province = userInfo.province;
-    //     var city = userInfo.city;
-    //     var country = userInfo.country;
-    //     debugger
-    //   }
-    // });
+    // Other properties
   }
-
-  // Other properties
-}
-// some code
+  // some code
 </script>
 <style lang="less" scoped>
-.avatar {
-  margin-right: 10rpx;
-  vertical-align: middle;
-  width: 128rpx;
-  height: 128rpx;
-}
-.login-wrapper {
-  margin-top: 80rpx;
-  padding: 0 15 rpx;
-}
+  .avatar {
+    margin-right: ~"10rpx";
+    vertical-align: middle;
+    width: ~"128rpx";
+    height: ~"128rpx";
+  }
 
-.login-btn {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
 </style>

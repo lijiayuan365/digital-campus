@@ -1,0 +1,81 @@
+<template>
+  <!--选择器 -->
+  <view>
+    <!--选择器1 结果显示在右侧-->
+    <view wx:if="{{type === '1'}}">
+      <!--<view class="weui-cells weui-cells_after-title">-->
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">{{title}}</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker @change="bindChange" value="{{valueIndex}}" range="{{list}}" range-key="{{rangeKey}}">
+            <view class="weui-select weui-cell__ft">{{value[rangeKey]}}</view>
+            <!--<view class="weui-select weui-select_in-select-after">{{types[typeIndex].title}}</view>-->
+          </picker>
+        </view>
+      </view>
+      <!--</view>-->
+    </view>
+    <!--选择器2 结果显示在中间-->
+    <view wx:elif="{{type === '2'}}">
+      <!--<view class="weui-cells weui-cells_after-title">-->
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">{{title}}</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker @change="bindChange" value="{{valueIndex}}" range="{{list}}" range-key="{{rangeKey}}">
+            <view class="weui-select weui-select_in-select-after">{{value[rangeKey]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <!--</view>-->
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class ZPicker extends wepy.component {
+    props = {
+      type: String,
+      title: String,
+      list: Array,
+      rangeKey: String,
+      value: {
+        type: String,
+        twoWay: true,
+      }
+    };
+
+    data = {
+      valueIndex: '',
+    };
+
+    components = {};
+
+    methods = {
+      bindChange(e) {
+        this.valueIndex = e.detail.value;
+        this.value = this.list[this.valueIndex];
+      }
+    };
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>

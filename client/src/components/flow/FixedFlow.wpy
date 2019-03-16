@@ -1,14 +1,20 @@
 <template>
   <view class="fixed-flow">
-    <flowGroup wx:if="{{fixedFlows.length !== 0}}" title="固定流程" :radioItems.sync="fixedFlows"
-               :value.sync="fixedFlowId"></flowGroup>
-    <view class="page__bd" wx:if="{{fixedFlow || pageType == 'detail'}}">
+    <view wx:if="{{showFixedFlowGroup}}">
+      <view class="weui-cells__title">固定流程</view>
+      <view class="weui-cells weui-cells_after-title">
+        <flowGroup :radioItems.sync="fixedFlows"
+                   :value.sync="fixedFlowId">
+        </flowGroup>
+      </view>
+    </view>
+    <view class="page__bd" wx:if="{{showFixedFlow}}">
       <view class="weui-cells">
         <view class="weui-cell">
           <view class="weui-cell__bd">
             <!--处理人-->
             <view class="weui-uploader"
-                  wx:if="{{currentNode.nodePersonType !== '1' || pageType == 'detail'}}">
+                  wx:if="{{showDealPerson}}">
               <view class="weui-uploader__hd">
                 <view class="weui-uploader__title" wx:if="{{pageType !== 'detail'}}">处理人</view>
                 <view class="weui-uploader__title" wx:else>当前节点：{{currentNode.nodeName}}</view>
@@ -76,6 +82,7 @@
       flowType: 1, // 流程类型
       flow: {}, // 流程信息
       detailFlow: {}, // 详情页面时候的流程
+      defaultFlow: false,
     };
 
     components = {
@@ -92,17 +99,22 @@
         this.flow = prop.flow;
         this.flowType = prop.flowType;
         this.pageType = prop.pageType;
-        if (prop.pageType !== 'detail') {
+        if (prop.pageType === 'add') {
           this.fixedFlows = prop.flow.fixedFlow;
-        } else {
+        } else if (prop.pageType === 'detail') {
           // 详情页面流程
           this.nodePersons = prop.currentNode.nodePersons;
-          this.detailFlow = prop.flow.fixedFlow;
+          this.detailFlow = prop.flow.fixedFlow || prop.flow.flow;
+        }
+        // 指定固定流程的情况
+        if (prop.defaultFlow) {
+          this.defaultFlow = prop.defaultFlow;
+          this.detailFlow = prop.flow.fixedFlow.flow;
         }
         this.currentNode = prop.currentNode;
       },
       exportFlow() {
-        let fixedFlow = this.pageType === 'detail' ? this.detailFlow : this.fixedFlow;
+        let fixedFlow = this.defaultFlow ? this.detailFlow : this.pageType === 'detail' ? this.detailFlow : this.fixedFlow;
         let flowData = {
           flow: fixedFlow,
           currentNode: this.currentNode,
@@ -123,6 +135,7 @@
     };
 
     computed = {
+      // 从选择中确定固定流程
       fixedFlow() {
         let fixedFlow = this.fixedFlows.find((value) => {
           return value._id === this.fixedFlowId;
@@ -133,16 +146,25 @@
           return fixedFlow.flow;
         }
       },
+      // 展示添加按钮
       showAddUser() {
         return this.currentNode.nodePersonType === '2';
       },
+      // 展示固定流程选项组
       showFixedFlowGroup() {
-        return this.pageType !== 'detail' && this.flowType === 1;
+        return this.fixedFlows.length !== 0;
+      },
+      // 展示处理人相关人模块
+      showFixedFlow() {
+        return this.fixedFlow || this.pageType === 'detail' || this.defaultFlow;
+      },
+      // 展示处理人
+      showDealPerson() {
+        return this.currentNode.nodePersonType !== '1' || this.defaultFlow || this.pageType === 'detail';
       }
     };
 
     onLoad(e) {
-//      debugger
 //      let r = this.$wxpage.route;
     };
 

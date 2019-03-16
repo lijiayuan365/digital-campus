@@ -7,7 +7,8 @@
         <view class="top-menu">
           <topMenu :menus="topMenu"></topMenu>
         </view>
-        <formList :type="type2" :list.sync="todoList"></formList>
+        <searchBox></searchBox>
+        <formList :type="type2" :list.sync="mineList"></formList>
       </view>
       <view hidden="{{activeIndex != '1'}}">
         <searchBox></searchBox>
@@ -15,10 +16,10 @@
       </view>
       <view hidden="{{activeIndex != '2'}}">
         <searchBox></searchBox>
-        <relevantList :type="type2" :list.sync="todoList"></relevantList>
+        <relevantList :type="type2" :list.sync="ccList"></relevantList>
       </view>
     </view>
-    <tabBar :tabBars="tabBars" :activeIndex.sync="activeIndex" class="tab-bar"></tabBar>
+    <tabBar :tabBars.sync="tabBars" :activeIndex.sync="activeIndex" class="tab-bar"></tabBar>
   </view>
 </template>
 
@@ -42,11 +43,13 @@
         {title: '草稿', path: 'draft'},
       ],
       tabBars: [
-        {title: '我的表单', iconPath: '../../images/pic_160.png', badge: '2'},
-        {title: '待我审批', iconPath: '../../images/pic_160.png', badge: '4'},
-        {title: '与我相关', iconPath: '../../images/pic_160.png', badge: '2'},
+        {title: '我的表单', iconPath: '../../images/pic_160.png', badge: '0'},
+        {title: '待我审批', iconPath: '../../images/pic_160.png', badge: '0'},
+        {title: '与我相关', iconPath: '../../images/pic_160.png', badge: '0'},
       ],
+      mineList: [],
       todoList: [],
+      ccList: [],
       activeIndex: 0,
     };
 
@@ -93,7 +96,9 @@
 
     onShow() {
 //      let condition = {creator: '5c7b3f74754c9769ed26c4da'};
-      this.getFormDataList(this.activeIndex);
+      this.getFormDataList(0);
+      this.getFormDataList(1);
+      this.getFormDataList(2);
     }
 
     async getFormDataList(tabIndex) {
@@ -111,7 +116,15 @@
           data: {condition}
         });
         let data = res.data.data;
-        this.todoList = data;
+        if (tabIndex == 0) {
+          this.mineList = data;
+        } else if (tabIndex === 1) {
+          this.todoList = data;
+          this.tabBars[1].badge = data.length;
+        } else {
+          this.ccList = data;
+          this.tabBars[2].badge = data.length;
+        }
         this.$apply();
       } catch (e) {
         console.log(e);

@@ -1,0 +1,36 @@
+<template>
+  <view>
+    <view>详情</view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class MeetingDetail extends wepy.page {
+    config = {
+      navigationBarTitleText: '',
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>

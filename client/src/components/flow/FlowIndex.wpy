@@ -94,6 +94,7 @@
           this.$invoke('fixedFlow', 'getProp', {
             flow: prop.flow,
             flowType: 1,
+            defaultFlow:prop.defaultFlow,
             pageType: prop.pageType,
             currentNode: prop.currentNode,
           });

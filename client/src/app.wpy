@@ -26,9 +26,19 @@
         'pages/form/add',
         'pages/form/draft',
         'pages/form/detail',
+
         'pages/approve/home',
+
         'pages/ask-leave/home',
+        'pages/ask-leave/leave-choice',
+        'pages/ask-leave/add',
+        'pages/ask-leave/detail',
+        'pages/ask-leave/draft',
+
         'pages/meeting/home',
+        'pages/meeting/add',
+        'pages/meeting/draft',
+        'pages/meeting/detail',
 
         'example/index',
         'example/button',
@@ -81,11 +91,11 @@
             iconPath: 'images/icon_tabbar.png',
             text: '我的'
           },
-          {
-            pagePath: 'example/index',
-            iconPath: 'images/icon_tabbar.png',
-            text: 'weui'
-          }
+//          {
+//            pagePath: 'example/index',
+//            iconPath: 'images/icon_tabbar.png',
+//            text: 'weui'
+//          }
         ]
       },
 
@@ -97,9 +107,9 @@
       }
     };
     globalData = {
-      API: 'http://localhost:3000/client',
+//      API: 'http://localhost:3000/client',
       header:{Cookie: ''},
-//      API: 'http://zrwr9d.natappfree.cc/client'
+      API: 'http://2jwds9.natappfree.cc/client'
     };
 
     constructor() {

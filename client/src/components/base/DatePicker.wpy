@@ -1,0 +1,57 @@
+<template>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">{{title}}</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker mode="date" value="{{value}}" start="2015-09-01" end="2017-09-01" @change="bindDateChange">
+        <view class="weui-input">{{value}}</view>
+      </picker>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class TimePicker extends wepy.component {
+    props = {
+      title:String,
+      value: {
+        type: String,
+        twoWay: true,
+      },
+      start: {
+        type: String,
+      },
+      end: {
+        type: String,
+      }
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {
+      bindDateChange(e) {
+        this.value = e.detail.value;
+      }
+    };
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>

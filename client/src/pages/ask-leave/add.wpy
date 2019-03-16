@@ -1,0 +1,184 @@
+<template>
+  <view>
+    <view class="weui-cells weui-cells_after-title">
+      <leaveType type="1" title="请假类型"
+                 :list.sync="types" rangeKey="title"
+                 :value.sync="leaveType">
+
+      </leaveType>
+    </view>
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <leaveTitle :value.sync="leaveTitle" placeholder="请输入请假标题"></leaveTitle>
+      <leaveContent :value.sync="leaveContent" placeholder="请输入假条内容"></leaveContent>
+    </view>
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <imgUploader :files="fileList" title="上传凭证"></imgUploader>
+      <!--<imgUploader :files="fileList" title="上传凭证"></imgUploader>-->
+    </view>
+    <view class="weui-cells__title">请假时间</view>
+    <view class="weui-cells weui-cells_after-title">
+      <startDate title="开始日期" :value="startDate"></startDate>
+      <startTime title="开始时间" :value="startTime"></startTime>
+      <!--</view>-->
+      <!--<view class="weui-cells__title"></view>-->
+      <!--<view class="weui-cells weui-cells_after-title">-->
+      <endDate title="结束日期" :value="endDate"></endDate>
+      <endTime title="结束时间" :value="endTime"></endTime>
+    </view>
+    <flow :ccPerson.sync="ccPerson" wx:if="{{leaveType}}"></flow>
+    <view class="weui-btn-area">
+      <button wx:if="{{pendingNode.length === 0}}" class="weui-btn" type="primary" @tap="confirmForm">提交</button>
+      <button wx:else class="weui-btn" type="primary" @tap="pickedPerson">提交3</button>
+      <button class="weui-btn" type="default" @tap="saveDraft">存为草稿</button>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import ZPicker from '../../components/base/ZPicker';
+  import ZInput from '../../components/base/ZInput';
+  import ZTextarea from '../../components/base/ZTextarea';
+  import ZUploader from '../../components/base/ZUploader';
+  import DatePicker from '../../components/base/DatePicker';
+  import TimePicker from '../../components/base/TimePicker';
+  import DateTimePicker from '../../components/base/DateTimePicker';
+  import Flow from '../../components/flow/FlowIndex';
+  import FlowMixin from '../../mixins/FlowMixin';
+
+  export default class Example extends wepy.page {
+    config = {
+      navigationBarTitleText: '新建申请',
+    };
+
+    data = {
+      types: [],
+      leaveType: '',
+      leaveTitle: '',
+      leaveContent: '',
+      fileList: [],
+      startDate: '',
+      startTime: '',
+      endDate: '',
+      endTime: '',
+
+    };
+
+    components = {
+      leaveType: ZPicker,
+      leaveTitle: ZInput,
+      leaveContent: ZTextarea,
+      imgUploader: ZUploader,
+      startDate: DatePicker,
+      endDate: DatePicker,
+      startTime: TimePicker,
+      endTime: TimePicker,
+      flow: Flow,
+    };
+
+    methods = {};
+    mixins = [FlowMixin];
+    events = {};
+
+    watch = {
+      leaveType(val) {
+        this.initLeaveType(val.id);
+      }
+    };
+
+    computed = {};
+
+    onLoad() {
+      this.initData();
+    };
+
+    onShow() {
+    };
+
+    async initData() {
+      let res = await wepy.request({
+        url: `${this.$parent.globalData.API}/ask-leave/getLeaveTypeList`,
+      });
+      let data = res.data;
+      this.types = data.data;
+      this.$apply();
+    }
+
+    async initLeaveType(id) {
+      let res = await wepy.request({
+        url: `${this.$parent.globalData.API}/ask-leave/getLeaveType`,
+        data: {
+          typeId: id,
+        }
+      });
+      let data = res.data;
+      this.leaveTitle = data.data.typeTitle;
+      this.leaveContent = data.data.typeContent;
+      this.importAddFlow(data.data);
+      this.$apply();
+    }
+
+    saveFormData() {
+      let creator = wx.getStorageSync('userId');
+      let flowData = this.getFlowData();
+      let flow = flowData.flow;
+      let currentNode = flowData.currentNode;
+      let pendingNode = flowData.pendingNode;
+      let ccPerson = this.ccPerson.map((item)=>{
+        return item._id;
+      });
+      let formData = {
+        creator: creator,
+        leaveType: this.leaveType.title,
+        leaveTitle: this.leaveTitle,
+        leaveContent:this.leaveContent,
+        fileList: this.fileList,
+        leaveTime: '2',
+        startTime: `${this.startDate}/${this.startTime}`,
+        endTime: `${this.endDate}/${this.endTime}`,
+        status: 0,
+        flow: flow,
+        currentNode: currentNode,
+        pendingNode:pendingNode,
+        ccPerson: ccPerson,
+      };
+      return formData;
+    }
+
+    async confirmForm() {
+      wx.showLoading();
+      let formData = this.saveFormData();
+      try{
+        let res = await wepy.request({
+          url:`${this.$parent.globalData.API}/ask-leave/addLeave`,
+          method:'POST',
+          data:{
+            leaveData:formData
+          }
+        });
+        wx.hideLoading();
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 4000,
+          complete() {
+            wx.navigateBack({
+              delta: 1
+            });
+          }
+        });
+      }catch (e){
+        console.log(e);
+      }
+    }
+
+    async saveDraft() {
+      debugger;
+    }
+  }
+</script>
+
+<style lang='less'>
+</style>

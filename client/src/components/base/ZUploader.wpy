@@ -1,0 +1,136 @@
+<template>
+  <!--<view class="weui-cells">-->
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+        <view class="weui-uploader__hd" wx:if="{{title}}">
+          <view class="weui-uploader__title">{{title}}</view>
+          <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
+        </view>
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__file weui-uploader__file_status" hidden="{{!uploading}}">
+            <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill"/>
+            <view class="weui-uploader__file-content">{{progress}}%</view>
+          </view>
+          <view class="weui-uploader__files" id="uploaderFiles">
+            <block wx:for="{{files}}" wx:key="*this">
+              <view class="weui-uploader__file img-area" @tap="previewImage" id="{{item}}">
+                <icon type="clear" size="20" data-index="{{index}}" @tap.stop="removeImg" class="icon-area"/>
+                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill"/>
+              </view>
+            </block>
+          </view>
+          <view class="weui-uploader__input-box">
+            <view class="weui-uploader__input" @tap="chooseImage"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--</view>-->
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import qiniuUploader from '../../assets/js/qiniuUploader';
+  //  const qiniuUploader = require('../../assets/js/qiniuUploader');
+
+  export default class Example extends wepy.component {
+    props = {
+      title: String,
+      files: {
+        type: Array,
+        twoWay: true,
+      }
+    };
+
+    data = {
+      uploading: false,
+      progress: 0
+    };
+
+    components = {};
+
+    methods = {
+      async chooseImage(e) {
+        let that = this;
+        this.initQiniu();
+        let res = await wepy.chooseImage({
+          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+          sourceType: ['album', 'camera'] // 可以指定来源是相册还是相机，默认二者都有
+        });
+        let filePath = res.tempFilePaths[0];
+        this.uploading = true;
+
+        // 交给七牛上传
+        qiniuUploader.upload(filePath, (res) => {
+            let imgUrl = res.imageURL;
+            that.files.push(imgUrl);
+//            that.demo.push('11');
+            that.$apply();
+            console.log(res);
+          }, (error) => {
+            console.error('error: ' + JSON.stringify(error));
+          }, null,
+          (progress) => {
+            that.progress = progress.progress;
+            this.$apply();
+            console.log('上传进度', progress.progress);
+            console.log('已经上传的数据长度', progress.totalBytesSent);
+            console.log('预期需要上传的数据总长度', progress.totalBytesExpectedToSend);
+            if(that.progress === 100){
+              that.uploading = false;
+            }
+          }, cancelTask => that.setData({cancelTask})
+        );
+//
+      },
+      previewImage(e) {
+        debugger
+        wepy.previewImage({
+          current: e.currentTarget.id, // 当前显示图片的http链接
+          urls: this.files, // 需要预览的图片http链接列表
+        });
+      },
+      removeImg(e){
+        let index = e.target.dataset.index;
+        this.files.splice(index,1);
+      }
+    };
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+
+    initQiniu() {
+      let _this = this;
+      let options = {
+        region: 'ECN', // 华东区
+        uptokenURL: `${_this.$parent.$parent.globalData.API}/common/getUpToken`,
+        // uptoken: 'xxx',
+        // domain: 'http://myblog.bkt.clouddn.com',
+        domain: 'http://img.cdn.lijiayuan.top',
+        shouldUseQiniuFileName: false
+      };
+      qiniuUploader.init(options);
+    }
+  }
+</script>
+
+<style lang='less'>
+  .img-area{
+    position: relative;
+  }
+  .icon-area{
+    position: absolute;
+    right: 0;
+  }
+</style>

@@ -151,21 +151,27 @@
           <view class="weui-cells">
             <view class="weui-cell">
               <view class="weui-cell__bd">
+
                 <view class="weui-uploader">
                   <view class="weui-uploader__hd">
                     <view class="weui-uploader__title">图片上传</view>
                     <view class="weui-uploader__info">{{files.length}}/2</view>
                   </view>
                   <view class="weui-uploader__bd">
+                    <view class="weui-uploader__file weui-uploader__file_status" hidden="{{!uploading}}">
+                      <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill"/>
+                      <view class="weui-uploader__file-content">{{progress}}%</view>
+                    </view>
                     <view class="weui-uploader__files" id="uploaderFiles">
                       <block wx:for="{{fieldValues[fieldIndex]}}" wx:key="*this">
-                        <view class="weui-uploader__file" @tap="previewImage" id="{{item}}">
+                        <view class="weui-uploader__file" @tap="previewImage" id="{{item}}" data-fieldindex="{{fieldIndex}}" style="position:relative">
+                          <icon type="clear" size="20" data-index="{{index}}" data-fieldindex="{{fieldIndex}}" @tap.stop="removeImg" class="icon-area"/>
                           <image class="weui-uploader__img" src="{{item}}" mode="aspectFill"/>
                         </view>
                       </block>
                     </view>
                     <view class="weui-uploader__input-box" wx:if="{{type != 'detail'}}">
-                      <view class="weui-uploader__input"  data-index="{{fieldIndex}}" @tap="chooseImage"></view>
+                      <view class="weui-uploader__input" data-index="{{fieldIndex}}" @tap="chooseImage"></view>
                     </view>
                   </view>
                 </view>
@@ -199,6 +205,8 @@
       imgList: [],
       files: [],
       demo: [1, 2, 3],
+      uploading: false,
+      progress: 0,
     };
 
     components = {};
@@ -240,23 +248,29 @@
         let fieldIndex = e.currentTarget.dataset.index;
         this.fieldValues[fieldIndex] = this.fieldValues[fieldIndex] || [];
         let that = this;
-        this.methods.initQiniu();
+        this.initQiniu();
         let res = await wepy.chooseImage({
           sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
           sourceType: ['album', 'camera'] // 可以指定来源是相册还是相机，默认二者都有
         });
         let filePath = res.tempFilePaths[0];
+        this.uploading = true;
         // 交给七牛上传
         qiniuUploader.upload(filePath, (res) => {
-          let imgUrl = res.imageURL;
-          that.fieldValues[fieldIndex].push(imgUrl);
-          that.demo.push('11');
-          that.$apply();
-          console.log(res);
-        }, (error) => {
-          console.error('error: ' + JSON.stringify(error));
-        }, null,
+            let imgUrl = res.imageURL;
+            that.fieldValues[fieldIndex].push(imgUrl);
+            that.demo.push('11');
+            that.$apply();
+            console.log(res);
+          }, (error) => {
+            console.error('error: ' + JSON.stringify(error));
+          }, null,
           (progress) => {
+            that.progress = progress.progress;
+            this.$apply();
+            if(that.progress === 100){
+              that.uploading = false;
+            }
             console.log('上传进度', progress.progress);
             console.log('已经上传的数据长度', progress.totalBytesSent);
             console.log('预期需要上传的数据总长度', progress.totalBytesExpectedToSend);
@@ -265,23 +279,30 @@
         this.imgList = this.fieldValues[fieldIndex];
       },
       previewImage(e) {
+        let fieldIndex = e.currentTarget.dataset.fieldindex;
+        wepy.previewImage({
+          current: e.currentTarget.id, // 当前显示图片的http链接
+          urls: this.fieldValues[fieldIndex], // 需要预览的图片http链接列表
+        });
+      },
+      removeImg(e){
+        let index = e.target.dataset.index;
+        let fieldIndex = e.target.dataset.fieldindex;
+        this.fieldValues[fieldIndex].splice(index,1);
+      }
+//      initQiniu() {
+//        let _this = this;
 //        debugger
-//        wepy.previewImage({
-//          current: e.currentTarget.id, // 当前显示图片的http链接
-//          urls: this.data.imgList, // 需要预览的图片http链接列表
-//        });
-      },
-      initQiniu() {
-        var options = {
-          region: 'ECN', // 华东区
-          uptokenURL: 'http://localhost:3000/client/common/getUpToken',
-          // uptoken: 'xxx',
-          // domain: 'http://myblog.bkt.clouddn.com',
-          domain: 'http://img.cdn.lijiayuan.top',
-          shouldUseQiniuFileName: false
-        };
-        qiniuUploader.init(options);
-      },
+//        var options = {
+//          region: 'ECN', // 华东区
+//          uptokenURL: `${_this.$parent.globalData.API}/common/getUpToken`,
+//          // uptoken: 'xxx',
+//          // domain: 'http://myblog.bkt.clouddn.com',
+//          domain: 'http://img.cdn.lijiayuan.top',
+//          shouldUseQiniuFileName: false
+//        };
+//        qiniuUploader.init(options);
+//      },
     };
 
     events = {};
@@ -301,11 +322,31 @@
       let fieldIdx = e.currentTarget.dataset.index;
       this.fieldValues[fieldIdx] = val;
     }
+
+    initQiniu() {
+      let _this = this;
+      var options = {
+        region: 'ECN', // 华东区
+        uptokenURL: `${_this.$parent.$parent.globalData.API}/common/getUpToken`,
+        // uptoken: 'xxx',
+        // domain: 'http://myblog.bkt.clouddn.com',
+        domain: 'http://img.cdn.lijiayuan.top',
+        shouldUseQiniuFileName: false
+      };
+      qiniuUploader.init(options);
+    }
   }
 </script>
 
 <style lang='less'>
   .field-item {
 
+  }
+  .upload-area{
+    /*position: relative;*/
+  }
+  .icon-area{
+    position: absolute;
+    right: 0;
   }
 </style>

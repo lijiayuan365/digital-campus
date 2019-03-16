@@ -76,7 +76,6 @@
         this.showDialog = true;
       },
       getProp(prop) {
-        debugger;
         let branchFlow = {
           data: prop.flow.data,
           childNode: prop.flow.childNode,
@@ -90,7 +89,6 @@
           flow: this.flow,
           currentNode: this.currentNode,
         };
-        debugger
         return flowData;
       },
     };

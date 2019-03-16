@@ -1,0 +1,107 @@
+<template>
+  <view class="pending-node" hidden="{{!isShow}}">
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">{{title}}</view>
+              <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                <block wx:for="{{persons}}" wx:key="*this">
+                  <view class="weui-uploader__file" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item.avatar}}" mode="aspectFill"/>
+                    <view class="user-name">{{item.userName}}</view>
+                  </view>
+                </block>
+              </view>
+              <!--选人按钮-->
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" @tap="chooseUser"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" @tap="confirmForm">提交</button>
+    </view>
+    <selectNodeUser :selectedUser.sync="persons" :isShow.sync="showDialog"></selectNodeUser>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import SelectUser from '../../components/base/SelectUser';
+
+  export default class UserBorad extends wepy.component {
+    props = {
+      title: String,
+      comId: String,
+      isShow: {
+        type: Boolean,
+        twoWay: true,
+      },
+      persons: Array,
+    };
+
+    data = {
+      showDialog: false,
+      nodePersons: [],
+      pickedIndex: '',
+    };
+
+    components = {
+      selectNodeUser: SelectUser,
+    };
+
+    methods = {
+      chooseUser() {
+        this.showDialog = true;
+      },
+      confirmForm() {
+        debugger
+        let data = {
+          key: this.comId,
+          persons: this.persons,
+        };
+        this.$emit('getBoardData', data);
+        this.isShow = false;
+      }
+    };
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+  ::-webkit-scrollbar {
+    display: none
+  }
+
+  .pending-node {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    background-color: #f8f8f8;
+    z-index: 2;
+  }
+
+  @import "../flow/flow";
+</style>

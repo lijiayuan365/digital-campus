@@ -173,7 +173,6 @@
           // 固定流程 和 分支流程
           formData.formFlow = flowData.flow;
           formData.pendingNode = flowData.pendingNode;
-          debugger
         }
         let res = await wepy.request({
           url: `${this.$parent.globalData.API}/form/approveForm`,

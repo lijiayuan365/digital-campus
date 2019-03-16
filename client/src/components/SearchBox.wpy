@@ -42,7 +42,6 @@
     computed = {};
     methods = {
       searchUser() {
-        debugger;
       },
       showInput() {
         this.inputShowed = true;

@@ -2,12 +2,18 @@
   <view>
     <view class="container">
       <view wx:if="{{activeBar === 0}}">
-        <topMenu :menus="topMenu"></topMenu>
+        <view class="top-menu">
+          <topMenu :menus="topMenu"></topMenu>
+        </view>
+        <searchBox></searchBox>
+        急急急
       </view>
       <view wx:if="{{activeBar === 1}}">
+        <searchBox></searchBox>
         会议纪要
       </view>
       <view wx:if="{{activeBar === 2}}">
+        <searchBox></searchBox>
         我的会议
       </view>
     </view>
@@ -38,7 +44,7 @@
         {title: '会议纪要', iconPath: '../../images/pic_160.png', badge: '2'},
         {title: '我的会议', iconPath: '../../images/pic_160.png', badge: '2'},
       ],
-      activeBar: 1,
+      activeBar: 0,
     };
 
     components = {
@@ -65,4 +71,7 @@
 </script>
 
 <style lang='less'>
+  .top-menu {
+    margin-bottom: ~"240rpx";
+  }
 </style>

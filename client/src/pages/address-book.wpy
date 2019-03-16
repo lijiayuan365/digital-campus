@@ -5,12 +5,12 @@
       <navigator
         wx:for="{{userList}}"
         wx:key="{{index}}"
-        url="user-card?userId={{item.userId}}"
+        url="user-card?userId={{item._id}}"
         class="weui-cell weui-cell_access"
         hover-class="weui-cell_active"
       >
         <view class="weui-cell__hd">
-          <image src="{{item.avatar}}" class="avatar">
+          <image src="{{item.avatar}}" class="avatar"/>
         </view>
         <view class="weui-cell__bd">{{item.userName}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -55,7 +55,6 @@ export default class AddressBook extends wepy.page {
   computed = {};
   methods = {
     searchUser() {
-      debugger;
     },
     showInput() {
       this.inputShowed = true;
@@ -68,7 +67,6 @@ export default class AddressBook extends wepy.page {
       this.inputVal = "";
     },
     inputTyping(e) {
-      debugger;
       this.inputVal = e.detail.value;
     }
   };

@@ -1,0 +1,176 @@
+<template>
+  <view>
+    <view class="page__hd">
+      <view class="page__title">{{leaveTitle}}</view>
+      <view class="page__desc">{{desc}}</view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <timeLength title="请假时长" :value.sync="leaveTime" type="1"></timeLength>
+      <leaveType title="请假类型" :value.sync="leaveType" type="1"></leaveType>
+      <startTime title="开始时间" :value.sync="startTime" type="1"></startTime>
+      <endTime title="结束时间" :value.sync="endTime" type="1"></endTime>
+      <leaveContent disabled :value.sync="leaveContent"></leaveContent>
+    </view>
+    <flow :ccPerson.sync="ccPerson"></flow>
+    <view class="page__bd">
+      <view class="weui-btn-area">
+        <button type="primary" wx:if="{{status === 1}}">已批假</button>
+        <button type="warn" wx:elif="{{status === 2}}">已驳回</button>
+        <button type="primary" @tap="approveMenu" wx:else>审批</button>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import Flow from '../../components/flow/FlowIndex';
+  import FlowMixin from '../../mixins/FlowMixin';
+
+  import TextArea from '../../components/base/ZTextarea';
+  import ZCell from '../../components/base/ZCell';
+
+  export default class LeaveDetail extends wepy.page {
+    config = {
+      navigationBarTitleText: '请假详情',
+    };
+
+    data = {
+      leaveId: '',
+      leaveType: '',
+      leaveTitle: '',
+      leaveContent: '',
+      imgList: [],
+      startTime: '',
+      endTime: '',
+      leaveTime: '',
+    };
+
+    components = {
+      flow: Flow,
+      leaveContent: TextArea,
+      timeLength: ZCell,
+      leaveType: ZCell,
+      startTime: ZCell,
+      endTime: ZCell,
+    };
+    mixins = [FlowMixin];
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad(e) {
+      this.leaveId = e.leaveDataId;
+
+    };
+
+    onShow() {
+      this.initData(this.leaveId);
+    };
+
+    async initData(id) {
+      wx.showLoading({
+        title: '加载中',
+      });
+      try {
+        let res = await wepy.request({
+          url: `${this.$parent.globalData.API}/ask-leave/getLeave`,
+          data: {leaveId: this.leaveId},
+        });
+        let data = res.data.data;
+        this.leaveTitle = data.leaveTitle;
+        this.leaveType = data.leaveType;
+        this.leaveContent = data.leaveContent;
+        this.startTime = data.startTime;
+        this.endTime = data.endTime;
+        this.leaveTime = data.leaveTime;
+        this.importDetailFlow(data);
+        this.$apply();
+      } catch (e) {
+        console.log(e);
+      }
+      wx.hideLoading();
+    }
+
+    async approveForm(){
+      wx.showLoading({
+        title: '提交中',
+      });
+      let flowData = this.getFlowData();
+      let leaveData = this.getLeaveData();
+      leaveData.currentNode = flowData.currentNode;
+      leaveData.flowType = flowData.flowType;
+      leaveData.flow = flowData.flow;
+      leaveData.pendingNode = flowData.pendingNode;
+      try{
+        let res = await wepy.request({
+          url: `${this.$parent.globalData.API}/ask-leave/approveLeave`,
+          method: 'POST',
+          data: {leaveData}
+        });
+        wx.navigateBack({
+          delta: 1
+        });
+      }catch (e){
+        console.log(e);
+      }
+      wx.hideLoading();
+      wx.showToast({
+        title: '提交成功',
+        icon: 'success',
+        duration: 4000,
+        complete() {
+          wx.navigateBack({
+            delta: 1
+          });
+        }
+      });
+    }
+    getLeaveData() {
+      let leaveData = {
+        leaveId: this.leaveId,
+        approvalRecords: this.approvalRecords,
+      };
+      return leaveData;
+    }
+    // 退审
+    async retrial(){
+      wx.showLoading({
+        title: '提交中',
+      });
+      let leaveData = this.getLeaveData();
+      let flowData = this.getFlowData();
+      leaveData.flow = flowData.flow;
+      leaveData.currentNode = flowData.currentNode;
+      try{
+        let res= await wepy.request({
+          url:`${this.$parent.globalData.API}/ask-leave/retrialLeave`,
+          method:'POST',
+          data:{
+            leaveData:leaveData,
+          }
+        })
+      }catch (e){
+        console.log(e);
+      }
+      wx.hideLoading();
+      wx.showToast({
+        title: '提交成功',
+        icon: 'success',
+        duration: 4000,
+        complete() {
+          wx.navigateBack({
+            delta: 1
+          });
+        }
+      });
+    }
+  }
+</script>
+
+<style lang='less'>
+</style>

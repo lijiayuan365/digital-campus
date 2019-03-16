@@ -121,6 +121,7 @@
           _this.$apply();
           _this.$invoke('flow', 'getProp', {
             flow: _this.formFlow,
+            pageType: 'add',
             ccPerson: _this.ccPerson,
             currentNode: _this.currentNode,
             pendingNode: _this.pendingNode

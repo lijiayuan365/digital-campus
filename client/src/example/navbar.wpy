@@ -56,7 +56,6 @@
 
       async onLoad() {
         let res = await wepy.getSystemInfo();
-        debugger;
         this.sliderLeft = (res.windowWidth / this.tabs.length - sliderWidth) / 2;
         this.sliderOffset = res.windowWidth / this.tabs.length * this.activeIndex;
       }

@@ -53,7 +53,6 @@
           success(res) {
             if (res.code) {
               // 发起网络请求
-              debugger;
               wx.request({
                 url: `${this.$parent.globalData.API}/user/wechatLogin`,
                 method: 'POST',

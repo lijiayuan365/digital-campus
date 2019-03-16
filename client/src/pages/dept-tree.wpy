@@ -51,7 +51,6 @@ export default class DeptTree extends wepy.page {
   computed = {};
   methods = {
     searchUser() {
-      debugger;
     },
     showInput() {
       this.inputShowed = true;

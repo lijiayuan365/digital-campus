@@ -118,7 +118,6 @@
             this.$apply();
           }, 3000);
         }
-        debugger;
       } catch (e) {
         console.log(e);
       }

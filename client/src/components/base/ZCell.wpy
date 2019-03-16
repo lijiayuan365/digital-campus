@@ -1,0 +1,50 @@
+<template>
+  <!--<view wx:if="{{type === '1'}}">-->
+  <view class="weui-cell weui-cell_input" wx:if="{{type === '1'}}">
+    <view class="weui-cell__hd">
+      <view class="weui-label">{{title}}</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-input">{{value}}</view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access" wx:if="{{type === '2'}}" hover-class="weui-cell_active" @tap="tap">
+    <view class="weui-cell__bd">{{title}}</view>
+    <view class="weui-cell__ft {{ inAccess ? 'weui-cell__ft_in-access':''}}">{{value}}</view>
+  </view>
+  <!--</view>-->
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class ZCell extends wepy.component {
+    props = {
+      inAccess:String,
+      type: String,
+      title: String,
+      value: String,
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+</style>

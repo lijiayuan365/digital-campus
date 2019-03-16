@@ -1,0 +1,54 @@
+<template>
+  <view>
+    <searchBox></searchBox>
+    <typeList :type="type1" :list.sync="types"></typeList>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import SearchBox from '../../components/SearchBox';
+  import DataList from '../../components/DataList';
+
+  export default class Example extends wepy.page {
+    config = {
+      navigationBarTitleText: '发起请假',
+    };
+
+    data = {
+      type1: 1,
+      types: [],
+    };
+
+    components = {
+      searchBox: SearchBox,
+      typeList: DataList,
+    };
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+      this.initData();
+    };
+    async initData(){
+      let res = await wepy.request({
+        url:`${this.$parent.globalData.API}/ask-leave/getLeaveTypeList`
+      });
+      let data = res.data;
+      this.types = data.data;
+      this.$apply();
+    }
+  }
+</script>
+
+<style lang='less'>
+</style>
