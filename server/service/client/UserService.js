@@ -14,9 +14,9 @@ let orgDao = new OrgDao();
 const appid = require('../../config/common.json').appid;
 const appsecret = require('../../config/common.json').appsecret;
 class UserService {
-  async login() {
+  // async login() {
 
-  }
+  // }
 
   async getWechatData(code) {
     let res = await rp.get(`https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${appsecret}&js_code=${code}&grant_type=authorization_code`);
@@ -30,12 +30,12 @@ class UserService {
   async isSysUser(session_key, openid) {
     let user = { session_key, openid }
     try {
-      let result = await userDao.findOne({ openid })
-      if (result) {
-        result = await userDao.update({ openid }, user)
-        return { isUser: true, session_key: session_key, openid: openid }
+      let tmp = await userDao.findOne({ openid })
+      if (tmp) {
+        let result = await userDao.update({ openid }, user)
+        return { isUser: true, session_key: session_key, openid: openid,userId:tmp._id }
       } else {
-        return { isUser: false, session_key: session_key, openid: openid }
+        return { isUser: false, session_key: session_key, openid: openid,}
       }
     } catch (error) {
       console.log(`addDept error--> ${error}`);

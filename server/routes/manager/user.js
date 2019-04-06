@@ -8,6 +8,8 @@ const UserService = require('../../service/manager/UserService')
 const userService = new UserService();
 
 const api = require('../../config/common.json').managerApi + '/user';
+const API = '/manager/user';
+const OK_CODE = 0;
 
 router.get(`/getUserList`, function (req, res, next) {
   let searchId = req.query.id;
@@ -22,20 +24,19 @@ router.get(`/getUserList`, function (req, res, next) {
         data: user
       });
     })
-    .catch((error)=>{
-      
+    .catch((error) => {
+
     });
 });
 router.get(`/getUser`, (req, res, next) => {
   let userId = req.query.userId
-  userService.getUser(userId)
-    .then((data) => {
-      res.json({
-        code: 0,
-        msg: 'ok',
-        data: data
-      })
-    });
+  userService.getUser(userId).then((data) => {
+    res.json({
+      code: 0,
+      msg: 'ok',
+      data: data
+    })
+  });
 });
 router.post(`/addUser`, (req, res) => {
   let user = req.body.user;
@@ -47,6 +48,16 @@ router.post(`/addUser`, (req, res) => {
         data: data
       })
     });
+});
+router.post(`${API}/importUser`, (req, res) => {
+  let users = req.body.users;
+  userService.importUser(users).then((result) => {
+    res.json({
+      code: OK_CODE,
+      msg: '',
+      data: result
+    })
+  })
 });
 router.post(`/deleteUser`, (req, res) => {
   let userId = req.body.userId;
@@ -86,6 +97,16 @@ router.post(`/updateUser`, (req, res) => {
     })
   })
 })
+router.post(`${API}/importDept`, (req, res) => {
+  let depts = req.body.depts;
+  userService.importDept(depts).then((result) => {
+    res.json({
+      code: OK_CODE,
+      msg: '',
+      data: result
+    })
+  })
+});
 router.get(`/getDeptList`, (req, res) => {
   userService.getDeptList()
     .then((data) => {
@@ -219,7 +240,7 @@ router.get(`/getPostList`, (req, res, next) => {
       })
     });
 });
-router.post(`/addPost`,(req,res)=>{
+router.post(`/addPost`, (req, res) => {
   let org = req.body;
   userService.addPost(org)
     .then((data) => {

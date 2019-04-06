@@ -7,5 +7,7 @@ router.get('/', function (req, res, next) {
 });
 router.use('/user', require('./user'));
 router.use('/form', require('./form'));
+router.use('/ask-leave',require('./ask-leave'));
+router.use('/meeting',require('./meeting'));
 router.use('/common', require('./common'));
 module.exports = router;

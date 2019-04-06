@@ -36,23 +36,29 @@ server.listen(3001);
 
 router.get(`${API}/isSysUser`, (req, res) => {
   let code = req.query.code;
-  userService.getWechatData(code)
-    .then((wechatData) => {
-      let session_key = wechatData.session_key;
-      let openid = wechatData.openid;
-      return userService.isSysUser(session_key, openid)
+  let sessionId = req.session.id;
+  // req.session.userId = '5c43db2c27a94952c0a58652';
+  // debugger
+  userService.getWechatData(code).then((wechatData) => {
+    let session_key = wechatData.session_key;
+    let openid = wechatData.openid;
+    return userService.isSysUser(session_key, openid)
+  }).then((data) => {
+    req.session.openid = data.openid;
+    req.session.session_key = data.session_key;
+    req.session.userId = data.userId;
+    data.sessionId = sessionId;
+    res.json({
+      code: OK_CODE,
+      msg: '',
+      data: data,
     })
-    .then((data) => {
-      res.json({
-        code: OK_CODE,
-        msg: '',
-        data: data
-      })
-    })
+  })
 });
 
 router.post(`${API}/login`, (req, res) => {
   let user = req.body.user;
+  debugger
   userService.login(user).then((result) => {
     res.json({
       code: OK_CODE,
@@ -83,10 +89,10 @@ router.post(`${API}/signUp`, (req, res) => {
   })
 });
 router.get(`/getAddressBook`, (req, res) => {
-  let sessionId = req.session.id;
-  req.session.userId = '5c43db2c27a94952c0a58652';
+  // let sessionId = req.session.id;
+  // req.session.userId = '5c43db2c27a94952c0a58652';
   userService.getAddressBook().then((data) => {
-    data.sessionId = sessionId;
+    // data.sessionId = sessionId;
     res.json({
       code: OK_CODE,
       msg: '',

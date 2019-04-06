@@ -57,6 +57,16 @@ class UserService {
     }
   }
 
+  async importUser(users){
+    try {
+      let res = await userDao.saveMany(users);
+      return res;
+    } catch (error) {
+      console.log(`importUser error--> ${error}`);
+      return error;
+    }
+  }
+
   // 新增部门信息
   async  addUser(user) {
     try {
@@ -89,6 +99,7 @@ class UserService {
 
   async  updateUser(user) {
     try {
+      // 更新用户信息
       let result = await userDao.update({ _id: user.userId }, user);
       return result;
     } catch (error) {
@@ -112,6 +123,16 @@ class UserService {
     return dept;
   }
   // 部门
+  // 导入部门
+  async importDept(depts){
+    try {
+      let res = await deptDao.saveMany(depts);
+      return res;
+    } catch (error) {
+      console.log(`importUser error--> ${error}`);
+      return error;
+    }
+  }
   async  getDeptTree() {
     // let dept = [];
     try {
@@ -126,39 +147,6 @@ class UserService {
       return error;
     }
   }
-  // getDeptTree().then((res)=>{
-  //   debugger
-  //   log(res);
-  // });
-  /**
-   * 查询部门信息
-   */
-  /* promise 方式
-   getDept(deptId) {
-    return new Promise((resolve, reject) => {
-      let deptData = {}
-      deptDao.findOne({ deptId: deptId })
-        .then((result) => {
-          deptData = result;
-          let fn = deptDao.findAll({ parentDept: result.deptId });
-          return fn;
-        })
-        .then((res) => {
-          debugger
-          let data = res;
-          res.forEach((item) => {
-            item._doc.isLeaf = item.subDept.length === 0 ? true : false;
-          });
-          // debugger
-          deptData._doc['childDept'] = res;
-          resolve(deptData);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    })
-  }
-  */
   async  getDeptList() {
     try {
       let deptList = await deptDao.findAll();

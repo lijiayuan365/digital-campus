@@ -19,6 +19,7 @@ router.get(`${API}/getFormList`, (req, res) => {
 });
 router.get('/getForm', (req, res) => {
   let formId = req.query.formId;
+  debugger
   formService.getForm(formId).then((data) => {
     res.json({
       code: OK_CODE,

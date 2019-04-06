@@ -44,8 +44,19 @@ class BaseDao {
       return error;
     }
   }
-
-
+  async saveMany(arr) {
+    try {
+      // let entitys = arr.map((item)=>{
+      //   return new this.Model(item);
+      // })
+      // debugger
+      let result = await this.Model.insertMany(arr);
+      return result;
+    } catch (error) {
+      console.log('saveMany error--> ', error);
+      return error;
+    }
+  }
   /**
    * 查询所有符合条件 docs
    *
@@ -68,7 +79,7 @@ class BaseDao {
    * @param {*} condition 
    * @param {*} constraints 
    */
-  async findAllDistinct(field,condition, constraints){
+  async findAllDistinct(field, condition, constraints) {
     try {
       debugger
       let data = await this.Model.find(condition, constraints ? constraints : null).distinct(field).exec();
