@@ -22,7 +22,7 @@
                 </view>
                 <!--选人按钮-->
                 <view class="weui-uploader__input-box" wx:if="{{showAddUser}}">
-                  <view class="weui-uploader__input" @tap="chooseUser"></view>
+                  <view class="weui-uploader__input" @tap="chooseUser({{nodePersons}},1)"></view>
                 </view>
               </view>
             </view>
@@ -47,15 +47,17 @@
         </view>
       </view>
     </view>
-    <selectUser :selectedUser.sync="nodePersons" :isShow.sync="showDialog"></selectUser>
+    <selectUser :isShow.sync="showSelectDialog"></selectUser>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy';
+  import SelectUserMixin from '../../mixins/SelectUserMixin';
   import SelectUser from '../../components/base/SelectUser';
 
   export default class FreeFlow extends wepy.component {
+    mixins = [SelectUserMixin];
     props = {
       ccPerson: Array,
     };
@@ -71,9 +73,6 @@
     };
 
     methods = {
-      chooseUser() {
-        this.showDialog = true;
-      },
       getProp(prop) {
         this.pageType = prop.pageType;
         if (this.pageType === 'detail') {
@@ -82,7 +81,14 @@
       },
     };
 
-    events = {};
+    events = {
+      exportSelectUser(users,key) {
+        if (+key === 1) {
+          this.nodePersons = users;
+          this.$apply();
+        }
+      }
+    };
 
     watch = {
       nodePersons(persons) {

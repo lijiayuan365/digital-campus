@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import axios from 'axios'
+// import axios from 'axios'
+import axios from './axios'
 import socketio from 'socket.io-client'
 import vueSocket from 'vue-socket.io'
 import dataBae from './dataBase'
@@ -25,4 +26,4 @@ new Vue({
   store,
   components: { App },
   template: '<App/>'
-})
+});

@@ -4,7 +4,7 @@
       <view class="weui-grids">
         <block wx:for="{{menus}}" wx:key="index">
           <navigator url="{{item.path}}" class="weui-grid" hover-class="weui-grid_active">
-            <image class="weui-grid__icon" src="../images/icon_tabbar.png"/>
+            <image class="weui-grid__icon" src="{{item.icon}}"/>
             <view class="weui-grid__label">{{item.name}}</view>
           </navigator>
         </block>
@@ -32,12 +32,12 @@
     components = {};
     data = {
       menus: [
-        {name: '表单流程', icon: '', path: 'form/home'},
-        {name: '移动审批', icon: '', path: 'approve/home'},
-        {name: '请假出差', icon: '', path: 'ask-leave/home'},
-        {name: '会议助手', icon: '', path: 'meeting/home'},
-        {name: '考勤助手', icon: '', path: ''},
-        {name: '培训学习', icon: '', path: ''},
+        {name: '表单流程', icon: 'http://img.cdn.lijiayuan.top/zzy/form-c.png', path: 'form/home'},
+//        {name: '移动审批', icon: '', path: 'approve/home'},
+        {name: '请假出差', icon: 'http://img.cdn.lijiayuan.top/zzy/leave.png', path: 'ask-leave/home'},
+        {name: '会议助手', icon: 'http://img.cdn.lijiayuan.top/zzy/icon_meeting.png', path: 'meeting/home'},
+//        {name: '考勤助手', icon: '', path: ''},
+//        {name: '培训学习', icon: '', path: ''},
       ]
     };
     computed = {};
@@ -54,7 +54,7 @@
             if (res.code) {
               // 发起网络请求
               wx.request({
-                url: `${this.$parent.globalData.API}/user/wechatLogin`,
+                url: `/api/user/wechatLogin`,
                 method: 'POST',
                 data: {
                   code: res.code

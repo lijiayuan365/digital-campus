@@ -99,7 +99,7 @@
 
     async initData() {
       let res = await wepy.request({
-        url: `${this.$parent.globalData.API}/ask-leave/getLeaveTypeList`,
+        url: `/api/ask-leave/getLeaveTypeList`,
       });
       let data = res.data;
       this.types = data.data;
@@ -108,7 +108,7 @@
 
     async initLeaveType(id) {
       let res = await wepy.request({
-        url: `${this.$parent.globalData.API}/ask-leave/getLeaveType`,
+        url: `/api/ask-leave/getLeaveType`,
         data: {
           typeId: id,
         }
@@ -152,7 +152,7 @@
       let formData = this.saveFormData();
       try{
         let res = await wepy.request({
-          url:`${this.$parent.globalData.API}/ask-leave/addLeave`,
+          url:`/api/ask-leave/addLeave`,
           method:'POST',
           data:{
             leaveData:formData

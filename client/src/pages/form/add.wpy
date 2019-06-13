@@ -57,7 +57,7 @@
 
     events = {
       // 获取需要当前节点确定处理人的节点
-      getPendingNode(nodes){
+      getPendingNode(nodes) {
         this.pendingNode = nodes;
 
       },
@@ -69,11 +69,7 @@
 
     watch = {};
 
-    computed = {
-      API() {
-        return this.$parent.globalData.API;
-      }
-    };
+    computed = {};
 
     onLoad(e) {
       let formId = e.formId;
@@ -84,57 +80,57 @@
     onShow() {
     };
 
-    initData(formId) {
-      let _this = this;
-      wx.request({
-        url: `${_this.API}/form/getFormConfig`,
-        data: {formId},
-        success(res) {
-//          try {
-          console.log(res.data);
-          let data = res.data.data;
-          _this.desc = data.desc;
-          _this.formTitle = data.formTitle;
-          _this.fieldList = data.fieldList;
-          _this.ccPerson = data.ccPerson;
-          _this.formId = data._id;
-
-          if (data.formFlow.flowType === 0) {
+    async initData(formId) {
+//      let _this = this;
+      try {
+        let res = await wepy.request({
+          url: `/api/form/getFormConfig`,
+          data: {formId}
+        });
+        console.log(res.data);
+        let data = res.data.data;
+        this.desc = data.desc;
+        this.formTitle = data.formTitle;
+        this.fieldList = data.fieldList;
+        this.ccPerson = data.ccPerson;
+        this.formId = data._id;
+        if (data.formFlow.flowType === 0) {
 //              自由流程
-            _this.formFlow = data.formFlow;
-          } else if (data.formFlow.flowType === 1) {
-            // 固定
-            data.formFlow.fixedFlow.forEach((flow) => {
-              flow.name = flow.flowName;
-              flow.value = flow._id;
-              flow.checked = false;
-            });
-            _this.fixedFlows = data.formFlow.fixedFlow;
-          } else if (data.formFlow.flowType === 2) {
-            // 分支
-            let branchFlow = data.formFlow.branchFlow;
-//            _this.formFlow = branchFlow;
-            _this.pendingNode = branchFlow.pendingNode;
-            _this.currentNode = branchFlow.currentNode;
-          }
-          _this.formFlow = data.formFlow;
-          _this.$apply();
-          _this.$invoke('flow', 'getProp', {
-            flow: _this.formFlow,
-            pageType: 'add',
-            ccPerson: _this.ccPerson,
-            currentNode: _this.currentNode,
-            pendingNode: _this.pendingNode
+          this.formFlow = data.formFlow;
+        } else if (data.formFlow.flowType === 1) {
+          // 固定
+          data.formFlow.fixedFlow.forEach((flow) => {
+            flow.name = flow.flowName;
+            flow.value = flow._id;
+            flow.checked = false;
           });
-//          } catch (e) {
-//          }
+          this.fixedFlows = data.formFlow.fixedFlow;
+        } else if (data.formFlow.flowType === 2) {
+          // 分支
+          let branchFlow = data.formFlow.branchFlow;
+//            _this.formFlow = branchFlow;
+          this.pendingNode = branchFlow.pendingNode;
+          this.currentNode = branchFlow.currentNode;
         }
-      });
+        this.formFlow = data.formFlow;
+        this.$apply();
+        this.$invoke('flow', 'getProp', {
+          flow: this.formFlow,
+          pageType: 'add',
+          ccPerson: this.ccPerson,
+          currentNode: this.currentNode,
+          pendingNode: this.pendingNode
+        });
+      } catch (e) {
+        console.log(e);
+
+      }
     };
 
     saveFormData() {
       let flowData = this.$invoke('flow', 'exportFlow');
       let formData = {};
+//      debugger
       formData.formTitle = this.formTitle;
       formData.form = this.formId;
       formData.formValues = this.fieldValues;
@@ -152,54 +148,26 @@
       console.log(e);
     };
 
-    confirmForm() {
-      wx.showLoading({
-        title: '提交中',
-      });
+    async confirmForm() {
       let formData = this.saveFormData();
-      let _this = this;
-      wx.request({
-        url: `${_this.API}/form/addFormData`,
-        method: 'POST',
-        data: {formData},
-        success(res) {
-          try {
-            console.log(res);
-            wx.hideLoading();
-            wx.showToast({
-              title: '提交成功e',
-              icon: 'success',
-              duration: 2000,
-              complete() {
-                wx.navigateBack({
-                  delta: 2
-                });
-//                wx.navigateTo({
-//                  url: 'home',
-//                });
-              }
-            });
-          } catch (error) {
-            console.log(error);
-          }
-        },
-        fail() {
-          wx.hideLoading();
-          wx.showToast({
-            title: '提交成功',
-            icon: 'success',
-            duration: 4000,
-            complete() {
-              wx.navigateBack({
-                delta: 2
-              });
-//              wx.navigateTo({
-//                url: 'home',
-//              });
-            }
-          });
-        },
-      });
+      try {
+        let res = await wepy.request({
+          url: `/api/form/addFormData`,
+          method: 'POST',
+          data: {formData},
+        });
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 2000,
+        });
+        wx.navigateBack({
+          delta: 2
+        });
+      } catch (e) {
+        console.log(e);
+      }
+
     };
   }
 </script>

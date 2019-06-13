@@ -78,7 +78,7 @@
       });
       try {
         let res = await wepy.request({
-          url: `${this.$parent.globalData.API}/ask-leave/getLeave`,
+          url: `/api/ask-leave/getLeave`,
           data: {leaveId: this.leaveId},
         });
         let data = res.data.data;
@@ -97,9 +97,6 @@
     }
 
     async approveForm(){
-      wx.showLoading({
-        title: '提交中',
-      });
       let flowData = this.getFlowData();
       let leaveData = this.getLeaveData();
       leaveData.currentNode = flowData.currentNode;
@@ -108,7 +105,7 @@
       leaveData.pendingNode = flowData.pendingNode;
       try{
         let res = await wepy.request({
-          url: `${this.$parent.globalData.API}/ask-leave/approveLeave`,
+          url: `/api/ask-leave/approveLeave`,
           method: 'POST',
           data: {leaveData}
         });
@@ -118,7 +115,6 @@
       }catch (e){
         console.log(e);
       }
-      wx.hideLoading();
       wx.showToast({
         title: '提交成功',
         icon: 'success',
@@ -148,7 +144,7 @@
       leaveData.currentNode = flowData.currentNode;
       try{
         let res= await wepy.request({
-          url:`${this.$parent.globalData.API}/ask-leave/retrialLeave`,
+          url:`/api/ask-leave/retrialLeave`,
           method:'POST',
           data:{
             leaveData:leaveData,

@@ -10,8 +10,10 @@
             </view>
             <view class="weui-uploader__bd">
               <view class="weui-uploader__files" id="uploaderFiles">
-                <block wx:for="{{flowNode.nodePersons}}" wx:key="*this">
+                <block wx:for="{{flowNode.nodePersons}}" wx:key="*this" wx:for-index="idx">
                   <view class="weui-uploader__file" id="{{item}}">
+                    <icon type="clear" size="20" class="icon-area"
+                          @tap.stop="removeImg({{index}},{{idx}})"></icon>
                     <image class="weui-uploader__img" src="{{item.avatar}}" mode="aspectFill"/>
                     <view class="user-name">{{item.userName}}</view>
                   </view>
@@ -19,7 +21,8 @@
               </view>
               <!--选人按钮-->
               <view class="weui-uploader__input-box">
-                <view class="weui-uploader__input" data-index="{{index}}" @tap="chooseUser"></view>
+                <view class="weui-uploader__input" data-index="{{index}}"
+                      @tap="chooseUser({{flowNode.nodePersons}},{{index}})"></view>
               </view>
             </view>
           </view>
@@ -29,15 +32,17 @@
     <view class="weui-btn-area">
       <button class="weui-btn" type="primary" @tap="confirmForm">提交</button>
     </view>
-    <selectNodeUser :selectedUser.sync="nodePersons" :isShow.sync="showDialog"></selectNodeUser>
+    <selectUser :isShow.sync="showSelectDialog"></selectUser>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy';
+  import SelectUserMixin from '../../mixins/SelectUserMixin';
   import SelectUser from '../../components/base/SelectUser';
 
   export default class PendingNode extends wepy.component {
+    mixins = [SelectUserMixin];
     props = {
       isShow: {
         type: Boolean,
@@ -56,25 +61,36 @@
     };
 
     components = {
-      selectNodeUser: SelectUser,
+      selectUser: SelectUser,
     };
 
     methods = {
-      chooseUser(e) {
-        this.showDialog = true;
-        this.pickedIndex = e.currentTarget.dataset.index;
-      },
+//      chooseUser(e) {
+//        this.showDialog = true;
+//        this.pickedIndex = e.currentTarget.dataset.index;
+//      },
       confirmForm() {
         this.$emit('confirmPending');
+      },
+      removeImg(nodeIdx, userIdx) {
+        this.pendingNode[nodeIdx].nodePersons.splice(userIdx, 1);
       }
     };
 
-    events = {};
+    events = {
+      exportSelectUser(users, key) {
+        key = +key;
+//        if (key === '1') {
+        this.pendingNode[key].nodePersons = users;
+        this.$apply();
+//        }
+      }
+    };
 
     watch = {
-      nodePersons(val) {
-        this.pendingNode[this.pickedIndex].nodePersons = val;
-      },
+//      nodePersons(val) {
+//        this.pendingNode[this.pickedIndex].nodePersons = val;
+//      },
 //      showDialog(val) {
 //        if (val) {
 //          this.nodePersons = [];

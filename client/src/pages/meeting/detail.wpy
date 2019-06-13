@@ -1,36 +1,480 @@
 <template>
   <view>
-    <view>详情</view>
+    <title :title.sync="title" :desc.sync="createData"></title>
+    <view class="weui-cells weui-cells_after-title">
+      <meetingRoom title="会议室" :value.sync="meetingRoom" type="1"></meetingRoom>
+      <startTime title="开始时间" :value.sync="startTime" type="1"></startTime>
+      <endTime title="结束时间" :value.sync="endTime" type="1"></endTime>
+      <content :value.sync="desc" disabled></content>
+      <view class="weui-flex">
+        <view class="weui-flex__item" @tap="showBoard('atd')">
+          <view class="meeting-user">参加（{{attender.length}}）人</view>
+        </view>
+        <view class="weui-flex__item" @tap="showBoard('lve')">
+          <view class="meeting-user">请假（{{leaver.length}}）人</view>
+        </view>
+        <view class="weui-flex__item" @tap="showBoard('nrp')">
+          <view class="meeting-user">未反馈（{{noReply.length}}）人</view>
+        </view>
+      </view>
+      <view class="weui-flex" wx:if="{{beforeMeeting}}">
+        <view class="weui-flex__item" @tap="showBoard('sign')">
+          <view class="meeting-user">签到（{{sign.length}}）人</view>
+        </view>
+        <view class="weui-flex__item" @tap="showBoard('unSign')">
+          <view class="meeting-user">未签到（{{unSign.length}}）人</view>
+        </view>
+        <view class="weui-flex__item"></view>
+      </view>
+    </view>
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <creator title="发起人" inAccess="true" type="2" key="ogi"
+               :value.sync="originatorLen" @tap.user="showBoard">
+      </creator>
+      <participant title="参会人" inAccess="true" type="2" key="pti"
+                   :value.sync="participantLen" @tap.user="showBoard">
+      </participant>
+
+    </view>
+    <view class="qr-code" wx:if="{{showQrcode}}">
+      <view class="">签到码</view>
+      <image mode="widthFix" src="{{qrcode}}"
+             @tap="previewImg"></image>
+    </view>
+    <!--<view class="qr-code">-->
+    <!--<image mode="widthFix" src="{{qrcode}}"-->
+    <!--@tap="previewImg" id=""></image>-->
+    <!--</view>-->
+    <!--按钮组-->
+    <view class="weui-btn-area" wx:if="{{!beforeMeeting}}">
+      <button class="weui-btn" type="primary" wx:if="{{showAttend}}"
+              @tap="attendMeeting">参加
+      </button>
+      <button class="weui-btn" type="default"
+              @tap="leaveMeeting">请假
+      </button>
+
+    </view>
+    <view class="weui-btn-area" wx:elif="{{meetingEnd}}">
+      <button class="weui-btn" type="warn">会议已结束</button>
+    </view>
+    <view class="weui-btn-area" wx:else>
+      <button class="weui-btn" type="primary" wx:if="{{showSign}}"
+              @tap="signMeeting">签到
+      </button>
+      <!--<button class="weui-btn" type="default">取消请假</button>-->
+      <button class="weui-btn" type="default" wx:else
+              @tap="cancelSign">取消签到
+      </button>
+    </view>
+    <!--评论-->
+    <view wx:if="{{signRecord.length}}">
+      <commentList :comments.sync="signRecord"></commentList>
+    </view>
+    <!--用户展示板-->
+    <ogiBoard title="发起人" type="detail" comId="1"
+              :persons.sync="originator" :isShow.sync="showOgi">
+
+    </ogiBoard>
+    <ptiBoard title="参会人" type="detail" comId="2"
+              :persons.sync="participant" :isShow.sync="showPti">
+
+    </ptiBoard>
+    <atdBoard title="已确认" type="detail" comId="3"
+              :persons.sync="attender" :isShow.sync="showAtd">
+
+    </atdBoard>
+    <lveBoard title="请假" type="detail" comId="4"
+              :persons.sync="leaver" :isShow.sync="showLve">
+
+    </lveBoard>
+    <nrpBoard title="未反馈" type="detail" comId="5"
+              :persons.sync="noReply" :isShow.sync="showNrp">
+
+    </nrpBoard>
+    <signBoard title="签到" type="detail" comId="6"
+               :persons.sync="sign" :isShow.sync="showSig"></signBoard>
+    <unsignBoard title="未签到" type="detail" comId="7"
+                 :persons.sync="unSign" :isShow.sync="showNsg"></unsignBoard>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy';
 
+  import {DateForMat} from '../../assets/js/common';
+
+  import QQMapMixin from '../../mixins/QQMapMixin';
+  import ZTitle from '../../components/base/ZTitle';
+  import ZCell from '../../components/base/ZCell';
+  import ZTextarea from '../../components/base/ZTextarea';
+  import ZUploader from '../../components/base/ZUploader';
+  import UserBoard from '../../components/base/UserBoard';
+  import CommentList from '../../components/comment/CommentList';
+
   export default class MeetingDetail extends wepy.page {
     config = {
-      navigationBarTitleText: '',
+      navigationBarTitleText: '会议详情',
     };
 
-    data = {};
+    mixins = [QQMapMixin];
 
-    components = {};
+    data = {
+      qrcode: '',
+      meetingId: '',
+      title: '',
+      desc: '',
+      createData: '',
+      meetingRoom: '',
+      startTime: '',
+      endTime: '',
+      originator: [], // 发起者
+      leaver: [], // 请假者
+      participant: [], // 参会者
+      attender: [], // 确定参会者
+      noReply: [], // 未反馈
+      sign: [],
+      unSign: [],
+      signRecord: [], // 签到记录
+      enclosure: [], // 附件
+      boardType: '',
+      status: 1, // 会议状态
+      showQrcode: false, // 显示签到码
+      // 显示用户展板
+      showOgi: false,
+      showPti: false,
+      showAtd: false,
+      showLve: false,
+      showNrp: false,
+      showSig: false,
+      showNsg: false,
+    };
+    components = {
+      title: ZTitle,
+      meetingRoom: ZCell,
+      startTime: ZCell,
+      endTime: ZCell,
+      content: ZTextarea,
+      enclosure: ZUploader,
+      creator: ZCell,
+      participant: ZCell,
+      attender: ZCell,
+      noReply: ZCell,
+      leaver: ZCell,
+      ogiBoard: UserBoard,
+      ptiBoard: UserBoard,
+      atdBoard: UserBoard,
+      lveBoard: UserBoard,
+      nrpBoard: UserBoard,
+      signBoard: UserBoard,
+      unsignBoard: UserBoard,
+      commentList: CommentList,
+    };
 
-    methods = {};
+    methods = {
+      showBoard(type) {
+        switch (type) {
+          case 'ogi':
+            this.showOgi = true;
+            break;
+          case 'pti':
+            this.showPti = true;
+            break;
+          case 'atd':
+            this.showAtd = true;
+            break;
+          case 'lve':
+            this.showLve = true;
+            break;
+          case 'nrp':
+            this.showNrp = true;
+            break;
+          case 'sign':
+            this.showSig = true;
+            break;
+          case 'unSign':
+            this.showNsg = true;
+            break;
+        }
+      },
+      async meetingOpera(type) {
+
+      },
+      // 参加会议
+      async attendMeeting() {
+        try {
+          let data = this.operaUser(this.attender, this.leaver);
+          let meeting = {
+            meeting: this.meetingId,
+            attender: data.addUser,
+            leaver: data.removeUser,
+          };
+          let res = await this.updateMeetingRecord(meeting);
+          wx.showToast({
+            title: '操作成功',
+            icon: 'success',
+            duration: 2000
+          });
+          wx.navigateBack({
+            delta: 1
+          });
+        } catch (e) {
+          console.log(e);
+        }
+
+      },
+      // 请假
+      async leaveMeeting() {
+        try {
+          let data = this.operaUser(this.leaver, this.attender);
+          let meeting = {
+            meeting: this.meetingId,
+            attender: data.removeUser,
+            leaver: data.addUser,
+          };
+          let res = await this.updateMeetingRecord(meeting);
+          wx.showToast({
+            title: '操作成功',
+            icon: 'success',
+            duration: 2000
+          });
+          wx.navigateBack({
+            delta: 1
+          });
+        } catch (e) {
+          console.log(e);
+        }
+      },
+      // 签到
+      async signMeeting() {
+        try {
+          let meetingCode = await wepy.scanCode({onlyFromCamera: true});
+          let data = this.operaUser(this.sign, this.unSign);
+          let meeting = {
+            meeting: meetingCode.result,
+            unSign: data.removeUser,
+            sign: data.addUser,
+            signRecord: this.signRecord,
+          };
+          await this.addRecord(1);
+          let res = await this.updateMeetingRecord(meeting);
+          wx.showToast({
+            title: '操作成功',
+            icon: 'success',
+            duration: 2000
+          });
+
+        } catch (e) {
+          console.log(e);
+        }
+      },
+      // 取消签到
+      async cancelSign() {
+        try {
+          let data = this.operaUser(this.unSign, this.sign);
+          let meeting = {
+            meeting: this.meetingId,
+            unSign: data.addUser,
+            sign: data.removeUser,
+            signRecord: this.signRecord,
+          };
+          await this.addRecord(2);
+          let res = await this.updateMeetingRecord(meeting);
+          wx.showToast({
+            title: '操作成功',
+            icon: 'success',
+            duration: 2000
+          });
+        } catch (e) {
+          console.log(e);
+        }
+      },
+      previewImg() {
+        let url = this.qrcode;
+        wepy.previewImage({
+          current: url, // 当前显示图片的http链接
+          urls: [url], // 需要预览的图片http链接列表
+        });
+      }
+
+    };
 
     events = {};
 
     watch = {};
 
-    computed = {};
+    computed = {
+      originatorLen() {
+        return `${this.originator.length}人`;
+      },
+      participantLen() {
+        return `${this.participant.length}人`;
+      },
+      // 会议前10分钟
+      beforeMeeting() {
+        let now = new Date().getTime();
+        let meeting = new Date(this.startTime).getTime();
+        let min = Math.floor((meeting - now) / 1000 / 60);
+        if (min < 10) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      // 会议结束
+      meetingEnd() {
+        let now = new Date().getTime();
+        let meeting = new Date(this.endTime).getTime();
+        return now > meeting && this.status === 2;
+      },
+      // 显示参加按钮
+      showAttend() {
+        let userId = wx.getStorageSync('userId');
+        return !this.attender.some(item => item._id === userId);
+//        return this.beforeMeeting;
+      },
 
-    onLoad() {
+      // 显示签到按钮
+      showSign() {
+        let userId = wx.getStorageSync('userId');
+        return !this.sign.some(item => item._id === userId);
+      },
+    };
+
+    onLoad(e) {
+      let id = e.meetingId;
+      this.meetingId = id;
+      this.initData(id);
     };
 
     onShow() {
+
     };
+
+    async initData(meetingId) {
+      let res = await wepy.request({
+        url: '/api/meeting/getMeeting',
+        data: {meetingId}
+      });
+      let data = res.data.data;
+      this.title = data.title;
+      this.desc = data.desc;
+      this.createData = data.createData;
+      this.meetingRoom = data.meetingRoom;
+      this.startTime = data.startTime;
+      this.endTime = data.endTime;
+      this.participant = data.participant;
+      this.originator = data.originator;
+      this.leaver = data.leaver;
+      this.attender = data.attender;
+      this.noReply = data.noReply;
+      this.sign = data.sign;
+      this.unSign = data.unSign;
+      this.signRecord = data.signRecord;
+      this.enclosure = data.enclosure;
+      this.status = data.status;
+      if (data.creator._id === wx.getStorageSync('userId')) {
+        this.showQrcode = true;
+      }
+      this.getQrcode();
+      this.$apply();
+    }
+
+    async updateMeetingRecord(meeting) {
+      try {
+        let res = await wepy.request({
+          url: '/api/meeting/updateMeetingRecord',
+          method: 'POST',
+          data: {meeting}
+        });
+        return res;
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    /**
+     *
+     * @param addUser
+     * @param removeUser
+     * @returns {{addUser: (Array|any[]|Int8Array|Uint8Array|Uint8ClampedArray|Int16Array|*), removeUser: (Array|any[]|Int8Array|Uint8Array|Uint8ClampedArray|Int16Array|*)}}
+     */
+    operaUser(addUser, removeUser) {
+      let userId = '';
+      try {
+        userId = wx.getStorageSync('userId');
+        addUser = addUser.map(item => item._id);
+        removeUser = removeUser.map(item => item._id);
+        addUser.push(userId);
+        addUser = Array.from(new Set(addUser));
+        let index = removeUser.indexOf(userId);
+        if (index >= 0) {
+          removeUser.splice(index, 1);
+        }
+        return {
+          addUser,
+          removeUser,
+        };
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    // 签到记录操作
+    async addRecord(type) {
+      let user = wx.getStorageSync('userList').find((item) => {
+        let userId = wx.getStorageSync('userId');
+        return item._id === userId;
+      });
+      if (type === 1) {
+        // 签到
+        let mapdata = await this.getCurrentLocation();
+        this.signRecord.push({
+          userId: user._id,
+          user: user.userName,
+          avatar: user.avatar,
+          date: DateForMat(new Date(), 'hh:mm'),
+          type: 1,
+          location: mapdata.address,
+        });
+      } else {
+        // 取消签到
+        this.signRecord.push({
+          userId: user._id,
+          user: user.userName,
+          avatar: user.avatar,
+          date: DateForMat(new Date(), 'hh:mm'),
+          type: 2,
+//          location: mapdata.address,
+        });
+      }
+      wx.navigateBack({
+        delta: 1
+      });
+//      this.initData(this.meetingId);
+    }
+
+    async getQrcode() {
+      let res = await wepy.request({
+        url: '/api/meeting/createQrcode',
+        data: {meetingId: this.meetingId}
+      });
+      this.qrcode = res.data.data;
+    }
   }
 </script>
 
 <style lang='less'>
+  .qr-code {
+    text-align: center;
+    margin: ~"20rpx";
+  }
+
+  .meeting-user {
+    padding-bottom: ~"30rpx";
+    text-align: center;
+    color: #409EFF;
+    font-size: ~"27rpx";
+  }
 </style>

@@ -107,7 +107,7 @@
     async initData(dataId) {
       try {
         let res = await wepy.request({
-          url: `${this.$parent.globalData.API}/form/getFormDetail`,
+          url: `/api/form/getFormDetail`,
           data: {formId: dataId},
         });
         let formData = res.data.data;
@@ -175,7 +175,7 @@
           formData.pendingNode = flowData.pendingNode;
         }
         let res = await wepy.request({
-          url: `${this.$parent.globalData.API}/form/approveForm`,
+          url: `/api/form/approveForm`,
           method: 'POST',
           data: {formData}
         });
@@ -211,7 +211,7 @@
         formData.currentNode = flowData.currentNode;
       }
       let res = await wepy.request({
-        url: `${this.$parent.globalData.API}/form/retrialForm`,
+        url: `/api/form/retrialForm`,
         method: 'POST',
         data: {formData}
       });
@@ -241,11 +241,14 @@
       formData.freeFlow = this.freeFlow;
       formData.approvalRecords = this.approvalRecords;
       let res = await wepy.request({
-        url: `${this.$parent.globalData.API}/form/endFlow`,
+        url: `/api/form/endFlow`,
         method: 'POST',
         data: {formData}
       });
       console.log('end');
+      wx.navigateBack({
+        delta: 1
+      });
     }
 
     getFormData() {

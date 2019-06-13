@@ -34,7 +34,7 @@
 <script>
 import wepy from "wepy";
 import { connect } from "wepy-redux";
-import SearchBox from "../components/SearchBox";
+import SearchBox from "../components/base/SearchBox";
 @connect(
   {},
   {}

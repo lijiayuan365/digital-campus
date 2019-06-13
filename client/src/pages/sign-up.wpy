@@ -53,9 +53,6 @@
       tipsFlag: false,
     };
     computed = {
-      API() {
-        return this.$parent.globalData.API;
-      },
       deptId() {
         return this.dept._id;
       },
@@ -81,7 +78,9 @@
     }
 
     async getCfg() {
-      let res = await wepy.request(`${this.API}/user/getSignUpCfg`);
+      let res = await wepy.request({
+        url:`/api/user/getSignUpCfg`,
+      });
       let cfg = res.data.data;
       this.deptList = cfg.deptList;
       this.orgList = cfg.orgList;
@@ -104,7 +103,7 @@
         user.email = this.email;
         user.remark = this.remark;
         let res = await wepy.request({
-          url: `${this.API}/user/signUp`,
+          url: `/api/user/signUp`,
           method: 'POST',
           data: {user: user},
         });
@@ -125,7 +124,9 @@
 
     async getAddressBook() {
       try {
-        let res = await wepy.request(`${this.API}/user/getAddressBook`);
+        let res = await wepy.request({
+          url:`/api/user/getAddressBook`
+        });
         wx.setStorageSync('addressBook', res.data.data.addressBook);
         wx.setStorageSync('userList', res.data.data.userList);
         let sessionId = res.data.data.sessionId;

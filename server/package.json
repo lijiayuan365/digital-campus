@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node --inspect ./bin/www",
     "dev": "supervisor -i node_modules --inspect ./bin/www"
   },
   "dependencies": {

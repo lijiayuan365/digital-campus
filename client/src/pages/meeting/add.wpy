@@ -1,26 +1,26 @@
 <template>
   <view>
     <view class="weui-cells weui-cells_after-title">
-      <meetingTitle placeholder="请输入会议标题"></meetingTitle>
-      <meetingContent placeholder="请输入会议内容"></meetingContent>
-      <imgUploader :files="fileList"></imgUploader>
+      <meetingTitle :value.sync="title" placeholder="请输入会议标题"></meetingTitle>
+      <meetingContent :value.sync="desc" placeholder="请输入会议内容"></meetingContent>
+      <imgUploader :files="enclosure"></imgUploader>
     </view>
     <view class="weui-cells__title"></view>
     <view class="weui-cells weui-cells_after-title">
-      <startDate title="开始日期" :value="startDate"></startDate>
+      <startDate title="日期" :value="startDate"></startDate>
       <startTime title="开始时间" :value="startTime"></startTime>
       <!--</view>-->
       <!--<view class="weui-cells__title"></view>-->
       <!--<view class="weui-cells weui-cells_after-title">-->
-      <endDate title="结束日期" :value="endDate"></endDate>
+      <!--<endDate title="结束日期" :value="endDate"></endDate>-->
       <endTime title="结束时间" :value="endTime"></endTime>
-      <meetingPlace title="会议地点"></meetingPlace>
+      <meetingPlace title="会议地点" :value.sync="meetingRoom"></meetingPlace>
     </view>
     <view class="weui-cells__title"></view>
     <view class="weui-cells weui-cells_after-title">
       <view @tap="showCreatorB">
         <creator title="发起人" inAccess="true" type="2"
-                 :value.sync="creatorLen">
+                 :value.sync="originatorLen">
         </creator>
       </view>
       <view @tap="participantB">
@@ -30,11 +30,11 @@
       </view>
     </view>
     <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" @tap="confirmForm">立即提交</button>
+      <button class="weui-btn" type="primary" @tap="confirmMeeting">立即提交</button>
       <button class="weui-btn" type="default" @tap="saveDraft">存为草稿</button>
     </view>
     <creatorBoard title="发起人" comId="1"
-                  :persons.sync="creator" :isShow.sync="showCreator">
+                  :persons.sync="originator" :isShow.sync="showOgt">
 
     </creatorBoard>
     <participantBoard title="参会者" comId="2"
@@ -61,14 +61,17 @@
     };
 
     data = {
-      fileList: [],
+      title: '',
+      desc: '',
+      enclosure: [],
       startDate: '',
       startTime: '',
-      endDate: '',
+//      endDate: '',
       endTime: '',
-      creator: [],
+      meetingRoom: '',
+      originator: [],
       participant: [],
-      showCreator: false,
+      showOgt: false,
       showPP: false,
     };
 
@@ -89,19 +92,36 @@
 
     methods = {
       showCreatorB() {
-        this.showCreator = true;
+        this.showOgt = true;
+        this.$invoke('creatorBoard', 'getBoardPerson', this.originator);
       },
       participantB() {
         this.showPP = true;
+        this.$invoke('participantBoard', 'getBoardPerson', this.participant);
+      },
+      async confirmMeeting() {
+        let meeting = this.saveMeeting();
+        meeting.status = 1;
+        let res = await wepy.request({
+          url: '/api/meeting/addMeeting',
+          method: 'POST',
+          data: {meeting}
+        });
+        wx.navigateBack({
+          delta: 1
+        });
+      },
+
+      saveDraft() {
+
       }
     };
 
     events = {
       getBoardData(data) {
-        debugger
         let id = data.id;
         if (id === '1') {
-          this.creator = data.persons;
+          this.originator = data.persons;
         } else {
           this.participant = data.persons;
         }
@@ -112,12 +132,12 @@
     watch = {};
 
     computed = {
-      creatorLen() {
-        return `已选择${this.creator.length}人`;
+      originatorLen() {
+        return `已选择${this.originator.length}人`;
       },
       meetingPersonLen() {
         return `已选择${this.participant.length}人`;
-      }
+      },
 
     };
 
@@ -127,13 +147,26 @@
     onShow() {
     };
 
-    confirmForm() {
-
+    saveMeeting() {
+      let startTime = `${this.startDate} ${this.startTime}`;
+      let endTime = `${this.startDate} ${this.endTime}`;
+      let originator = this.originator.map(item => item._id);
+      let participant = this.participant.map(item => item._id);
+      let meeting = {
+        title: this.title,
+        desc: this.desc,
+        meetingRoom: this.meetingRoom,
+        startTime: startTime,
+        endTime: endTime,
+        enclosure: this.enclosure,
+        originator: originator,
+        participant: participant,
+//        leaver:[],
+//        attender:[],
+      };
+      return meeting;
     }
 
-    saveDraft() {
-
-    }
   }
 </script>
 

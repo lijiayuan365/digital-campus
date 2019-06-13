@@ -7,8 +7,8 @@
 
 <script>
   import wepy from 'wepy';
-  import SearchBox from '../../components/SearchBox';
-  import DataList from '../../components/DataList';
+  import SearchBox from '../../components/base/SearchBox';
+  import DataList from '../../components/base/DataList';
 
   export default class Example extends wepy.page {
     config = {
@@ -41,7 +41,7 @@
     };
     async initData(){
       let res = await wepy.request({
-        url:`${this.$parent.globalData.API}/ask-leave/getLeaveTypeList`
+        url:`/api/ask-leave/getLeaveTypeList`
       });
       let data = res.data;
       this.types = data.data;

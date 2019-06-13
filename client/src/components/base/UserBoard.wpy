@@ -1,5 +1,5 @@
 <template>
-  <view class="pending-node" hidden="{{!isShow}}">
+  <view class="pending-node" hidden="{{!isShow}}" style="z-index:5;">
     <view class="weui-cells">
       <view class="weui-cell">
         <view class="weui-cell__bd">
@@ -10,36 +10,44 @@
             </view>
             <view class="weui-uploader__bd">
               <view class="weui-uploader__files" id="uploaderFiles">
-                <block wx:for="{{persons}}" wx:key="*this">
+                <view wx:for="{{persons}}" wx:key="*this">
                   <view class="weui-uploader__file" id="{{item}}">
+                    <icon type="clear" size="20" class="icon-area"
+                          @tap.stop="removeImg({{index}})" wx:if="{{showAdd}}"></icon>
                     <image class="weui-uploader__img" src="{{item.avatar}}" mode="aspectFill"/>
                     <view class="user-name">{{item.userName}}</view>
                   </view>
-                </block>
+                </view>
               </view>
               <!--选人按钮-->
-              <view class="weui-uploader__input-box">
-                <view class="weui-uploader__input" @tap="chooseUser"></view>
+              <view class="weui-uploader__input-box" wx:if="{{showAdd}}">
+                <view class="weui-uploader__input" @tap="chooseUser({{persons}},'1')"></view>
               </view>
             </view>
+          </view>
+          <view class="weui-loadmore weui-loadmore_line" wx:if="{{persons.length === 0}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
           </view>
         </view>
       </view>
     </view>
     <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" @tap="confirmForm">提交</button>
+      <button class="weui-btn" type="primary" @tap="check" wx:if="{{showAdd}}">确定</button>
+      <button class="weui-btn" type="default" @tap="close">关闭</button>
     </view>
-    <selectNodeUser :selectedUser.sync="persons" :isShow.sync="showDialog"></selectNodeUser>
+    <selectUser :isShow.sync="showSelectDialog"></selectUser>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy';
+  import SelectUserMixin from '../../mixins/SelectUserMixin';
   import SelectUser from '../../components/base/SelectUser';
 
   export default class UserBorad extends wepy.component {
     props = {
       title: String,
+      type: String,
       comId: String,
       isShow: {
         type: Boolean,
@@ -48,36 +56,50 @@
       persons: Array,
     };
 
-    data = {
-      showDialog: false,
-      nodePersons: [],
-      pickedIndex: '',
-    };
-
+    data = {};
+    mixins = [SelectUserMixin];
     components = {
-      selectNodeUser: SelectUser,
+      selectUser: SelectUser,
     };
 
     methods = {
-      chooseUser() {
-        this.showDialog = true;
-      },
-      confirmForm() {
-        debugger
+      check() {
         let data = {
-          key: this.comId,
+          id: this.comId,
           persons: this.persons,
         };
         this.$emit('getBoardData', data);
         this.isShow = false;
+      },
+      close() {
+        this.isShow = false;
+        this.persons = [];
+      },
+      getBoardPerson(person) {
+        this.persons = person;
+      },
+      removeImg(index){
+//        let index = e.target.dataset.index;
+        this.persons.splice(index,1);
       }
     };
 
-    events = {};
+    events = {
+      exportSelectUser(users,key){
+        if(key === '1'){
+          this.persons = users;
+          this.$apply();
+        }
+      }
+    };
 
     watch = {};
 
-    computed = {};
+    computed = {
+      showAdd() {
+        return this.type !== 'detail';
+      }
+    };
 
     onLoad() {
     };

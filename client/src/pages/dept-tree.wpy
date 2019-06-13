@@ -33,7 +33,7 @@
 </template>
 <script>
 import wepy from "wepy";
-import SearchBox from "../components/SearchBox";
+import SearchBox from "../components/base/SearchBox";
 
 export default class DeptTree extends wepy.page {
   config = {

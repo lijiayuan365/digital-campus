@@ -1,4 +1,5 @@
 import User from '../views/user/UserIndex.vue'
+import ImportUser from '../views/user/ImportUser.vue'
 import UserSetting from './../views/user/UserSetting.vue'
 import UserDetail from '../views/user/UserDetail.vue'
 import PostList from '../views/user/PostList.vue'
@@ -11,6 +12,10 @@ const userRoutes = [
     name: 'User',
     component: User,
   },  {
+    path: 'user/import-user',
+    name: 'ImportUser',
+    component: ImportUser,
+  },{
     path: 'user/detail',
     name: 'UserDetail',
     component: UserDetail

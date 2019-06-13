@@ -28,11 +28,7 @@
       avatar: '',
       tipsFlag: false,
     };
-    computed = {
-      API() {
-        return this.$parent.globalData.API;
-      }
-    };
+    computed = {};
     methods = {
       getUserInfo(e) {
         let userInfo = e.detail.userInfo;
@@ -58,7 +54,7 @@
 
       }
       let res = await wepy.request({
-        url: `${this.API}/user/login`,
+        url: `/api/user/login`,
         method: 'POST',
         data: {
           user: user,
@@ -78,9 +74,11 @@
     }
 
     async getAddressBook() {
-      let _this = this;
+//      let _this = this;
       try {
-        let res = await wepy.request(`${_this.API}/user/getAddressBook`);
+        let res = await wepy.request({
+          url: `/api/user/getAddressBook`
+        });
         wx.setStorageSync('addressBook', res.data.data.addressBook);
         wx.setStorageSync('userList', res.data.data.userList);
         let sessionId = res.data.data.sessionId;

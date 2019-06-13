@@ -21,7 +21,7 @@
                 </view>
                 <!--选人按钮-->
                 <view class="weui-uploader__input-box" wx:if="{{showAddUser}}">
-                  <view class="weui-uploader__input" @tap="chooseUser"></view>
+                  <view class="weui-uploader__input" @tap="chooseUser({{currentNode.nodePersons}},1)"></view>
                 </view>
               </view>
             </view>
@@ -46,15 +46,17 @@
         </view>
       </view>
     </view>
-    <selectUser :selectedUser.sync="nodePersons" :isShow.sync="showDialog"></selectUser>
+    <selectUser :isShow.sync="showSelectDialog"></selectUser>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy';
+  import SelectUserMixin from '../../mixins/SelectUserMixin';
   import SelectUser from '../../components/base/SelectUser';
 
   export default class BranchFlow extends wepy.component {
+    mixins = [SelectUserMixin];
     props = {
       ccPerson: Array,
     };
@@ -64,7 +66,6 @@
       currentNode: {},
       nodePersons: [],
       pageType: '',
-      showDialog: false,
     };
 
     components = {
@@ -72,9 +73,9 @@
     };
 
     methods = {
-      chooseUser() {
-        this.showDialog = true;
-      },
+//      chooseUser() {
+//        this.showDialog = true;
+//      },
       getProp(prop) {
         let branchFlow = {
           data: prop.flow.data,
@@ -93,7 +94,15 @@
       },
     };
 
-    events = {};
+    events = {
+      exportSelectUser(users, key) {
+//        key = +key;
+        if (+key === 1) {
+          this.currentNode.nodePersons = users;
+          this.$apply();
+        }
+      }
+    };
 
     watch = {
       nodePersons(persons) {

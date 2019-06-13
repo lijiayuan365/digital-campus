@@ -25,10 +25,10 @@
 
 <script>
   import wepy from 'wepy';
-  import SearchBox from '../../components/SearchBox';
-  import TopMenu from '../../components/TopMenu';
-  import TabBar from '../../components/TabBar';
-  import FormList from '../../components/DataList';
+  import SearchBox from '../../components/base/SearchBox';
+  import TopMenu from '../../components/base/TopMenu';
+  import TabBar from '../../components/base/TabBar';
+  import FormList from '../../components/base/DataList';
 
   export default class FormHome extends wepy.page {
     config = {
@@ -39,13 +39,13 @@
       type1: 1,
       type2: 2,
       topMenu: [
-        {title: '新建表单', path: 'form-choice'},
-        {title: '草稿', path: 'draft'},
+        {title: '新建表单', path: 'form-choice',iconPath:'http://img.cdn.lijiayuan.top/zzy/add.png'},
+        {title: '草稿', path: 'draft',iconPath:'http://img.cdn.lijiayuan.top/zzy/edit.png'},
       ],
       tabBars: [
-        {title: '我的表单', iconPath: '../../images/pic_160.png', badge: '0'},
-        {title: '待我审批', iconPath: '../../images/pic_160.png', badge: '0'},
-        {title: '与我相关', iconPath: '../../images/pic_160.png', badge: '0'},
+        {title: '我的表单', iconPath: 'http://img.cdn.lijiayuan.top/zzy/home.png', badge: '0'},
+        {title: '待我审批', iconPath: 'http://img.cdn.lijiayuan.top/zzy/approve.png', badge: '0'},
+        {title: '与我相关', iconPath: 'http://img.cdn.lijiayuan.top/zzy/icon_signal.png', badge: '0'},
       ],
       mineList: [],
       todoList: [],
@@ -106,13 +106,13 @@
       // 我的表单
       let mineCon = {creator: '5c7b3f74754c9769ed26c4da'};
       // 待我处理
-      let dealCon = {type: 'dealPerson', dealPerson: '5c43db2c27a94952c0a58652'};
+      let dealCon = {type: 'dealPerson', dealPerson: '5c7b3f74754c9769ed26c4da'};
       // 与我相关
-      let CcCon = {type: 'ccPerson', ccPerson: '5c43db2c27a94952c0a58652'};
+      let CcCon = {type: 'ccPerson', ccPerson: '5c7b3f74754c9769ed26c4da'};
       let condition = tabIndex === 0 ? mineCon : tabIndex === 1 ? dealCon : CcCon;
       try {
         let res = await wepy.request({
-          url: `${this.$parent.globalData.API}/form/getFormDataList`,
+          url: `/api/form/getFormDataList`,
           data: {condition}
         });
         let data = res.data.data;

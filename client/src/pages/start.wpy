@@ -28,11 +28,7 @@
     data = {
       showPage: false,
     };
-    computed = {
-      API() {
-        return this.$parent.globalData.API;
-      }
-    };
+    computed = {};
     methods = {
       login() {
         wx.navigateTo({
@@ -48,10 +44,6 @@
     events = {};
 
     onLoad() {
-      // debugger
-      wx.showLoading({
-        title: '加载中',
-      });
       this.initData();
     }
 
@@ -69,17 +61,21 @@
 //        }
 //      });
       this.isSysUser();
-      wx.setStorageSync('userId','5c7b3f74754c9769ed26c4da');
+//      wx.setStorageSync('userId','5c7b3f74754c9769ed26c4da');
+
     }
 
     async getAddressBook() {
       let _this = this;
       try {
-        let res = await wepy.request(`${_this.API}/user/getAddressBook`);
+        let res = await wepy.request({
+          url:`/api/user/getAddressBook`
+        });
         wx.setStorageSync('addressBook', res.data.data.addressBook);
         wx.setStorageSync('userList', res.data.data.userList);
-        let sessionId = res.data.data.sessionId;
-        this.$parent.globalData.header.Cookie = `JSESSIONID=${sessionId}`;
+//        let sessionId = res.data.data.sessionId;
+//        wx.setStorageSync('sessionId',sessionId);
+//        this.$parent.globalData.header.Cookie = `JSESSIONID=${sessionId}`;
         wx.switchTab({
           url: 'home'
         });
@@ -94,10 +90,10 @@
         let res = await wepy.login();
         let code = res.code;
         res = await wepy.request({
-          url: `${this.API}/user/isSysUser`,
+          url: `/api/user/isSysUser`,
           data: {code}
         });
-        wx.hideLoading();
+        wx.setStorageSync('cookie',res.header['set-cookie']);
         if (res.data.data.isUser) {
           // 系统用户
           this.getAddressBook();
@@ -106,6 +102,7 @@
           this.$apply();
         }
         wx.setStorageSync('openid', res.data.data.openid);
+        wx.setStorageSync('userId', res.data.data.userId);
         wx.setStorageSync('session_key', res.data.data.session_key);
       } catch (e) {
         console.log(e);

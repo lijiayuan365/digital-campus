@@ -4,7 +4,7 @@
       <view class="weui-label">{{title}}</view>
     </view>
     <view class="weui-cell__bd">
-      <picker mode="date" value="{{value}}" start="2015-09-01" end="2017-09-01" @change="bindDateChange">
+      <picker mode="date" value="{{value}}" @change="bindDateChange">
         <view class="weui-input">{{value}}</view>
       </picker>
     </view>

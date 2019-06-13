@@ -6,7 +6,7 @@
           <topMenu :menus="topMenu"></topMenu>
         </view>
         <searchBox></searchBox>
-        急急急
+        <todoList :list.sync="todoList" :type="type3"></todoList>
       </view>
       <view wx:if="{{activeBar === 1}}">
         <searchBox></searchBox>
@@ -14,7 +14,18 @@
       </view>
       <view wx:if="{{activeBar === 2}}">
         <searchBox></searchBox>
-        我的会议
+        <navBar :tabs="navBars" :activeBar.sync="activeNav">
+          <view slot="tab-panel">
+            <view class="weui-tab__panel">
+              <view class="weui-tab__content" hidden="{{activeNav != 0}}">
+                <mineList :list.sync="mineList" :type="type3"></mineList>
+              </view>
+              <view class="weui-tab__content" hidden="{{activeNav != 1}}">
+                <relevantList :list.sync="ccList" :type="type3"></relevantList>
+              </view>
+            </view>
+          </view>
+        </navBar>
       </view>
     </view>
 
@@ -24,10 +35,11 @@
 
 <script>
   import wepy from 'wepy';
-  import TabBar from '../../components/TabBar';
-  import TopMenu from '../../components/TopMenu';
-  import SearchBox from '../../components/SearchBox';
-  import DataList from '../../components/DataList';
+  import TabBar from '../../components/base/TabBar';
+  import TopMenu from '../../components/base/TopMenu';
+  import NavBar from '../../components/base/NavBar';
+  import SearchBox from '../../components/base/SearchBox';
+  import DataList from '../../components/base/DataList';
 
   export default class Meeting extends wepy.page {
     config = {
@@ -35,42 +47,87 @@
     };
 
     data = {
+      type1: 1,
+      type3: 3,
       topMenu: [
-        {title: '新建会议', path: 'add'},
-        {title: '草稿', path: 'draft'},
+        {title: '新建会议', path: 'add',iconPath:'http://img.cdn.lijiayuan.top/zzy/add.png'},
+        {title: '草稿', path: 'draft',iconPath:'http://img.cdn.lijiayuan.top/zzy/edit.png'},
       ],
       tabBars: [
-        {title: '待进行会议', iconPath: '../../images/pic_160.png', badge: '2'},
-        {title: '会议纪要', iconPath: '../../images/pic_160.png', badge: '2'},
-        {title: '我的会议', iconPath: '../../images/pic_160.png', badge: '2'},
+        {title: '待进行会议', iconPath: 'http://img.cdn.lijiayuan.top/zzy/clock.png', badge: '0'},
+        {title: '会议纪要', iconPath: 'http://img.cdn.lijiayuan.top/zzy/summary.png', badge: '0'},
+        {title: '我的会议', iconPath: 'http://img.cdn.lijiayuan.top/zzy/icon_signal.png', badge: '0'},
       ],
+      navBars: ['我发布的', '我相关的'],
+      mineList: [],
+      todoList:[],
+      ccList: [],
       activeBar: 0,
+      activeNav: 0,
     };
 
     components = {
       tabBar: TabBar,
+      navBar: NavBar,
       topMenu: TopMenu,
       searchBox: SearchBox,
       meetingList: DataList,
+      todoList: DataList,
+      mineList: DataList,
+      relevantList: DataList,
     };
 
     methods = {};
 
     events = {};
 
-    watch = {};
+    watch = {
+      activeNav(val) {
+        this.getMeetingList(val);
+      }
+    };
 
     computed = {};
 
     onLoad() {
+
     };
 
     onShow() {
+      this.initData();
     };
+
+    async getMeetingList(type) {
+      try {
+        let res = await wepy.request({
+          url: '/api/meeting/getMeetingList',
+          data: {type: type}
+        });
+        let data = res.data.data;
+        if (+type === 0) {
+          this.mineList = data;
+        } else if (+type === 1) {
+          this.ccList = data;
+        } else if(+type === 2){
+          this.todoList = data;
+        }
+        this.$apply();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    initData(){
+      this.getMeetingList(0);
+      this.getMeetingList(2);
+    }
   }
 </script>
 
 <style lang='less'>
+  .container{
+    margin-bottom: ~"90rpx";
+  }
   .top-menu {
     margin-bottom: ~"240rpx";
   }

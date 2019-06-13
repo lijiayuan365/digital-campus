@@ -1,19 +1,12 @@
 <!--  -->
 <template>
   <div>
-    <!--<div class="bread-crumb-wrapper">-->
-    <!--<el-button size="small" @click.native="$router.go(-1)">返回</el-button>-->
-    <!--<el-breadcrumb separator-class="el-icon-arrow-right" class="bread-crumb">-->
-    <!--<el-breadcrumb-item :to="{ path: '/user' }">首页</el-breadcrumb-item>-->
-    <!--<el-breadcrumb-item>用户信息</el-breadcrumb-item>-->
-    <!--</el-breadcrumb>-->
-    <!--</div>-->
     <bread-crumb>
-      <template>
-        <el-breadcrumb-item :to="{ path: '/user' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>用户信息</el-breadcrumb-item>
-      </template>
-    </bread-crumb>
+    <template>
+      <el-breadcrumb-item :to="{ path: '/user' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>用户信息</el-breadcrumb-item>
+    </template>
+  </bread-crumb>
     <p class="page-title">{{title}}</p>
     <div v-if="pageType === 'detail'">
       <div class="user-info">
@@ -27,7 +20,7 @@
         </div>
         <div class="info-item">
           <div class="info-label">职位：</div>
-          <div class="info-val">{{userInfo.post}}</div>
+          <div class="info-val">{{userInfo.post.postName}}</div>
         </div>
         <div class="info-item">
           <div class="info-label">组织：</div>
@@ -176,7 +169,7 @@ export default {
     },
     updateUser() {
       // {user: this.userInfo}
-      
+
       this.$http.post('/api/user/updateUser', {user: this.userInfo}).then((res) => {
         this.$notify({
           title: '提示',
@@ -207,13 +200,14 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    padding: 5px;
+    font-size: 16px;
   }
 
   .info-label {
     margin-right: 1rem;
     text-align: left;
-    color: #00B7FF;
+    /*color: #00B7FF;*/
   }
 
   .info-val {

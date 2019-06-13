@@ -155,11 +155,11 @@
                 <view class="weui-uploader">
                   <view class="weui-uploader__hd">
                     <view class="weui-uploader__title">图片上传</view>
-                    <view class="weui-uploader__info">{{files.length}}/2</view>
+                    <!--<view class="weui-uploader__info">{{files.length}}/2</view>-->
                   </view>
                   <view class="weui-uploader__bd">
                     <view class="weui-uploader__file weui-uploader__file_status" hidden="{{!uploading}}">
-                      <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill"/>
+                      <image class="weui-uploader__img" src="../../images/pic_160.png" mode="aspectFill"/>
                       <view class="weui-uploader__file-content">{{progress}}%</view>
                     </view>
                     <view class="weui-uploader__files" id="uploaderFiles">
@@ -325,6 +325,7 @@
 
     initQiniu() {
       let _this = this;
+//      debugger
       var options = {
         region: 'ECN', // 华东区
         uptokenURL: `${_this.$parent.$parent.globalData.API}/common/getUpToken`,

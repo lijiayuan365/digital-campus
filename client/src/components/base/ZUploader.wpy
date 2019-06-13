@@ -9,7 +9,7 @@
         </view>
         <view class="weui-uploader__bd">
           <view class="weui-uploader__file weui-uploader__file_status" hidden="{{!uploading}}">
-            <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill"/>
+            <image class="weui-uploader__img" src="../../images/pic_160.png" mode="aspectFill"/>
             <view class="weui-uploader__file-content">{{progress}}%</view>
           </view>
           <view class="weui-uploader__files" id="uploaderFiles">
@@ -86,7 +86,6 @@
 //
       },
       previewImage(e) {
-        debugger
         wepy.previewImage({
           current: e.currentTarget.id, // 当前显示图片的http链接
           urls: this.files, // 需要预览的图片http链接列表
@@ -125,7 +124,7 @@
   }
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
   .img-area{
     position: relative;
   }

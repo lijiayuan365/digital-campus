@@ -1,0 +1,94 @@
+<template>
+  <view class="weui-cells__title">回复</view>
+  <view class="weui-cells weui-cells_after-title com-list">
+    <view class="weui-cell" wx:for="{{comments}}">
+      <view class="weui-cell__hd com-avatar">
+        <image src="{{item.avatar}}" class="img-avatar"/>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="user-name">{{item.user}}</view>
+        <view wx:if="{{item.type === 1}}">签到：{{item.location}}</view>
+        <view wx:elif="{{item.type === 2}}">取消签到</view>
+        <view wx:else>{{item.msg}}</view>
+      </view>
+      <view class="weui-cell__ft com-time">{{item.date}}</view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class Example extends wepy.component {
+    props = {
+      comments:Array,
+    };
+
+    data = {
+      com: [
+        {
+          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132',
+          name: '212',
+          msg: '32',
+          time: '2015-10-12'
+        },
+        {
+          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132',
+          name: '212',
+          msg: '32',
+          time: '2015-10-12'
+        },
+        {
+          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132',
+          name: '212',
+          msg: '32',
+          time: '2015-10-12'
+        },
+        {avatar: '', name: '212', msg: '32', time: '2015-10-12'},
+      ]
+    };
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+  .com-list {
+    .com-item {
+      display: flex;
+    }
+    .com-time {
+      align-self: flex-start;
+      font-size: ~"25rpx";
+    }
+    .com-avatar {
+      align-self: flex-start;
+    }
+    .img-avatar {
+      margin-right: 5px;
+      vertical-align: middle;
+      width: 36px;
+      height: 36px;
+    }
+    .weui-cell__bd{
+      font-size: ~"30rpx";
+    }
+    .user-name{
+      color: #999;
+    }
+  }
+</style>

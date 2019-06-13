@@ -1,6 +1,7 @@
 <script>
   import wepy from 'wepy';
   import 'wepy-async-function';
+  import {DateForMat} from './assets/js/common.js';
   import {setStore} from 'wepy-redux';
   import configStore from './store';
   // 创建 redux 仓库
@@ -74,22 +75,31 @@
         navigationBarBackgroundColor: '#f8f8f8',
         backgroundColor: '#f8f8f8'
       },
+      permission: {
+        'scope.userLocation': {
+          'desc': '你的位置信息将用于签到位置访问'
+        },
+      },
       tabBar: {
+        selectedColor:'#1AFA29',
         list: [
           {
             pagePath: 'pages/home',
-            iconPath: 'images/icon_tabbar.png',
-            text: '首页'
+            iconPath: 'assets/img/home.png',
+            selectedIconPath: 'assets/img/home.png',
+            text: '首页',
           },
           {
             pagePath: 'pages/address-book',
-            iconPath: 'images/icon_tabbar.png',
-            text: '通讯录'
+            iconPath: 'assets/img/addressbook.png',
+            selectedIconPath: 'assets/img/addressbook.png',
+            text: '通讯录',
           },
           {
             pagePath: 'pages/mine',
-            iconPath: 'images/icon_tabbar.png',
-            text: '我的'
+            iconPath: 'assets/img/icon_signal.png',
+            selectedIconPath: 'assets/img/icon_signal.png',
+            text: '我的',
           },
 //          {
 //            pagePath: 'example/index',
@@ -108,8 +118,8 @@
     };
     globalData = {
 //      API: 'http://localhost:3000/client',
-      header:{Cookie: ''},
-      API: 'http://2jwds9.natappfree.cc/client'
+      header: {Cookie: ''},
+      API: 'http://2g2jxa.natappfree.cc/client'
     };
 
     constructor() {
@@ -117,7 +127,80 @@
       this.use('promisify');
       this.use('requestfix');
       console.log(this);
+      let reqBusy = false;
+      // 拦截request请求
+      this.intercept('request', {
+
+        // 发出请求时的回调函数
+        config(p) {
+          wepy.showLoading({
+            title: '加载中',
+          });
+          // 对所有request请求中的OBJECT参数对象统一附加时间戳属性
+//          debugger
+//           p.url = p.url.replace('/api', 'http://localhost:3000/client');
+//          p.url = p.url.replace('/api','http://120.79.251.205/client');
+          p.url = p.url.replace('/api','http://8z3btz.natappfree.cc/client');
+          if (!p.data) {
+            p.data = {};
+          }
+          let date = DateForMat(new Date(), 'yyyy-MM-dd hh:mm:ss');
+          p.data.timestamp = date;
+          p.data.openid = wx.getStorageSync('openid');
+          p.data.userId = wx.getStorageSync('userId');
+          p.data.session_key = wx.getStorageSync('session_key');
+          try {
+//            let sessionId = wx.getStorageSync('sessionId');
+            let cookie = wx.getStorageSync('cookie');
+            if (cookie) {
+              p.header = {'Cookie': cookie};
+            }
+          } catch (e) {
+            console.log(e);
+          }
+//          console.log('config request: ', p);
+          // 必须返回OBJECT参数对象，否则无法发送请求到服务端
+          return p;
+        },
+
+        // 请求成功后的回调函数
+        success(p) {
+          wepy.hideLoading();
+          // 可以在这里对收到的响应数据对象进行加工处理
+//          console.log('request success: ', p);
+          // 必须返回响应数据对象，否则后续无法对响应数据进行处理
+          return p;
+        },
+
+        //请求失败后的回调函数
+        fail(p) {
+
+          wepy.hideLoading();
+//          let failFlag = false;
+          wepy.showModal({
+            title: '提示',
+            content: '请求失败，请刷新重试',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定');
+              } else if (res.cancel) {
+                console.log('用户点击取消');
+              }
+            }
+          });
+//          reqBusy = true;
+//          console.log('request fail: ', p);
+          // 必须返回响应数据对象，否则后续无法对响应数据进行处理
+          return p;
+        },
+
+        // 请求完成时的回调函数(请求成功或失败都会被执行)
+        complete(p) {
+//          console.log('request complete: ', p);
+        }
+      });
     }
+
   }
 </script>
 <style lang='less'>

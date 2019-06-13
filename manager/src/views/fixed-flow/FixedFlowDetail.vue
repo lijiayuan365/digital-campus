@@ -109,7 +109,7 @@ export default {
       flowName: '',
       flowGroup: '',
       flowDesc: '',
-      nodes: [{nodeName: '节点1'}],
+      nodes: [{nodeName: '节点1',nodeId:'001'}],
       activeNode: {},
       activeIndex: '1',
       nodeLength: '1',

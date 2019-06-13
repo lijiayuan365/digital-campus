@@ -12,11 +12,11 @@
           <el-menu-item index="/form-flow">表单列表</el-menu-item>
           <el-menu-item index="/form-flow/setting">表单设置</el-menu-item>
       </el-submenu>
-      <el-submenu index="3">
-        <template slot="title"><i class="iconfont icon-audit"></i>审批请示</template>
-          <el-menu-item index="/move-approve">审批列表</el-menu-item>
-          <el-menu-item index="/move-approve/setting">审批设置</el-menu-item>
-      </el-submenu>
+      <!--<el-submenu index="3">-->
+        <!--<template slot="title"><i class="iconfont icon-audit"></i>审批请示</template>-->
+          <!--<el-menu-item index="/move-approve">审批列表</el-menu-item>-->
+          <!--<el-menu-item index="/move-approve/setting">审批设置</el-menu-item>-->
+      <!--</el-submenu>-->
       <el-submenu index="4">
         <template slot="title"><i class="iconfont icon-qingjia1"></i>请假出差</template>
         <el-menu-item index="/ask-leave">请假列表</el-menu-item>

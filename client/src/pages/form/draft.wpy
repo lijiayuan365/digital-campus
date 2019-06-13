@@ -9,8 +9,8 @@
 
 <script>
   import wepy from 'wepy';
-  import SearchBox from '../../components/SearchBox';
-  import FormList from '../../components/DataList';
+  import SearchBox from '../../components/base/SearchBox';
+  import FormList from '../../components/base/DataList';
 
   export default class Draft extends wepy.page {
     config = {

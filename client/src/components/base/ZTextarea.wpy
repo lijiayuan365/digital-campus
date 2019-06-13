@@ -5,7 +5,7 @@
         <textarea class="weui-textarea" style="height: 3.3em"
                   placeholder="{{placeholder}}" disabled="{{disabled}}"
                   value="{{value}}" bindinput="bindKeyInput"/>
-      <view class="weui-textarea-counter">0/200</view>
+      <!--<view class="weui-textarea-counter">0/200</view>-->
     </view>
     <!--</view>-->
   </view>

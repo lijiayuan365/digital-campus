@@ -20,9 +20,9 @@
 
 <script>
   import wepy from 'wepy';
-  import SearchBox from '../../components/SearchBox';
-  import NavBar from '../../components/NavBar';
-  import DataList from '../../components/DataList';
+  import SearchBox from '../../components/base/SearchBox';
+  import NavBar from '../../components/base/NavBar';
+  import DataList from '../../components/base/DataList';
 
   export default class Example extends wepy.page {
     config = {
@@ -62,9 +62,6 @@
     watch = {};
 
     computed = {
-      API() {
-        return this.$parent.globalData.API;
-      },
       requestHeader() {
         return this.$parent.globalData.header;
       }
@@ -81,7 +78,7 @@
     async initForms() {
       try {
         let res = await wepy.request({
-          url: `${this.API}/form/getFormList`,
+          url: `/api/form/getFormList`,
         });
         this.forms = res.data.data;
         this.$apply();
@@ -92,7 +89,7 @@
 
     async initFormGroup() {
       try {
-        let res = await wepy.request(`${this.API}/form/getFormGroup`);
+        let res = await wepy.request({url: `/api/form/getFormGroup`});
         this.groups = res.data.data;
         this.$apply();
       } catch (e) {

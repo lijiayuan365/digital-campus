@@ -61,6 +61,7 @@
     <div class="user-table">
       <div class="operate-wrapper">
         <el-button type="success" size="small" round @click="addUser">新增成员</el-button>
+        <el-button type="success" size="small" round @click="importUser">导入</el-button>
         <el-button type="danger" size="small" round @click="batchDeleteUser">删除</el-button>
       </div>
       <data-table :dataList="userList" :columnData="columnData" :selections.sync="selectedUsers">
@@ -75,7 +76,7 @@
 </template>
 <script>
   /* eslint-disable indent,semi */
-  import DataTable from "../../components/DataTable.vue";
+  import DataTable from '../../components/DataTable.vue';
 
   export default {
     components: {
@@ -84,22 +85,22 @@
 
     data() {
       return {
-        activeName: "dept",
-        filterText: "",
+        activeName: 'dept',
+        filterText: '',
         deptTree: [],
         orgList: [],
         defaultProps: {
-          children: "childDept",
-          label: "deptName",
-          isLeaf: "isLeaf"
+          children: 'childDept',
+          label: 'deptName',
+          isLeaf: 'isLeaf'
         },
         userList: [],
         columnData: [
-          {data: "userName", label: "姓名"},
-          {data: "_id", label: "用户Id"},
-          {data: "post.postName", label: "职位"},
-          {data: "tel", label: "电话"},
-          {data: "email", label: "邮箱"}
+          {data: 'userName', label: '姓名'},
+          {data: '_id', label: '用户Id'},
+          {data: 'post.postName', label: '职位'},
+          {data: 'tel', label: '电话'},
+          {data: 'email', label: '邮箱'}
         ],
         selectedUsers: []
       };
@@ -130,8 +131,8 @@
 
     methods: {
       initData() {
-        if (this.$route.query.activeName === "org") {
-          this.activeName = "org";
+        if (this.$route.query.activeName === 'org') {
+          this.activeName = 'org';
           this.getOrgList();
         } else {
           this.getDeptTree();
@@ -145,7 +146,7 @@
       },
       // 切换tab
       checkTab() {
-        if (this.activeName === "dept") {
+        if (this.activeName === 'dept') {
           this.getDeptTree();
           this.getUserList();
         } else {
@@ -156,18 +157,18 @@
        *
        */
       getDeptTree() {
-        this.$http.get("/api/user/getDeptTree").then(res => {
+        this.$http.get('/api/user/getDeptTree').then(res => {
           res = res.data;
           this.deptTree = res.data;
         });
       },
       getOrgList() {
-        this.$http.get("/api/user/getOrgList").then(res => {
+        this.$http.get('/api/user/getOrgList').then(res => {
           this.orgList = res.data.data;
         });
       },
       getUserList(searchType, searchId) {
-        this.$http.get("/api/user/getUserList", {
+        this.$http.get('/api/user/getUserList', {
           params: {type: searchType, id: searchId}
         }).then(result => {
           let res = result.data;
@@ -176,22 +177,27 @@
       },
       getDeptUserList(data) {
         let deptId = data.deptId;
-        this.$http.get("/api/user/getUserList", {params: {type: "dept", id: deptId}}).then(result => {
+        this.$http.get('/api/user/getUserList', {params: {type: 'dept', id: deptId}}).then(result => {
           let res = result.data;
           this.userList = res.data;
         });
       },
       addUser() {
         this.$router.push({
-          path: "/user/detail",
+          path: '/user/detail',
           query: {
-            type: "add"
+            type: 'add'
           }
+        });
+      },
+      importUser() {
+        this.$router.push({
+          path: '/user/import-user',
         });
       },
       toUserDetail(userId, type) {
         this.$router.push({
-          path: "/user/detail",
+          path: '/user/detail',
           query: {
             userId: userId,
             type: type
@@ -200,7 +206,7 @@
       },
       toDeptDetail(deptId, type) {
         this.$router.push({
-          path: "/user/dept-detail",
+          path: '/user/dept-detail',
           query: {
             deptId: deptId,
             type: type
@@ -209,7 +215,7 @@
       },
       toOrgDetail(type, orgId) {
         this.$router.push({
-          path: "/user/org-detail",
+          path: '/user/org-detail',
           query: {
             orgId: orgId,
             type: type
@@ -218,14 +224,16 @@
       },
       // 刪除用戶
       deleteUser(index, rowData) {
+        let _this = this;
         let userId = rowData.userId;
-        this.$confirm("删除该用户", "删除用户").then(() => {
-          this.$http.post("/api/user/deleteUser", {userId: userId}).then(res => {
+        this.$confirm('删除该用户', '删除用户').then(() => {
+          this.$http.post('/api/user/deleteUser', {userId: userId}).then(res => {
             this.$message({
               message: '删除成功',
               duration: 1500,
               type: 'success',
             });
+            _this.initData();
           });
         }).catch(() => {
         });
@@ -233,14 +241,18 @@
       // 批量刪除
       batchDeleteUser() {
         let userIds = [];
+        let _this = this;
         this.selectedUsers.forEach(item => {
           userIds.push(item.userId);
         });
-        this.$http.post("/api/user/batchDeleteUser", {userIds: userIds}).then(res => {
-          this.$message({
-            message: '删除成功',
-            duration: 1500,
-            type: 'success',
+        this.$confirm('删除该用户', '删除用户').then(() => {
+          this.$http.post('/api/user/batchDeleteUser', {userIds: userIds}).then(res => {
+            this.$message({
+              message: '删除成功',
+              duration: 1500,
+              type: 'success',
+            });
+            _this.initData();
           });
         });
         console.log(this.selectedUsers);

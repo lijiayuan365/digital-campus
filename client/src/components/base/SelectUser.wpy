@@ -17,7 +17,7 @@
     <view class="">
       <view class="weui-cells weui-cells_after-title opera-area">
         <view class="weui-cell">
-          <view class="weui-cell__bd">已选 {{selectedUserTmp.length}} 人</view>
+          <view class="weui-cell__bd">已选 {{selectUserNum}} 人</view>
           <view class="weui-cell__ft btn-area">
             <button class="weui-btn mini-btn" type="primary" size="mini" @tap="confirm">确定</button>
           </view>
@@ -29,14 +29,14 @@
 
 <script>
   import wepy from 'wepy';
-  import SearchBox from '../SearchBox';
+  import SearchBox from './SearchBox';
 
   export default class SelectUser extends wepy.component {
     props = {
-      selectedUser: {
-        type: Array,
-        twoWay: true,
-      },
+//      selectedUser: {
+//        type: Array,
+//        twoWay: true,
+//      },
       isShow: {
         type: Boolean,
         twoWay: true,
@@ -45,7 +45,8 @@
 
     data = {
       userList: [],
-      selectedUserTmp: [],
+      selectUserNum: 0,
+      key: '',
     };
 
     components = {
@@ -54,15 +55,16 @@
 
     methods = {
       confirm() {
-        this.selectedUser = this.selectedUserTmp;
+//        this.selectedUser = this.selectedUserTmp;
+        let users = this.userList.filter(user => user.checked);
+        this.$emit('exportSelectUser', users, this.key);
         this.isShow = false;
+        return users;
       },
       checkboxChange(e) {
         console.log('checkbox发生change事件，携带value值为：', e.detail.value);
         let userIds = e.detail.value;
-        this.selectedUserTmp = this.userList.filter((item) => {
-          return userIds.includes(item._id);
-        });
+        this.selectUserNum = userIds.length;
         this.userList.forEach((user) => {
           if (userIds.includes(user._id)) {
             user.checked = true;
@@ -71,21 +73,33 @@
           }
         });
       },
+      // 拿到已选用户的
+      getSelectedUser(person, key) {
+        this.key = key;
+        let personIds = person.map(item => item._id);
+        this.userList.forEach((item) => {
+          if (personIds.includes(item._id)) {
+            item.checked = true;
+          } else {
+            item.checked = false;
+          }
+        });
+      }
     };
 
     events = {};
 
     watch = {
-      selectedUser(val) {
-        this.userList.forEach((user) => {
-          if (val.includes(user)) {
-            user.checked = true;
-          } else {
-            user.checked = false;
-          }
-        });
-        this.$apply();
-      }
+//      selectedUser(val) {
+//        this.userList.forEach((user) => {
+//          if (val.includes(user)) {
+//            user.checked = true;
+//          } else {
+//            user.checked = false;
+//          }
+//        });
+//        this.$apply();
+//      }
     };
 
     computed = {};

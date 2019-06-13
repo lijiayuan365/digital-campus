@@ -23,10 +23,10 @@
 
 <script>
   import wepy from 'wepy';
-  import SearchBox from '../../components/SearchBox';
-  import TopMenu from '../../components/TopMenu';
-  import TabBar from '../../components/TabBar';
-  import DataList from '../../components/DataList';
+  import SearchBox from '../../components/base/SearchBox';
+  import TopMenu from '../../components/base/TopMenu';
+  import TabBar from '../../components/base/TabBar';
+  import DataList from '../../components/base/DataList';
 
   export default class Example extends wepy.page {
     config = {
@@ -36,13 +36,13 @@
     data = {
       type2: 2,
       topMenu: [
-        {title: '新建请假', path: 'add'},
-        {title: '草稿', path: 'draft'},
+        {title: '新建请假', path: 'add',iconPath:'http://img.cdn.lijiayuan.top/zzy/add.png'},
+        {title: '草稿', path: 'draft',iconPath:'http://img.cdn.lijiayuan.top/zzy/edit.png'},
       ],
       tabBars: [
-        {title: '我的申请', iconPath: '../../images/pic_160.png', badge: '0'},
-        {title: '待我审批', iconPath: '../../images/pic_160.png', badge: '0'},
-        {title: '与我相关', iconPath: '../../images/pic_160.png', badge: '0'},
+        {title: '我的申请', iconPath: 'http://img.cdn.lijiayuan.top/zzy/home.png', badge: '0'},
+        {title: '待我审批', iconPath: 'http://img.cdn.lijiayuan.top/zzy/approve.png', badge: '0'},
+        {title: '与我相关', iconPath: 'http://img.cdn.lijiayuan.top/zzy/icon_signal.png', badge: '0'},
       ],
       mineList: [],
       todoList: [],
@@ -88,7 +88,7 @@
       let condition = tabIndex === 0 ? mineCon : tabIndex === 1 ? dealCon : CcCon;
       try {
         let res = await wepy.request({
-          url: `${this.$parent.globalData.API}/ask-leave/getLeaveList`,
+          url: `/api/ask-leave/getLeaveList`,
           data: {condition}
         });
         let data = res.data.data;

@@ -333,6 +333,11 @@
     created() {
       this.formId = this.$route.query.formId;
       this.operaType = this.$route.query.type;
+      this.$http.get('/api/form/getFixedFlows').then((res) => {
+        let data = res.data;
+//          debugger
+        this.fixedFlowGroups = data.data;
+      });
       this.formId && this.initData(this.formId);
     },
 
@@ -341,6 +346,7 @@
 
     methods: {
       initData(formId) {
+//        debugger
         let _this = this;
         this.$http.get('/api/form/getForm', {params: {formId}}).then((res) => {
           let data = res.data;
@@ -350,6 +356,7 @@
         });
         this.$http.get('/api/form/getFixedFlows').then((res) => {
           let data = res.data;
+//          debugger
           this.fixedFlowGroups = data.data;
         });
       },

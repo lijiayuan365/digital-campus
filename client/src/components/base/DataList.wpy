@@ -1,0 +1,123 @@
+<!-- 数据列表 -->
+<template>
+  <view>
+    <!-- type 1 小图文列表-->
+    <view wx:if="{{type === 1}}">
+      <view class="weui-cells weui-cells_after-title">
+        <navigator wx:for="{{list}}" wx:key="{{index}}" url="{{item.path}}" class="weui-cell weui-cell_access"
+                   hover-class="weui-cell_active">
+          <view class="weui-cell__hd img-area">
+            <image src="{{item.img}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"/>
+          </view>
+          <view class="weui-cell__bd cell-title">{{item.title}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+
+    <!-- type 2 图文组合列表 附加详细数据-->
+    <view wx:if="{{type === 2}}">
+      <view class="weui-panel weui-panel_access">
+        <!--<view class="weui-panel__hd">图文组合列表</view>-->
+        <view class="weui-panel__bd">
+          <navigator wx:for="{{list}}" wx:key="{{index}}" url="{{item.path}}" class="weui-media-box weui-media-box_appmsg"
+                     hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image class="weui-media-box__thumb" src="{{item.img}}"/>
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{item.title}}</view>
+              <view class="weui-media-box__desc">{{item.desc}}</view>
+              <view class="weui-media-box__info">
+                <view class="weui-media-box__info__meta">{{item.dataType}}</view>
+                <view class="weui-media-box__info__meta">{{item.date}}</view>
+                <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.creator.userName}}</view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+
+    <!--type 3 图文组合列表-->
+    <view wx:if="{{type === 3}}" class="data-list">
+      <view class="weui-panel weui-panel_access">
+        <!--<view class="weui-panel__hd">图文组合列表</view>-->
+        <view class="weui-panel__bd">
+          <navigator wx:for="{{list}}" wx:key="{{index}}" url="{{item.path}}"
+                     class="weui-media-box weui-media-box_text" hover-class="weui-cell_active">
+            <!--<view class="weui-media-box weui-media-box_text">-->
+              <view class="weui-media-box__title weui-media-box__title_in-text">{{item.title}}</view>
+              <view class="weui-media-box__desc">{{item.desc}}</view>
+              <view class="weui-media-box__info" wx:if="{{item.data}}">
+                <view class="weui-media-box__info__meta">{{item.data[0]}}</view>
+                <view class="weui-media-box__info__meta">{{item.data[1]}}</view>
+                <view class="weui-media-box__info__meta weui-media-box__info__meta_extra" wx:if="{{item.data[2]}}">{{item.data[2]}}</view>
+              </view>
+            <!--</view>-->
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class="no-data-area" wx:if="{{list.length === 0}}">
+      <!--<icon type="warn" size="93"></icon>-->
+      <view class="no-data"></view>
+      <text style="color: #D9D9D9">这里空空的</text>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class DataList extends wepy.component {
+    props = {
+      type: {
+        type: Number,
+      },
+      list: {
+        type: Array,
+      }
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+    };
+
+    onShow() {
+    };
+  }
+</script>
+
+<style lang='less'>
+  .data-list{
+    text-align: left;
+  }
+  .cell-title {
+    text-align: left;
+  }
+
+  .img-area {
+    display: flex;
+  }
+  .no-data-area{
+    margin-top: ~"100rpx";
+    text-align: center;
+  }
+  .no-data{
+    /*width: ~"100rpx";*/
+    height: ~"400rpx";
+    background: url("http://img.cdn.lijiayuan.top/zzy/no-data.png") no-repeat center;
+  }
+</style>

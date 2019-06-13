@@ -24,13 +24,18 @@
       type: String,
       title: String,
       value: String,
+      key:String,
     };
 
     data = {};
 
     components = {};
 
-    methods = {};
+    methods = {
+      tap(){
+        this.$emit('tap',this.key)
+      }
+    };
 
     events = {};
 
