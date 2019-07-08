@@ -1,0 +1,935 @@
+{ 
+    "_id" : ObjectId("5c6a1fb1404e2b2998874ee1"), 
+    "fieldList" : [
+        {
+            "fieldName" : "RadioField", 
+            "fieldTitle" : "单项选择", 
+            "radioList" : [
+                {
+                    "value" : "选项111", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项2", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项311", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项4", 
+                    "checked" : false
+                }
+            ], 
+            "isMust" : false, 
+            "readOnly" : false
+        }, 
+        {
+            "fieldTitle" : "多项选择", 
+            "fieldName" : "CheckboxField", 
+            "checkboxList" : [
+                {
+                    "value" : "选项1", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项2", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项3", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项4", 
+                    "checked" : false
+                }
+            ], 
+            "isMust" : true, 
+            "readOnly" : false
+        }, 
+        {
+            "fieldName" : "TextField", 
+            "fieldTitle" : "单行文本", 
+            "defaultValue" : "", 
+            "fieldTip" : "请输入", 
+            "isMust" : false, 
+            "readOnly" : false, 
+            "min" : "", 
+            "max" : ""
+        }, 
+        {
+            "fieldName" : "TextAreaField", 
+            "fieldTitle" : "多行文本", 
+            "defaultValue" : "", 
+            "fieldTip" : "请输入", 
+            "isMust" : false, 
+            "readOnly" : false, 
+            "min" : "", 
+            "max" : ""
+        }, 
+        {
+            "fieldName" : "TimeField", 
+            "fieldTitle" : "时间选择器", 
+            "defaultValue" : "", 
+            "fieldTip" : "选择时间", 
+            "isMust" : false
+        }, 
+        {
+            "fieldTitle" : "日期选择器", 
+            "fieldName" : "DateField", 
+            "defaultValue" : "", 
+            "fieldTip" : "选择日期", 
+            "isMust" : false
+        }, 
+        {
+            "fieldName" : "TelField", 
+            "fieldTitle" : "电话", 
+            "defaultValue" : "", 
+            "fieldTip" : "请输入", 
+            "isMust" : false, 
+            "readOnly" : false, 
+            "min" : "", 
+            "max" : ""
+        }, 
+        {
+            "fieldName" : "ImgField", 
+            "fieldTitle" : "图片", 
+            "fieldTip" : "上传图片", 
+            "isMust" : false
+        }, 
+        {
+            "fieldName" : "FileField", 
+            "fieldTitle" : "附件", 
+            "fieldTip" : "上传附件", 
+            "isMust" : false
+        }
+    ], 
+    "formName" : "表单1自由流程", 
+    "formGroup" : "c", 
+    "formType" : NumberInt(1), 
+    "formTitle" : "测试表单自由流程1", 
+    "desc" : "阿富汗萨芬科技", 
+    "status" : NumberInt(1), 
+    "__v" : NumberInt(0), 
+    "flowType" : NumberInt(0), 
+    "isFree" : true, 
+    "fixedFlow" : [
+
+    ], 
+    "branchFlow" : {
+
+    }, 
+    "flowGraph" : {
+
+    }, 
+    "ccPerson" : [
+        {
+            "_id" : "5c43db2c27a94952c0a58652", 
+            "userName" : "张三", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : "5c4db72ae5a18c27640a2f24", 
+            "org" : "5c43db9f27a94952c0a58654", 
+            "post" : "5c449cc10a8638401d07f887", 
+            "tel" : "电话", 
+            "email" : "邮箱", 
+            "remark" : "备注"
+        }, 
+        {
+            "_id" : "5c4ac338fc1a4179c44493d9", 
+            "userName" : "张三1", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : "5c4db72ae5a18c27640a2f24", 
+            "org" : "5c43db9f27a94952c0a58654", 
+            "post" : "5c449cc10a8638401d07f887", 
+            "tel" : "电话", 
+            "email" : "邮箱", 
+            "remark" : "备注"
+        }
+    ], 
+    "creator" : "李佳远"
+}
+{ 
+    "_id" : ObjectId("5c6e568f5139d51620af63b0"), 
+    "fieldList" : [
+        {
+            "fieldName" : "RadioField", 
+            "fieldTitle" : "单项选择", 
+            "radioList" : [
+                {
+                    "value" : "选项111", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项2", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项311", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项4", 
+                    "checked" : false
+                }
+            ], 
+            "isMust" : false, 
+            "readOnly" : false
+        }, 
+        {
+            "fieldTitle" : "多项选择", 
+            "fieldName" : "CheckboxField", 
+            "checkboxList" : [
+                {
+                    "value" : "选项1", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项2", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项3", 
+                    "checked" : false
+                }, 
+                {
+                    "value" : "选项4", 
+                    "checked" : false
+                }
+            ], 
+            "isMust" : true, 
+            "readOnly" : false
+        }, 
+        {
+            "fieldName" : "TextField", 
+            "fieldTitle" : "单行文本", 
+            "defaultValue" : "", 
+            "fieldTip" : "请输入", 
+            "isMust" : false, 
+            "readOnly" : false, 
+            "min" : "", 
+            "max" : ""
+        }
+    ], 
+    "formName" : "表单1固定流程", 
+    "formGroup" : "办公", 
+    "formType" : NumberInt(1), 
+    "formTitle" : "测试表单1固定流程", 
+    "desc" : "阿富汗萨芬科技", 
+    "status" : NumberInt(1), 
+    "__v" : NumberInt(0), 
+    "flowType" : NumberInt(1), 
+    "isFree" : false, 
+    "fixedFlow" : [
+        ObjectId("5c471cca29bbb842d0a39e2d"), 
+        ObjectId("5c48573e34f382f3c4a7687c")
+    ], 
+    "branchFlow" : {
+
+    }, 
+    "flowGraph" : {
+
+    }, 
+    "ccPerson" : [
+        {
+            "_id" : "5c43db2c27a94952c0a58652", 
+            "userName" : "张三", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : "5c4db72ae5a18c27640a2f24", 
+            "org" : "5c43db9f27a94952c0a58654", 
+            "post" : "5c449cc10a8638401d07f887", 
+            "tel" : "电话", 
+            "email" : "邮箱", 
+            "remark" : "备注"
+        }, 
+        {
+            "_id" : "5c4ac338fc1a4179c44493d9", 
+            "userName" : "张三1", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : "5c4db72ae5a18c27640a2f24", 
+            "org" : "5c43db9f27a94952c0a58654", 
+            "post" : "5c449cc10a8638401d07f887", 
+            "tel" : "电话", 
+            "email" : "邮箱", 
+            "remark" : "备注"
+        }
+    ], 
+    "creator" : "李佳远"
+}
+{ 
+    "_id" : ObjectId("5c73bc9872d1ba08486177c5"), 
+    "creator" : "李佳远", 
+    "fieldList" : [
+        {
+            "fieldName" : "TextField", 
+            "fieldTitle" : "单行文本", 
+            "defaultValue" : "", 
+            "fieldTip" : "请输入", 
+            "isMust" : false, 
+            "readOnly" : false, 
+            "min" : "", 
+            "max" : ""
+        }
+    ], 
+    "fixedFlow" : [
+
+    ], 
+    "ccPerson" : [
+        {
+            "_id" : "5c4ac338fc1a4179c44493d9", 
+            "userName" : "张三1", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : {
+                "_id" : "5c4db72ae5a18c27640a2f24", 
+                "deptName" : "信科院", 
+                "deptNo" : "323"
+            }, 
+            "org" : null, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "email" : "邮箱", 
+            "remark" : "备注", 
+            "userId" : "5c4ac338fc1a4179c44493d9", 
+            "checked" : true
+        }, 
+        {
+            "_id" : "5c4ac33cfc1a4179c44493da", 
+            "userName" : "222", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : {
+                "_id" : "5c4db72ae5a18c27640a2f24", 
+                "deptName" : "信科院", 
+                "deptNo" : "323"
+            }, 
+            "org" : null, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "email" : "邮箱", 
+            "remark" : "备注", 
+            "userId" : "5c4ac33cfc1a4179c44493da", 
+            "checked" : true
+        }
+    ], 
+    "formName" : "分支流程", 
+    "formGroup" : "a", 
+    "formType" : NumberInt(1), 
+    "formTitle" : "分支流程", 
+    "isFree" : false, 
+    "flowType" : NumberInt(2), 
+    "branchFlow" : {
+        "data" : {
+            "color" : "#00D042", 
+            "id" : "7fd55741", 
+            "label" : "开始节点", 
+            "nodeName" : "开始节点", 
+            "nodeType" : NumberInt(0), 
+            "shape" : "circle", 
+            "rootNode" : true, 
+            "childNode" : [
+
+            ], 
+            "x" : NumberInt(320), 
+            "y" : NumberInt(50), 
+            "nodeId" : "7fd55741"
+        }, 
+        "childNode" : [
+            {
+                "data" : {
+                    "shape" : "rect", 
+                    "nodeType" : NumberInt(0), 
+                    "childNode" : [
+
+                    ], 
+                    "x" : NumberInt(330), 
+                    "y" : NumberInt(165), 
+                    "id" : "4607b6ca", 
+                    "label" : "节点1", 
+                    "nodePersons" : [
+
+                    ], 
+                    "nodePersonType" : "1", 
+                    "nodeName" : "节点1", 
+                    "nodeId" : "4607b6ca"
+                }, 
+                "childNode" : [
+                    {
+                        "data" : {
+                            "color" : "#F70000", 
+                            "id" : "b37e8bf5", 
+                            "label" : "结束节点", 
+                            "nodeName" : "结束节点", 
+                            "nodeType" : NumberInt(0), 
+                            "shape" : "circle", 
+                            "childNode" : [
+
+                            ], 
+                            "x" : NumberInt(320), 
+                            "y" : NumberInt(450), 
+                            "nodeId" : "b37e8bf5"
+                        }, 
+                        "childNode" : [
+
+                        ]
+                    }
+                ]
+            }
+        ]
+    }, 
+    "flowGraph" : {
+        "nodes" : [
+            {
+                "color" : "#00D042", 
+                "id" : "7fd55741", 
+                "label" : "开始节点", 
+                "nodeName" : "开始节点", 
+                "nodeType" : NumberInt(0), 
+                "shape" : "circle", 
+                "rootNode" : true, 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(320), 
+                "y" : NumberInt(50), 
+                "nodeId" : "7fd55741"
+            }, 
+            {
+                "color" : "#F70000", 
+                "id" : "b37e8bf5", 
+                "label" : "结束节点", 
+                "nodeName" : "结束节点", 
+                "nodeType" : NumberInt(0), 
+                "shape" : "circle", 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(320), 
+                "y" : NumberInt(450), 
+                "nodeId" : "b37e8bf5"
+            }, 
+            {
+                "shape" : "rect", 
+                "nodeType" : NumberInt(0), 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(330), 
+                "y" : NumberInt(165), 
+                "id" : "4607b6ca", 
+                "label" : "节点1", 
+                "nodePersons" : [
+
+                ], 
+                "nodePersonType" : "1", 
+                "nodeName" : "节点1", 
+                "nodeId" : "4607b6ca"
+            }
+        ], 
+        "edges" : [
+            {
+                "shape" : "smoothArrow", 
+                "source" : "7fd55741", 
+                "target" : "4607b6ca", 
+                "id" : "eff3091d", 
+                "controlPoints" : [
+                    {
+                        "x" : NumberInt(320), 
+                        "y" : 77.88270439529302
+                    }, 
+                    {
+                        "x" : NumberInt(330), 
+                        "y" : NumberInt(149)
+                    }
+                ], 
+                "sourceAnchor" : NumberInt(5), 
+                "targetAnchor" : NumberInt(0)
+            }, 
+            {
+                "shape" : "smoothArrow", 
+                "source" : "4607b6ca", 
+                "target" : "b37e8bf5", 
+                "id" : "344b2391", 
+                "controlPoints" : [
+                    {
+                        "x" : NumberInt(330), 
+                        "y" : NumberInt(181)
+                    }, 
+                    {
+                        "x" : NumberInt(320), 
+                        "y" : 422.11729560470695
+                    }
+                ], 
+                "sourceAnchor" : NumberInt(2), 
+                "targetAnchor" : NumberInt(1)
+            }
+        ]
+    }, 
+    "status" : NumberInt(1), 
+    "__v" : NumberInt(0), 
+    "desc" : "得得得"
+}
+{ 
+    "_id" : ObjectId("5c73d2b5bd3d0407b41b6df8"), 
+    "fieldList" : [
+        {
+            "fieldName" : "TextField", 
+            "fieldTitle" : "单行文本", 
+            "defaultValue" : "", 
+            "fieldTip" : "请输入", 
+            "isMust" : false, 
+            "readOnly" : false, 
+            "min" : "", 
+            "max" : ""
+        }
+    ], 
+    "fixedFlow" : [
+
+    ], 
+    "ccPerson" : [
+        {
+            "_id" : "5c43db2c27a94952c0a58652", 
+            "userName" : "张三", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : {
+                "_id" : "5c4db72ae5a18c27640a2f24", 
+                "deptName" : "信科院", 
+                "deptNo" : "323"
+            }, 
+            "org" : null, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "email" : "邮箱", 
+            "remark" : "备注", 
+            "userId" : "5c43db2c27a94952c0a58652", 
+            "checked" : true
+        }
+    ], 
+    "formName" : "分支流程2", 
+    "formGroup" : "办公", 
+    "formType" : NumberInt(1), 
+    "formTitle" : "表单流程2", 
+    "isFree" : false, 
+    "flowType" : NumberInt(2), 
+    "branchFlow" : {
+        "data" : {
+            "color" : "#00D042", 
+            "id" : "7fd55741", 
+            "label" : "开始节点", 
+            "nodeName" : "开始节点", 
+            "nodeType" : NumberInt(0), 
+            "shape" : "circle", 
+            "rootNode" : true, 
+            "childNode" : [
+
+            ], 
+            "x" : NumberInt(320), 
+            "y" : NumberInt(50), 
+            "nodeId" : "7fd55741"
+        }, 
+        "childNode" : [
+            {
+                "data" : {
+                    "shape" : "rect", 
+                    "nodeType" : NumberInt(0), 
+                    "childNode" : [
+
+                    ], 
+                    "x" : NumberInt(315), 
+                    "y" : NumberInt(180), 
+                    "id" : "88831974", 
+                    "label" : "节点1", 
+                    "nodePersonType" : "2", 
+                    "nodePersons" : [
+
+                    ], 
+                    "nodeName" : "节点1", 
+                    "nodeId" : "88831974"
+                }, 
+                "childNode" : [
+                    {
+                        "data" : {
+                            "color" : "#F70000", 
+                            "id" : "b37e8bf5", 
+                            "label" : "结束节点", 
+                            "nodeName" : "结束节点", 
+                            "nodeType" : NumberInt(0), 
+                            "shape" : "circle", 
+                            "childNode" : [
+
+                            ], 
+                            "x" : NumberInt(320), 
+                            "y" : NumberInt(450), 
+                            "nodeId" : "b37e8bf5"
+                        }, 
+                        "childNode" : [
+
+                        ]
+                    }
+                ]
+            }
+        ]
+    }, 
+    "flowGraph" : {
+        "nodes" : [
+            {
+                "color" : "#00D042", 
+                "id" : "7fd55741", 
+                "label" : "开始节点", 
+                "nodeName" : "开始节点", 
+                "nodeType" : NumberInt(0), 
+                "shape" : "circle", 
+                "rootNode" : true, 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(320), 
+                "y" : NumberInt(50), 
+                "nodeId" : "7fd55741"
+            }, 
+            {
+                "color" : "#F70000", 
+                "id" : "b37e8bf5", 
+                "label" : "结束节点", 
+                "nodeName" : "结束节点", 
+                "nodeType" : NumberInt(0), 
+                "shape" : "circle", 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(320), 
+                "y" : NumberInt(450), 
+                "nodeId" : "b37e8bf5"
+            }, 
+            {
+                "shape" : "rect", 
+                "nodeType" : NumberInt(0), 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(315), 
+                "y" : NumberInt(180), 
+                "id" : "88831974", 
+                "label" : "节点1", 
+                "nodePersonType" : "2", 
+                "nodePersons" : [
+
+                ], 
+                "nodeName" : "节点1", 
+                "nodeId" : "88831974"
+            }
+        ], 
+        "edges" : [
+            {
+                "shape" : "smoothArrow", 
+                "source" : "7fd55741", 
+                "target" : "88831974", 
+                "id" : "cdd0ffe2", 
+                "controlPoints" : [
+                    {
+                        "x" : NumberInt(320), 
+                        "y" : 77.88270439529302
+                    }, 
+                    {
+                        "x" : NumberInt(315), 
+                        "y" : NumberInt(164)
+                    }
+                ], 
+                "sourceAnchor" : NumberInt(5), 
+                "targetAnchor" : NumberInt(0)
+            }, 
+            {
+                "shape" : "smoothArrow", 
+                "source" : "88831974", 
+                "target" : "b37e8bf5", 
+                "id" : "93bd8c75"
+            }
+        ]
+    }, 
+    "desc" : "开始节点", 
+    "status" : NumberInt(1), 
+    "__v" : NumberInt(0), 
+    "creator" : "李佳远"
+}
+{ 
+    "_id" : ObjectId("5c9794aa2bb5f2b812de6300"), 
+    "fieldList" : [
+        {
+            "fieldName" : "TextField", 
+            "fieldTitle" : "单行文本", 
+            "defaultValue" : "", 
+            "fieldTip" : "请输入", 
+            "isMust" : false, 
+            "readOnly" : false, 
+            "min" : "", 
+            "max" : ""
+        }
+    ], 
+    "fixedFlow" : [
+
+    ], 
+    "ccPerson" : [
+        {
+            "_id" : "5c7b3f74754c9769ed26c4da", 
+            "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+            "session_key" : "EzViR6GTXhEDLZIgVX7DmA==", 
+            "userName" : "李佳远", 
+            "pwd" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "dept" : {
+                "_id" : "5c43db8927a94952c0a58653", 
+                "deptName" : "部门名称", 
+                "deptNo" : "部门编号"
+            }, 
+            "org" : {
+                "orgHead" : [
+                    "5c43db2c27a94952c0a58652"
+                ], 
+                "_id" : "5c4a8c08fe2f24c564e98529", 
+                "orgName" : "组织1", 
+                "desc" : "21", 
+                "__v" : NumberInt(0)
+            }, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "tel" : 16620364717.0, 
+            "email" : "24", 
+            "remark" : "244324", 
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "checked" : true
+        }
+    ], 
+    "formName" : "测试1", 
+    "formGroup" : "b", 
+    "formType" : NumberInt(1), 
+    "formTitle" : "测试单", 
+    "isFree" : false, 
+    "flowType" : NumberInt(2), 
+    "branchFlow" : {
+        "data" : {
+            "color" : "#00D042", 
+            "id" : "7fd55741", 
+            "label" : "开始节点", 
+            "nodeName" : "开始节点", 
+            "nodeType" : NumberInt(0), 
+            "shape" : "circle", 
+            "rootNode" : true, 
+            "childNode" : [
+
+            ], 
+            "x" : NumberInt(320), 
+            "y" : NumberInt(50), 
+            "nodeId" : "7fd55741"
+        }, 
+        "childNode" : [
+            {
+                "data" : {
+                    "shape" : "rect", 
+                    "nodeType" : NumberInt(0), 
+                    "childNode" : [
+
+                    ], 
+                    "x" : NumberInt(300), 
+                    "y" : NumberInt(150), 
+                    "id" : "cb9730ec", 
+                    "label" : "节点1", 
+                    "nodePersonType" : "1", 
+                    "nodePersons" : [
+
+                    ], 
+                    "nodeName" : "节点1", 
+                    "nodeId" : "cb9730ec"
+                }, 
+                "childNode" : [
+                    {
+                        "data" : {
+                            "shape" : "rect", 
+                            "nodeType" : NumberInt(0), 
+                            "childNode" : [
+
+                            ], 
+                            "x" : NumberInt(300), 
+                            "y" : NumberInt(255), 
+                            "id" : "89013a67", 
+                            "label" : "节点2", 
+                            "nodePersonType" : "2", 
+                            "nodePersons" : [
+
+                            ], 
+                            "nodeName" : "节点2", 
+                            "nodeId" : "89013a67"
+                        }, 
+                        "childNode" : [
+                            {
+                                "data" : {
+                                    "color" : "#F70000", 
+                                    "id" : "b37e8bf5", 
+                                    "label" : "结束节点", 
+                                    "nodeName" : "结束节点", 
+                                    "nodeType" : NumberInt(0), 
+                                    "shape" : "circle", 
+                                    "childNode" : [
+
+                                    ], 
+                                    "x" : NumberInt(320), 
+                                    "y" : NumberInt(450), 
+                                    "nodeId" : "b37e8bf5"
+                                }, 
+                                "childNode" : [
+
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }, 
+    "flowGraph" : {
+        "nodes" : [
+            {
+                "color" : "#00D042", 
+                "id" : "7fd55741", 
+                "label" : "开始节点", 
+                "nodeName" : "开始节点", 
+                "nodeType" : NumberInt(0), 
+                "shape" : "circle", 
+                "rootNode" : true, 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(320), 
+                "y" : NumberInt(50), 
+                "nodeId" : "7fd55741"
+            }, 
+            {
+                "color" : "#F70000", 
+                "id" : "b37e8bf5", 
+                "label" : "结束节点", 
+                "nodeName" : "结束节点", 
+                "nodeType" : NumberInt(0), 
+                "shape" : "circle", 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(320), 
+                "y" : NumberInt(450), 
+                "nodeId" : "b37e8bf5"
+            }, 
+            {
+                "shape" : "rect", 
+                "nodeType" : NumberInt(0), 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(300), 
+                "y" : NumberInt(150), 
+                "id" : "cb9730ec", 
+                "label" : "节点1", 
+                "nodePersonType" : "1", 
+                "nodePersons" : [
+
+                ], 
+                "nodeName" : "节点1", 
+                "nodeId" : "cb9730ec"
+            }, 
+            {
+                "shape" : "rect", 
+                "nodeType" : NumberInt(0), 
+                "childNode" : [
+
+                ], 
+                "x" : NumberInt(300), 
+                "y" : NumberInt(255), 
+                "id" : "89013a67", 
+                "label" : "节点2", 
+                "nodePersonType" : "2", 
+                "nodePersons" : [
+
+                ], 
+                "nodeName" : "节点2", 
+                "nodeId" : "89013a67"
+            }
+        ], 
+        "edges" : [
+            {
+                "shape" : "smoothArrow", 
+                "source" : "7fd55741", 
+                "target" : "cb9730ec", 
+                "id" : "a62f75df", 
+                "targetAnchor" : NumberInt(0)
+            }, 
+            {
+                "shape" : "smoothArrow", 
+                "source" : "cb9730ec", 
+                "target" : "89013a67", 
+                "id" : "944c19ae", 
+                "controlPoints" : [
+                    {
+                        "x" : NumberInt(300), 
+                        "y" : NumberInt(166)
+                    }, 
+                    {
+                        "x" : NumberInt(300), 
+                        "y" : NumberInt(239)
+                    }
+                ], 
+                "sourceAnchor" : NumberInt(2), 
+                "targetAnchor" : NumberInt(0)
+            }, 
+            {
+                "shape" : "smoothArrow", 
+                "source" : "89013a67", 
+                "target" : "b37e8bf5", 
+                "id" : "df27494a", 
+                "controlPoints" : [
+                    {
+                        "x" : NumberInt(300), 
+                        "y" : NumberInt(271)
+                    }, 
+                    {
+                        "x" : NumberInt(320), 
+                        "y" : 422.11729560470695
+                    }
+                ], 
+                "sourceAnchor" : NumberInt(2)
+            }
+        ]
+    }, 
+    "desc" : "地方的开始粉红色的回复", 
+    "status" : NumberInt(1), 
+    "__v" : NumberInt(0)
+}

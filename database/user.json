@@ -1,0 +1,63 @@
+{ 
+    "_id" : ObjectId("5c4ac338fc1a4179c44493d9"), 
+    "userName" : "张三1", 
+    "pwd" : "123456", 
+    "openid" : "123456", 
+    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+    "dept" : ObjectId("5c4db72ae5a18c27640a2f24"), 
+    "org" : ObjectId("5c43db9f27a94952c0a58654"), 
+    "post" : ObjectId("5c449cc10a8638401d07f887"), 
+    "tel" : "1662036717", 
+    "email" : "邮箱", 
+    "remark" : "备注"
+}
+{ 
+    "_id" : ObjectId("5c4ac340fc1a4179c44493db"), 
+    "userName" : "张三3", 
+    "pwd" : "123456", 
+    "openid" : "123456", 
+    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+    "dept" : ObjectId("5c4db72ae5a18c27640a2f24"), 
+    "org" : ObjectId("5c43db9f27a94952c0a58654"), 
+    "post" : ObjectId("5c449cc10a8638401d07f887"), 
+    "tel" : "1662034717", 
+    "email" : "邮箱", 
+    "remark" : "备注"
+}
+{ 
+    "_id" : ObjectId("5c4ac344fc1a4179c44493dc"), 
+    "userName" : "张三4", 
+    "pwd" : "123456", 
+    "openid" : "00", 
+    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+    "dept" : ObjectId("5c4db72ae5a18c27640a2f24"), 
+    "org" : ObjectId("5c43db9f27a94952c0a58654"), 
+    "post" : ObjectId("5c449cc10a8638401d07f887"), 
+    "tel" : NumberInt(22), 
+    "email" : "邮箱", 
+    "remark" : "备注", 
+    "session_key" : "ARUM4gWBuQ9mWmuQcLV7mQ=="
+}
+{ 
+    "_id" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+    "session_key" : "TBZw5CfueSBLKMCV14PUCQ==", 
+    "userName" : "李佳远", 
+    "pwd" : "123456", 
+    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+    "dept" : ObjectId("5c43db8927a94952c0a58653"), 
+    "org" : ObjectId("5c4a8c08fe2f24c564e98529"), 
+    "post" : ObjectId("5c449cc10a8638401d07f887"), 
+    "tel" : NumberLong(16620364717), 
+    "email" : "24", 
+    "remark" : "244324"
+}
+{ 
+    "_id" : ObjectId("5c9792ac2bb5f2b812de62ed"), 
+    "userName" : "d", 
+    "pwd" : "f", 
+    "dept" : ObjectId("5c43db8927a94952c0a58653"), 
+    "post" : ObjectId("5c449cc10a8638401d07f887"), 
+    "remark" : "感觉到过 的个就；  就；是公积金而是进入 如果；技术岗", 
+    "openid" : ""
+}

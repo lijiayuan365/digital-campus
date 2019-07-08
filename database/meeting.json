@@ -1,0 +1,88 @@
+{ 
+    "_id" : ObjectId("5c94da4b470335fdc52590f0"), 
+    "enclosure" : [
+
+    ], 
+    "originator" : [
+        ObjectId("5c4ac344fc1a4179c44493dc"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "participant" : [
+        ObjectId("5c4ac344fc1a4179c44493dc"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "title" : "会议", 
+    "desc" : "123", 
+    "meetingRoom" : "23", 
+    "startTime" : "2019-09-01 00:00", 
+    "endTime" : "2019-09-01 00:00", 
+    "status" : NumberInt(1), 
+    "createTime" : "2019-03-22 20:51:23", 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5c94e0e5cf09c80b2e66a1e4"), 
+    "enclosure" : [
+
+    ], 
+    "originator" : [
+        ObjectId("5c7b3f74754c9769ed26c4da"), 
+        ObjectId("5c8b52b580ed5d33b492a428")
+    ], 
+    "participant" : [
+        ObjectId("5c4ac340fc1a4179c44493db"), 
+        ObjectId("5c4ac344fc1a4179c44493dc")
+    ], 
+    "title" : "会议2", 
+    "desc" : "56", 
+    "meetingRoom" : "56", 
+    "startTime" : "2019-03-22 00:00", 
+    "endTime" : "2019-03-22 00:00", 
+    "status" : NumberInt(1), 
+    "createTime" : "2019-03-22 21:16:55", 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ca70b49d3ae8859005859e6"), 
+    "enclosure" : [
+
+    ], 
+    "originator" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "participant" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "title" : "会议签到", 
+    "desc" : "毁于", 
+    "meetingRoom" : "宿舍", 
+    "startTime" : "2019-04-05 16:20", 
+    "endTime" : "2019-04-05 21:01", 
+    "status" : NumberInt(2), 
+    "createTime" : "2019-04-05 16:01:12", 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ca9a06e2485f09634badc6f"), 
+    "enclosure" : [
+
+    ], 
+    "originator" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "participant" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "title" : "", 
+    "desc" : "点都德", 
+    "meetingRoom" : "教学楼403", 
+    "startTime" : "2019-04-07 15:09", 
+    "endTime" : "2019-04-07 21:01", 
+    "status" : NumberInt(1), 
+    "createTime" : "2019-04-07 15:02:06", 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "__v" : NumberInt(0)
+}

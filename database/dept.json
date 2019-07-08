@@ -1,0 +1,72 @@
+{ 
+    "_id" : ObjectId("5c43db8927a94952c0a58653"), 
+    "deptName" : "部门名称", 
+    "deptHead" : [
+        ObjectId("5c43db2c27a94952c0a58652"), 
+        ObjectId("5c4ac338fc1a4179c44493d9")
+    ], 
+    "deptNo" : "部门编号", 
+    "parentDept" : "", 
+    "desc" : "备注", 
+    "rootDept" : true
+}
+{ 
+    "_id" : ObjectId("5c4a73c564895b70b1858ac1"), 
+    "deptHead" : [
+
+    ], 
+    "parentDept" : ObjectId("5c43db8927a94952c0a58653"), 
+    "deptName" : "565", 
+    "desc" : "56", 
+    "deptNo" : "56"
+}
+{ 
+    "_id" : ObjectId("5c4db72ae5a18c27640a2f24"), 
+    "deptHead" : [
+        "5c43db2c27a94952c0a58652"
+    ], 
+    "parentDept" : ObjectId("5c43db8927a94952c0a58653"), 
+    "deptName" : "信科院", 
+    "deptNo" : "323", 
+    "desc" : "23323"
+}
+{ 
+    "_id" : ObjectId("5c979233854617b9deba24ee"), 
+    "deptHead" : [
+
+    ], 
+    "deptName" : "157", 
+    "deptNo" : "2356", 
+    "parentDept" : ObjectId("5c43db8927a94952c0a58653"), 
+    "desc" : "备注"
+}
+{ 
+    "_id" : ObjectId("5c979233854617b9deba24ef"), 
+    "deptHead" : [
+
+    ], 
+    "deptName" : "153", 
+    "deptNo" : "1536", 
+    "parentDept" : ObjectId("5c43db8927a94952c0a58653"), 
+    "desc" : "备注"
+}
+{ 
+    "_id" : ObjectId("5c9792af2bb5f2b812de62ee"), 
+    "deptHead" : [
+
+    ], 
+    "deptName" : "157", 
+    "deptNo" : "2356", 
+    "parentDept" : ObjectId("5c43db8927a94952c0a58653"), 
+    "desc" : "备注"
+}
+{ 
+    "_id" : ObjectId("5c9792af2bb5f2b812de62ef"), 
+    "deptHead" : [
+
+    ], 
+    "deptName" : "153", 
+    "deptNo" : "1536", 
+    "parentDept" : ObjectId("5c43db8927a94952c0a58653"), 
+    "desc" : "备注"
+}

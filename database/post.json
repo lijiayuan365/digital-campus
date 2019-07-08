@@ -1,0 +1,14 @@
+{ 
+    "_id" : ObjectId("5c449cc10a8638401d07f887"), 
+    "postType" : "行政", 
+    "postName" : "校长", 
+    "desc" : "校长", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5c4a8d12fe2f24c564e98536"), 
+    "postType" : "管理", 
+    "postName" : "班主任", 
+    "desc" : "班主任", 
+    "__v" : NumberInt(0)
+}

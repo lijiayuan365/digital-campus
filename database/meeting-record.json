@@ -1,0 +1,280 @@
+{ 
+    "_id" : ObjectId("5c94da4e470335fdc52590f1"), 
+    "originator" : [
+
+    ], 
+    "participant" : [
+
+    ], 
+    "attender" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "leaver" : [
+
+    ], 
+    "sign" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "unSign" : [
+
+    ], 
+    "signRecord" : [
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "15:26", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区仲恺路"
+        }
+    ], 
+    "meeting" : ObjectId("5c94da4b470335fdc52590f0"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5c94e0e9cf09c80b2e66a1e5"), 
+    "originator" : [
+
+    ], 
+    "participant" : [
+
+    ], 
+    "attender" : [
+
+    ], 
+    "leaver" : [
+
+    ], 
+    "sign" : [
+
+    ], 
+    "unSign" : [
+
+    ], 
+    "signRecord" : [
+
+    ], 
+    "meeting" : ObjectId("5c94e0e5cf09c80b2e66a1e4"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5c94ed5e23c754f8ddf01414"), 
+    "originator" : [
+
+    ], 
+    "participant" : [
+
+    ], 
+    "attender" : [
+
+    ], 
+    "leaver" : [
+
+    ], 
+    "sign" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "unSign" : [
+        ObjectId("5c4ac344fc1a4179c44493dc")
+    ], 
+    "signRecord" : [
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "22:26", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "23:27", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "23:29", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "23:40", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "23:42", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "23:42", 
+            "type" : NumberInt(2)
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "00:13", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区仲恺路"
+        }
+    ], 
+    "meeting" : ObjectId("5c94ed5d23c754f8ddf01413"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ca70b49d3ae8859005859e7"), 
+    "originator" : [
+
+    ], 
+    "participant" : [
+
+    ], 
+    "attender" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "leaver" : [
+
+    ], 
+    "sign" : [
+
+    ], 
+    "unSign" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "signRecord" : [
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:05", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:05", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:06", 
+            "type" : NumberInt(2)
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:06", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:07", 
+            "type" : NumberInt(2)
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:14", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:15", 
+            "type" : NumberInt(2)
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:16", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区仲恺路"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:18", 
+            "type" : NumberInt(2)
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:19", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区同福东路640号"
+        }, 
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "17:21", 
+            "type" : NumberInt(2)
+        }
+    ], 
+    "meeting" : ObjectId("5ca70b49d3ae8859005859e6"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ca9a06e2485f09634badc70"), 
+    "originator" : [
+
+    ], 
+    "participant" : [
+
+    ], 
+    "attender" : [
+
+    ], 
+    "leaver" : [
+
+    ], 
+    "sign" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "unSign" : [
+
+    ], 
+    "signRecord" : [
+        {
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "user" : "李佳远", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "date" : "15:26", 
+            "type" : NumberInt(1), 
+            "location" : "广东省广州市海珠区仲恺路"
+        }
+    ], 
+    "meeting" : ObjectId("5ca9a06e2485f09634badc6f"), 
+    "__v" : NumberInt(0)
+}

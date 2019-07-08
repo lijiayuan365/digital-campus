@@ -1,0 +1,9 @@
+{ 
+    "_id" : ObjectId("5c4a8c08fe2f24c564e98529"), 
+    "orgHead" : [
+        ObjectId("5c43db2c27a94952c0a58652")
+    ], 
+    "orgName" : "组织1", 
+    "desc" : "21", 
+    "__v" : NumberInt(0)
+}

@@ -2,125 +2,251 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="222e2963-a699-4964-b21f-83a7e582a4c2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/assets/img/addressbook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/assets/img/home.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/assets/img/icon_signal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/assets/js/common.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/assets/js/qqmap-wx-jssdk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/assets/js/qqmap-wx-jssdk.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/components/base/ZTitle.wpy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/components/comment/CommentList.wpy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/components/meeting/SignList.wpy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/LeaveDetail.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/TypeDetail.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manager/src/views/user/ImportUser.vue" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/CheckboxField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/DateField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/FileField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/ImgField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/RadioField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/TelField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/TextAreaField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/TextField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/form/TimeField.wpy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/data.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/campause.user.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/dept.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/organization.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/user.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/.babelrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/.editorconfig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/.postcssrc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/build/build.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/build/check-versions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/build/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/build/utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/build/vue-loader.conf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/build/webpack.base.conf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/build/webpack.dev.conf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/build/webpack.prod.conf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/config/dev.env.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/config/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/config/prod.env.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/src/App.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/src/assets/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/src/components/HelloWorld.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/src/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/digitalcampus/src/router/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/_database/a.mjs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/_database/b.mjs" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/app.wpy" afterPath="$PROJECT_DIR$/client/src/app.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/base/DatePicker.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/DatePicker.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/base/SelectUser.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/SelectUser.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/base/UserBoard.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/UserBoard.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/base/ZCell.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/ZCell.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/base/ZInput.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/ZInput.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/base/ZTextarea.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/ZTextarea.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/base/ZUploader.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/ZUploader.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/flow/BranchFlow.wpy" afterPath="$PROJECT_DIR$/client/src/components/flow/BranchFlow.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/flow/FixedFlow.wpy" afterPath="$PROJECT_DIR$/client/src/components/flow/FixedFlow.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/flow/FreeFlow.wpy" afterPath="$PROJECT_DIR$/client/src/components/flow/FreeFlow.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/flow/PendingNode.wpy" afterPath="$PROJECT_DIR$/client/src/components/flow/PendingNode.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/flow/flow.less" afterPath="$PROJECT_DIR$/client/src/components/flow/flow.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/form/FormBase.wpy" afterPath="$PROJECT_DIR$/client/src/components/form/FormBase.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/example/navbar.wpy" afterPath="$PROJECT_DIR$/client/src/example/navbar.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/address-book.wpy" afterPath="$PROJECT_DIR$/client/src/pages/address-book.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/ask-leave/add.wpy" afterPath="$PROJECT_DIR$/client/src/pages/ask-leave/add.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/ask-leave/detail.wpy" afterPath="$PROJECT_DIR$/client/src/pages/ask-leave/detail.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/ask-leave/home.wpy" afterPath="$PROJECT_DIR$/client/src/pages/ask-leave/home.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/ask-leave/leave-choice.wpy" afterPath="$PROJECT_DIR$/client/src/pages/ask-leave/leave-choice.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/dept-tree.wpy" afterPath="$PROJECT_DIR$/client/src/pages/dept-tree.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/form/add.wpy" afterPath="$PROJECT_DIR$/client/src/pages/form/add.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/form/detail.wpy" afterPath="$PROJECT_DIR$/client/src/pages/form/detail.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/form/draft.wpy" afterPath="$PROJECT_DIR$/client/src/pages/form/draft.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/form/form-choice.wpy" afterPath="$PROJECT_DIR$/client/src/pages/form/form-choice.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/form/home.wpy" afterPath="$PROJECT_DIR$/client/src/pages/form/home.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/home.wpy" afterPath="$PROJECT_DIR$/client/src/pages/home.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/meeting/add.wpy" afterPath="$PROJECT_DIR$/client/src/pages/meeting/add.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/meeting/detail.wpy" afterPath="$PROJECT_DIR$/client/src/pages/meeting/detail.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/meeting/home.wpy" afterPath="$PROJECT_DIR$/client/src/pages/meeting/home.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/sign-in.wpy" afterPath="$PROJECT_DIR$/client/src/pages/sign-in.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/sign-up.wpy" afterPath="$PROJECT_DIR$/client/src/pages/sign-up.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/pages/start.wpy" afterPath="$PROJECT_DIR$/client/src/pages/start.wpy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/config/index.js" afterPath="$PROJECT_DIR$/manager/config/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/package.json" afterPath="$PROJECT_DIR$/manager/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/assets/css/common.css" afterPath="$PROJECT_DIR$/manager/src/assets/css/common.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/components/DataTable.vue" afterPath="$PROJECT_DIR$/manager/src/components/DataTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/components/HomeSide.vue" afterPath="$PROJECT_DIR$/manager/src/components/HomeSide.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/main.js" afterPath="$PROJECT_DIR$/manager/src/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/router/ask-leave.js" afterPath="$PROJECT_DIR$/manager/src/router/ask-leave.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/router/user.js" afterPath="$PROJECT_DIR$/manager/src/router/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/views/ask-leave/AskLeaveIndex.vue" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/AskLeaveIndex.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/views/ask-leave/LeaveType.vue" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/LeaveType.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/views/fixed-flow/FixedFlowDetail.vue" afterPath="$PROJECT_DIR$/manager/src/views/fixed-flow/FixedFlowDetail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/views/form/FormDesign.vue" afterPath="$PROJECT_DIR$/manager/src/views/form/FormDesign.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/views/meeting/MeetingIndex.vue" afterPath="$PROJECT_DIR$/manager/src/views/meeting/MeetingIndex.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/views/user/UserDetail.vue" afterPath="$PROJECT_DIR$/manager/src/views/user/UserDetail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/src/views/user/UserIndex.vue" afterPath="$PROJECT_DIR$/manager/src/views/user/UserIndex.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/package.json" afterPath="$PROJECT_DIR$/server/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/components/DataList.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/DataList.wpy" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/components/NavBar.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/NavBar.wpy" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/components/SearchBox.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/SearchBox.wpy" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/components/TabBar.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/TabBar.wpy" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/components/TopMenu.wpy" afterPath="$PROJECT_DIR$/client/src/components/base/TopMenu.wpy" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/digitalcampus/static/.gitkeep" afterPath="$PROJECT_DIR$/client/src/assets/js/qqMap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/node_modules/acorn/dist/.keep" afterPath="$PROJECT_DIR$/client/src/assets/js/qqMap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/node_modules/acorn/src/loose/acorn_loose.js" afterPath="$PROJECT_DIR$/client/src/mixins/QQMapMixin.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/node_modules/extsprintf/.gitmodules" afterPath="$PROJECT_DIR$/client/src/mixins/SelectUserMixin.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/node_modules/jade/block-code.html" afterPath="$PROJECT_DIR$/client/src/utils/RequestUtil.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/node_modules/mpath/bench.log" afterPath="$PROJECT_DIR$/manager/src/axios.js" />
+      <change beforePath="$PROJECT_DIR$/client/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/client/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client/.idea/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/client/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/js/qqMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/js/qqMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/DataList.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/DataList.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/DatePicker.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/DatePicker.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/NavBar.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/NavBar.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/SelectUser.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/SelectUser.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/TabBar.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/TabBar.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/TopMenu.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/TopMenu.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/UserBoard.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/UserBoard.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/ZCell.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/ZCell.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/ZInput.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/ZInput.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/ZTextarea.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/ZTextarea.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/ZTitle.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/ZTitle.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/base/ZUploader.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/base/ZUploader.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/comment/CommentList.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/comment/CommentList.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/flow/BranchFlow.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/flow/BranchFlow.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/flow/FixedFlow.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/flow/FixedFlow.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/flow/FlowIndex2.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/flow/FlowIndex2.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/flow/FreeFlow.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/flow/FreeFlow.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/flow/PendingNode.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/flow/PendingNode.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/flow/flow.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/flow/flow.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/form/FormBase.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/form/FormBase.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/meeting/SignList.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/meeting/SignList.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/user/Zinput.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/user/Zinput.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/user/Zpicker.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/user/Zpicker.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/actionsheet.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/actionsheet.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/article.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/article.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/badge.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/badge.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/button.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/button.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/dialog.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/dialog.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/flex.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/flex.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/footer.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/footer.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/gallery.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/gallery.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/grid.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/grid.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/icons.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/icons.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/index.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/index.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/input.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/input.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/list.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/list.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/loadmore.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/loadmore.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/msg.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/msg.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/msg_fail.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/msg_fail.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/msg_success.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/msg_success.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/navbar.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/navbar.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/panel.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/panel.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/picker.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/picker.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/preview.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/preview.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/progress.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/progress.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/slider.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/slider.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/tabbar.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/tabbar.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/toast.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/toast.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/example/uploader.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/example/uploader.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/images/base64.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/images/base64.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/mixins/QQMapMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/mixins/QQMapMixin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/mixins/SelectUserMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/mixins/SelectUserMixin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/address-book.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/address-book.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/approve/home.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/approve/home.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ask-leave/add.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ask-leave/add.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ask-leave/detail.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ask-leave/detail.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ask-leave/home.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ask-leave/home.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ask-leave/leave-choice.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ask-leave/leave-choice.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/dept-tree.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/dept-tree.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/form/add.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/form/add.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/form/detail.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/form/detail.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/form/draft.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/form/draft.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/form/form-choice.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/form/form-choice.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/form/group-form.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/form/group-form.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/form/home.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/form/home.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/home.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/home.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/meeting/add.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/meeting/add.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/meeting/detail.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/meeting/detail.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/meeting/home.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/meeting/home.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/sign-in.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/sign-in.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/sign-up.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/sign-up.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/start.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/start.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/reducers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducers/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/fn.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/fn.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/mixin/setArrow.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/mixin/setArrow.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/mixin/setOnepx.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/mixin/setOnepx.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/mixin/text.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/mixin/text.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/reset.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/reset.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/variable/color.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/variable/color.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/variable/global.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/variable/global.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/variable/weui-cell.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/variable/weui-cell.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/variable/weui-dialog.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/variable/weui-dialog.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/variable/weui-grid.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/variable/weui-grid.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/variable/weui-msg.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/variable/weui-msg.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/base/variable/weui-progress.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/base/variable/weui-progress.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/weui.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/weui.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-agree/weui-agree.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-agree/weui-agree.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-animate/weui-animate.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-animate/weui-animate.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-button/weui-button.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-button/weui-button.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-access.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-access.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-cell.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-cell.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-check.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-check.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form/weui-form-preview.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form/weui-form-preview.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form/weui-form_common.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form/weui-form_common.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form/weui-select.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form/weui-select.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form/weui-vcode.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-form/weui-vcode.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-switch.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-switch.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-uploader.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-cell/weui-uploader.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-flex/weui-flex.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-flex/weui-flex.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-footer/weui-footer.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-footer/weui-footer.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-grid/weui-grid.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-grid/weui-grid.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-loading/weui-loading.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-loading/weui-loading.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-media-box/weui-media-box.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-media-box/weui-media-box.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-page/weui-article.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-page/weui-article.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-page/weui-msg.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-page/weui-msg.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-panel/weui-panel.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-panel/weui-panel.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-progress/weui-progress.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-progress/weui-progress.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-searchbar/weui-searchbar.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-searchbar/weui-searchbar.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-tab/weui-navbar.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-tab/weui-navbar.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-tab/weui-tab.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-tab/weui-tab.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-tips/weui-badge.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-tips/weui-badge.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/style/widget/weui-tips/weui-loadmore.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/style/widget/weui-tips/weui-loadmore.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/RequestUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/RequestUtil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/web/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/web/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/wepy.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/wepy.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/manager/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/manager/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/manager/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/.postcssrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/.postcssrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/manager/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/build/build.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/build/build.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/build/check-versions.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/build/check-versions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/build/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/build/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/build/vue-loader.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/build/vue-loader.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/build/webpack.base.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/build/webpack.base.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/build/webpack.dev.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/build/webpack.dev.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/build/webpack.prod.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/build/webpack.prod.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/config/dev.env.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/config/dev.env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/config/prod.env.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/config/prod.env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manager/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manager/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/home/demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/home/demo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/home/demo_fontclass.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/home/demo_fontclass.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/home/demo_symbol.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/home/demo_symbol.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/home/demo_unicode.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/home/demo_unicode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/home/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/home/iconfont.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/home/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/home/iconfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/icon/demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/icon/demo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/icon/demo_fontclass.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/icon/demo_fontclass.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/icon/demo_symbol.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/icon/demo_symbol.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/icon/demo_unicode.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/icon/demo_unicode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/icon/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/icon/iconfont.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/icon/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/icon/iconfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/assets/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/assets/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/BreadCrumb.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/BreadCrumb.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/DataTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/DataTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/FlowDesign.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/FlowDesign.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/HelloWorld.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/HelloWorld.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/HomeHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/HomeHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/HomeSide.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/HomeSide.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/SettingItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/SettingItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/CheckboxField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/CheckboxField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/DateField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/DateField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/FileField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/FileField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/ImgField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/ImgField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/RadioField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/RadioField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/TelField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/TelField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/TextAreaField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/TextAreaField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/TextField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/TextField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/TimeField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/TimeField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/form-design/form-field.css" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/form-design/form-field.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/select-user/SelectUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/select-user/SelectUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/select-user/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/select-user/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/dataBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/dataBase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/mixins/form-design-mixins.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/mixins/form-design-mixins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/approve.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/approve.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/ask-leave.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/ask-leave.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/fixed-flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/fixed-flow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/meeting.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/meeting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/store/modules/select-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/store/modules/select-user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/approve/ApproveIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/approve/ApproveIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/approve/ApproveSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/approve/ApproveSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/ask-leave/AskLeaveIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/AskLeaveIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/ask-leave/AskLeaveSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/AskLeaveSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/ask-leave/LeaveDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/LeaveDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/ask-leave/LeaveType.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/LeaveType.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/ask-leave/TypeDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/ask-leave/TypeDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/fixed-flow/FixedFlowDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/fixed-flow/FixedFlowDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/fixed-flow/FixedFlowIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/fixed-flow/FixedFlowIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/fixed-flow/FixedFlowSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/fixed-flow/FixedFlowSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/form/FormDesign.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/form/FormDesign.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/form/FormIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/form/FormIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/form/FormSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/form/FormSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/meeting/MeetingIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/meeting/MeetingIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/meeting/MeetingSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/meeting/MeetingSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/meeting/MeetingSummary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/meeting/MeetingSummary.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/user/DeptDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/user/DeptDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/user/ImportUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/user/ImportUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/user/OrgDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/user/OrgDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/user/PostList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/user/PostList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/user/UserDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/user/UserDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/user/UserIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/user/UserIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/views/user/UserSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/views/user/UserSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/server/bin/www" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/acorn/dist/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/acorn/src/loose/acorn_loose.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/extsprintf/.gitmodules" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/jade/block-code.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/mpath/bench.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/mquery/test/collection/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/mquery/test/collection/mongo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/stylesheets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/error.jade" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/error.jade" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/index.jade" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/index.jade" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/layout.jade" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/layout.jade" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,114 +254,85 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.wpy" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/app.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="142" column="40" lean-forward="false" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
-              <folding />
+            <state relative-caret-position="238">
+              <caret line="146" column="67" selection-start-line="146" selection-start-column="67" selection-end-line="146" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormDesign.vue" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manager/src/views/form/FormDesign.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7290">
-              <caret line="339" column="9" lean-forward="false" selection-start-line="339" selection-start-column="9" selection-end-line="339" selection-end-column="9" />
+            <state>
+              <caret line="339" column="9" selection-start-line="339" selection-start-column="9" selection-end-line="339" selection-end-column="9" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#8696#9149#0" expanded="false" />
-                <element signature="e#9170#9825#0" expanded="false" />
-                <element signature="e#9859#10080#0" expanded="false" />
+                <element signature="e#8696#9149#0" />
+                <element signature="e#9170#9825#0" />
+                <element signature="e#9859#10080#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormBase.wpy" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/form/FormBase.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8694">
-              <caret line="328" column="16" lean-forward="false" selection-start-line="328" selection-start-column="16" selection-end-line="328" selection-end-column="16" />
-              <folding>
-                <element signature="e#11191#11389#0" expanded="false" />
-              </folding>
+            <state>
+              <caret line="328" column="16" selection-start-line="328" selection-start-column="16" selection-end-line="328" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wepy.config.js" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/wepy.config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="detail.wpy" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/pages/form/detail.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6669">
-              <caret line="249" column="10" lean-forward="false" selection-start-line="249" selection-start-column="10" selection-end-line="249" selection-end-column="10" />
-              <folding>
-                <element signature="e#875#899#0" expanded="true" />
-              </folding>
+            <state>
+              <caret line="249" column="10" selection-start-line="249" selection-start-column="10" selection-end-line="249" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlowMixin.js" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/mixins/FlowMixin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-              <folding />
+            <state>
+              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.wpy" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/pages/form/add.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2376">
-              <caret line="133" column="16" lean-forward="false" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
-              <folding>
-                <element signature="e#714#738#0" expanded="true" />
-                <element signature="e#1912#3348#0" expanded="false" />
-              </folding>
+            <state>
+              <caret line="133" column="16" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="axios.js" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manager/src/axios.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-              <folding />
+            <state>
+              <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manager/config/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1566">
-              <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
-              <folding />
+            <state>
+              <caret line="58" column="52" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -371,18 +468,12 @@
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
     <annotation-enable>false</annotation-enable>
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
-  </component>
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="44" />
@@ -411,17 +502,7 @@
     </entry>
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -437,19 +518,19 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_interpreter_path" value="D:/nodejs/node" />
-    <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
-    <property name="JavaScriptPreferStrict" value="false" />
-    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path" value="D:/nodejs/node" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -479,76 +560,41 @@
     </option>
   </component>
   <component name="RunManager" selected="Node.js.a.mjs">
-    <configuration name="a.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="D:/node/node" path-to-js-file="a.js" working-dir="$PROJECT_DIR$/server/_database">
-      <EXTENSION ID="com.jetbrains.nodejs.remote.docker.NodeJSDockerRunConfigurationExtension">
-        <option name="envVars">
-          <list />
-        </option>
-        <option name="extraHosts">
-          <list />
-        </option>
-        <option name="links">
-          <list />
-        </option>
-        <option name="networkDisabled" value="false" />
-        <option name="networkMode" value="bridge" />
-        <option name="portBindings">
-          <list />
-        </option>
-        <option name="publishAllPorts" value="false" />
-        <option name="version" value="1" />
-        <option name="volumeBindings">
-          <list />
-        </option>
-      </EXTENSION>
+    <configuration name="a.js" type="NodeJSConfigurationType" path-to-node="D:/node/node" path-to-js-file="a.js" working-dir="$PROJECT_DIR$/server/_database">
+      <method v="2" />
     </configuration>
-    <configuration name="a.mjs" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="D:/node/node" path-to-js-file="a.mjs" working-dir="$PROJECT_DIR$/server/_database">
-      <EXTENSION ID="com.jetbrains.nodejs.remote.docker.NodeJSDockerRunConfigurationExtension">
-        <option name="envVars">
-          <list />
-        </option>
-        <option name="extraHosts">
-          <list />
-        </option>
-        <option name="links">
-          <list />
-        </option>
-        <option name="networkDisabled" value="false" />
-        <option name="networkMode" value="bridge" />
-        <option name="portBindings">
-          <list />
-        </option>
-        <option name="publishAllPorts" value="false" />
-        <option name="version" value="1" />
-        <option name="volumeBindings">
-          <list />
-        </option>
-      </EXTENSION>
+    <configuration name="a.mjs" type="NodeJSConfigurationType" temporary="true" path-to-node="D:/node/node" path-to-js-file="a.mjs" working-dir="$PROJECT_DIR$/server/_database">
+      <method v="2" />
     </configuration>
-    <configuration name="b.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="b.js" working-dir="$PROJECT_DIR$/server/_database" />
-    <configuration name="common.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="common.js" working-dir="$PROJECT_DIR$/client/src/assets/js" />
-    <configuration name="getAllUser.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="$PROJECT_DIR$/server/service/manager/user.js" working-dir="$PROJECT_DIR$/server/service/manager" />
-    <configuration name="index.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/manager/src/router" />
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.a.js" />
-      <item index="1" class="java.lang.String" itemvalue="Node.js.getAllUser.js" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.index.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.common.js" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.a.mjs" />
-      <item index="5" class="java.lang.String" itemvalue="Node.js.b.js" />
+    <configuration name="b.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="b.js" working-dir="$PROJECT_DIR$/server/_database">
+      <method v="2" />
+    </configuration>
+    <configuration name="common.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="common.js" working-dir="$PROJECT_DIR$/client/src/assets/js">
+      <method v="2" />
+    </configuration>
+    <configuration name="getAllUser.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="$PROJECT_DIR$/server/service/manager/user.js" working-dir="$PROJECT_DIR$/server/service/manager">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/manager/src/router">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.a.js" />
+      <item itemvalue="Node.js.getAllUser.js" />
+      <item itemvalue="Node.js.index.js" />
+      <item itemvalue="Node.js.common.js" />
+      <item itemvalue="Node.js.a.mjs" />
+      <item itemvalue="Node.js.b.js" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.a.mjs" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.b.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.common.js" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.getAllUser.js" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.index.js" />
+      <list>
+        <item itemvalue="Node.js.a.mjs" />
+        <item itemvalue="Node.js.b.js" />
+        <item itemvalue="Node.js.common.js" />
+        <item itemvalue="Node.js.getAllUser.js" />
+        <item itemvalue="Node.js.index.js" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -643,6 +689,7 @@
       <workItem from="1557391819474" duration="3930000" />
       <workItem from="1557535775236" duration="2856000" />
       <workItem from="1560468666263" duration="217000" />
+      <workItem from="1562570272814" duration="80000" />
     </task>
     <task id="LOCAL-00001" summary="管理端升级 webpack4 搭建管理端基本骨架">
       <created>1539705314307</created>
@@ -788,7 +835,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="882826000" />
+    <option name="totallyTimeSpent" value="882906000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -801,43 +848,44 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.290625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29790026" sideWeight="0.5025" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31496063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4416" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24941725" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.507874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16920152" />
+      <window_info id="Structure" order="1" weight="0.24941725" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32882273" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975" weight="0.4416" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.507874" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32882273" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.31496063" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32882273" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5025" side_tool="true" weight="0.29790026" />
+      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31518987" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36351705" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24941725" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.135318" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2125" />
+      <window_info id="Structure" order="1" weight="0.24941725" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32882273" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36351705" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.135318" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32882273" />
+      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.31518987" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32882273" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -868,6 +916,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -894,125 +956,85 @@
     <MESSAGE value="收工调整" />
     <option name="LAST_COMMIT_MESSAGE" value="收工调整" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="27" />
-    </breakpoint-manager>
-    <watches-manager />
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/manager/src/views/meeting/MeetingIndex.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/views/ask-leave/AskLeaveIndex.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="818">
-          <caret line="71" column="13" lean-forward="false" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/views/ask-leave/TypeDetail.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-135">
-          <caret line="82" column="7" lean-forward="false" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+          <caret line="82" column="7" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/views/ask-leave/LeaveDetail.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1269">
-          <caret line="47" column="40" lean-forward="false" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
+          <caret line="47" column="40" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/views/user/ImportUser.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3402">
-          <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <caret line="128" selection-start-line="128" selection-end-line="128" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/start.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1647">
-          <caret line="63" column="63" lean-forward="false" selection-start-line="63" selection-start-column="63" selection-end-line="63" selection-end-column="63" />
+          <caret line="63" column="63" selection-start-line="63" selection-start-column="63" selection-end-line="63" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/views/Login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/views/user/DeptDetail.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-162">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
+        <state relative-caret-position="-162" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/views/user/UserIndex.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="521">
-          <caret line="58" column="10" lean-forward="false" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
+          <caret line="58" column="10" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/config/dev.env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/config/prod.env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/build/webpack.dev.conf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2187">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
+        <state relative-caret-position="-2187" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/build/build.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/server/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/server/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/datacom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/database/datacom.js" />
     <entry file="file://$PROJECT_DIR$/server/_database/a.js" />
     <entry file="file://$PROJECT_DIR$/server/_database/b.js" />
     <entry file="file://$PROJECT_DIR$/server/_database/a.mjs" />
@@ -1027,49 +1049,49 @@
     <entry file="file://$PROJECT_DIR$/client/src/pages/ask-leave/home.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="44" column="35" lean-forward="false" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="83" />
+          <caret line="44" column="35" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/base/TopMenu.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="521">
-          <caret line="80" column="13" lean-forward="false" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/base/DatePicker.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/base/SelectUser.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/base/UserBoard.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="89" column="31" lean-forward="false" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+          <caret line="89" column="31" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/mixins/SelectUserMixin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
-          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="9" />
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/ask-leave/detail.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
-          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
         </state>
       </provider>
     </entry>
@@ -1083,65 +1105,60 @@
     <entry file="file://$PROJECT_DIR$/client/src/pages/form/home.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2403">
-          <caret line="93" column="40" lean-forward="false" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
+          <caret line="93" column="40" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/flow/FlowIndex.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state>
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/sign-up.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3375">
-          <caret line="127" column="40" lean-forward="false" selection-start-line="127" selection-start-column="40" selection-end-line="127" selection-end-column="40" />
+          <caret line="127" column="40" selection-start-line="127" selection-start-column="40" selection-end-line="127" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/sign-in.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2025">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/meeting/home.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1404">
-          <caret line="57" column="75" lean-forward="false" selection-start-line="57" selection-start-column="75" selection-end-line="57" selection-end-column="75" />
+          <caret line="57" column="75" selection-start-line="57" selection-start-column="75" selection-end-line="57" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/meeting/detail.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4563">
-          <caret line="354" column="0" lean-forward="false" selection-start-line="354" selection-start-column="0" selection-end-line="354" selection-end-column="0" />
+          <caret line="354" selection-start-line="354" selection-end-line="354" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/user-card.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1242">
-          <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="24" />
+          <caret line="46" column="24" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/base/ZUploader.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1512">
-          <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="40" />
+          <caret line="57" column="37" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1149,116 +1166,94 @@
     <entry file="file://$PROJECT_DIR$/client/src/mixins/QQMapMixin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
-          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="40" />
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/router/form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state>
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/wepy.config.js">
+    <entry file="file://$PROJECT_DIR$/data/data.js" />
+    <entry file="file://$PROJECT_DIR$/manager/src/views/form/FormDesign.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state>
+          <caret line="339" column="9" selection-start-line="339" selection-start-column="9" selection-end-line="339" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#8696#9149#0" />
+            <element signature="e#9170#9825#0" />
+            <element signature="e#9859#10080#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/form/FormBase.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8694">
-          <caret line="328" column="16" lean-forward="false" selection-start-line="328" selection-start-column="16" selection-end-line="328" selection-end-column="16" />
-          <folding>
-            <element signature="e#11191#11389#0" expanded="false" />
-          </folding>
+        <state>
+          <caret line="328" column="16" selection-start-line="328" selection-start-column="16" selection-end-line="328" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager/src/views/form/FormDesign.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7290">
-          <caret line="339" column="9" lean-forward="false" selection-start-line="339" selection-start-column="9" selection-end-line="339" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#8696#9149#0" expanded="false" />
-            <element signature="e#9170#9825#0" expanded="false" />
-            <element signature="e#9859#10080#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/client/wepy.config.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/form/detail.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6669">
-          <caret line="249" column="10" lean-forward="false" selection-start-line="249" selection-start-column="10" selection-end-line="249" selection-end-column="10" />
-          <folding>
-            <element signature="e#875#899#0" expanded="true" />
-          </folding>
+        <state>
+          <caret line="249" column="10" selection-start-line="249" selection-start-column="10" selection-end-line="249" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/mixins/FlowMixin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-          <folding />
+        <state>
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/form/add.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="133" column="16" lean-forward="false" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
-          <folding>
-            <element signature="e#714#738#0" expanded="true" />
-            <element signature="e#1912#3348#0" expanded="false" />
-          </folding>
+        <state>
+          <caret line="133" column="16" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/src/axios.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding />
+        <state>
+          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manager/config/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
-          <folding />
+        <state>
+          <caret line="58" column="52" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="142" column="40" lean-forward="false" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1016">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="238">
+          <caret line="146" column="67" selection-start-line="146" selection-start-column="67" selection-end-line="146" selection-end-column="67" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,1438 @@
+{ 
+    "_id" : ObjectId("5c87c03975a5e832ee390595"), 
+    "ccPerson" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveContent" : "王企鹅爱我仿佛能啊世界首富", 
+    "leaveTime" : "2", 
+    "startTime" : "2019-03-01/00:00", 
+    "endTime" : "2019-03-12/00:00", 
+    "status" : NumberInt(1), 
+    "flow" : {
+        "data" : {
+            "nodeId" : "001", 
+            "nodeName" : "班主任审批", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c7b3f74754c9769ed26c4da", 
+                    "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                    "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                    "userName" : "李佳远", 
+                    "pwd" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                    "dept" : {
+                        "_id" : "5c43db8927a94952c0a58653", 
+                        "deptName" : "部门名称", 
+                        "deptNo" : "部门编号"
+                    }, 
+                    "org" : {
+                        "orgHead" : [
+                            "5c43db2c27a94952c0a58652"
+                        ], 
+                        "_id" : "5c4a8c08fe2f24c564e98529", 
+                        "orgName" : "组织1", 
+                        "desc" : "21", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "tel" : NumberInt(123456), 
+                    "email" : "24", 
+                    "remark" : "244324", 
+                    "userId" : "5c7b3f74754c9769ed26c4da", 
+                    "checked" : true
+                }
+            ]
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员审批", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c7b3f74754c9769ed26c4da", 
+                        "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                        "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                        "userName" : "李佳远", 
+                        "pwd" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                        "dept" : {
+                            "_id" : "5c43db8927a94952c0a58653", 
+                            "deptName" : "部门名称", 
+                            "deptNo" : "部门编号"
+                        }, 
+                        "org" : {
+                            "orgHead" : [
+                                "5c43db2c27a94952c0a58652"
+                            ], 
+                            "_id" : "5c4a8c08fe2f24c564e98529", 
+                            "orgName" : "组织1", 
+                            "desc" : "21", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "tel" : NumberInt(123456), 
+                        "email" : "24", 
+                        "remark" : "244324", 
+                        "userId" : "5c7b3f74754c9769ed26c4da", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "成功审批", 
+        "nodeId" : "002", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c7b3f74754c9769ed26c4da", 
+                "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                "userName" : "李佳远", 
+                "pwd" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                "dept" : {
+                    "_id" : "5c43db8927a94952c0a58653", 
+                    "deptName" : "部门名称", 
+                    "deptNo" : "部门编号"
+                }, 
+                "org" : {
+                    "orgHead" : [
+                        "5c43db2c27a94952c0a58652"
+                    ], 
+                    "_id" : "5c4a8c08fe2f24c564e98529", 
+                    "orgName" : "组织1", 
+                    "desc" : "21", 
+                    "__v" : NumberInt(0)
+                }, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "tel" : NumberInt(123456), 
+                "email" : "24", 
+                "remark" : "244324", 
+                "userId" : "5c7b3f74754c9769ed26c4da", 
+                "checked" : true, 
+                "approve" : NumberInt(1)
+            }
+        ]
+    }, 
+    "approvalRecords" : [
+        {
+            "_id" : "5c7b3f74754c9769ed26c4da", 
+            "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+            "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+            "userName" : "李佳远", 
+            "pwd" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "dept" : {
+                "_id" : "5c43db8927a94952c0a58653", 
+                "deptName" : "部门名称", 
+                "deptNo" : "部门编号"
+            }, 
+            "org" : {
+                "orgHead" : [
+                    "5c43db2c27a94952c0a58652"
+                ], 
+                "_id" : "5c4a8c08fe2f24c564e98529", 
+                "orgName" : "组织1", 
+                "desc" : "21", 
+                "__v" : NumberInt(0)
+            }, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "tel" : NumberInt(123456), 
+            "email" : "24", 
+            "remark" : "244324", 
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "checked" : true, 
+            "approve" : NumberInt(1)
+        }, 
+        {
+            "_id" : "5c7b3f74754c9769ed26c4da", 
+            "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+            "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+            "userName" : "李佳远", 
+            "pwd" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+            "dept" : {
+                "_id" : "5c43db8927a94952c0a58653", 
+                "deptName" : "部门名称", 
+                "deptNo" : "部门编号"
+            }, 
+            "org" : {
+                "orgHead" : [
+                    "5c43db2c27a94952c0a58652"
+                ], 
+                "_id" : "5c4a8c08fe2f24c564e98529", 
+                "orgName" : "组织1", 
+                "desc" : "21", 
+                "__v" : NumberInt(0)
+            }, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "tel" : NumberInt(123456), 
+            "email" : "24", 
+            "remark" : "244324", 
+            "userId" : "5c7b3f74754c9769ed26c4da", 
+            "checked" : true, 
+            "approve" : NumberInt(1)
+        }
+    ], 
+    "createTime" : ISODate("2019-03-12T14:20:41.870+0000")
+}
+{ 
+    "_id" : ObjectId("5c8916f9e6f4898dcec98460"), 
+    "approvalRecords" : [
+
+    ], 
+    "ccPerson" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2019-03-01/00:00", 
+    "endTime" : "2019-03-13/00:01", 
+    "status" : NumberInt(2), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任审批", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c7b3f74754c9769ed26c4da", 
+                    "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                    "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                    "userName" : "李佳远", 
+                    "pwd" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                    "dept" : {
+                        "_id" : "5c43db8927a94952c0a58653", 
+                        "deptName" : "部门名称", 
+                        "deptNo" : "部门编号"
+                    }, 
+                    "org" : {
+                        "orgHead" : [
+                            "5c43db2c27a94952c0a58652"
+                        ], 
+                        "_id" : "5c4a8c08fe2f24c564e98529", 
+                        "orgName" : "组织1", 
+                        "desc" : "21", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "tel" : NumberInt(123456), 
+                    "email" : "24", 
+                    "remark" : "244324", 
+                    "userId" : "5c7b3f74754c9769ed26c4da", 
+                    "checked" : true
+                }
+            ], 
+            "nodeId" : "001"
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员审批", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c7b3f74754c9769ed26c4da", 
+                        "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                        "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                        "userName" : "李佳远", 
+                        "pwd" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                        "dept" : {
+                            "_id" : "5c43db8927a94952c0a58653", 
+                            "deptName" : "部门名称", 
+                            "deptNo" : "部门编号"
+                        }, 
+                        "org" : {
+                            "orgHead" : [
+                                "5c43db2c27a94952c0a58652"
+                            ], 
+                            "_id" : "5c4a8c08fe2f24c564e98529", 
+                            "orgName" : "组织1", 
+                            "desc" : "21", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "tel" : NumberInt(123456), 
+                        "email" : "24", 
+                        "remark" : "244324", 
+                        "userId" : "5c7b3f74754c9769ed26c4da", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "驳回", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c7b3f74754c9769ed26c4da", 
+                "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                "userName" : "李佳远", 
+                "pwd" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                "dept" : {
+                    "_id" : "5c43db8927a94952c0a58653", 
+                    "deptName" : "部门名称", 
+                    "deptNo" : "部门编号"
+                }, 
+                "org" : {
+                    "orgHead" : [
+                        "5c43db2c27a94952c0a58652"
+                    ], 
+                    "_id" : "5c4a8c08fe2f24c564e98529", 
+                    "orgName" : "组织1", 
+                    "desc" : "21", 
+                    "__v" : NumberInt(0)
+                }, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "tel" : NumberInt(123456), 
+                "email" : "24", 
+                "remark" : "244324", 
+                "userId" : "5c7b3f74754c9769ed26c4da", 
+                "checked" : true
+            }
+        ], 
+        "nodeId" : "001"
+    }, 
+    "createTime" : ISODate("2019-03-13T14:43:05.897+0000")
+}
+{ 
+    "_id" : ObjectId("5c891cf3a45efb9042da5374"), 
+    "approvalRecords" : [
+
+    ], 
+    "ccPerson" : [
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2019-03-13/00:00", 
+    "endTime" : "2019-03-13/00:00", 
+    "status" : NumberInt(0), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任审批", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c7b3f74754c9769ed26c4da", 
+                    "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                    "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                    "userName" : "李佳远", 
+                    "pwd" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                    "dept" : {
+                        "_id" : "5c43db8927a94952c0a58653", 
+                        "deptName" : "部门名称", 
+                        "deptNo" : "部门编号"
+                    }, 
+                    "org" : {
+                        "orgHead" : [
+                            "5c43db2c27a94952c0a58652"
+                        ], 
+                        "_id" : "5c4a8c08fe2f24c564e98529", 
+                        "orgName" : "组织1", 
+                        "desc" : "21", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "tel" : NumberInt(123456), 
+                    "email" : "24", 
+                    "remark" : "244324", 
+                    "userId" : "5c7b3f74754c9769ed26c4da", 
+                    "checked" : true
+                }
+            ], 
+            "nodeId" : "001"
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员审批", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c7b3f74754c9769ed26c4da", 
+                        "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                        "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                        "userName" : "李佳远", 
+                        "pwd" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                        "dept" : {
+                            "_id" : "5c43db8927a94952c0a58653", 
+                            "deptName" : "部门名称", 
+                            "deptNo" : "部门编号"
+                        }, 
+                        "org" : {
+                            "orgHead" : [
+                                "5c43db2c27a94952c0a58652"
+                            ], 
+                            "_id" : "5c4a8c08fe2f24c564e98529", 
+                            "orgName" : "组织1", 
+                            "desc" : "21", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "tel" : NumberInt(123456), 
+                        "email" : "24", 
+                        "remark" : "244324", 
+                        "userId" : "5c7b3f74754c9769ed26c4da", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "班主任审批", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c7b3f74754c9769ed26c4da", 
+                "openid" : "ogTC94oLbffSXX-XLGQPBUABZfow", 
+                "session_key" : "8PH7aDXb1LSgRFSF5HHIpQ==", 
+                "userName" : "李佳远", 
+                "pwd" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/YY0eIxDaBib6U8icgyYd0kGRM6iaV6dIZYvYIvUibJCMTNV8icib5LMK2EnmDZIibMw5m7Z1iahuuPzIEibNE9T7qnxuXfg/132", 
+                "dept" : {
+                    "_id" : "5c43db8927a94952c0a58653", 
+                    "deptName" : "部门名称", 
+                    "deptNo" : "部门编号"
+                }, 
+                "org" : {
+                    "orgHead" : [
+                        "5c43db2c27a94952c0a58652"
+                    ], 
+                    "_id" : "5c4a8c08fe2f24c564e98529", 
+                    "orgName" : "组织1", 
+                    "desc" : "21", 
+                    "__v" : NumberInt(0)
+                }, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "tel" : NumberInt(123456), 
+                "email" : "24", 
+                "remark" : "244324", 
+                "userId" : "5c7b3f74754c9769ed26c4da", 
+                "checked" : true
+            }
+        ], 
+        "nodeId" : "001"
+    }, 
+    "createTime" : ISODate("2019-03-13T15:08:35.347+0000")
+}
+{ 
+    "_id" : ObjectId("5c892196a45efb9042da5379"), 
+    "approvalRecords" : [
+        {
+            "_id" : "5c43db2c27a94952c0a58652", 
+            "userName" : "张三", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : {
+                "_id" : "5c4db72ae5a18c27640a2f24", 
+                "deptName" : "信科院", 
+                "deptNo" : "323"
+            }, 
+            "org" : null, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "email" : "邮箱", 
+            "remark" : "备注", 
+            "userId" : "5c43db2c27a94952c0a58652", 
+            "checked" : true, 
+            "approve" : NumberInt(1)
+        }, 
+        {
+            "_id" : "5c43db2c27a94952c0a58652", 
+            "userName" : "张三", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : {
+                "_id" : "5c4db72ae5a18c27640a2f24", 
+                "deptName" : "信科院", 
+                "deptNo" : "323"
+            }, 
+            "org" : null, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "email" : "邮箱", 
+            "remark" : "备注", 
+            "userId" : "5c43db2c27a94952c0a58652", 
+            "checked" : true, 
+            "approve" : NumberInt(1)
+        }
+    ], 
+    "ccPerson" : [
+        ObjectId("5c43db2c27a94952c0a58652"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2019-03-13/00:00", 
+    "endTime" : "2019-03-13/00:00", 
+    "status" : NumberInt(1), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任", 
+            "nodeId" : "001", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c43db2c27a94952c0a58652", 
+                    "userName" : "张三", 
+                    "pwd" : "123456", 
+                    "openid" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                    "dept" : {
+                        "_id" : "5c4db72ae5a18c27640a2f24", 
+                        "deptName" : "信科院", 
+                        "deptNo" : "323"
+                    }, 
+                    "org" : null, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "email" : "邮箱", 
+                    "remark" : "备注", 
+                    "userId" : "5c43db2c27a94952c0a58652", 
+                    "checked" : true
+                }
+            ]
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c43db2c27a94952c0a58652", 
+                        "userName" : "张三", 
+                        "pwd" : "123456", 
+                        "openid" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                        "dept" : {
+                            "_id" : "5c4db72ae5a18c27640a2f24", 
+                            "deptName" : "信科院", 
+                            "deptNo" : "323"
+                        }, 
+                        "org" : null, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "email" : "邮箱", 
+                        "remark" : "备注", 
+                        "userId" : "5c43db2c27a94952c0a58652", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "批假", 
+        "nodeId" : "002", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c43db2c27a94952c0a58652", 
+                "userName" : "张三", 
+                "pwd" : "123456", 
+                "openid" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                "dept" : {
+                    "_id" : "5c4db72ae5a18c27640a2f24", 
+                    "deptName" : "信科院", 
+                    "deptNo" : "323"
+                }, 
+                "org" : null, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "email" : "邮箱", 
+                "remark" : "备注", 
+                "userId" : "5c43db2c27a94952c0a58652", 
+                "checked" : true, 
+                "approve" : NumberInt(1)
+            }
+        ]
+    }, 
+    "createTime" : ISODate("2019-03-13T15:28:22.197+0000")
+}
+{ 
+    "_id" : ObjectId("5c892eed999fd6904e660a79"), 
+    "approvalRecords" : [
+
+    ], 
+    "ccPerson" : [
+        ObjectId("5c43db2c27a94952c0a58652"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2017-09-01/21:01", 
+    "endTime" : "2017-09-01/21:01", 
+    "status" : NumberInt(2), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任", 
+            "nodeId" : "001", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c43db2c27a94952c0a58652", 
+                    "userName" : "张三", 
+                    "pwd" : "123456", 
+                    "openid" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                    "dept" : {
+                        "_id" : "5c4db72ae5a18c27640a2f24", 
+                        "deptName" : "信科院", 
+                        "deptNo" : "323"
+                    }, 
+                    "org" : null, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "email" : "邮箱", 
+                    "remark" : "备注", 
+                    "userId" : "5c43db2c27a94952c0a58652", 
+                    "checked" : true
+                }
+            ]
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c43db2c27a94952c0a58652", 
+                        "userName" : "张三", 
+                        "pwd" : "123456", 
+                        "openid" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                        "dept" : {
+                            "_id" : "5c4db72ae5a18c27640a2f24", 
+                            "deptName" : "信科院", 
+                            "deptNo" : "323"
+                        }, 
+                        "org" : null, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "email" : "邮箱", 
+                        "remark" : "备注", 
+                        "userId" : "5c43db2c27a94952c0a58652", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "驳回", 
+        "nodeId" : "001", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c43db2c27a94952c0a58652", 
+                "userName" : "张三", 
+                "pwd" : "123456", 
+                "openid" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                "dept" : {
+                    "_id" : "5c4db72ae5a18c27640a2f24", 
+                    "deptName" : "信科院", 
+                    "deptNo" : "323"
+                }, 
+                "org" : null, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "email" : "邮箱", 
+                "remark" : "备注", 
+                "userId" : "5c43db2c27a94952c0a58652", 
+                "checked" : true
+            }
+        ]
+    }, 
+    "createTime" : ISODate("2019-03-13T16:25:17.445+0000")
+}
+{ 
+    "_id" : ObjectId("5c893118cc39d3992e332ddd"), 
+    "fileList" : [
+        "http://img.cdn.lijiayuan.top/tmp/wxbbf943be81c33e22.o6zAJs-Z0nCFSUZOR9iXROpswm8o.eXu58avI1qYrd35c4974ec39b17678405263ab93de9b.png"
+    ], 
+    "approvalRecords" : [
+
+    ], 
+    "ccPerson" : [
+        ObjectId("5c43db2c27a94952c0a58652"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveContent" : "这是事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2019-09-01/00:01", 
+    "endTime" : "2019-03-14/00:00", 
+    "status" : NumberInt(2), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任", 
+            "nodeId" : "001", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c43db2c27a94952c0a58652", 
+                    "userName" : "张三", 
+                    "pwd" : "123456", 
+                    "openid" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                    "dept" : {
+                        "_id" : "5c4db72ae5a18c27640a2f24", 
+                        "deptName" : "信科院", 
+                        "deptNo" : "323"
+                    }, 
+                    "org" : null, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "email" : "邮箱", 
+                    "remark" : "备注", 
+                    "userId" : "5c43db2c27a94952c0a58652", 
+                    "checked" : true
+                }
+            ]
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c43db2c27a94952c0a58652", 
+                        "userName" : "张三", 
+                        "pwd" : "123456", 
+                        "openid" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                        "dept" : {
+                            "_id" : "5c4db72ae5a18c27640a2f24", 
+                            "deptName" : "信科院", 
+                            "deptNo" : "323"
+                        }, 
+                        "org" : null, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "email" : "邮箱", 
+                        "remark" : "备注", 
+                        "userId" : "5c43db2c27a94952c0a58652", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "驳回", 
+        "nodeId" : "001", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c43db2c27a94952c0a58652", 
+                "userName" : "张三", 
+                "pwd" : "123456", 
+                "openid" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                "dept" : {
+                    "_id" : "5c4db72ae5a18c27640a2f24", 
+                    "deptName" : "信科院", 
+                    "deptNo" : "323"
+                }, 
+                "org" : null, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "email" : "邮箱", 
+                "remark" : "备注", 
+                "userId" : "5c43db2c27a94952c0a58652", 
+                "checked" : true
+            }
+        ]
+    }, 
+    "createTime" : ISODate("2019-03-13T16:34:32.199+0000")
+}
+{ 
+    "_id" : ObjectId("5c950d0f227f5a172a5ccbd0"), 
+    "fileList" : [
+
+    ], 
+    "approvalRecords" : [
+
+    ], 
+    "ccPerson" : [
+        ObjectId("5c43db2c27a94952c0a58652"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveContent" : "这是事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2019-09-01/00:01", 
+    "endTime" : "2019-03-01/00:01", 
+    "status" : NumberInt(2), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任", 
+            "nodeId" : "001", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c43db2c27a94952c0a58652", 
+                    "userName" : "张三", 
+                    "pwd" : "123456", 
+                    "openid" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                    "dept" : {
+                        "_id" : "5c4db72ae5a18c27640a2f24", 
+                        "deptName" : "信科院", 
+                        "deptNo" : "323"
+                    }, 
+                    "org" : null, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "email" : "邮箱", 
+                    "remark" : "备注", 
+                    "userId" : "5c43db2c27a94952c0a58652", 
+                    "checked" : true
+                }
+            ]
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c43db2c27a94952c0a58652", 
+                        "userName" : "张三", 
+                        "pwd" : "123456", 
+                        "openid" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                        "dept" : {
+                            "_id" : "5c4db72ae5a18c27640a2f24", 
+                            "deptName" : "信科院", 
+                            "deptNo" : "323"
+                        }, 
+                        "org" : null, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "email" : "邮箱", 
+                        "remark" : "备注", 
+                        "userId" : "5c43db2c27a94952c0a58652", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "驳回", 
+        "nodeId" : "001", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c43db2c27a94952c0a58652", 
+                "userName" : "张三", 
+                "pwd" : "123456", 
+                "openid" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                "dept" : {
+                    "_id" : "5c4db72ae5a18c27640a2f24", 
+                    "deptName" : "信科院", 
+                    "deptNo" : "323"
+                }, 
+                "org" : null, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "email" : "邮箱", 
+                "remark" : "备注", 
+                "userId" : "5c43db2c27a94952c0a58652", 
+                "checked" : true
+            }
+        ]
+    }, 
+    "createTime" : ISODate("2019-03-22T16:27:59.882+0000")
+}
+{ 
+    "_id" : ObjectId("5c950def227f5a172a5ccbd1"), 
+    "fileList" : [
+
+    ], 
+    "approvalRecords" : [
+
+    ], 
+    "ccPerson" : [
+        ObjectId("5c43db2c27a94952c0a58652"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveContent" : "这是事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2017-09-01/21:01", 
+    "endTime" : "2017-09-01/21:01", 
+    "status" : NumberInt(2), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任", 
+            "nodeId" : "001", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c43db2c27a94952c0a58652", 
+                    "userName" : "张三", 
+                    "pwd" : "123456", 
+                    "openid" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                    "dept" : {
+                        "_id" : "5c4db72ae5a18c27640a2f24", 
+                        "deptName" : "信科院", 
+                        "deptNo" : "323"
+                    }, 
+                    "org" : null, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "email" : "邮箱", 
+                    "remark" : "备注", 
+                    "userId" : "5c43db2c27a94952c0a58652", 
+                    "checked" : true
+                }
+            ]
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c43db2c27a94952c0a58652", 
+                        "userName" : "张三", 
+                        "pwd" : "123456", 
+                        "openid" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                        "dept" : {
+                            "_id" : "5c4db72ae5a18c27640a2f24", 
+                            "deptName" : "信科院", 
+                            "deptNo" : "323"
+                        }, 
+                        "org" : null, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "email" : "邮箱", 
+                        "remark" : "备注", 
+                        "userId" : "5c43db2c27a94952c0a58652", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "驳回", 
+        "nodeId" : "001", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c43db2c27a94952c0a58652", 
+                "userName" : "张三", 
+                "pwd" : "123456", 
+                "openid" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                "dept" : {
+                    "_id" : "5c4db72ae5a18c27640a2f24", 
+                    "deptName" : "信科院", 
+                    "deptNo" : "323"
+                }, 
+                "org" : null, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "email" : "邮箱", 
+                "remark" : "备注", 
+                "userId" : "5c43db2c27a94952c0a58652", 
+                "checked" : true
+            }
+        ]
+    }, 
+    "createTime" : ISODate("2019-03-22T16:31:43.731+0000")
+}
+{ 
+    "_id" : ObjectId("5c9793e12bb5f2b812de62fe"), 
+    "fileList" : [
+
+    ], 
+    "approvalRecords" : [
+        {
+            "_id" : "5c43db2c27a94952c0a58652", 
+            "userName" : "张三", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : {
+                "_id" : "5c4db72ae5a18c27640a2f24", 
+                "deptName" : "信科院", 
+                "deptNo" : "323"
+            }, 
+            "org" : null, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "email" : "邮箱", 
+            "remark" : "备注", 
+            "userId" : "5c43db2c27a94952c0a58652", 
+            "checked" : true, 
+            "approve" : NumberInt(1)
+        }, 
+        {
+            "_id" : "5c43db2c27a94952c0a58652", 
+            "userName" : "张三", 
+            "pwd" : "123456", 
+            "openid" : "123456", 
+            "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+            "dept" : {
+                "_id" : "5c4db72ae5a18c27640a2f24", 
+                "deptName" : "信科院", 
+                "deptNo" : "323"
+            }, 
+            "org" : null, 
+            "post" : {
+                "_id" : "5c449cc10a8638401d07f887", 
+                "postType" : "行政", 
+                "postName" : "校长", 
+                "desc" : "校长", 
+                "__v" : NumberInt(0)
+            }, 
+            "email" : "邮箱", 
+            "remark" : "备注", 
+            "userId" : "5c43db2c27a94952c0a58652", 
+            "checked" : true, 
+            "approve" : NumberInt(1)
+        }
+    ], 
+    "ccPerson" : [
+        ObjectId("5c43db2c27a94952c0a58652"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveContent" : "这是事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2019-03-24/00:00", 
+    "endTime" : "2019-03-24/00:00", 
+    "status" : NumberInt(1), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任", 
+            "nodeId" : "001", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c43db2c27a94952c0a58652", 
+                    "userName" : "张三", 
+                    "pwd" : "123456", 
+                    "openid" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                    "dept" : {
+                        "_id" : "5c4db72ae5a18c27640a2f24", 
+                        "deptName" : "信科院", 
+                        "deptNo" : "323"
+                    }, 
+                    "org" : null, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "email" : "邮箱", 
+                    "remark" : "备注", 
+                    "userId" : "5c43db2c27a94952c0a58652", 
+                    "checked" : true
+                }
+            ]
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c43db2c27a94952c0a58652", 
+                        "userName" : "张三", 
+                        "pwd" : "123456", 
+                        "openid" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                        "dept" : {
+                            "_id" : "5c4db72ae5a18c27640a2f24", 
+                            "deptName" : "信科院", 
+                            "deptNo" : "323"
+                        }, 
+                        "org" : null, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "email" : "邮箱", 
+                        "remark" : "备注", 
+                        "userId" : "5c43db2c27a94952c0a58652", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "批假", 
+        "nodeId" : "002", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c43db2c27a94952c0a58652", 
+                "userName" : "张三", 
+                "pwd" : "123456", 
+                "openid" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                "dept" : {
+                    "_id" : "5c4db72ae5a18c27640a2f24", 
+                    "deptName" : "信科院", 
+                    "deptNo" : "323"
+                }, 
+                "org" : null, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "email" : "邮箱", 
+                "remark" : "备注", 
+                "userId" : "5c43db2c27a94952c0a58652", 
+                "checked" : true, 
+                "approve" : NumberInt(1)
+            }
+        ]
+    }, 
+    "createTime" : ISODate("2019-03-24T14:27:45.170+0000")
+}
+{ 
+    "_id" : ObjectId("5ca99fd92485f09634badc6e"), 
+    "fileList" : [
+
+    ], 
+    "approvalRecords" : [
+
+    ], 
+    "ccPerson" : [
+        ObjectId("5c43db2c27a94952c0a58652"), 
+        ObjectId("5c7b3f74754c9769ed26c4da")
+    ], 
+    "creator" : ObjectId("5c7b3f74754c9769ed26c4da"), 
+    "leaveType" : "事假", 
+    "leaveTitle" : "XX事假", 
+    "leaveContent" : "这是事假", 
+    "leaveTime" : "2", 
+    "startTime" : "2019-04-07/21:01", 
+    "endTime" : "2019-04-07/21:01", 
+    "status" : NumberInt(0), 
+    "flow" : {
+        "data" : {
+            "nodeName" : "班主任", 
+            "nodeId" : "001", 
+            "nodePersonType" : "0", 
+            "nodePersons" : [
+                {
+                    "_id" : "5c43db2c27a94952c0a58652", 
+                    "userName" : "张三", 
+                    "pwd" : "123456", 
+                    "openid" : "123456", 
+                    "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                    "dept" : {
+                        "_id" : "5c4db72ae5a18c27640a2f24", 
+                        "deptName" : "信科院", 
+                        "deptNo" : "323"
+                    }, 
+                    "org" : null, 
+                    "post" : {
+                        "_id" : "5c449cc10a8638401d07f887", 
+                        "postType" : "行政", 
+                        "postName" : "校长", 
+                        "desc" : "校长", 
+                        "__v" : NumberInt(0)
+                    }, 
+                    "email" : "邮箱", 
+                    "remark" : "备注", 
+                    "userId" : "5c43db2c27a94952c0a58652", 
+                    "checked" : true
+                }
+            ]
+        }, 
+        "childNode" : {
+            "data" : {
+                "nodeName" : "辅导员", 
+                "nodeId" : "002", 
+                "nodePersonType" : "0", 
+                "nodePersons" : [
+                    {
+                        "_id" : "5c43db2c27a94952c0a58652", 
+                        "userName" : "张三", 
+                        "pwd" : "123456", 
+                        "openid" : "123456", 
+                        "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                        "dept" : {
+                            "_id" : "5c4db72ae5a18c27640a2f24", 
+                            "deptName" : "信科院", 
+                            "deptNo" : "323"
+                        }, 
+                        "org" : null, 
+                        "post" : {
+                            "_id" : "5c449cc10a8638401d07f887", 
+                            "postType" : "行政", 
+                            "postName" : "校长", 
+                            "desc" : "校长", 
+                            "__v" : NumberInt(0)
+                        }, 
+                        "email" : "邮箱", 
+                        "remark" : "备注", 
+                        "userId" : "5c43db2c27a94952c0a58652", 
+                        "checked" : true
+                    }
+                ]
+            }, 
+            "childNode" : null
+        }
+    }, 
+    "currentNode" : {
+        "nodeName" : "班主任", 
+        "nodeId" : "001", 
+        "nodePersonType" : "0", 
+        "nodePersons" : [
+            {
+                "_id" : "5c43db2c27a94952c0a58652", 
+                "userName" : "张三", 
+                "pwd" : "123456", 
+                "openid" : "123456", 
+                "avatar" : "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoOhJ0KqibOn8ju3Lq5F6icwaou8gIgg2oZn3VORXnva8u7GPNnjt35J9fba1lJoBQ6VXpx4XIqkOjA/132", 
+                "dept" : {
+                    "_id" : "5c4db72ae5a18c27640a2f24", 
+                    "deptName" : "信科院", 
+                    "deptNo" : "323"
+                }, 
+                "org" : null, 
+                "post" : {
+                    "_id" : "5c449cc10a8638401d07f887", 
+                    "postType" : "行政", 
+                    "postName" : "校长", 
+                    "desc" : "校长", 
+                    "__v" : NumberInt(0)
+                }, 
+                "email" : "邮箱", 
+                "remark" : "备注", 
+                "userId" : "5c43db2c27a94952c0a58652", 
+                "checked" : true
+            }
+        ]
+    }, 
+    "createTime" : ISODate("2019-04-07T06:59:37.594+0000")
+}
