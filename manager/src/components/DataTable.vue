@@ -9,7 +9,7 @@
     border="border">
     <el-table-column type="expand" v-if="expandColumn.length > 0">
       <template slot-scope="props">
-        <el-form v-for="(item,index) in expandColumn"
+        <el-form v-for="(item,index) in expandColumn" :key="index"
                  label-position="left" inline class="demo-table-expand">
           <el-form-item :label="item.label">
             <span>{{props.row[item.data]}}</span>
